@@ -1,2 +1,2 @@
-# ag-selection-atlas
+# selection-atlas
 Here be dragons.
