@@ -1,5 +1,12 @@
 min_cohort_size: 20
 max_cohort_size: 50  # TODO maybe increase this for production
-releases:
-  ag:
+ag:
+  sample_sets:
     - "3.0"
+  contigs:
+    # TODO use joined arms when we can
+    - "2R"
+    - "3R"
+    - "X"
+  h12_calibration_contig: "3L"
+
