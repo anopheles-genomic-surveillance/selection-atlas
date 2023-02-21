@@ -1,0 +1,26 @@
+import pandas as pd
+import malariagen_data
+
+cohort_df = pd.read_csv("../workflow/cohorts.tsv ", sep="\t")
+
+countries = cohort_df.loc[:, 'country'].to_list()
+chromosomes = ['2RL', '3RL', 'X']
+
+include:
+    "rules/common.smk"
+    "rules/site.smk",
+    "rules/gwss.smk"
+
+
+rule all:
+    input:
+        #  final_cohorts = 
+        h12 = expand("build/notebooks/h12-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
+        g123 = expand("build/notebooks/g123-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
+        iHS = expand("build/notebooks/ihs-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
+
+        toc = "docs/.toc.yaml",
+        home_page = "build/notebooks/home-page.ipynb",
+        country_pages = expand("build/notebooks/country-page-{country}.ipynb", country=countries),
+        chromosome_pages = expand("build/notebooks/chromosome-page-{chrom}.ipynb", chrom = chromosomes),
+        cohort_pages =  expand("build/notebooks/cohort-page-{cohorts}.ipynb", cohorts = get_final_cohorts),
