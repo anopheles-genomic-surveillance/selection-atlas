@@ -1,26 +1,34 @@
 import pandas as pd
 import malariagen_data
+import yaml
 
-cohort_df = pd.read_csv("../workflow/cohorts.tsv ", sep="\t")
+# open parameter file
+with open("workflow/params.yaml") as params_file:
+    params = yaml.safe_load(params_file)
 
-countries = cohort_df.loc[:, 'country'].to_list()
+# load potential cohorts
+cohort_df = pd.read_csv("workflow/cohorts.csv", sep=",")
+cohorts = cohort_df.loc[:, 'cohort_id'].to_list()
+
+# load potential countries
+countries = cohort_df.loc[:, 'country'].unique().tolist()
 chromosomes = ['2RL', '3RL', 'X']
 
-include:
-    "rules/common.smk"
-    "rules/site.smk",
-    "rules/gwss.smk"
-
+# include rule files
+include: "rules/common.smk"
+include: "rules/site.smk"
+include: "rules/gwss.smk",
 
 rule all:
     input:
-        #  final_cohorts = 
+        output_nb = expand("build/notebooks/h12-calibration-{cohort}.ipynb", cohort=cohorts),
         h12 = expand("build/notebooks/h12-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
-        g123 = expand("build/notebooks/g123-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
-        iHS = expand("build/notebooks/ihs-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
-
-        toc = "docs/.toc.yaml",
-        home_page = "build/notebooks/home-page.ipynb",
-        country_pages = expand("build/notebooks/country-page-{country}.ipynb", country=countries),
-        chromosome_pages = expand("build/notebooks/chromosome-page-{chrom}.ipynb", chrom = chromosomes),
-        cohort_pages =  expand("build/notebooks/cohort-page-{cohorts}.ipynb", cohorts = get_final_cohorts),
+        #g123 = expand("build/notebooks/g123-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
+        #iHS = expand("build/notebooks/ihs-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
+        
+        # toc = "docs/.toc.yaml",
+        # home_page = "build/notebooks/home-page.ipynb",
+        # country_pages = expand("build/notebooks/country-page-{country}.ipynb", country=countries),
+        # chromosome_pages = expand("build/notebooks/chromosome-page-{chrom}.ipynb", chrom = chromosomes),
+        # cohort_pages =  expand("build/notebooks/cohort-page-{cohorts}.ipynb", cohorts = get_final_cohorts),
+        

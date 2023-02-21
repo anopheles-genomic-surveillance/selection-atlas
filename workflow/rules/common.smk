@@ -1,9 +1,9 @@
 rule set_kernel:
     input:
-        f'{workflow.basedir}/environment.yml'
+        f'{workflow.basedir}/../environment.yml'
     output:
-        touch("resources/.kernel.set")
-    conda: f'{workflow.basedir}/environment.yml'
+        touch("build/.kernel.set")
+    conda: f'{workflow.basedir}/../environment.yml'
     log:
         "logs/set_kernel.log"
     shell: 
@@ -12,4 +12,7 @@ rule set_kernel:
         """
 
 def get_final_cohorts():
-    return checkpoint.final_cohorts.get()
+    _ = checkpoint.final_cohorts.get()
+    df = pd.read_csv("build/final_cohorts.csv")
+    print(df)
+    return df['cohorts_id'].to_list()

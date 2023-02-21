@@ -1,91 +1,91 @@
 
 
-
 rule h12_calibration:
     input:
-        template="workflows/notebooks/h12-calibration.ipynb"
+        nb="workflow/notebooks/h12-calibration.ipynb"
     output:
-        output_nb="build/notebooks/h12-calibration-{cohort}.ipynb",
-        yaml = "build/window_sizes/{cohort}.yaml"
+        nb="build/notebooks/h12-calibration-{cohort}.ipynb",
+        yaml = "build/h12-calibration/{cohort}.yaml"
     log:
         "logs/h12_calibration/{cohort}.log"
     conda:
-        "../environment.yaml"
-    params:
-    #    cohort=
+        f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas -p cohort {params.cohort} -p window_size {params.window_size}
+        papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort}
         """
 
 checkpoint final_cohorts:
     input:
-        expand("build/notebooks/h12-calibration-{cohort}.ipynb" cohort=cohorts)
+        yamls = expand("build/h12-calibration/{cohort}.yaml", cohort=cohorts),
+        nb = "workflow/notebooks/final-cohorts.ipynb",
+        cohorts = "workflow/cohorts.csv"
     output:
-        final_cohorts = "final_cohorts.tsv"
+        nb = "build/notebooks/final-cohorts.ipynb",
+        final_cohorts = "build/final_cohorts.tsv"
     log:
         "logs/final_cohorts.log"
     conda:
-        "../environment.yaml"
+        f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas -p cohort {params.cohort} -p window_size {params.window_size}
+        papermill {input.nb} {output.nb} -k selection-atlas -p cohort {params.cohort} -p
         """
 
 rule h12:
     input:
-        template = "workflows/notebooks/h12-gwss.ipynb",
-        window_size = "build/window_sizes/{cohort}.yaml"
+        template = "workflow/notebooks/h12-gwss.ipynb",
+        window_size = "build/h12-calibration/{cohort}.yaml"
     output:
-        output_nb="build/notebooks/h12-gwss-{cohort}.ipynb"
+        nb="build/notebooks/h12-gwss-{cohort}.ipynb"
     log:
         "logs/h12_gwss/{cohort}.log"
     conda:
-        "../environment.yaml"
+        f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas -p cohort {params.cohort} -p window_size {params.window_size}
+        papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort}
         """
 
 rule h12_signal_detection:
     input:
-        template="workflows/notebooks/h12-signal-detection.ipynb"
+        template="workflow/notebooks/h12-signal-detection.ipynb"
     output:
-        output_nb="build/notebooks/h12-signal-detection-{cohort}.ipynb"
+        nb="build/notebooks/h12-signal-detection-{cohort}.ipynb"
     log:
         "logs/h12_signal_detection/{cohort}.log"
     conda:
-        "../environment.yaml"
+        f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas -p cohort {params.cohort} -p window_size {params.window_size}
+        papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {params.cohort} -p window_size {params.window_size}
         """
 
 
 rule g123:
     input:
-        template="workflows/notebooks/g123-gwss.ipynb"
+        template="workflow/notebooks/g123-gwss.ipynb"
     output:
-        output_nb="build/notebooks/g123-gwss-{cohort}.ipynb"
+        nb="build/notebooks/g123-gwss-{cohort}.ipynb"
     log:
         "logs/g123_gwss/{cohort}.log"
     conda:
-        "../environment.yaml"
+        f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas -p cohort {params.cohort} -p window_size {params.window_size}
+        papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -p window_size {params.window_size}
         """
 
 rule ihs:
     input:
-        template="workflows/notebooks/ihs-gwss.ipynb"
+        template="workflow/notebooks/ihs-gwss.ipynb"
     output:
         output_nb="build/notebooks/ihs-gwss-{cohort}.ipynb"
     log:
         "logs/ihs_gwss/{cohort}.log"
     conda:
-        "../environment.yaml"
+        f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas -p cohort {params.cohort} -p window_size {params.window_size}
+        papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -p window_size {params.window_size}
         """
