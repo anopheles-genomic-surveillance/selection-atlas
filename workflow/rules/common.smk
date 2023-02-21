@@ -11,8 +11,18 @@ rule set_kernel:
         python -m ipykernel install --user --name selection-atlas 2> log
         """
 
-def get_final_cohorts():
-    _ = checkpoint.final_cohorts.get()
-    df = pd.read_csv("build/final_cohorts.csv")
-    print(df)
-    return df['cohorts_id'].to_list()
+
+def get_h12_calibration_yamls(wildcards):
+    df = pd.read_csv(checkpoints.setup_cohorts.get().output[1])
+    paths = "build/h12-calibration/" + df['cohort_id'] + ".yaml"
+    return (paths)
+
+def get_h12_calibration_cohorts(wildcards):
+    df = pd.read_csv(checkpoints.setup_cohorts.get().output[1])
+    paths = "build/notebooks/h12-calibration-" + df['cohort_id'] + ".ipynb"
+    return (paths)
+
+def get_h12_final_cohorts(wildcards):
+    df = pd.read_csv(checkpoints.final_cohorts.get().output[1])
+    paths = "build/notebooks/h12-gwss-" + df['cohort_id'] + ".ipynb"
+    return (paths)

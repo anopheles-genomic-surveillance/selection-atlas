@@ -7,11 +7,10 @@ with open("workflow/params.yaml") as params_file:
     params = yaml.safe_load(params_file)
 
 # load potential cohorts
-cohort_df = pd.read_csv("workflow/cohorts.csv", sep=",")
-cohorts = cohort_df.loc[:, 'cohort_id'].to_list()
-
+#cohort_df = pd.read_csv("build/cohorts.csv", sep=",")
+#cohorts = cohort_df.loc[:, 'cohort_id'].to_list()
 # load potential countries
-countries = cohort_df.loc[:, 'country'].unique().tolist()
+#countries = cohort_df.loc[:, 'country'].unique().tolist()
 chromosomes = ['2RL', '3RL', 'X']
 
 # include rule files
@@ -21,8 +20,10 @@ include: "rules/gwss.smk",
 
 rule all:
     input:
-        output_nb = expand("build/notebooks/h12-calibration-{cohort}.ipynb", cohort=cohorts),
-        h12 = expand("build/notebooks/h12-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
+        output_nb = get_h12_calibration_cohorts,
+        h12 = get_h12_final_cohorts,
+        
+        #expand("build/notebooks/h12-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
         #g123 = expand("build/notebooks/g123-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
         #iHS = expand("build/notebooks/ihs-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
         

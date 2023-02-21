@@ -1,4 +1,20 @@
 
+checkpoint setup_cohorts:
+    input:
+        nb = "workflow/notebooks/setup-cohorts.ipynb",
+        params = "workflow/params.yaml"
+    output:
+        nb = "build/notebooks/setup-cohorts.ipynb",
+        cohorts = "build/cohorts.csv"
+    log:
+        "logs/setup_cohorts.log"
+    conda:
+        f"{workflow.basedir}/../environment.yml"
+    shell:
+        """
+        papermill {input.nb} {output.nb} -k selection-atlas
+        """
+
 
 rule h12_calibration:
     input:
@@ -17,19 +33,19 @@ rule h12_calibration:
 
 checkpoint final_cohorts:
     input:
-        yamls = expand("build/h12-calibration/{cohort}.yaml", cohort=cohorts),
+        yamls = get_h12_calibration_yamls,
         nb = "workflow/notebooks/final-cohorts.ipynb",
-        cohorts = "workflow/cohorts.csv"
+        cohorts = "build/cohorts.csv"
     output:
         nb = "build/notebooks/final-cohorts.ipynb",
-        final_cohorts = "build/final_cohorts.tsv"
+        final_cohorts = "build/final_cohorts.csv"
     log:
         "logs/final_cohorts.log"
     conda:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas -p cohort {params.cohort} -p
+        papermill {input.nb} {output.nb} -k selection-atlas
         """
 
 rule h12:
