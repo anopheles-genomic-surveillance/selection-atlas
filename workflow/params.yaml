@@ -2,7 +2,7 @@ min_cohort_size: 20
 max_cohort_size: 50  # TODO maybe increase this for production
 ag:
   sample_sets:
-    - "3.0"
+    - "AG1000G-BF-A"
   contigs:
     # TODO use joined arms when we can
     - "2R"
