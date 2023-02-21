@@ -26,6 +26,7 @@ dependencies:
   - plotly
   - xarray
   - zarr
+  - pyprojroot
   - pip
   - pip:
     - jupyter-book==0.13.2

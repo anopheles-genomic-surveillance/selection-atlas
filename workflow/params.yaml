@@ -1,4 +1,4 @@
 min_cohort_size: 20
 releases:
   ag:
-    - 3.0
+    - "3.0"

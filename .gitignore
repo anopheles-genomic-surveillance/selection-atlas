@@ -1,5 +1,7 @@
 # custom
 Mambaforge-Linux-x86_64.sh
+malariagen_data_cache
+gcs_cache
 
 # generated files
 build
