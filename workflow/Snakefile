@@ -2,9 +2,9 @@ import pandas as pd
 import malariagen_data
 import yaml
 
-# open parameter file
-with open("workflow/params.yaml") as params_file:
-    params = yaml.safe_load(params_file)
+# open configuration file
+with open("workflow/config.yaml") as config_file:
+    config = yaml.safe_load(config_file)
 
 # load potential cohorts
 #cohort_df = pd.read_csv("build/cohorts.csv", sep=",")

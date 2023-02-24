@@ -2,7 +2,7 @@
 checkpoint setup_cohorts:
     input:
         nb = "workflow/notebooks/setup-cohorts.ipynb",
-        params = "workflow/params.yaml"
+        config = "workflow/config.yaml"
     output:
         nb = "build/notebooks/setup-cohorts.ipynb",
         cohorts = "build/cohorts.csv"
