@@ -2,7 +2,8 @@
 checkpoint setup_cohorts:
     input:
         nb = "workflow/notebooks/setup-cohorts.ipynb",
-        config = "workflow/config.yaml"
+        config = "workflow/config.yaml",
+        kernel="build/.kernel.set"
     output:
         nb = "build/notebooks/setup-cohorts.ipynb",
         cohorts = "build/cohorts.csv"
@@ -18,7 +19,8 @@ checkpoint setup_cohorts:
 
 rule h12_calibration:
     input:
-        nb="workflow/notebooks/h12-calibration.ipynb"
+        nb="workflow/notebooks/h12-calibration.ipynb",
+        kernel="build/.kernel.set"
     output:
         nb="build/notebooks/h12-calibration-{cohort}.ipynb",
         yaml = "build/h12-calibration/{cohort}.yaml"
@@ -35,7 +37,8 @@ checkpoint final_cohorts:
     input:
         yamls = get_h12_calibration_yamls,
         nb = "workflow/notebooks/final-cohorts.ipynb",
-        cohorts = "build/cohorts.csv"
+        cohorts = "build/cohorts.csv",
+        kernel= "build/.kernel.set"
     output:
         nb = "build/notebooks/final-cohorts.ipynb",
         final_cohorts = "build/final_cohorts.csv"
@@ -51,7 +54,8 @@ checkpoint final_cohorts:
 rule h12:
     input:
         template = "workflow/notebooks/h12-gwss.ipynb",
-        window_size = "build/h12-calibration/{cohort}.yaml"
+        window_size = "build/h12-calibration/{cohort}.yaml",
+        cohorts = "build/final_cohorts.csv"
     output:
         nb="build/notebooks/h12-gwss-{cohort}.ipynb"
     log:
@@ -65,17 +69,21 @@ rule h12:
 
 rule h12_signal_detection:
     input:
-        template="workflow/notebooks/h12-signal-detection.ipynb"
+        template="workflow/notebooks/h12-signal-detection.ipynb",
+        gwss_nb="build/notebooks/h12-gwss-{cohort}.ipynb",
+        cohorts="build/final_cohorts.csv"
     output:
-        nb="build/notebooks/h12-signal-detection-{cohort}.ipynb"
+        nb="build/notebooks/h12-signal-detection-{cohort}-{contig}.ipynb",
+        csv = "build/h12-signal-detection/{cohort}_{contig}.csv"
     log:
-        "logs/h12_signal_detection/{cohort}.log"
+        "logs/h12_signal_detection/{cohort}_{contig}.log"
     conda:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {params.cohort} -p window_size {params.window_size}
+        papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -p contig {wildcards.contig}
         """
+
 
 
 rule g123:
