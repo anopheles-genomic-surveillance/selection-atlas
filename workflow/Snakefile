@@ -3,15 +3,8 @@ import malariagen_data
 import yaml
 
 # open configuration file
-with open("workflow/config.yaml") as config_file:
-    config = yaml.safe_load(config_file)
-
-# load potential cohorts
-#cohort_df = pd.read_csv("build/cohorts.csv", sep=",")
-#cohorts = cohort_df.loc[:, 'cohort_id'].to_list()
-# load potential countries
-#countries = cohort_df.loc[:, 'country'].unique().tolist()
-chromosomes = ['2RL', '3RL', 'X']
+configfile: "workflow/config.yaml"
+chromosomes = config['ag']['contigs']
 
 # include rule files
 include: "rules/common.smk"
@@ -20,8 +13,10 @@ include: "rules/gwss.smk",
 
 rule all:
     input:
-        output_nb = get_h12_calibration_cohorts,
-        h12 = get_h12_final_cohorts,
+        calibration_yamls = get_h12_calibration_yamls,
+        output_nb = get_h12_calibration_outputs,
+        h12 = get_h12_outputs,
+        signals = get_signal_detection_outputs,
         
         #expand("build/notebooks/h12-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
         #g123 = expand("build/notebooks/g123-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
