@@ -8,7 +8,7 @@ rule set_kernel:
         "logs/set_kernel.log"
     shell: 
         """
-        python -m ipykernel install --user --name selection-atlas 2> log
+        python -m ipykernel install --user --name=selection-atlas 2> log
         """
 
 
@@ -17,12 +17,17 @@ def get_h12_calibration_yamls(wildcards):
     paths = "build/h12-calibration/" + df['cohort_id'] + ".yaml"
     return (paths)
 
-def get_h12_calibration_cohorts(wildcards):
+def get_h12_calibration_outputs(wildcards):
     df = pd.read_csv(checkpoints.setup_cohorts.get().output[1])
     paths = "build/notebooks/h12-calibration-" + df['cohort_id'] + ".ipynb"
     return (paths)
 
-def get_h12_final_cohorts(wildcards):
+def get_h12_outputs(wildcards):
     df = pd.read_csv(checkpoints.final_cohorts.get().output[1])
     paths = "build/notebooks/h12-gwss-" + df['cohort_id'] + ".ipynb"
+    return (paths)
+
+def get_signal_detection_outputs(wildcards):
+    df = pd.read_csv(checkpoints.final_cohorts.get().output[1])
+    paths = expand("build/h12-signal-detection/{cohort}_{contig}.csv", cohort=df['cohort_id'], contig=chromosomes)
     return (paths)
