@@ -71,6 +71,7 @@ rule h12_signal_detection:
     input:
         template=f"{workflow.basedir}/notebooks/h12-signal-detection.ipynb",
         gwss_nb="build/notebooks/h12-gwss-{cohort}.ipynb",
+        utils_nb=f"{workflow.basedir}/notebooks/peak_utils.ipynb",
         cohorts="build/final_cohorts.csv"
     output:
         nb="build/notebooks/h12-signal-detection-{cohort}-{contig}.ipynb",
