@@ -13,6 +13,6 @@ jobs:
       - name: Test workflow 
         uses: snakemake/snakemake-github-action@v1.23.0
         with:
-          directory: '.test'
+          directory: '.'
           snakefile: 'workflow/Snakefile'
-          args: '--cores 4 --use-conda --conda-cleanup-pkgs cache'
+          args: '--cores 1 --use-conda --configfile .test/config.yaml --conda-cleanup-pkgs cache'

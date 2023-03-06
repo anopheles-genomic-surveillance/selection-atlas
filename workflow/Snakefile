@@ -3,7 +3,8 @@ import yaml
 
 # open configuration file
 configfile: "workflow/config.yaml"
-chromosomes = config['ag']['contigs']
+configpath = workflow.configfiles[0]
+chromosomes = config['contigs']
 
 # include rule files
 include: "rules/common.smk"

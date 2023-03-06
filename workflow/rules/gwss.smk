@@ -2,7 +2,7 @@
 checkpoint setup_cohorts:
     input:
         nb = f"{workflow.basedir}/notebooks/setup-cohorts.ipynb",
-        config = "workflow/config.yaml",
+        config = configpath,
         kernel="build/.kernel.set"
     output:
         nb = "build/notebooks/setup-cohorts.ipynb",
@@ -16,11 +16,11 @@ checkpoint setup_cohorts:
         papermill {input.nb} {output.nb} -k selection-atlas
         """
 
-
 rule h12_calibration:
     input:
         nb=f"{workflow.basedir}/notebooks/h12-calibration.ipynb",
-        kernel="build/.kernel.set"
+        kernel="build/.kernel.set",
+        config = configpath
     output:
         nb="build/notebooks/h12-calibration-{cohort}.ipynb",
         yaml = "build/h12-calibration/{cohort}.yaml"
@@ -30,7 +30,8 @@ rule h12_calibration:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort}
+        papermill {input.nb} {output.nb} -k selection-atlas \
+        -p cohort_id {wildcards.cohort} -f {input.config} 2> {log}
         """
 
 checkpoint final_cohorts:
@@ -48,14 +49,16 @@ checkpoint final_cohorts:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas
+        papermill {input.nb} {output.nb} -k selection-atlas 2> {log}
         """
+
 
 rule h12:
     input:
         template = f"{workflow.basedir}/notebooks/h12-gwss.ipynb",
         window_size = "build/h12-calibration/{cohort}.yaml",
-        cohorts = "build/final_cohorts.csv"
+        cohorts = "build/final_cohorts.csv",
+        config = configpath
     output:
         nb="build/notebooks/h12-gwss-{cohort}.ipynb"
     log:
@@ -64,15 +67,17 @@ rule h12:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort}
+        papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} \
+        -f {input.config} 2> {log}
         """
 
 rule h12_signal_detection:
     input:
         template=f"{workflow.basedir}/notebooks/h12-signal-detection.ipynb",
         gwss_nb="build/notebooks/h12-gwss-{cohort}.ipynb",
-        utils_nb=f"{workflow.basedir}/notebooks/peak_utils.ipynb",
-        cohorts="build/final_cohorts.csv"
+        utils_nb=f"{workflow.basedir}/notebooks/peak-utils.ipynb",
+        cohorts="build/final_cohorts.csv",
+        config = configpath
     output:
         nb="build/notebooks/h12-signal-detection-{cohort}-{contig}.ipynb",
         csv = "build/h12-signal-detection/{cohort}_{contig}.csv"
@@ -80,11 +85,11 @@ rule h12_signal_detection:
         "logs/h12_signal_detection/{cohort}_{contig}.log"
     conda:
         f"{workflow.basedir}/../environment.yml"
+    params:
     shell:
         """
-        papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -p contig {wildcards.contig}
+        papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -p contig {wildcards.contig} -f {input.config} 2> {log}
         """
-
 
 
 rule g123:
