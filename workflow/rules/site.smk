@@ -1,6 +1,7 @@
 rule generate_toc:
     input:
-        "workflow/generate-toc.ipynb"
+        "workflow/notebooks/generate-toc.ipynb",
+        lambda wildcards: checkpoints.final_cohorts.get().output[1]
     output:
         "build/notebooks/generate-toc.ipynb",
         "docs/.toc.yaml"
@@ -15,9 +16,10 @@ rule generate_toc:
 
 rule home_page:
     input:
-        "workflow/home-page.ipynb"
+        "workflow/home-page.ipynb",
+        lambda wildcards: checkpoints.final_cohorts.get().output[1]
     output:
-        "build/notebooks/home-page.ipynb"
+        "docs/notebooks/home-page.ipynb"
     log:
         "logs/home_page.log"
     conda:
@@ -29,9 +31,10 @@ rule home_page:
 
 rule country_pages:
     input:
-        "workflow/country-page.ipynb"
+        "workflow/country-page.ipynb",
+        lambda wildcards: checkpoints.final_cohorts.get().output[1]
     output:
-        "build/notebooks/country-page-{country}.ipynb"
+        "docs/notebooks/country-page-{country}.ipynb"
     log:
         "logs/country_page_{country}.log"
     conda:
@@ -46,7 +49,7 @@ rule chromosome_pages:
     input:
         "workflow/chromosome-page.ipynb"
     output:
-        "build/notebooks/chromosome-page-{chrom}.ipynb"
+        "docs/notebooks/chromosome-page-{chrom}.ipynb"
     log:
         "logs/chromosome_page_{chrom}.log"
     conda:
@@ -61,7 +64,7 @@ rule cohort_pages:
     input:
         "workflow/cohort-page.ipynb"
     output:
-        "build/notebooks/cohort-page-{cohort}.ipynb"
+        "docs/notebooks/cohort-page-{cohort}.ipynb"
     log:
         "logs/cohort_page_{cohort}.log"
     conda:

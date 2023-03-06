@@ -13,11 +13,5 @@ include: "rules/gwss.smk",
 
 rule all:
     input:
-        outputs = get_selection_atlas_outputs,
-                
-        # toc = "docs/.toc.yaml",
-        # home_page = "build/notebooks/home-page.ipynb",
-        # country_pages = expand("build/notebooks/country-page-{country}.ipynb", country=countries),
-        # chromosome_pages = expand("build/notebooks/chromosome-page-{chrom}.ipynb", chrom = chromosomes),
-        # cohort_pages =  expand("build/notebooks/cohort-page-{cohorts}.ipynb", cohorts = get_final_cohorts),
-        
+        analyses = get_selection_atlas_outputs,
+#        site = get_selection_atlas_site_pages,

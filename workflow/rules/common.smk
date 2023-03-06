@@ -36,3 +36,29 @@ def get_selection_atlas_outputs(wildcards):
     
     return wanted_outputs
 
+
+def get_selection_atlas_site_pages(wildcards):
+
+    df = pd.read_csv(checkpoints.final_cohorts.get().output[1])
+
+    wanted_outputs = []
+    wanted_outputs.extend(["docs/.toc.yaml"])
+    wanted_outputs.extend(["docs/notebooks/home-page.ipynb"])
+    wanted_outputs.extend(
+            [   
+                expand("docs/notebooks/country-page-{country}.ipynb", country=df['country'].unique())
+            ]
+        )
+
+    wanted_outputs.extend(
+            [
+                expand("docs/notebooks/chromosome-page-{chrom}.ipynb", chrom=chromosomes)
+            ]
+        )
+    
+
+    wanted_outputs.extend(
+            [
+                expand("docs/notebooks/cohort-page-{cohort}.ipynb", cohort=df['cohort_id'].unique())
+            ]
+    )
