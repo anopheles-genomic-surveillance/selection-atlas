@@ -9,7 +9,7 @@ chromosomes = config['ag']['contigs']
 # include rule files
 include: "rules/common.smk"
 include: "rules/site.smk"
-include: "rules/gwss.smk",
+include: "rules/gwss.smk"
 
 rule all:
     input:
