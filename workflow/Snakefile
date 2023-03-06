@@ -13,15 +13,8 @@ include: "rules/gwss.smk",
 
 rule all:
     input:
-        calibration_yamls = get_h12_calibration_yamls,
-        output_nb = get_h12_calibration_outputs,
-        h12 = get_h12_outputs,
-        signals = get_signal_detection_outputs,
-        
-        #expand("build/notebooks/h12-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
-        #g123 = expand("build/notebooks/g123-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
-        #iHS = expand("build/notebooks/ihs-gwss-{cohort}.ipynb", cohort=get_final_cohorts),
-        
+        outputs = get_selection_atlas_outputs,
+                
         # toc = "docs/.toc.yaml",
         # home_page = "build/notebooks/home-page.ipynb",
         # country_pages = expand("build/notebooks/country-page-{country}.ipynb", country=countries),
