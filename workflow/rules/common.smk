@@ -62,3 +62,4 @@ def get_selection_atlas_site_pages(wildcards):
                 expand("docs/notebooks/cohort-page-{cohort}.ipynb", cohort=df['cohort_id'].unique())
             ]
     )
+    return wanted_outputs 
