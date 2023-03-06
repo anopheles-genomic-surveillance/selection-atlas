@@ -1,7 +1,7 @@
 
 checkpoint setup_cohorts:
     input:
-        nb = "workflow/notebooks/setup-cohorts.ipynb",
+        nb = f"{workflow.basedir}/notebooks/setup-cohorts.ipynb",
         config = "workflow/config.yaml",
         kernel="build/.kernel.set"
     output:
@@ -19,7 +19,7 @@ checkpoint setup_cohorts:
 
 rule h12_calibration:
     input:
-        nb="workflow/notebooks/h12-calibration.ipynb",
+        nb=f"{workflow.basedir}/notebooks/h12-calibration.ipynb",
         kernel="build/.kernel.set"
     output:
         nb="build/notebooks/h12-calibration-{cohort}.ipynb",
@@ -36,7 +36,7 @@ rule h12_calibration:
 checkpoint final_cohorts:
     input:
         yamls = get_h12_calibration_yamls,
-        nb = "workflow/notebooks/final-cohorts.ipynb",
+        nb = f"{workflow.basedir}/notebooks/final-cohorts.ipynb",
         cohorts = "build/cohorts.csv",
         kernel= "build/.kernel.set"
     output:
@@ -53,7 +53,7 @@ checkpoint final_cohorts:
 
 rule h12:
     input:
-        template = "workflow/notebooks/h12-gwss.ipynb",
+        template = f"{workflow.basedir}/notebooks/h12-gwss.ipynb",
         window_size = "build/h12-calibration/{cohort}.yaml",
         cohorts = "build/final_cohorts.csv"
     output:
@@ -69,7 +69,7 @@ rule h12:
 
 rule h12_signal_detection:
     input:
-        template="workflow/notebooks/h12-signal-detection.ipynb",
+        template=f"{workflow.basedir}/notebooks/h12-signal-detection.ipynb",
         gwss_nb="build/notebooks/h12-gwss-{cohort}.ipynb",
         cohorts="build/final_cohorts.csv"
     output:
@@ -88,7 +88,7 @@ rule h12_signal_detection:
 
 rule g123:
     input:
-        template="workflow/notebooks/g123-gwss.ipynb"
+        template=f"{workflow.basedir}/notebooks/g123-gwss.ipynb"
     output:
         nb="build/notebooks/g123-gwss-{cohort}.ipynb"
     log:
@@ -102,7 +102,7 @@ rule g123:
 
 rule ihs:
     input:
-        template="workflow/notebooks/ihs-gwss.ipynb"
+        template=f"{workflow.basedir}/notebooks/ihs-gwss.ipynb"
     output:
         output_nb="build/notebooks/ihs-gwss-{cohort}.ipynb"
     log:

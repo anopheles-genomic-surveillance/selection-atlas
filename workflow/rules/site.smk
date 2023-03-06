@@ -1,6 +1,6 @@
 rule generate_toc:
     input:
-        "workflow/notebooks/generate-toc.ipynb",
+        f"{workflow.basedir}/notebooks/generate-toc.ipynb",
         lambda wildcards: checkpoints.final_cohorts.get().output[1]
     output:
         "build/notebooks/generate-toc.ipynb",
@@ -16,7 +16,7 @@ rule generate_toc:
 
 rule home_page:
     input:
-        "workflow/home-page.ipynb",
+        f"{workflow.basedir}/notebooks/home-page.ipynb",
         lambda wildcards: checkpoints.final_cohorts.get().output[1]
     output:
         "docs/notebooks/home-page.ipynb"
@@ -31,7 +31,7 @@ rule home_page:
 
 rule country_pages:
     input:
-        "workflow/country-page.ipynb",
+        f"{workflow.basedir}/notebooks/country-page.ipynb",
         lambda wildcards: checkpoints.final_cohorts.get().output[1]
     output:
         "docs/notebooks/country-page-{country}.ipynb"
@@ -47,7 +47,7 @@ rule country_pages:
 
 rule chromosome_pages:
     input:
-        "workflow/chromosome-page.ipynb"
+        f"{workflow.basedir}/notebooks/chromosome-page.ipynb"
     output:
         "docs/notebooks/chromosome-page-{chrom}.ipynb"
     log:
@@ -62,7 +62,7 @@ rule chromosome_pages:
 
 rule cohort_pages:
     input:
-        "workflow/cohort-page.ipynb"
+        f"{workflow.basedir}/notebooks/cohort-page.ipynb"
     output:
         "docs/notebooks/cohort-page-{cohort}.ipynb"
     log:
