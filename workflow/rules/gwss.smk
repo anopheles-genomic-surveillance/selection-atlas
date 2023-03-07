@@ -1,5 +1,8 @@
 
 checkpoint setup_cohorts:
+    """
+    Setup cohorts for analysis using the config file.
+    """
     input:
         nb = f"{workflow.basedir}/notebooks/setup-cohorts.ipynb",
         config = configpath,
@@ -17,6 +20,9 @@ checkpoint setup_cohorts:
         """
 
 rule h12_calibration:
+    """
+    Calibrate the window size for each cohort.
+    """
     input:
         nb=f"{workflow.basedir}/notebooks/h12-calibration.ipynb",
         kernel="build/.kernel.set",
@@ -35,6 +41,9 @@ rule h12_calibration:
         """
 
 checkpoint final_cohorts:
+    """
+    Finalize cohorts for analysis based on the calibration results.
+    """
     input:
         yamls = get_h12_calibration_yamls,
         nb = f"{workflow.basedir}/notebooks/final-cohorts.ipynb",
@@ -54,6 +63,9 @@ checkpoint final_cohorts:
 
 
 rule h12:
+    """
+    Run the H12 GWSS
+    """
     input:
         template = f"{workflow.basedir}/notebooks/h12-gwss.ipynb",
         window_size = "build/h12-calibration/{cohort}.yaml",
@@ -72,6 +84,9 @@ rule h12:
         """
 
 rule h12_signal_detection:
+    """
+    Detect peaks/signals from the H12 GWSS data 
+    """
     input:
         template=f"{workflow.basedir}/notebooks/h12-signal-detection.ipynb",
         gwss_nb="build/notebooks/h12-gwss-{cohort}.ipynb",
@@ -91,24 +106,12 @@ rule h12_signal_detection:
         papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -p contig {wildcards.contig} -f {input.config} 2> {log}
         """
 
-
-rule g123:
-    input:
-        template=f"{workflow.basedir}/notebooks/g123-gwss.ipynb"
-    output:
-        nb="build/notebooks/g123-gwss-{cohort}.ipynb"
-    log:
-        "logs/g123_gwss/{cohort}.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
-    shell:
-        """
-        papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -p window_size {params.window_size}
-        """
-
 rule ihs:
     input:
-        template=f"{workflow.basedir}/notebooks/ihs-gwss.ipynb"
+        template = f"{workflow.basedir}/notebooks/ihs-gwss.ipynb",
+        window_size = "build/ihs-calibration/{cohort}.yaml",
+        cohorts = "build/final_cohorts.csv",
+        config = configpath    
     output:
         output_nb="build/notebooks/ihs-gwss-{cohort}.ipynb"
     log:
