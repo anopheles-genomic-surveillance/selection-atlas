@@ -28,6 +28,7 @@ dependencies:
   - lmfit
   - zarr
   - pyprojroot
+  - geopandas
   - pip
   - pip:
     - jupyter-book==0.13.2
