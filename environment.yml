@@ -20,7 +20,7 @@ dependencies:
   - scikit-allel
   - bokeh<3.0
   - statsmodels
-  - ipyleaflet
+  - ipyleaflet==0.17.0
   - tqdm
   - ipywidgets
   - plotly
