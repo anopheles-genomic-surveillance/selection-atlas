@@ -1,0 +1,17 @@
+import pandas as pd
+import yaml
+
+# open configuration file
+configfile: "workflow/config.yaml"
+configpath = workflow.configfiles[0]
+chromosomes = config['contigs']
+
+# include rule files
+include: "rules/common.smk"
+include: "rules/site.smk"
+include: "rules/gwss.smk"
+
+rule all:
+    input:
+        analyses = get_selection_atlas_outputs,
+#        site = get_selection_atlas_site_pages,
