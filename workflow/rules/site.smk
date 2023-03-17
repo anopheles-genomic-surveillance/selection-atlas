@@ -60,7 +60,7 @@ rule country_pages:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas 
+        papermill {input.nb} {output.nb} -k selection-atlas -p country {wildcards.country} 2> {log}
         """
 
 
@@ -76,7 +76,7 @@ rule chromosome_pages:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas 
+        papermill {input.nb} {output.nb} -k selection-atlas -p contig {wildcards.chrom} 2> {log}
         """
 
 
@@ -95,5 +95,5 @@ rule cohort_pages:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort}
+        papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} 2> {log}
         """
