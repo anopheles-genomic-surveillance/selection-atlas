@@ -103,14 +103,16 @@ rule build_site:
         "docs/_toc.yml",
         "docs/_config.yml",
         "docs/notebooks/home-page.ipynb",
-        expand("docs/notebooks/cohort-page-{cohort}.ipynb", cohort=lambda wildcards: checkpoints.final_cohorts.get().output[1].cohort.unique()),
+        get_cohort_page_notebooks,
+        get_country_page_notebooks,
         expand("docs/notebooks/chromosome-page-{chrom}.ipynb", chrom=chromosomes),
-        expand("docs/notebooks/country-page-{country}.ipynb", country=lambda wildcards: checkpoints.final_cohorts.get().output[1].country.unique()),
     output:
         directory("docs/_build")
+    log:    
+        "logs/build-jupyter-book.log"
     conda:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        jupyter-book build docs/ 2> {log}
+        jupyter-book build docs
         """

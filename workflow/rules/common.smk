@@ -56,3 +56,22 @@ def get_selection_atlas_site_pages(wildcards):
                 expand("docs/notebooks/cohort-page-{cohort}.ipynb", cohort=df['cohort_id'].unique())
     )
     return wanted_outputs 
+
+def get_cohort_page_notebooks(wildcards):
+    df = pd.read_csv(checkpoints.final_cohorts.get().output[1])
+    
+    outputs = expand(
+        "docs/notebooks/cohort-page-{cohort}.ipynb", 
+        cohort=df['cohort_id'].unique()
+        )
+
+    return outputs
+
+def get_country_page_notebooks(wildcards):
+    df = pd.read_csv(checkpoints.final_cohorts.get().output[1])
+
+    outputs = expand(
+        "docs/notebooks/country-page-{country}.ipynb", 
+        country=df['country'].str.replace(" ", "").unique()
+        )
+    return outputs
