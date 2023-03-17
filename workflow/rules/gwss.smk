@@ -106,19 +106,18 @@ rule h12_signal_detection:
         papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -p contig {wildcards.contig} -f {input.config} 2> {log}
         """
 
-rule ihs:
-    input:
-        template = f"{workflow.basedir}/notebooks/ihs-gwss.ipynb",
-        window_size = "build/ihs-calibration/{cohort}.yaml",
-        cohorts = "build/final_cohorts.csv",
-        config = configpath    
-    output:
-        output_nb="build/notebooks/ihs-gwss-{cohort}.ipynb"
-    log:
-        "logs/ihs_gwss/{cohort}.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
-    shell:
-        """
-        papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -p window_size {params.window_size}
-        """
+# rule ihs:
+#     input:
+#         template = f"{workflow.basedir}/notebooks/ihs-gwss.ipynb",
+#         cohorts = "build/final_cohorts.csv",
+#         config = configpath    
+#     output:
+#         output_nb="build/notebooks/ihs-gwss-{cohort}.ipynb"
+#     log:
+#         "logs/ihs_gwss/{cohort}.log"
+#     conda:
+#         f"{workflow.basedir}/../environment.yml"
+#     shell:
+#         """
+#         papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -p window_size {params.window_size}
+#         """
