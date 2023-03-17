@@ -6,7 +6,7 @@ sample_sets:
   - "AG1000G-BF-A"
 contigs:
   # TODO use joined arms when we can
-  - "2R"
+  - "2L"
   # - "3R"
   # - "X"
 cohorts_analysis: "20230223"
