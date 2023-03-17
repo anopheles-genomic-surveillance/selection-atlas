@@ -15,3 +15,4 @@ rule all:
     input:
         analyses = get_selection_atlas_outputs,
         site = get_selection_atlas_site_pages,
+      #  build = "docs/_build/"

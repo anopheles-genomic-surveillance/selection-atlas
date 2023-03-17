@@ -97,3 +97,20 @@ rule cohort_pages:
         """
         papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} 2> {log}
         """
+
+rule build_site:
+    input:
+        "docs/_toc.yml",
+        "docs/_config.yml",
+        "docs/notebooks/home-page.ipynb",
+        expand("docs/notebooks/cohort-page-{cohort}.ipynb", cohort=lambda wildcards: checkpoints.final_cohorts.get().output[1].cohort.unique()),
+        expand("docs/notebooks/chromosome-page-{chrom}.ipynb", chrom=chromosomes),
+        expand("docs/notebooks/country-page-{country}.ipynb", country=lambda wildcards: checkpoints.final_cohorts.get().output[1].country.unique()),
+    output:
+        directory("docs/_build")
+    conda:
+        f"{workflow.basedir}/../environment.yml"
+    shell:
+        """
+        jupyter-book build docs/ 2> {log}
+        """
