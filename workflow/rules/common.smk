@@ -53,7 +53,7 @@ def get_cohort_page_notebooks(wildcards):
     df = gpd.read_file(checkpoints.geolocate_cohorts.get().output.cohorts_geojson)
     
     outputs = expand(
-        "docs/notebooks/cohort-page-{cohort}.ipynb", 
+        "docs/cohort/{cohort}.ipynb", 
         cohort=df['cohort_id'].unique()
         )
 

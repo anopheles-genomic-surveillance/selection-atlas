@@ -15,6 +15,9 @@ jobs:
         with:
           environment-file: environment.yml
           environment-name: selection-atlas
+        
+      - name: Activate Conda environment
+        run: micromamba activate selection-atlas
 
       - name: Test workflow 
         uses: snakemake/snakemake-github-action@v1.23.0
