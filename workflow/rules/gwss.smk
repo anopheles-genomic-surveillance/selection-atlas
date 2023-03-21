@@ -16,7 +16,7 @@ checkpoint setup_cohorts:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas
+        papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
         """
 
 rule h12_calibration:
