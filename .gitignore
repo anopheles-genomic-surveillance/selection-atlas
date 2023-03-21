@@ -6,8 +6,9 @@ gcs_cache
 
 # generated files
 build
-docs/*.ipynb
-docs/**/*.ipynb
+docs/country/*.ipynb
+docs/genome/*.ipynb
+docs/cohort/*.ipynb
 docs/_toc.yml
 
 # Byte-compiled / optimized / DLL files

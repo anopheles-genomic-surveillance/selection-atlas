@@ -17,6 +17,7 @@ def get_h12_calibration_yamls(wildcards):
     paths = "build/h12-calibration/" + df['cohort_id'] + ".yaml"
     return paths
 
+
 def get_selection_atlas_outputs(wildcards):
     # retrieve output file of final cohorts checkpoint
     df = pd.read_csv(checkpoints.final_cohorts.get().output[1])
@@ -57,6 +58,7 @@ def get_selection_atlas_site_pages(wildcards):
     )
     return wanted_outputs 
 
+
 def get_cohort_page_notebooks(wildcards):
     df = pd.read_csv(checkpoints.final_cohorts.get().output[1])
     
@@ -66,6 +68,7 @@ def get_cohort_page_notebooks(wildcards):
         )
 
     return outputs
+
 
 def get_country_page_notebooks(wildcards):
     df = pd.read_csv(checkpoints.final_cohorts.get().output[1])
