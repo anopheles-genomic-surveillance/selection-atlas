@@ -9,7 +9,13 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v2
-      
+
+      - name: Install Conda environment with Micromamba
+        uses: mamba-org/provision-with-micromamba@main
+        with:
+          environment-file: environment.yml
+          environment-name: selection-atlas
+
       - name: Test workflow 
         uses: snakemake/snakemake-github-action@v1.23.0
         with:
