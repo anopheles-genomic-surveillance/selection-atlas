@@ -1,8 +1,7 @@
-rule geolocate_cohorts:
+checkpoint geolocate_cohorts:
     input:
         nb = f"{workflow.basedir}/notebooks/geolocate-cohorts.ipynb",
         final_cohorts = lambda wildcards: checkpoints.final_cohorts.get().output[1],
-        kernel= "build/.kernel.set",
     output:
         nb = "build/notebooks/geolocate-cohorts.ipynb",
         cohorts_geojson = "build/final_cohorts.geojson",
@@ -37,7 +36,7 @@ rule home_page:
         nb = f"{workflow.basedir}/notebooks/home-page.ipynb",
         cohorts_geojson = rules.geolocate_cohorts.output.cohorts_geojson,
     output:
-        nb = "docs/notebooks/home-page.ipynb"
+        nb = "docs/home-page.ipynb"
     log:
         "logs/home_page.log"
     conda:
@@ -52,9 +51,9 @@ rule country_pages:
         nb = f"{workflow.basedir}/notebooks/country-page.ipynb",
         cohorts_geojson = rules.geolocate_cohorts.output.cohorts_geojson,
     output:
-        nb = "docs/notebooks/country-page-{country}.ipynb"
+        nb = "docs/country/{country}.ipynb"
     log:
-        "logs/country_page_{country}.log"
+        "logs/country_pages/{country}.log"
     conda:
         f"{workflow.basedir}/../environment.yml"
     shell:
@@ -66,10 +65,11 @@ rule chromosome_pages:
     input:
         nb = f"{workflow.basedir}/notebooks/chromosome-page.ipynb",
         cohorts_geojson = rules.geolocate_cohorts.output.cohorts_geojson,
+        signals = get_h12_signal_detection_csvs,
     output:
-        nb = "docs/notebooks/chromosome-page-{chrom}.ipynb"
+        nb = "docs/genome/ag-{chrom}.ipynb"
     log:
-        "logs/chromosome_page_{chrom}.log"
+        "logs/chromosome_pages/{chrom}.log"
     conda:
         f"{workflow.basedir}/../environment.yml"
     shell:
@@ -85,9 +85,9 @@ rule cohort_pages:
         #output_ihs="build/notebooks/ihs-gwss-{cohort}.ipynb",
         signals = expand("build/h12-signal-detection/{{cohort}}_{contig}.csv", contig=chromosomes),
     output:
-        nb = "docs/notebooks/cohort-page-{cohort}.ipynb"
+        nb = "docs/cohort/{cohort}.ipynb"
     log:
-        "logs/cohort_page_{cohort}.log"
+        "logs/cohort_pages/{cohort}.log"
     conda:
         f"{workflow.basedir}/../environment.yml"
     shell:
@@ -99,10 +99,10 @@ rule build_site:
     input:
         "docs/_toc.yml",
         "docs/_config.yml",
-        "docs/notebooks/home-page.ipynb",
+        "docs/home-page.ipynb",
         get_cohort_page_notebooks,
         get_country_page_notebooks,
-        expand("docs/notebooks/chromosome-page-{chrom}.ipynb", chrom=chromosomes),
+        expand("docs/genome/ag-{chrom}.ipynb", chrom=chromosomes),
     output:
         directory("docs/_build")
     log:    

@@ -6,7 +6,6 @@ checkpoint setup_cohorts:
     input:
         nb = f"{workflow.basedir}/notebooks/setup-cohorts.ipynb",
         config = configpath,
-        kernel="build/.kernel.set"
     output:
         nb = "build/notebooks/setup-cohorts.ipynb",
         cohorts = "build/cohorts.csv"
@@ -25,7 +24,6 @@ rule h12_calibration:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/h12-calibration.ipynb",
-        kernel="build/.kernel.set",
         config = configpath
     output:
         nb="build/notebooks/h12-calibration-{cohort}.ipynb",
@@ -48,7 +46,6 @@ checkpoint final_cohorts:
         yamls = get_h12_calibration_yamls,
         nb = f"{workflow.basedir}/notebooks/final-cohorts.ipynb",
         cohorts = "build/cohorts.csv",
-        kernel= "build/.kernel.set"
     output:
         nb = "build/notebooks/final-cohorts.ipynb",
         final_cohorts = "build/final_cohorts.csv"

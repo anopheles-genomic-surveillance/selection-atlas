@@ -1,26 +1,16 @@
-rule set_kernel:
-    input:
-        f'{workflow.basedir}/../environment.yml'
-    output:
-        touch("build/.kernel.set")
-    conda: f'{workflow.basedir}/../environment.yml'
-    log:
-        "logs/set_kernel.log"
-    shell: 
-        """
-        python -m ipykernel install --user --name=selection-atlas 2> {log}
-        """
-
-
 def get_h12_calibration_yamls(wildcards):
     df = pd.read_csv(checkpoints.setup_cohorts.get().output[1])
     paths = "build/h12-calibration/" + df['cohort_id'] + ".yaml"
     return paths
 
+def get_h12_signal_detection_csvs(wildcards):
+    df = pd.read_csv(checkpoints.final_cohorts.get().output[1])
+    paths = expand("build/h12-signal-detection/{cohort}_{contig}.csv", cohort=df['cohort_id'], contig=chromosomes)
+    return paths
 
 def get_selection_atlas_outputs(wildcards):
     # retrieve output file of final cohorts checkpoint
-    df = pd.read_csv(checkpoints.final_cohorts.get().output[1])
+    df = gpd.read_file(checkpoints.geolocate_cohorts.get().output.cohorts_geojson)
 
     # define paths to output files
     cal_paths = "build/h12-calibration/" + df['cohort_id'] + ".yaml"
@@ -40,27 +30,27 @@ def get_selection_atlas_outputs(wildcards):
 
 def get_selection_atlas_site_pages(wildcards):
 
-    df = pd.read_csv(checkpoints.final_cohorts.get().output[1])
+    df = gpd.read_file(checkpoints.geolocate_cohorts.get().output.cohorts_geojson)
 
     wanted_outputs = []
     wanted_outputs.extend(["docs/_toc.yml"])
-    wanted_outputs.extend(["docs/notebooks/home-page.ipynb"])
+    wanted_outputs.extend(["docs/home-page.ipynb"])
     wanted_outputs.extend(
-                expand("docs/notebooks/country-page-{country}.ipynb", country=df['country'].str.replace(" ", "").unique())
+                expand("docs/country/{country}.ipynb", country=df['country_alpha2'])
         )
 
     wanted_outputs.extend(
-                expand("docs/notebooks/chromosome-page-{chrom}.ipynb", chrom=chromosomes)
+                expand("docs/genome/ag-{chrom}.ipynb", chrom=chromosomes)
         )
     
     wanted_outputs.extend(
-                expand("docs/notebooks/cohort-page-{cohort}.ipynb", cohort=df['cohort_id'].unique())
+                expand("docs/cohort/{cohort}.ipynb", cohort=df['cohort_id'].unique())
     )
     return wanted_outputs 
 
 
 def get_cohort_page_notebooks(wildcards):
-    df = pd.read_csv(checkpoints.final_cohorts.get().output[1])
+    df = gpd.read_file(checkpoints.geolocate_cohorts.get().output.cohorts_geojson)
     
     outputs = expand(
         "docs/notebooks/cohort-page-{cohort}.ipynb", 
@@ -71,10 +61,10 @@ def get_cohort_page_notebooks(wildcards):
 
 
 def get_country_page_notebooks(wildcards):
-    df = pd.read_csv(checkpoints.final_cohorts.get().output[1])
+    df = gpd.read_file(checkpoints.geolocate_cohorts.get().output.cohorts_geojson)
 
     outputs = expand(
-        "docs/notebooks/country-page-{country}.ipynb", 
-        country=df['country'].str.replace(" ", "").unique()
-        )
+        "docs/country/{country}.ipynb", 
+        country=df['country_alpha2']
+    )
     return outputs
