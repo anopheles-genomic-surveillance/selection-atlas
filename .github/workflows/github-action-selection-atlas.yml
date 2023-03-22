@@ -16,12 +16,10 @@ jobs:
           environment-file: environment.yml
           environment-name: selection-atlas
         
-      - name: Activate Conda environment
+      - name: Activate micromamba
+        run: eval "$(micromamba shell hook --shell=bash)"
+      - name: Activate mamba environment
         run: micromamba activate selection-atlas
 
       - name: Test workflow 
-        uses: snakemake/snakemake-github-action@v1.23.0
-        with:
-          directory: '.'
-          snakefile: 'workflow/Snakefile'
-          args: '--cores 1 --use-conda --configfile .test/config.yaml --conda-cleanup-pkgs cache'
+        run: snakemake --cores 1 --use-conda --configfile .test/config.yaml
