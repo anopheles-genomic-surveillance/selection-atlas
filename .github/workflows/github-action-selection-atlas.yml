@@ -20,4 +20,5 @@ jobs:
         run: |
           eval "$(micromamba shell hook --shell=bash)"
           micromamba activate selection-atlas
+          micromamba install -n base -c conda-forge mamba
           snakemake --cores 1 --use-conda --configfile .test/config.yaml
