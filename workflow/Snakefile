@@ -9,6 +9,7 @@ chromosomes = config['contigs']
 
 # include rule files
 include: "rules/common.smk"
+include: "rules/cohorts.smk"
 include: "rules/site.smk"
 include: "rules/gwss.smk"
 
