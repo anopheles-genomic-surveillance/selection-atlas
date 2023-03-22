@@ -16,8 +16,8 @@ jobs:
           environment-file: environment.yml
           environment-name: selection-atlas
         
-      - name: Activate micromamba
-        run: eval "$(micromamba shell hook --shell=bash)" && micromamba activate selection-atlas
-
-      - name: Test workflow 
-        run: snakemake --cores 1 --use-conda --configfile .test/config.yaml
+      - name: Test workflow
+        run: |
+          eval "$(micromamba shell hook --shell=bash)"
+          micromamba activate selection-atlas
+          snakemake --cores 1 --use-conda --configfile .test/config.yaml
