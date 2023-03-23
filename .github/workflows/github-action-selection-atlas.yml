@@ -16,4 +16,4 @@ jobs:
           directory: '.'
           snakefile: 'workflow/Snakefile'
           stagein: 'pip install geopandas'
-          args: '--cores 4 --use-conda --configfile .test/config.yaml --conda-cleanup-pkgs cache'
+          args: '--cores 1 --use-conda --configfile .test/config.yaml --conda-cleanup-pkgs cache'
