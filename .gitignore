@@ -1,3 +1,16 @@
+# custom
+Mambaforge-Linux-x86_64.sh
+malariagen_data_cache
+gcs_cache
+.snakemake
+
+# generated files
+build
+docs/country/*.ipynb
+docs/genome/*.ipynb
+docs/cohort/*.ipynb
+docs/_toc.yml
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

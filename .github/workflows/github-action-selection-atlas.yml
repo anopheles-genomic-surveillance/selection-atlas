@@ -1,0 +1,19 @@
+name: selection-atlas
+
+on: pull_request
+
+jobs:
+  run-workflow:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Test workflow
+        uses: snakemake/snakemake-github-action@v1.23.0
+        with:
+          directory: '.'
+          snakefile: 'workflow/Snakefile'
+          stagein: 'pip install geopandas'
+          args: '--cores 1 --use-conda --configfile .test/config.yaml --conda-cleanup-pkgs cache'

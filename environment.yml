@@ -1,0 +1,39 @@
+name: selection-atlas
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.10
+  - numpy<1.24
+  - snakemake
+  - papermill
+  - scipy
+  - pandas
+  - dask
+  - numba
+  - matplotlib
+  - fsspec
+  - gcsfs
+  - jupyterlab
+  - BioPython
+  - gsutil
+  - scikit-allel
+  - bokeh<3.0
+  - statsmodels
+  - ipyleaflet==0.17.0
+  - tqdm
+  - ipywidgets
+  - plotly
+  - xarray
+  - lmfit
+  - zarr
+  - pyprojroot
+  - geopandas
+  - iso3166
+  - pip
+  - pip:
+    - jupyter-book==0.15.1
+    - jsonschema>=3.1.0
+    - numpydoc==1.2.0
+    - malariagen_data>=7.1.1
+

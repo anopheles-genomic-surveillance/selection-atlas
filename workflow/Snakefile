@@ -1,0 +1,21 @@
+import pandas as pd
+import geopandas as gpd
+import yaml
+
+# open configuration file
+configfile: "workflow/config.yaml"
+configpath = workflow.configfiles[0]
+chromosomes = config['contigs']
+
+# include rule files
+include: "rules/common.smk"
+include: "rules/cohorts.smk"
+include: "rules/site.smk"
+include: "rules/gwss.smk"
+include: "rules/utility.smk"
+
+rule all:
+    input:
+        analyses = get_selection_atlas_outputs,
+        site = get_selection_atlas_site_pages,
+        build = "docs/_build/"
