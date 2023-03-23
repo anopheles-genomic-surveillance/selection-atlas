@@ -10,15 +10,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Install Conda environment with Micromamba
-        uses: mamba-org/provision-with-micromamba@main
+      - name: Test workflow paired-end
+        uses: snakemake/snakemake-github-action@v1.23.0
         with:
-          environment-file: environment.yml
-          environment-name: selection-atlas
-        
-      - name: Test workflow
-        run: |
-          eval "$(micromamba shell hook --shell=bash)"
-          micromamba activate selection-atlas
-          micromamba install -n base -c conda-forge mamba
-          snakemake --cores 1 --use-conda --configfile .test/config.yaml
+          directory: '.test'
+          snakefile: 'workflow/Snakefile'
+          stagein: 'pip install geopandas'
+          args: '--cores 4 --use-conda --configfile .test/config/config_paired_end.yaml --conda-cleanup-pkgs cache'
