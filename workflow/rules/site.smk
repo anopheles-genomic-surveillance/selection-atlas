@@ -141,8 +141,8 @@ rule build_site:
         directory("docs/_build")
     log:    
         "logs/build-jupyter-book.log"
-  #  conda:
-  #      f"{workflow.basedir}/../environment.yml"
+    conda:
+        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         jupyter-book build docs

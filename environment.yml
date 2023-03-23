@@ -32,7 +32,7 @@ dependencies:
   - iso3166
   - pip
   - pip:
-    - jupyter-book==0.13.2
+    - jupyter-book==0.14
     - jsonschema>=3.1.0
     - numpydoc==1.2.0
     - malariagen_data>=7.1.1
