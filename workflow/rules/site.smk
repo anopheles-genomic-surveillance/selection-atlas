@@ -14,7 +14,7 @@ rule generate_toc:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -f {input.config} 2> {log}
+        papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
         """
 
 rule home_page:
@@ -29,7 +29,7 @@ rule home_page:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} 2> {log}
+        papermill {input.nb} {output.nb} -k selection-atlas 2> {log}
         """
 
 rule country_pages:
@@ -44,7 +44,7 @@ rule country_pages:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -p country {wildcards.country} 2> {log}
+        papermill {input.nb} {output.nb} -k selection-atlas -p country {wildcards.country} 2> {log}
         """
 
 rule chromosome_pages:
@@ -60,7 +60,7 @@ rule chromosome_pages:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -p contig {wildcards.chrom} 2> {log}
+        papermill {input.nb} {output.nb} -k selection-atlas -p contig {wildcards.chrom} 2> {log}
         """
 
 rule cohort_pages:
@@ -79,7 +79,7 @@ rule cohort_pages:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -p cohort_id {wildcards.cohort} -f {input.config} 2> {log}
+        papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -f {input.config} 2> {log}
         """
 
 rule process_headers_chrom:
@@ -95,7 +95,7 @@ rule process_headers_chrom:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -p input_nb {input.chrom_nb} -p output_nb {output.chrom_nb} -p wildcard {wildcards.contig} -p type chrom 2> {log}
+        papermill {input.nb} {output.nb} -k selection-atlas -p input_nb {input.chrom_nb} -p output_nb {output.chrom_nb} -p wildcard {wildcards.contig} -p type chrom 2> {log}
         """
 
 rule process_headers_country:
@@ -111,7 +111,7 @@ rule process_headers_country:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -p input_nb {input.country_nb} -p output_nb {output.country_nb} -p wildcard {wildcards.country} -p type country 2> {log}
+        papermill {input.nb} {output.nb} -k selection-atlas -p input_nb {input.country_nb} -p output_nb {output.country_nb} -p wildcard {wildcards.country} -p type country 2> {log}
         """
 
     
@@ -128,7 +128,7 @@ rule process_headers_cohort:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -p input_nb {input.cohort_nb} -p output_nb {output.cohort_nb} -p wildcard {wildcards.cohort} -p type cohort 2> {log}
+        papermill {input.nb} {output.nb} -k selection-atlas -p input_nb {input.cohort_nb} -p output_nb {output.cohort_nb} -p wildcard {wildcards.cohort} -p type cohort 2> {log}
         """
 
 rule build_site:
