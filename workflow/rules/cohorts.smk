@@ -15,7 +15,7 @@ checkpoint setup_cohorts:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
+        papermill {input.nb} {output.nb} -f {input.config} 2> {log}
         """
 
 checkpoint final_cohorts:
@@ -35,7 +35,7 @@ checkpoint final_cohorts:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas 2> {log}
+        papermill {input.nb} {output.nb} 2> {log}
         """
 
 checkpoint geolocate_cohorts:
@@ -51,5 +51,5 @@ checkpoint geolocate_cohorts:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas 2> {log}
+        papermill {input.nb} {output.nb} 2> {log}
         """

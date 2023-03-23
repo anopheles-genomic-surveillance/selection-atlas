@@ -15,7 +15,7 @@ rule h12_calibration:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas \
+        papermill {input.nb} {output.nb} \
         -p cohort_id {wildcards.cohort} -f {input.config} 2> {log}
         """
 
@@ -36,7 +36,7 @@ rule h12:
         f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} \
+        papermill {input.template} {output.nb} -p cohort_id {wildcards.cohort} \
         -f {input.config} 2> {log}
         """
 
@@ -60,7 +60,7 @@ rule h12_signal_detection:
     params:
     shell:
         """
-        papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} \
+        papermill {input.template} {output.nb} -p cohort_id {wildcards.cohort} \
          -p contig {wildcards.contig} -f {input.config} 2> {log}
         """
 
@@ -77,5 +77,5 @@ rule h12_signal_detection:
 #         f"{workflow.basedir}/../environment.yml"
 #     shell:
 #         """
-#         papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -p window_size {params.window_size}
+#         papermill {input.nb} {output.nb} -p cohort_id {wildcards.cohort} -p window_size {params.window_size}
 #         """
