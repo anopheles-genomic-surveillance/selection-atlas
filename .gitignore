@@ -6,10 +6,12 @@ gcs_cache
 
 # generated files
 build
+docs/home-page.ipynb
 docs/country/*.ipynb
 docs/genome/*.ipynb
 docs/cohort/*.ipynb
 docs/_toc.yml
+log
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
