@@ -10,7 +10,7 @@ rule set_kernel:
         "logs/set_kernel.log"
     shell: 
         """
-        python -m ipykernel install --user --name selection-atlas 2> log
+        python -m ipykernel install --user --name selection-atlas 2> {log}
         """
 
 
