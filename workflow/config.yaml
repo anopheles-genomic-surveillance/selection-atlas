@@ -7,7 +7,7 @@ sample_sets:
     - 'AG1000G-BF-A'
 contigs:
     - "2RL"
-    - "3RL"
-    - "X"
+    # - "3RL"
+    # - "X"
 cohorts_analysis: '20230223'
 h12_calibration_contig: '3L'
