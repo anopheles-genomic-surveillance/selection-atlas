@@ -1,14 +1,13 @@
 min_cohort_size: 20
-max_cohort_size: 50 # TODO maybe increase this for production
+max_cohort_size: 50  # TODO maybe increase this for production
 sample_sets:
     # - "3.0"
-    # can use a smaller dataset for development
+    # smaller dataset for development
     - 'AG1000G-ML-A'
     - 'AG1000G-BF-A'
 contigs:
-    - '2L'
-    # - "2RL"
-    # - "3RL"
-    # - "X"
+    - "2RL"
+    - "3RL"
+    - "X"
 cohorts_analysis: '20230223'
 h12_calibration_contig: '3L'

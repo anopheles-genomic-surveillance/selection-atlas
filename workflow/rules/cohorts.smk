@@ -26,6 +26,7 @@ checkpoint final_cohorts:
     input:
         yamls = get_h12_calibration_yamls,
         nb = f"{workflow.basedir}/notebooks/final-cohorts.ipynb",
+        config = configpath,
         cohorts = "build/cohorts.csv",
         kernel="build/.kernel.set"
     output:
@@ -43,6 +44,7 @@ checkpoint final_cohorts:
 checkpoint geolocate_cohorts:
     input:
         nb = f"{workflow.basedir}/notebooks/geolocate-cohorts.ipynb",
+        config = configpath,
         final_cohorts = lambda wildcards: checkpoints.final_cohorts.get().output[1],
     output:
         nb = "build/notebooks/geolocate-cohorts.ipynb",

@@ -49,7 +49,6 @@ def get_selection_atlas_site_pages(wildcards):
     df = gpd.read_file(checkpoints.geolocate_cohorts.get().output.cohorts_geojson)
 
     wanted_outputs = []
-    wanted_outputs.extend(["docs/_toc.yml"])
     wanted_outputs.extend(["docs/home-page.ipynb"])
     wanted_outputs.extend(
                 expand("docs/country/{country}.ipynb", country=df['country_alpha2'])
