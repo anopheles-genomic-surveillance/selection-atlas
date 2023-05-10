@@ -1,7 +1,9 @@
 rule build_site:
     input:
         "docs/_config.yml",
+        "docs/_toc.yml",
         get_selection_atlas_site_pages,
+        config = configpath,
     output:
         directory("docs/_build")
     log:    
@@ -33,6 +35,7 @@ rule generate_toc:
 rule home_page:
     input:
         nb = f"{workflow.basedir}/notebooks/home-page.ipynb",
+        config = configpath,
         cohorts_geojson = rules.geolocate_cohorts.output.cohorts_geojson,
     output:
         nb = "docs/home-page.ipynb"
@@ -48,6 +51,7 @@ rule home_page:
 rule country_pages:
     input:
         nb = f"{workflow.basedir}/notebooks/country-page.ipynb",
+        config = configpath,
         cohorts_geojson = rules.geolocate_cohorts.output.cohorts_geojson,
     output:
         nb = "build/notebooks/country/{country}.ipynb"
@@ -63,6 +67,7 @@ rule country_pages:
 rule chromosome_pages:
     input:
         nb = f"{workflow.basedir}/notebooks/chromosome-page.ipynb",
+        config = configpath,
         cohorts_geojson = rules.geolocate_cohorts.output.cohorts_geojson,
         signals = get_h12_signal_detection_csvs,
     output:

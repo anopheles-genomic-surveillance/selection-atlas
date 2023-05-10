@@ -19,7 +19,7 @@ rule h12_calibration:
         -p cohort_id {wildcards.cohort} -f {input.config} 2> {log}
         """
 
-rule h12:
+rule h12_gwss:
     """
     Run the H12 GWSS
     """
