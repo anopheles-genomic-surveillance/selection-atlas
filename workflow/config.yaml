@@ -11,3 +11,4 @@ contigs:
     # - "X"
 cohorts_analysis: '20230223'
 h12_calibration_contig: '3L'
+use_gcs_cache: False
