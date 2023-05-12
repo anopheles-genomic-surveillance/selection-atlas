@@ -19,7 +19,7 @@ cohorts_analysis: "20230223"
 # Select the contig to use for H12 window size calibration.
 h12_calibration_contig: "3L"
 
-# Set this value to False when running on datalab, because it's 
+# Set this value to False when running on Google Cloud, because it's 
 # better to read data directly from GCS.
 use_gcs_cache: True
 

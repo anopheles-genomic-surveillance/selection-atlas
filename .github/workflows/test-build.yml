@@ -14,8 +14,15 @@ jobs:
         uses: actions/cache/restore@v3
         with:
           path: gcs_cache
-          # Change this key if you ever want to force clear the GCS cache.
+          # Change this key if you ever want to force clear the cache.
           key: gcs_cache_20230512
+
+      - name: Restore results cache
+        uses: actions/cache/restore@v3
+        with:
+          path: malariagen_data_cache
+          # Change this key if you ever want to force clear the cache.
+          key: results_cache_20230512
 
       - name: Install conda environment with micromamba
         uses: mamba-org/provision-with-micromamba@main
@@ -28,19 +35,19 @@ jobs:
         shell: bash -l {0}
         run: |
           snakemake -c1 --configfile ci/config.yaml
-        
-      # - name: Run workflow
-        # uses: snakemake/snakemake-github-action@v1.23.0
-        # with:
-        #   directory: '.'
-        #   snakefile: 'workflow/Snakefile'
-        #   stagein: 'pip install geopandas'  # TODO Is this still necessary?
-        #   args: '--cores 1 --use-conda --configfile ci/config.yaml --conda-cleanup-pkgs cache'
 
       - name: Save GCS cache
         uses: actions/cache/save@v3
         if: always()
         with:
           path: gcs_cache
-          # Change this key if you ever want to force clear the GCS cache.
+          # Change this key if you ever want to force clear the cache.
           key: gcs_cache_20230512
+
+      - name: Save results cache
+        uses: actions/cache/save@v3
+        if: always()
+        with:
+          path: malariagen_data_cache
+          # Change this key if you ever want to force clear the cache.
+          key: results_cache_20230512
