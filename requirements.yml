@@ -34,4 +34,4 @@ dependencies:
     - pip
     - pip:
           - jsonschema>=3.1.0
-          - malariagen_data>=7.5.0
+          - malariagen_data>=7.6.0

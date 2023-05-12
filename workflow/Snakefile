@@ -5,7 +5,6 @@ import yaml
 # open configuration file
 configfile: "workflow/config.yaml"
 configpath = workflow.configfiles[0]
-# TODO How does this work? Where does the `config` variable come from?
 chromosomes = config['contigs']
 
 # include rule files

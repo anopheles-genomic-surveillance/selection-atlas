@@ -7,13 +7,10 @@ sample_sets:
     # - "3.0"
     # smaller dataset for development
     - "AG1000G-ML-A"
-    - "AG1000G-BF-A"
     
 # Select the contigs to analyse.
 contigs:
-    - "2RL"
-    # - "3RL"
-    # - "X"
+    - "3L"
     
 # Pin the cohorts analysis version in order to get reproducible
 # builds.
@@ -22,9 +19,9 @@ cohorts_analysis: "20230223"
 # Select the contig to use for H12 window size calibration.
 h12_calibration_contig: "3L"
 
-# Set this value to False when running on datalab, because it's 
+# Set this value to False when running on Google Cloud, because it's 
 # better to read data directly from GCS.
-use_gcs_cache: False
+use_gcs_cache: True
 
 # Set this value to "single-threaded" when running snakemake with
 # more than 1 CPU to avoid thrashing. Otherwise, both dask and

@@ -14,7 +14,21 @@ Assuming you have a recent version of mamba installed.
 
 The file `requirements.yml` has the dependencies required to build the site. To ensure reproducibility we currently also maintain the file `environment.yml` which contains an export of the solved environment.
 
-If you need to add or upgrade a package, edit `requirements.yml`. Do not edit `environment.yml`.
+To create and activate an environment on your own computer:
+
+```
+mamba env create --force --file environment.yml
+mamba activate selection-atlas
+```
+
+To create and activate an environment on datalab-bespin:
+
+```
+mamba env create --force --prefix=${HOME}/envs/selection-atlas --file environment.yml
+conda activate ${HOME}/envs/selection-atlas
+```
+
+If you need to add or upgrade a package, edit `requirements.yml`. **Do not edit `environment.yml`**.
 
 To upgrade `environment.yml`:
 
@@ -24,9 +38,16 @@ mamba env export -f environment.yml -n selection-atlas-requirements --override-c
 sed -i "s/selection-atlas-requirements/selection-atlas/" environment.yml
 ```
 
-To install and use `environment.yml`:
+## Running the workflow
+
+If running on your local system with GCS caching enabled, you'll need to run the build without any parallelisation:
 
 ```
-mamba env create --force --file environment.yml
-mamba activate selection-atlas
+snakemake -c1
+```
+
+If running on Google Cloud and GCS caching is disabled, you can try running with parallelisation, e.g.:
+
+```
+snakemake -c4
 ```
