@@ -24,7 +24,7 @@ jobs:
           # Change this key if you ever want to force clear the cache.
           key: results_cache_20230512
 
-      - name: Install conda environment with micromamba
+      - name: Install conda environment
         uses: mamba-org/provision-with-micromamba@main
         with:
           environment-file: environment.yml
