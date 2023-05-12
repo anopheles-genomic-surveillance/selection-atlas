@@ -10,10 +10,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Test workflow
+      - name: Restore GCS cache
+        uses: actions/cache/restore@v3
+        with:
+          path: gcs_cache
+          # Change this key if you ever want to force clear the cache.
+          key: gcs_cache_20230512
+
+      - name: Run workflow
         uses: snakemake/snakemake-github-action@v1.23.0
         with:
           directory: '.'
           snakefile: 'workflow/Snakefile'
-          stagein: 'pip install geopandas'
-          args: '--cores 1 --use-conda --configfile .test/config.yaml --conda-cleanup-pkgs cache'
+          stagein: 'pip install geopandas'  # TODO Is this still necessary?
+          args: '--cores 1 --use-conda --configfile ci/config.yaml --conda-cleanup-pkgs cache'
+
+      - name: Save GCS cache
+        uses: actions/cache/save@v3
+        if: always()
+        with:
+          path: gcs_cache
+          # Change this key if you ever want to force clear the cache.
+          key: gcs_cache_20230512
