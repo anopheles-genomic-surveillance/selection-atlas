@@ -24,9 +24,20 @@ mamba env export -f environment.yml -n selection-atlas-requirements --override-c
 sed -i "s/selection-atlas-requirements/selection-atlas/" environment.yml
 ```
 
-To install and use `environment.yml`:
+To install and use `environment.yml` on your own computer:
 
 ```
 mamba env create --force --file environment.yml
 mamba activate selection-atlas
 ```
+
+To install and use `environment.yml` on datalab-bespin:
+
+```
+mamba env create --force --prefix=${HOME}/envs/selection-atlas --file environment.yml
+conda activate ${HOME}/envs/selection-atlas
+```
+
+## Running the workflow
+
+@@TODO
