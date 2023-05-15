@@ -13,6 +13,7 @@ rule build_site:
     shell:
         """
         jupyter-book build docs
+        ln -sf docs/_build/html/index.html selection-atlas.html
         """
 
 rule generate_toc:
