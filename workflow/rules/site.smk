@@ -87,8 +87,9 @@ rule cohort_pages:
         nb = f"{workflow.basedir}/notebooks/cohort-page.ipynb",
         cohorts_geojson = rules.geolocate_cohorts.output.cohorts_geojson,
         output_h12="build/notebooks/h12-gwss-{cohort}.ipynb",
+        output_g123="build/notebooks/g123-gwss-{cohort}.ipynb",
+        output_ihs="build/notebooks/ihs-gwss-{cohort}.ipynb",
         config = configpath,
-        #output_ihs="build/notebooks/ihs-gwss-{cohort}.ipynb",
         signals = expand("build/h12-signal-detection/{{cohort}}_{contig}.csv", contig=chromosomes),
     output:
         nb = "build/notebooks/cohort/{cohort}.ipynb",
