@@ -64,18 +64,64 @@ rule h12_signal_detection:
          -p contig {wildcards.contig} -f {input.config} 2> {log}
         """
 
-# rule ihs:
-#     input:
-#         template = f"{workflow.basedir}/notebooks/ihs-gwss.ipynb",
-#         cohorts = "build/final_cohorts.csv",
-#         config = configpath    
-#     output:
-#         output_nb="build/notebooks/ihs-gwss-{cohort}.ipynb"
-#     log:
-#         "logs/ihs_gwss/{cohort}.log"
-#     conda:
-#         f"{workflow.basedir}/../environment.yml"
-#     shell:
-#         """
-#         papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -p window_size {params.window_size}
-#         """
+
+rule g123_calibration:
+    """
+    Calibrate the window size for each cohort.
+    """
+    input:
+        nb=f"{workflow.basedir}/notebooks/g123-calibration.ipynb",
+        config = configpath
+    output:
+        nb="build/notebooks/g123-calibration-{cohort}.ipynb",
+        yaml = "build/g123-calibration/{cohort}.yaml"
+    log:
+        "logs/g123_calibration/{cohort}.log"
+    conda:
+        f"{workflow.basedir}/../environment.yml"
+    shell:
+        """
+        papermill {input.nb} {output.nb} -k selection-atlas \
+        -p cohort_id {wildcards.cohort} -f {input.config} 2> {log}
+        """
+
+rule g123_gwss:
+    """
+    Run the g123 GWSS
+    """
+    input:
+        template = f"{workflow.basedir}/notebooks/g123-gwss.ipynb",
+        window_size = "build/g123-calibration/{cohort}.yaml",
+        cohorts = "build/final_cohorts.csv",
+        config = configpath
+    output:
+        nb="build/notebooks/g123-gwss-{cohort}.ipynb"
+    log:
+        "logs/g123_gwss/{cohort}.log"
+    conda:
+        f"{workflow.basedir}/../environment.yml"
+    shell:
+        """
+        papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} \
+        -f {input.config} 2> {log}
+        """
+
+rule ihs_gwss:
+    """
+    Run the iHS GWSS
+    """
+    input:
+        template = f"{workflow.basedir}/notebooks/ihs-gwss.ipynb",
+        cohorts = "build/final_cohorts.csv",
+        config = configpath
+    output:
+        nb="build/notebooks/ihs-gwss-{cohort}.ipynb"
+    log:
+        "logs/ihs_gwss/{cohort}.log"
+    conda:
+        f"{workflow.basedir}/../environment.yml"
+    shell:
+        """
+        papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} \
+        -f {input.config} 2> {log}
+        """

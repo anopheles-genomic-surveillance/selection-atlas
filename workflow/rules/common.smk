@@ -29,17 +29,28 @@ def get_selection_atlas_outputs(wildcards):
     df = gpd.read_file(checkpoints.geolocate_cohorts.get().output.cohorts_geojson)
 
     # define paths to output files
-    cal_paths = "build/h12-calibration/" + df['cohort_id'] + ".yaml"
-    cal_notebook_paths = "build/notebooks/h12-calibration-" + df['cohort_id'] + ".ipynb"
-    gwss_paths = "build/notebooks/h12-gwss-" + df['cohort_id'] + ".ipynb"
-    signal_paths = expand("build/h12-signal-detection/{cohort}_{contig}.csv", cohort=df['cohort_id'], contig=chromosomes)
+    h12_cal_paths = "build/h12-calibration/" + df['cohort_id'] + ".yaml"
+    h12_cal_notebook_paths = "build/notebooks/h12-calibration-" + df['cohort_id'] + ".ipynb"
+    h12_gwss_paths = "build/notebooks/h12-gwss-" + df['cohort_id'] + ".ipynb"
+    h12_signal_paths = expand("build/h12-signal-detection/{cohort}_{contig}.csv", cohort=df['cohort_id'], contig=chromosomes)
+
+    # define paths to output files
+    g123_cal_paths = "build/g123-calibration/" + df['cohort_id'] + ".yaml"
+    g123_cal_notebook_paths = "build/notebooks/g123-calibration-" + df['cohort_id'] + ".ipynb"
+    g123_gwss_paths = "build/notebooks/g123-gwss-" + df['cohort_id'] + ".ipynb"
+    
+    ihs_gwss_paths = "build/notebooks/ihs-gwss-" + df['cohort_id'] + ".ipynb"
 
     # add output files to list
     wanted_outputs = []
-    wanted_outputs.extend(cal_paths)
-    wanted_outputs.extend(cal_notebook_paths)
-    wanted_outputs.extend(gwss_paths)
-    wanted_outputs.extend(signal_paths)
+    wanted_outputs.extend(h12_cal_paths)
+    wanted_outputs.extend(h12_cal_notebook_paths)
+    wanted_outputs.extend(h12_gwss_paths)
+    wanted_outputs.extend(h12_signal_paths)
+    wanted_outputs.extend(g123_cal_paths)
+    wanted_outputs.extend(g123_cal_notebook_paths)
+    wanted_outputs.extend(g123_gwss_paths)
+    wanted_outputs.extend(ihs_gwss_paths)
     
     return wanted_outputs
 
