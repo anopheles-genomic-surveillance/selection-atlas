@@ -8,13 +8,14 @@ sample_sets:
     # smaller dataset for development
     - "AG1000G-ML-A"
     - "AG1000G-BF-A"
+    - "AG1000G-CD"
     
 # Select the contigs to analyse.
 contigs:
     - "2RL"
-    # - "3RL"
-    # - "X"
-    
+    - "3RL"
+    - "X"
+
 # Pin the cohorts analysis version in order to get reproducible
 # builds.
 cohorts_analysis: "20230223"
