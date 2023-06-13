@@ -9,6 +9,7 @@ sample_sets:
     - "AG1000G-ML-A"
     - "AG1000G-BF-A"
     - "AG1000G-CD"
+    - "AG1000G-CI"
     
 # Select the contigs to analyse.
 contigs:
