@@ -7,9 +7,9 @@ sample_sets:
     # - "3.0"
     # smaller dataset for development
     - "AG1000G-ML-A"
-    #- "AG1000G-BF-A"
-    #- "AG1000G-CD"
-    #- "AG1000G-CI"
+    - "AG1000G-BF-A"
+    - "AG1000G-CD"
+    - "AG1000G-CI"
     
 # Select the contigs to analyse.
 contigs:
