@@ -19,7 +19,7 @@ contigs:
 
 # Pin the cohorts analysis version in order to get reproducible
 # builds.
-cohorts_analysis: "20230223"
+cohorts_analysis: "20240717"
 
 # Select the contig to use for H12 window size calibration.
 h12_calibration_contig: "3L"
