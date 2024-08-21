@@ -61,3 +61,23 @@ If running on Google Cloud and GCS caching is disabled, you can try running with
 ```
 snakemake -c4
 ```
+
+
+## Saving/restoring a successful workflow run to GCS
+
+After a successful workflow run, copy the workflow outputs to GCS. This will allow you or other developers to continue working to improve the site based on these outputs, without having to do a complete workflow run themselves. 
+
+With the selection-atlas environment activated, copy workflow outputs to GCS:
+
+```
+gsutil -m rsync -r build/ gs://vo_selection_atlas_dev_us_central1/build/2024-08-21/
+```
+
+In the above command, "2024-08-21" is a build identifier. If you make any significant changes and rerun the workflow, use a new build identifier.
+
+To restore outputs from a previous workflow run to your local filesystem:
+
+```
+rm -r build
+gsutil -m rsync -r gs://vo_selection_atlas_dev_us_central1/build/2024-08-21/ build/
+```
