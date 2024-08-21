@@ -63,7 +63,7 @@ snakemake -c4
 ```
 
 
-## Saving/restoring a successful workflow run to GCS
+## Saving/restoring a successful workflow run
 
 After a successful workflow run, copy the workflow outputs to GCS. This will allow you or other developers to continue working to improve the site based on these outputs, without having to do a complete workflow run themselves. 
 
