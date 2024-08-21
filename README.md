@@ -78,6 +78,7 @@ In the above command, "2024-08-21" is a build identifier. If you make any signif
 To restore outputs from a previous workflow run to your local filesystem:
 
 ```
-rm -r build
+rm -r build/*
 gsutil -m rsync -r gs://vo_selection_atlas_dev_us_central1/build/2024-08-21/ build/
+find build -type f -exec touch {} +
 ```
