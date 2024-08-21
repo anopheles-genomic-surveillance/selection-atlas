@@ -1,7 +1,5 @@
 # selection-atlas
 
-Here be dragons.
-
 Development docs:
 
 -   [Implementation plan](https://docs.google.com/document/d/1VvVZqIQWP8a2zH_CqTgKOp7_KotiJX8bcQ-RWfxiEj8/edit?usp=sharing)
@@ -17,14 +15,14 @@ The file `requirements.yml` has the dependencies required to build the site. To 
 To create and activate an environment on your own computer:
 
 ```
-mamba env create --force --file environment.yml
-mamba activate selection-atlas
+mamba env create --file environment.yml
+conda activate selection-atlas
 ```
 
 To create and activate an environment on datalab-bespin:
 
 ```
-mamba env create --force --prefix=${HOME}/envs/selection-atlas --file environment.yml
+mamba env create --prefix=${HOME}/envs/selection-atlas --file environment.yml
 conda activate ${HOME}/envs/selection-atlas
 ```
 
@@ -33,7 +31,7 @@ If you need to add or upgrade a package, edit `requirements.yml`. **Do not edit 
 To upgrade `environment.yml`:
 
 ```
-mamba env create --force --file requirements.yml
+mamba env create --file requirements.yml
 mamba env export -f environment.yml -n selection-atlas-requirements --override-channels --channel conda-forge --channel bioconda
 sed -i "s/selection-atlas-requirements/selection-atlas/" environment.yml
 ```

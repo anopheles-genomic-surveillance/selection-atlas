@@ -3,7 +3,7 @@ channels:
     - conda-forge
     - bioconda
 dependencies:
-    - python=3.10
+    - python=3.11
     - numpy
     - snakemake
     - papermill
@@ -15,11 +15,11 @@ dependencies:
     - fsspec
     - gcsfs
     - jupyterlab
-    - jupyter-book==0.15.1
+    - jupyter-book
     - BioPython
     - gsutil
     - scikit-allel
-    - bokeh>=3.1
+    - bokeh
     - statsmodels
     - ipyleaflet
     - tqdm
@@ -34,4 +34,4 @@ dependencies:
     - pip
     - pip:
           - jsonschema>=3.1.0
-          - malariagen_data>=7.10.0
+          - malariagen_data
