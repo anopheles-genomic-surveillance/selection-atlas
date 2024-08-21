@@ -15,7 +15,6 @@ dependencies:
   - anyio=4.4.0=pyhd8ed1ab_0
   - appdirs=1.4.4=pyh9f0ad1d_0
   - apricot-select=0.6.1=pyhd8ed1ab_0
-  - argcomplete=3.5.0=pyhd8ed1ab_0
   - argon2-cffi=23.1.0=pyhd8ed1ab_0
   - argon2-cffi-bindings=21.2.0=py311h459d7ec_4
   - argparse-dataclass=2.0.0=pyhd8ed1ab_0
@@ -51,7 +50,6 @@ dependencies:
   - blinker=1.8.2=pyhd8ed1ab_0
   - blosc=1.21.6=hef167b5_0
   - bokeh=3.5.1=pyhd8ed1ab_0
-  - boto=2.49.0=py_0
   - branca=0.7.2=pyhd8ed1ab_0
   - brotli=1.1.0=hd590300_1
   - brotli-bin=1.1.0=hd590300_1
@@ -81,7 +79,6 @@ dependencies:
   - configargparse=1.7=pyhd8ed1ab_0
   - connection_pool=0.0.3=pyhd3deb0d_0
   - contourpy=1.2.1=py311h9547e67_0
-  - crcmod=1.7=py311h459d7ec_1010
   - cryptography=43.0.0=py311hc6616f6_0
   - cycler=0.12.1=pyhd8ed1ab_0
   - cytoolz=0.12.3=py311h459d7ec_0
@@ -122,7 +119,6 @@ dependencies:
   - frozenlist=1.4.1=py311h459d7ec_0
   - fsspec=2024.6.1=pyhff2d567_0
   - future=1.0.0=pyhd8ed1ab_0
-  - gcs-oauth2-boto-plugin=3.2=pyhd8ed1ab_0
   - gcsfs=2024.6.1=pyhd8ed1ab_0
   - gdal=3.9.2=py311hb17e472_0
   - geopandas=1.0.1=pyhd8ed1ab_0
@@ -137,20 +133,17 @@ dependencies:
   - gmp=6.3.0=hac33072_2
   - gmpy2=2.1.5=py311hc4f1f91_1
   - google-api-core=2.19.1=pyhd8ed1ab_0
-  - google-apitools=0.5.32=pyhd8ed1ab_0
-  - google-auth=2.17.0=pyh1a96a4e_0
-  - google-auth-httplib2=0.2.0=pyhd8ed1ab_0
+  - google-auth=2.33.0=pyhff2d567_0
   - google-auth-oauthlib=1.2.1=pyhd8ed1ab_0
   - google-cloud-core=2.4.1=pyhd8ed1ab_0
-  - google-cloud-storage=2.11.0=pyh1a96a4e_0
+  - google-cloud-sdk=489.0.0=py311h38be061_0
+  - google-cloud-storage=2.18.2=pyhff2d567_0
   - google-crc32c=1.1.2=py311h9b08b9c_5
-  - google-reauth=0.1.1=pyhd3deb0d_0
   - google-resumable-media=2.7.2=pyhd8ed1ab_1
   - googleapis-common-protos=1.63.2=pyhd8ed1ab_0
   - graphite2=1.3.13=h59595ed_1003
   - greenlet=3.0.3=py311hb755f60_0
   - grpcio=1.62.2=py311ha6695c7_0
-  - gsutil=5.30=pyhd8ed1ab_0
   - h11=0.14.0=pyhd8ed1ab_0
   - h2=4.1.0=pyhd8ed1ab_0
   - h5py=3.11.0=nompi_py311h439e445_102
@@ -159,7 +152,6 @@ dependencies:
   - hdf5=1.14.3=nompi_hdf9ad27_105
   - hpack=4.0.0=pyh9f0ad1d_0
   - httpcore=1.0.5=pyhd8ed1ab_0
-  - httplib2=0.20.4=pyhd8ed1ab_0
   - httpx=0.27.0=pyhd8ed1ab_0
   - humanfriendly=10.0=pyhd8ed1ab_6
   - hyperframe=6.0.1=pyhd8ed1ab_0
@@ -308,7 +300,6 @@ dependencies:
   - mdurl=0.1.2=pyhd8ed1ab_0
   - minizip=4.0.7=h401b404_0
   - mistune=3.0.2=pyhd8ed1ab_0
-  - monotonic=1.5=pyhd8ed1ab_1
   - mpc=1.3.1=hfe3b2da_0
   - mpfr=4.2.1=h38ae2d0_2
   - mpmath=1.3.0=pyhd8ed1ab_0
@@ -333,7 +324,6 @@ dependencies:
   - numba=0.60.0=py311h4bc866e_0
   - numcodecs=0.13.0=py311h044e617_0
   - numexpr=2.10.0=py311h8d05612_100
-  - oauth2client=4.1.3=py_0
   - oauthlib=3.2.2=pyhd8ed1ab_0
   - openjpeg=2.5.2=h488ebb8_0
   - openssl=3.3.1=h4bc722e_2
@@ -410,12 +400,11 @@ dependencies:
   - requests=2.32.3=pyhd8ed1ab_0
   - requests-oauthlib=2.0.0=pyhd8ed1ab_0
   - reretry=0.11.8=pyhd8ed1ab_0
-  - retry_decorator=1.1.1=pyh9f0ad1d_0
   - rfc3339-validator=0.1.4=pyhd8ed1ab_0
   - rfc3986-validator=0.1.1=pyh9f0ad1d_0
   - rich=13.7.1=pyhd8ed1ab_0
   - rpds-py=0.20.0=py311hb3a8bbb_0
-  - rsa=4.7.2=pyh44b312d_0
+  - rsa=4.9=pyhd8ed1ab_0
   - s2n=1.5.1=h3400bea_0
   - scikit-allel=1.3.8=py311h14de704_2
   - scikit-learn=1.5.1=py311hd632256_0

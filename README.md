@@ -36,7 +36,19 @@ mamba env export -f environment.yml -n selection-atlas-requirements --override-c
 sed -i "s/selection-atlas-requirements/selection-atlas/" environment.yml
 ```
 
+## Authenticating with Google Cloud
+
+With the selection-atlas environment activated:
+
+```
+gcloud auth login
+gcloud auth application-default login
+```
+
+
 ## Running the workflow
+
+See the file `workflow/config.yaml` for workflow configuration.
 
 If running on your local system with GCS caching enabled, you'll need to run the build without any parallelisation:
 
