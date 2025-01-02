@@ -55,26 +55,6 @@ def get_selection_atlas_outputs(wildcards):
     return wanted_outputs
 
 
-def get_selection_atlas_site_pages(wildcards):
-
-    df = gpd.read_file(checkpoints.geolocate_cohorts.get().output.cohorts_geojson)
-
-    wanted_outputs = []
-    wanted_outputs.extend(["docs/home-page.ipynb"])
-    wanted_outputs.extend(
-                expand("docs/country/{country}.ipynb", country=df['country_alpha2'])
-        )
-
-    wanted_outputs.extend(
-                expand("docs/genome/ag-{chrom}.ipynb", chrom=chromosomes)
-        )
-    
-    wanted_outputs.extend(
-                expand("docs/cohort/{cohort}.ipynb", cohort=df['cohort_id'].unique())
-    )
-    return wanted_outputs 
-
-
 def get_cohort_page_notebooks(wildcards):
     df = gpd.read_file(checkpoints.geolocate_cohorts.get().output.cohorts_geojson)
     

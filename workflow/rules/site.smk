@@ -19,7 +19,7 @@ rule build_site:
 rule generate_toc:
     input:
         nb = f"{workflow.basedir}/notebooks/generate-toc.ipynb",
-        cohorts_geojson = rules.geolocate_cohorts.output.cohorts_geojson,
+        cohorts_geojson = "build/final_cohorts.geojson",
         config = configpath,
     output:
         nb = "build/notebooks/generate-toc.ipynb",
@@ -37,7 +37,7 @@ rule home_page:
     input:
         nb = f"{workflow.basedir}/notebooks/home-page.ipynb",
         config = configpath,
-        cohorts_geojson = rules.geolocate_cohorts.output.cohorts_geojson,
+        cohorts_geojson = "build/final_cohorts.geojson",
     output:
         nb = "docs/home-page.ipynb"
     log:
@@ -53,7 +53,7 @@ rule country_pages:
     input:
         nb = f"{workflow.basedir}/notebooks/country-page.ipynb",
         config = configpath,
-        cohorts_geojson = rules.geolocate_cohorts.output.cohorts_geojson,
+        cohorts_geojson = "build/final_cohorts.geojson",
     output:
         nb = "build/notebooks/country/{country}.ipynb"
     log:
@@ -69,7 +69,7 @@ rule chromosome_pages:
     input:
         nb = f"{workflow.basedir}/notebooks/chromosome-page.ipynb",
         config = configpath,
-        cohorts_geojson = rules.geolocate_cohorts.output.cohorts_geojson,
+        cohorts_geojson = "build/final_cohorts.geojson",
         signals = get_h12_signal_detection_csvs,
     output:
         nb = "build/notebooks/genome/ag-{chrom}.ipynb"
@@ -85,7 +85,7 @@ rule chromosome_pages:
 rule cohort_pages:
     input:
         nb = f"{workflow.basedir}/notebooks/cohort-page.ipynb",
-        cohorts_geojson = rules.geolocate_cohorts.output.cohorts_geojson,
+        cohorts_geojson = "build/final_cohorts.geojson",
         output_h12="build/notebooks/h12-gwss-{cohort}.ipynb",
         output_g123="build/notebooks/g123-gwss-{cohort}.ipynb",
         output_ihs="build/notebooks/ihs-gwss-{cohort}.ipynb",
