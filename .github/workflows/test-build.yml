@@ -31,11 +31,16 @@ jobs:
           environment-name: selection-atlas
           cache-downloads: true
 
-      - name: Run snakemake workflow
+      - name: Run analysis snakemake workflow
         shell: bash -l {0}
         run: |
-          snakemake -c1 --configfile ci/config.yaml
+          snakemake -c1 --configfile ci/config.yaml --snakefile workflow/Snakefile-analysis
 
+      - name: Run site build snakemake workflow
+        shell: bash -l {0}
+        run: |
+          snakemake -c1 --configfile ci/config.yaml --snakefile workflow/Snakefile-site-build
+          
       - name: Save GCS cache
         uses: actions/cache/save@v3
         if: always()
