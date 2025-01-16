@@ -33,6 +33,7 @@ def get_h12_signal_detection_csvs(wildcards):
 
 # include rule files
 include: "rules/site.smk"
+include: "rules/utility.smk"
 
 rule all:
     input:

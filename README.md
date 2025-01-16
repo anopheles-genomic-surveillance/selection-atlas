@@ -46,20 +46,20 @@ gcloud auth application-default login
 ```
 
 
-## Running the workflow
+## Running the analysis workflow
 
 See the file `workflow/config.yaml` for workflow configuration.
 
 If running on your local system with GCS caching enabled, you'll need to run the build without any parallelisation:
 
 ```
-snakemake -c1
+snakemake -c1 --snakefile workflow/Snakefile-analysis
 ```
 
 If running on Google Cloud and GCS caching is disabled, you can try running with parallelisation, e.g.:
 
 ```
-snakemake -c4
+snakemake -c4 --snakefile workflow/Snakefile-analysis
 ```
 
 
@@ -81,4 +81,15 @@ To restore outputs from a previous workflow run to your local filesystem:
 rm -r build/*
 gsutil -m rsync -r gs://vo_selection_atlas_dev_us_central1/build/2024-08-21/ build/
 find build -type f -exec touch {} +
+find build/notebooks -type f -exec touch {} +
+find build/notebooks/cohort -type f -exec touch {} +
+
+```
+
+## Running the site-build workflow
+
+See the file `workflow/config.yaml` for workflow configuration.
+
+```
+snakemake -c1 --snakefile workflow/Snakefile-site-build
 ```
