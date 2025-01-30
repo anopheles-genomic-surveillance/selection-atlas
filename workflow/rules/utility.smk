@@ -1,14 +1,3 @@
-rule set_kernel:
-    input:
-        f"{workflow.basedir}/../environment.yml"
-    output:
-        touch(".kernel.set")
-    log:
-        "logs/set_kernel.log"
-    shell: 
-        """
-        python -m ipykernel install --user --name selection-atlas 2> {log}
-        """
 
 rule process_headers_chrom:
     input:
