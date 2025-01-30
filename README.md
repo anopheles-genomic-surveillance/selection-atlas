@@ -53,15 +53,16 @@ See the file `workflow/config.yaml` for workflow configuration.
 If running on your local system with GCS caching enabled, you'll need to run the build without any parallelisation:
 
 ```
-snakemake -c1 --snakefile workflow/Snakefile-analysis
+snakemake -c1 --snakefile workflow/Snakefile-analysis.smk
 ```
 
 If running on Google Cloud and GCS caching is disabled, you can try running with parallelisation, e.g.:
 
 ```
-snakemake -c4 --snakefile workflow/Snakefile-analysis
+snakemake -c4 --snakefile workflow/Snakefile-analysis.smk
 ```
 
+Remember that if you make any significant changes to the configuration and rerun the workflow, change the "analysis_version" parameter in the workflow/config.yml file.
 
 ## Saving/restoring a successful workflow run
 
@@ -72,8 +73,6 @@ With the selection-atlas environment activated, copy workflow outputs to GCS:
 ```
 gsutil -m rsync -r build/ gs://vo_selection_atlas_dev_us_central1/build/
 ```
-
-In the above command, "2024-08-21" is a build identifier. If you make any significant changes and rerun the workflow, use a new build identifier.
 
 To restore outputs from a previous workflow run to your local filesystem:
 
@@ -90,5 +89,5 @@ find build/notebooks/cohort -type f -exec touch {} +
 See the file `workflow/config.yaml` for workflow configuration.
 
 ```
-snakemake -c1 --snakefile workflow/Snakefile-site-build
+snakemake -c1 --snakefile workflow/Snakefile-site-build.smk
 ```
