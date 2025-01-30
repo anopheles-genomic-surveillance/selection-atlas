@@ -5,7 +5,8 @@ import yaml
 # open configuration file
 configfile: "workflow/config.yaml"
 configpath = workflow.configfiles[0]
-chromosomes = config['contigs']
+chromosomes = config["contigs"]
+analysis_version = config["analysis_version"]
 build_dir = f"build/{analysis_version}"
 
 # we dont use checkpoints in the site workflow, so need separate functions to the other workflow
