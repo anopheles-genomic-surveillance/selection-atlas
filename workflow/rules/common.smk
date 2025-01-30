@@ -16,12 +16,12 @@ rule set_kernel:
 
 def get_h12_calibration_yamls(wildcards):
     df = pd.read_csv(checkpoints.setup_cohorts.get().output[1])
-    paths = "build/h12-calibration/" + df['cohort_id'] + ".yaml"
+    paths = "{build_dir}/h12-calibration/" + df['cohort_id'] + ".yaml"
     return paths
 
 def get_h12_signal_detection_csvs(wildcards):
     df = pd.read_csv(checkpoints.final_cohorts.get().output[1])
-    paths = expand("build/h12-signal-detection/{cohort}_{contig}.csv", cohort=df['cohort_id'], contig=chromosomes)
+    paths = expand("{build_dir}/h12-signal-detection/{cohort}_{contig}.csv", cohort=df['cohort_id'], contig=chromosomes)
     return paths
 
 def get_selection_atlas_outputs(wildcards):
@@ -29,17 +29,17 @@ def get_selection_atlas_outputs(wildcards):
     df = gpd.read_file(checkpoints.geolocate_cohorts.get().output.cohorts_geojson)
 
     # define paths to output files
-    h12_cal_paths = "build/h12-calibration/" + df['cohort_id'] + ".yaml"
-    h12_cal_notebook_paths = "build/notebooks/h12-calibration-" + df['cohort_id'] + ".ipynb"
-    h12_gwss_paths = "build/notebooks/h12-gwss-" + df['cohort_id'] + ".ipynb"
-    h12_signal_paths = expand("build/h12-signal-detection/{cohort}_{contig}.csv", cohort=df['cohort_id'], contig=chromosomes)
+    h12_cal_paths = "{build_dir}/h12-calibration/" + df['cohort_id'] + ".yaml"
+    h12_cal_notebook_paths = "{build_dir}/notebooks/h12-calibration-" + df['cohort_id'] + ".ipynb"
+    h12_gwss_paths = "{build_dir}/notebooks/h12-gwss-" + df['cohort_id'] + ".ipynb"
+    h12_signal_paths = expand("{build_dir}/h12-signal-detection/{cohort}_{contig}.csv", cohort=df['cohort_id'], contig=chromosomes)
 
     # define paths to output files
-    g123_cal_paths = "build/g123-calibration/" + df['cohort_id'] + ".yaml"
-    g123_cal_notebook_paths = "build/notebooks/g123-calibration-" + df['cohort_id'] + ".ipynb"
-    g123_gwss_paths = "build/notebooks/g123-gwss-" + df['cohort_id'] + ".ipynb"
+    g123_cal_paths = "{build_dir}/g123-calibration/" + df['cohort_id'] + ".yaml"
+    g123_cal_notebook_paths = "{build_dir}/notebooks/g123-calibration-" + df['cohort_id'] + ".ipynb"
+    g123_gwss_paths = "{build_dir}/notebooks/g123-gwss-" + df['cohort_id'] + ".ipynb"
     
-    ihs_gwss_paths = "build/notebooks/ihs-gwss-" + df['cohort_id'] + ".ipynb"
+    ihs_gwss_paths = "{build_dir}/notebooks/ihs-gwss-" + df['cohort_id'] + ".ipynb"
 
     # add output files to list
     wanted_outputs = []

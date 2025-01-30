@@ -17,11 +17,11 @@ rule build_site:
 rule generate_toc:
     input:
         nb = f"{workflow.basedir}/notebooks/generate-toc.ipynb",
-        cohorts_geojson = "build/final_cohorts.geojson",
+        cohorts_geojson = "{build_dir}/final_cohorts.geojson",
         config = configpath,
         kernel=".kernel.set"
     output:
-        nb = "build/notebooks/generate-toc.ipynb",
+        nb = "{build_dir}/notebooks/generate-toc.ipynb",
         toc = "docs/_toc.yml",
     log:
         "logs/generate_toc.log"
@@ -34,7 +34,7 @@ rule home_page:
     input:
         nb = f"{workflow.basedir}/notebooks/home-page.ipynb",
         config = configpath,
-        cohorts_geojson = "build/final_cohorts.geojson",
+        cohorts_geojson = "{build_dir}/final_cohorts.geojson",
         kernel=".kernel.set"
     output:
         nb = "docs/home-page.ipynb"
@@ -49,10 +49,10 @@ rule country_pages:
     input:
         nb = f"{workflow.basedir}/notebooks/country-page.ipynb",
         config = configpath,
-        cohorts_geojson = "build/final_cohorts.geojson",
+        cohorts_geojson = "{build_dir}/final_cohorts.geojson",
         kernel=".kernel.set"
     output:
-        nb = "build/notebooks/country/{country}.ipynb"
+        nb = "{build_dir}/notebooks/country/{country}.ipynb"
     log:
         "logs/country_pages/{country}.log"
     shell:
@@ -64,11 +64,11 @@ rule chromosome_pages:
     input:
         nb = f"{workflow.basedir}/notebooks/chromosome-page.ipynb",
         config = configpath,
-        cohorts_geojson = "build/final_cohorts.geojson",
+        cohorts_geojson = "{build_dir}/final_cohorts.geojson",
         signals = get_h12_signal_detection_csvs,
         kernel=".kernel.set"
     output:
-        nb = "build/notebooks/genome/ag-{chrom}.ipynb"
+        nb = "{build_dir}/notebooks/genome/ag-{chrom}.ipynb"
     log:
         "logs/chromosome_pages/{chrom}.log"
     shell:
@@ -79,15 +79,15 @@ rule chromosome_pages:
 rule cohort_pages:
     input:
         nb = f"{workflow.basedir}/notebooks/cohort-page.ipynb",
-        cohorts_geojson = "build/final_cohorts.geojson",
-        output_h12="build/notebooks/h12-gwss-{cohort}.ipynb",
-        output_g123="build/notebooks/g123-gwss-{cohort}.ipynb",
-        output_ihs="build/notebooks/ihs-gwss-{cohort}.ipynb",
+        cohorts_geojson = "{build_dir}/final_cohorts.geojson",
+        output_h12="{build_dir}/notebooks/h12-gwss-{cohort}.ipynb",
+        output_g123="{build_dir}/notebooks/g123-gwss-{cohort}.ipynb",
+        output_ihs="{build_dir}/notebooks/ihs-gwss-{cohort}.ipynb",
         config = configpath,
-        signals = expand("build/h12-signal-detection/{{cohort}}_{contig}.csv", contig=chromosomes),
+        signals = expand("{build_dir}/h12-signal-detection/{{cohort}}_{contig}.csv", contig=chromosomes),
         kernel=".kernel.set"
     output:
-        nb = "build/notebooks/cohort/{cohort}.ipynb",
+        nb = "{build_dir}/notebooks/cohort/{cohort}.ipynb",
     log:
         "logs/cohort_pages/{cohort}.log"
     shell:

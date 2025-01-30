@@ -8,8 +8,8 @@ checkpoint setup_cohorts:
         config = configpath,
         kernel=".kernel.set"
     output:
-        nb = "build/notebooks/setup-cohorts.ipynb",
-        cohorts = "build/cohorts.csv"
+        nb = "{build_dir}/notebooks/setup-cohorts.ipynb",
+        cohorts = "{build_dir}/cohorts.csv"
     log:
         "logs/setup_cohorts.log"
     conda:
@@ -27,11 +27,11 @@ checkpoint final_cohorts:
         yamls = get_h12_calibration_yamls,
         nb = f"{workflow.basedir}/notebooks/final-cohorts.ipynb",
         config = configpath,
-        cohorts = "build/cohorts.csv",
+        cohorts = "{build_dir}/cohorts.csv",
         kernel=".kernel.set"
     output:
-        nb = "build/notebooks/final-cohorts.ipynb",
-        final_cohorts = "build/final_cohorts.csv"
+        nb = "{build_dir}/notebooks/final-cohorts.ipynb",
+        final_cohorts = "{build_dir}/final_cohorts.csv"
     log:
         "logs/final_cohorts.log"
     conda:
@@ -47,8 +47,8 @@ checkpoint geolocate_cohorts:
         config = configpath,
         final_cohorts = lambda wildcards: checkpoints.final_cohorts.get().output[1],
     output:
-        nb = "build/notebooks/geolocate-cohorts.ipynb",
-        cohorts_geojson = "build/final_cohorts.geojson",
+        nb = "{build_dir}/notebooks/geolocate-cohorts.ipynb",
+        cohorts_geojson = "{build_dir}/final_cohorts.geojson",
     log:
         "logs/geolocate_cohorts.log"
     conda:

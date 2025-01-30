@@ -6,6 +6,7 @@ import yaml
 configfile: "workflow/config.yaml"
 configpath = workflow.configfiles[0]
 chromosomes = config['contigs']
+build_dir = f"build/{analysis_version}"
 
 # include rule files
 include: "rules/common.smk"
