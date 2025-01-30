@@ -26,7 +26,6 @@ def get_selection_atlas_site_pages(wildcards):
                  cohort=df['cohort_id'].unique()
               )
     )
-    print("wanted_outputs", wanted_outputs)
     return wanted_outputs 
 
 def get_h12_signal_detection_csvs(wildcards):
@@ -35,7 +34,19 @@ def get_h12_signal_detection_csvs(wildcards):
     paths = expand("{build_dir}/h12-signal-detection/{cohort}_{contig}.csv", cohort=df['cohort_id'], contig=chromosomes, build_dir=build_dir)
     
     return paths
-    
+  
+
+# include rule files
+include: "rules/site.smk"
+include: "rules/utility.smk"
+
+
+rule all:
+    input:
+        build = "docs/_build"
+        
+
+
 rule set_kernel:
     input:
         f"{workflow.basedir}/../environment.yml"
@@ -47,13 +58,3 @@ rule set_kernel:
         """
         python -m ipykernel install --user --name selection-atlas 2> {log}
         """
-
-# include rule files
-include: "rules/site.smk"
-include: "rules/utility.smk"
-
-
-rule all:
-    input:
-        site = get_selection_atlas_site_pages,
-        build = "docs/_build/"
