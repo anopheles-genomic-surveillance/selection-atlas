@@ -34,7 +34,7 @@ jobs:
       - name: Restore results cache
         uses: actions/cache/restore@v3
         with:
-          path: malariagen_data_cache
+          path: build/malariagen_data_cache
           # Change this key if you ever want to force clear the cache.
           key: results_cache_20230512
 
@@ -67,6 +67,6 @@ jobs:
         uses: actions/cache/save@v3
         if: always()
         with:
-          path: malariagen_data_cache
+          path: build/malariagen_data_cache
           # Change this key if you ever want to force clear the cache.
           key: results_cache_20230512
