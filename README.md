@@ -1,4 +1,4 @@
-# selection-atlas
+# Malaria Vector Selection Atlas
 
 This repo contains the source code for the [Malaria Vector Selection Atlas](https://anopheles-genomic-surveillance.github.io/selection-atlas/).
 
