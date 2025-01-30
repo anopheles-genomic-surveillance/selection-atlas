@@ -3,8 +3,6 @@ rule set_kernel:
         f"{workflow.basedir}/../environment.yml"
     output:
         touch(".kernel.set")
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     log:
         "logs/set_kernel.log"
     shell: 
@@ -22,8 +20,6 @@ rule process_headers_chrom:
         chrom_nb = "docs/genome/ag-{contig}.ipynb",
     log:
         "logs/add_headers/{contig}.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.nb} {output.nb} -k selection-atlas -p input_nb {input.chrom_nb} -p output_nb {output.chrom_nb} -p wildcard {wildcards.contig} -p type chrom 2> {log}
@@ -39,8 +35,6 @@ rule process_headers_country:
         country_nb = "docs/country/{country}.ipynb",        
     log:
         "logs/add_headers/{country}.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.nb} {output.nb} -k selection-atlas -p input_nb {input.country_nb} -p output_nb {output.country_nb} -p wildcard {wildcards.country} -p type country 2> {log}
@@ -57,8 +51,6 @@ rule process_headers_cohort:
         cohort_nb = "docs/cohort/{cohort}.ipynb",       
     log:
         "logs/add_headers/{cohort}.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.nb} {output.nb} -k selection-atlas -p input_nb {input.cohort_nb} -p output_nb {output.cohort_nb} -p wildcard {wildcards.cohort} -p type cohort 2> {log}

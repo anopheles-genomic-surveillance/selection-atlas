@@ -8,8 +8,6 @@ rule build_site:
         directory("docs/_build")
     log:    
         "logs/build-jupyter-book.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         jupyter-book build docs
@@ -27,8 +25,6 @@ rule generate_toc:
         toc = "docs/_toc.yml",
     log:
         "logs/generate_toc.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
@@ -44,8 +40,6 @@ rule home_page:
         nb = "docs/home-page.ipynb"
     log:
         "logs/home_page.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.nb} {output.nb} -k selection-atlas 2> {log}
@@ -61,8 +55,6 @@ rule country_pages:
         nb = "build/notebooks/country/{country}.ipynb"
     log:
         "logs/country_pages/{country}.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.nb} {output.nb} -k selection-atlas -p country {wildcards.country} 2> {log}
@@ -79,8 +71,6 @@ rule chromosome_pages:
         nb = "build/notebooks/genome/ag-{chrom}.ipynb"
     log:
         "logs/chromosome_pages/{chrom}.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.nb} {output.nb} -k selection-atlas -p contig {wildcards.chrom} 2> {log}
@@ -100,8 +90,6 @@ rule cohort_pages:
         nb = "build/notebooks/cohort/{cohort}.ipynb",
     log:
         "logs/cohort_pages/{cohort}.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -f {input.config} 2> {log}
