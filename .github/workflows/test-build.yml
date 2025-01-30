@@ -19,7 +19,7 @@ jobs:
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
         with:
-          version: >= 363.0.0
+          version: '>= 363.0.0'
 
       - name: Check gcloud CLI
         run: gcloud info
@@ -48,13 +48,12 @@ jobs:
       - name: Run analysis snakemake workflow
         shell: bash -l {0}
         run: |
-          snakemake -c1 --configfile ci/config.yaml --snakefile workflow/Snakefile-analysis
-          cat logs/*
+          snakemake -c1 --configfile ci/config.yaml --snakefile workflow/Snakefile-analysis --show-failed-logs
 
       - name: Run site build snakemake workflow
         shell: bash -l {0}
         run: |
-          snakemake -c1 --configfile ci/config.yaml --snakefile workflow/Snakefile-site-build
+          snakemake -c1 --configfile ci/config.yaml --snakefile workflow/Snakefile-site-build --show-failed-logs
           
       - name: Save GCS cache
         uses: actions/cache/save@v3
