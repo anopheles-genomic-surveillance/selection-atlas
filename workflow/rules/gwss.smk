@@ -7,8 +7,8 @@ rule h12_calibration:
         nb=f"{workflow.basedir}/notebooks/h12-calibration.ipynb",
         config = configpath
     output:
-        nb="{build_dir}/notebooks/h12-calibration-{cohort}.ipynb",
-        yaml = "{build_dir}/h12-calibration/{cohort}.yaml"
+        nb = f"{build_dir}/notebooks/h12-calibration-{{cohort}}.ipynb",
+        yaml = f"{build_dir}/h12-calibration/{{cohort}}.yaml"
     log:
         "logs/h12_calibration/{cohort}.log"
     shell:
@@ -23,11 +23,11 @@ rule h12_gwss:
     """
     input:
         template = f"{workflow.basedir}/notebooks/h12-gwss.ipynb",
-        window_size = "{build_dir}/h12-calibration/{cohort}.yaml",
-        cohorts = "{build_dir}/final_cohorts.csv",
+        window_size = f"{build_dir}/h12-calibration/{{cohort}}.yaml",
+        cohorts = f"{build_dir}/final_cohorts.csv",
         config = configpath
     output:
-        nb="{build_dir}/notebooks/h12-gwss-{cohort}.ipynb"
+        nb = f"{build_dir}/notebooks/h12-gwss-{{cohort}}.ipynb"
     log:
         "logs/h12_gwss/{cohort}.log"
     shell:
@@ -42,13 +42,13 @@ rule h12_signal_detection:
     """
     input:
         template=f"{workflow.basedir}/notebooks/h12-signal-detection.ipynb",
-        gwss_nb="{build_dir}/notebooks/h12-gwss-{cohort}.ipynb",
+        gwss_nb=f"{build_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
         utils_nb=f"{workflow.basedir}/notebooks/peak-utils.ipynb",
-        cohorts="{build_dir}/final_cohorts.csv",
+        cohorts=f"{build_dir}/final_cohorts.csv",
         config = configpath
     output:
-        nb="{build_dir}/notebooks/h12-signal-detection-{cohort}-{contig}.ipynb",
-        csv = "{build_dir}/h12-signal-detection/{cohort}_{contig}.csv"
+        nb = f"{build_dir}/notebooks/h12-signal-detection-{{cohort}}-{{contig}}.ipynb",
+        csv = f"{build_dir}/h12-signal-detection/{{cohort}}_{{contig}}.csv"
     log:
         "logs/h12_signal_detection/{cohort}_{contig}.log"
     params:
@@ -67,8 +67,8 @@ rule g123_calibration:
         nb=f"{workflow.basedir}/notebooks/g123-calibration.ipynb",
         config = configpath
     output:
-        nb="{build_dir}/notebooks/g123-calibration-{cohort}.ipynb",
-        yaml = "{build_dir}/g123-calibration/{cohort}.yaml"
+        nb = f"{build_dir}/notebooks/g123-calibration-{{cohort}}.ipynb",
+        yaml = f"{build_dir}/g123-calibration/{{cohort}}.yaml",
     log:
         "logs/g123_calibration/{cohort}.log"
     shell:
@@ -83,11 +83,11 @@ rule g123_gwss:
     """
     input:
         template = f"{workflow.basedir}/notebooks/g123-gwss.ipynb",
-        window_size = "{build_dir}/g123-calibration/{cohort}.yaml",
-        cohorts = "{build_dir}/final_cohorts.csv",
+        window_size = f"{build_dir}/g123-calibration/{{cohort}}.yaml",
+        cohorts = f"{build_dir}/final_cohorts.csv",
         config = configpath
     output:
-        nb="{build_dir}/notebooks/g123-gwss-{cohort}.ipynb"
+        nb = f"{build_dir}/notebooks/g123-gwss-{{cohort}}.ipynb"
     log:
         "logs/g123_gwss/{cohort}.log"
     shell:
@@ -102,10 +102,10 @@ rule ihs_gwss:
     """
     input:
         template = f"{workflow.basedir}/notebooks/ihs-gwss.ipynb",
-        cohorts = "{build_dir}/final_cohorts.csv",
+        cohorts = f"{build_dir}/final_cohorts.csv",
         config = configpath
     output:
-        nb="{build_dir}/notebooks/ihs-gwss-{cohort}.ipynb"
+        nb = f"{build_dir}/notebooks/ihs-gwss-{{cohort}}.ipynb"
     log:
         "logs/ihs_gwss/{cohort}.log"
     shell:

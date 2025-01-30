@@ -2,10 +2,10 @@
 rule process_headers_chrom:
     input:
         nb = "workflow/notebooks/add-headers.ipynb",
-        chrom_nb = "{build_dir}/notebooks/genome/ag-{contig}.ipynb",
+        chrom_nb = f"{build_dir}/notebooks/genome/ag-{{contig}}.ipynb",
         kernel=".kernel.set"
     output:
-        nb = "{build_dir}/notebooks/add_headers/{contig}.ipynb",
+        nb = f"{build_dir}/notebooks/add_headers/{{contig}}.ipynb",
         chrom_nb = "docs/genome/ag-{contig}.ipynb",
     log:
         "logs/add_headers/{contig}.log"
@@ -17,10 +17,10 @@ rule process_headers_chrom:
 rule process_headers_country:
     input:
         nb = "workflow/notebooks/add-headers.ipynb",
-        country_nb = "{build_dir}/notebooks/country/{country}.ipynb",
+        country_nb = f"{build_dir}/notebooks/country/{{country}}.ipynb",
         kernel=".kernel.set"
     output:
-        nb = "{build_dir}/notebooks/add_headers/{country}.ipynb",
+        nb = f"{build_dir}/notebooks/add_headers/{{country}}.ipynb",
         country_nb = "docs/country/{country}.ipynb",        
     log:
         "logs/add_headers/{country}.log"
@@ -33,10 +33,10 @@ rule process_headers_country:
 rule process_headers_cohort:
     input:
         nb = "workflow/notebooks/add-headers.ipynb",
-        cohort_nb = "{build_dir}/notebooks/cohort/{cohort}.ipynb",
+        cohort_nb = f"{build_dir}/notebooks/cohort/{{cohort}}.ipynb",
         kernel=".kernel.set"
     output:
-        nb = "{build_dir}/notebooks/add_headers/{cohort}.ipynb",
+        nb = f"{build_dir}/notebooks/add_headers/{{cohort}}.ipynb",
         cohort_nb = "docs/cohort/{cohort}.ipynb",       
     log:
         "logs/add_headers/{cohort}.log"

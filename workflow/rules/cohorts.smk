@@ -6,10 +6,10 @@ checkpoint setup_cohorts:
     input:
         nb = f"{workflow.basedir}/notebooks/setup-cohorts.ipynb",
         config = configpath,
-        kernel=".kernel.set"
+        kernel = ".kernel.set",
     output:
-        nb = "{build_dir}/notebooks/setup-cohorts.ipynb",
-        cohorts = "{build_dir}/cohorts.csv"
+        nb = f"{build_dir}/notebooks/setup-cohorts.ipynb",
+        cohorts = f"{build_dir}/cohorts.csv",
     log:
         "logs/setup_cohorts.log"
     shell:
@@ -25,11 +25,11 @@ checkpoint final_cohorts:
         yamls = get_h12_calibration_yamls,
         nb = f"{workflow.basedir}/notebooks/final-cohorts.ipynb",
         config = configpath,
-        cohorts = "{build_dir}/cohorts.csv",
+        cohorts = f"{build_dir}/cohorts.csv",
         kernel=".kernel.set"
     output:
-        nb = "{build_dir}/notebooks/final-cohorts.ipynb",
-        final_cohorts = "{build_dir}/final_cohorts.csv"
+        nb = f"{build_dir}/notebooks/final-cohorts.ipynb",
+        final_cohorts = f"{build_dir}/final_cohorts.csv",
     log:
         "logs/final_cohorts.log"
     shell:
@@ -43,8 +43,8 @@ checkpoint geolocate_cohorts:
         config = configpath,
         final_cohorts = lambda wildcards: checkpoints.final_cohorts.get().output[1],
     output:
-        nb = "{build_dir}/notebooks/geolocate-cohorts.ipynb",
-        cohorts_geojson = "{build_dir}/final_cohorts.geojson",
+        nb = f"{build_dir}/notebooks/geolocate-cohorts.ipynb",
+        cohorts_geojson = f"{build_dir}/final_cohorts.geojson",
     log:
         "logs/geolocate_cohorts.log"
     shell:
