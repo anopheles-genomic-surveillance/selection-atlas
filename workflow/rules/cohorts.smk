@@ -34,7 +34,7 @@ checkpoint final_cohorts:
         "logs/final_cohorts.log"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas 2> {log}
+        papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
         """
 
 checkpoint geolocate_cohorts:
@@ -49,5 +49,5 @@ checkpoint geolocate_cohorts:
         "logs/geolocate_cohorts.log"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas 2> {log}
+        papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
         """
