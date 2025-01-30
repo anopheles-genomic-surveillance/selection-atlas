@@ -4,8 +4,6 @@ rule set_kernel:
         f"{workflow.basedir}/../environment.yml"
     output:
         touch(".kernel.set")
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     log:
         "logs/set_kernel.log"
     shell: 

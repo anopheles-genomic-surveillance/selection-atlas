@@ -12,8 +12,6 @@ checkpoint setup_cohorts:
         cohorts = "{build_dir}/cohorts.csv"
     log:
         "logs/setup_cohorts.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
@@ -34,8 +32,6 @@ checkpoint final_cohorts:
         final_cohorts = "{build_dir}/final_cohorts.csv"
     log:
         "logs/final_cohorts.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.nb} {output.nb} -k selection-atlas 2> {log}
@@ -51,8 +47,6 @@ checkpoint geolocate_cohorts:
         cohorts_geojson = "{build_dir}/final_cohorts.geojson",
     log:
         "logs/geolocate_cohorts.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.nb} {output.nb} -k selection-atlas 2> {log}

@@ -11,8 +11,6 @@ rule h12_calibration:
         yaml = "{build_dir}/h12-calibration/{cohort}.yaml"
     log:
         "logs/h12_calibration/{cohort}.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.nb} {output.nb} -k selection-atlas \
@@ -32,8 +30,6 @@ rule h12_gwss:
         nb="{build_dir}/notebooks/h12-gwss-{cohort}.ipynb"
     log:
         "logs/h12_gwss/{cohort}.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} \
@@ -55,8 +51,6 @@ rule h12_signal_detection:
         csv = "{build_dir}/h12-signal-detection/{cohort}_{contig}.csv"
     log:
         "logs/h12_signal_detection/{cohort}_{contig}.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     params:
     shell:
         """
@@ -77,8 +71,6 @@ rule g123_calibration:
         yaml = "{build_dir}/g123-calibration/{cohort}.yaml"
     log:
         "logs/g123_calibration/{cohort}.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.nb} {output.nb} -k selection-atlas \
@@ -98,8 +90,6 @@ rule g123_gwss:
         nb="{build_dir}/notebooks/g123-gwss-{cohort}.ipynb"
     log:
         "logs/g123_gwss/{cohort}.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} \
@@ -118,8 +108,6 @@ rule ihs_gwss:
         nb="{build_dir}/notebooks/ihs-gwss-{cohort}.ipynb"
     log:
         "logs/ihs_gwss/{cohort}.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.template} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} \
