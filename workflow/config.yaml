@@ -1,3 +1,5 @@
+analysis_version: "2025.01.30"
+
 # Set minimum and maximum cohort size parameters.
 min_cohort_size: 20  # TODO Could we live with 15 here?
 max_cohort_size: 50  # TODO Maybe increase this for production?

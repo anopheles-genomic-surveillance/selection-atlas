@@ -70,7 +70,7 @@ After a successful workflow run, copy the workflow outputs to GCS. This will all
 With the selection-atlas environment activated, copy workflow outputs to GCS:
 
 ```
-gsutil -m rsync -r build/ gs://vo_selection_atlas_dev_us_central1/build/2024-08-21/
+gsutil -m rsync -r build/ gs://vo_selection_atlas_dev_us_central1/build/
 ```
 
 In the above command, "2024-08-21" is a build identifier. If you make any significant changes and rerun the workflow, use a new build identifier.
@@ -78,8 +78,7 @@ In the above command, "2024-08-21" is a build identifier. If you make any signif
 To restore outputs from a previous workflow run to your local filesystem:
 
 ```
-rm -r build/*
-gsutil -m rsync -r gs://vo_selection_atlas_dev_us_central1/build/2024-08-21/ build/
+gsutil -m rsync -r gs://vo_selection_atlas_dev_us_central1/build/ build/
 find build -type f -exec touch {} +
 find build/notebooks -type f -exec touch {} +
 find build/notebooks/cohort -type f -exec touch {} +
