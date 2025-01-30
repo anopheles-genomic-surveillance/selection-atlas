@@ -1,3 +1,7 @@
+# Set the analysis version identifier. This will be used to identify
+# the outputs from a particular run of the analysis workflow. If you
+# change any of the parameters in this configuration file then please
+# also update the analysis version.
 analysis_version: "2025.01.30"
 
 # Set minimum and maximum cohort size parameters.
