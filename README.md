@@ -71,13 +71,13 @@ After a successful workflow run, copy the workflow outputs to GCS. This will all
 With the selection-atlas environment activated, copy workflow outputs to GCS:
 
 ```
-gsutil -m rsync -r build/ gs://vo_selection_atlas_dev_us_central1/build/
+gcloud storage rsync -r build/ gs://vo_selection_atlas_dev_us_central1/build/
 ```
 
 To restore outputs from a previous workflow run to your local filesystem:
 
 ```
-gsutil -m rsync -r gs://vo_selection_atlas_dev_us_central1/build/ build/
+gcloud storage rsync -r gs://vo_selection_atlas_dev_us_central1/build/ build/
 find build -type f -exec touch {} +
 find build/notebooks -type f -exec touch {} +
 find build/notebooks/cohort -type f -exec touch {} +
