@@ -13,6 +13,7 @@ docs/cohort/*.ipynb
 docs/_toc.yml
 log
 selection-atlas.html
+.kernel.set
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

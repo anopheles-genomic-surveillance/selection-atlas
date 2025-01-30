@@ -21,6 +21,7 @@ rule generate_toc:
         nb = f"{workflow.basedir}/notebooks/generate-toc.ipynb",
         cohorts_geojson = "build/final_cohorts.geojson",
         config = configpath,
+        kernel=".kernel.set"
     output:
         nb = "build/notebooks/generate-toc.ipynb",
         toc = "docs/_toc.yml",
@@ -38,6 +39,7 @@ rule home_page:
         nb = f"{workflow.basedir}/notebooks/home-page.ipynb",
         config = configpath,
         cohorts_geojson = "build/final_cohorts.geojson",
+        kernel=".kernel.set"
     output:
         nb = "docs/home-page.ipynb"
     log:
@@ -54,6 +56,7 @@ rule country_pages:
         nb = f"{workflow.basedir}/notebooks/country-page.ipynb",
         config = configpath,
         cohorts_geojson = "build/final_cohorts.geojson",
+        kernel=".kernel.set"
     output:
         nb = "build/notebooks/country/{country}.ipynb"
     log:
@@ -71,6 +74,7 @@ rule chromosome_pages:
         config = configpath,
         cohorts_geojson = "build/final_cohorts.geojson",
         signals = get_h12_signal_detection_csvs,
+        kernel=".kernel.set"
     output:
         nb = "build/notebooks/genome/ag-{chrom}.ipynb"
     log:
@@ -91,6 +95,7 @@ rule cohort_pages:
         output_ihs="build/notebooks/ihs-gwss-{cohort}.ipynb",
         config = configpath,
         signals = expand("build/h12-signal-detection/{{cohort}}_{contig}.csv", contig=chromosomes),
+        kernel=".kernel.set"
     output:
         nb = "build/notebooks/cohort/{cohort}.ipynb",
     log:

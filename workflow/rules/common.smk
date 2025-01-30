@@ -3,7 +3,7 @@ rule set_kernel:
     input:
         f"{workflow.basedir}/../environment.yml"
     output:
-        touch("build/.kernel.set")
+        touch(".kernel.set")
     conda:
         f"{workflow.basedir}/../environment.yml"
     log:
