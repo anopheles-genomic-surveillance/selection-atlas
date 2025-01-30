@@ -40,7 +40,7 @@ jobs:
     - name: Download build from GCS
        run: |
            mkdir build
-           gsutil -m rsync -r gs://vo_selection_atlas_dev_us_central1/build/2024-08-21/ build/
+           gsutil -m rsync -r gs://vo_selection_atlas_dev_us_central1/build/ build/
            find build -type f -exec touch {} +
            find build/notebooks -type f -exec touch {} +
            find build/notebooks/cohort -type f -exec touch {} +
@@ -49,7 +49,7 @@ jobs:
       uses: snakemake/snakemake-github-action@v1
       with:
         directory: '.'
-        snakefile: 'workflow/Snakefile-site-build'
+        snakefile: 'workflow/Snakefile-site-build.smk'
         args: '--cores 1 --conda-cleanup-pkgs cache'
         stagein: '' # additional preliminary commands to run (can be multiline)
         show-disk-usage-on-error: true

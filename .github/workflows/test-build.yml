@@ -48,12 +48,12 @@ jobs:
       - name: Run analysis snakemake workflow
         shell: bash -l {0}
         run: |
-          snakemake -c1 --configfile ci/config.yaml --snakefile workflow/Snakefile-analysis --show-failed-logs
+          snakemake -c1 --configfile ci/config.yaml --snakefile workflow/Snakefile-analysis.smk --show-failed-logs
 
       - name: Run site build snakemake workflow
         shell: bash -l {0}
         run: |
-          snakemake -c1 --configfile ci/config.yaml --snakefile workflow/Snakefile-site-build --show-failed-logs
+          snakemake -c1 --configfile ci/config.yaml --snakefile workflow/Snakefile-site-build.smk --show-failed-logs
           
       - name: Save GCS cache
         uses: actions/cache/save@v3
