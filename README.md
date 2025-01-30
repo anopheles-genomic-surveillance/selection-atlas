@@ -79,9 +79,6 @@ To restore outputs from a previous workflow run to your local filesystem:
 ```
 gcloud storage rsync -r gs://vo_selection_atlas_dev_us_central1/build/ build/
 find build -type f -exec touch {} +
-find build/notebooks -type f -exec touch {} +
-find build/notebooks/cohort -type f -exec touch {} +
-
 ```
 
 ## Running the site-build workflow
