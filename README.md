@@ -80,13 +80,13 @@ After a successful run of the analysis workflow, copy the workflow outputs to GC
 With the selection-atlas environment activated, copy workflow outputs to GCS:
 
 ```
-gcloud storage rsync -r build/ gs://vo_selection_atlas_dev_us_central1/build/
+gcloud storage rsync -r -u build/ gs://vo_selection_atlas_dev_us_central1/build/
 ```
 
 To restore outputs from a previous workflow run to your local filesystem:
 
 ```
-gcloud storage rsync -r gs://vo_selection_atlas_dev_us_central1/build/ build/
+gcloud storage rsync -r -u gs://vo_selection_atlas_dev_us_central1/build/ build/
 find build -type f -exec touch {} +
 ```
 
