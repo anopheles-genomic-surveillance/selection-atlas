@@ -80,13 +80,13 @@ After a successful run of the analysis workflow, copy the workflow outputs to GC
 With the selection-atlas environment activated, copy workflow outputs to GCS:
 
 ```
-gcloud storage rsync -r build/ gs://vo_selection_atlas_dev_us_central1/build/
+gcloud storage rsync -r -u build/ gs://vo_selection_atlas_dev_us_central1/build/
 ```
 
 To restore outputs from a previous workflow run to your local filesystem:
 
 ```
-gcloud storage rsync -r gs://vo_selection_atlas_dev_us_central1/build/ build/
+gcloud storage rsync -r -u gs://vo_selection_atlas_dev_us_central1/build/ build/
 find build -type f -exec touch {} +
 ```
 
@@ -95,7 +95,9 @@ find build -type f -exec touch {} +
 The site-build workflow will use the outputs from the analysis-workflow and build all of the content for the selection atlas website. To run this workflow:
 
 ```
-snakemake -c1 --snakefile workflow/Snakefile-site-build.smk
+MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/Snakefile-site-build.smk
 ```
 
-You can run this workflow on any computer as it should not need to access data in GCS or perform any heavy computations.
+You can run this workflow on a smaller computer as it should not need to perform any heavy computations.
+
+It currently does need to access some data in GCS, however, and so is also best run from a VM inside GCP.
