@@ -98,4 +98,6 @@ The site-build workflow will use the outputs from the analysis-workflow and buil
 snakemake -c1 --snakefile workflow/Snakefile-site-build.smk
 ```
 
-You can run this workflow on any computer as it should not need to access data in GCS or perform any heavy computations.
+You can run this workflow on a smaller computer as it should not need to perform any heavy computations.
+
+It currently does need to access some data in GCS, however, and so is also best run from a VM inside GCP.
