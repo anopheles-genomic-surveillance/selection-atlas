@@ -95,7 +95,7 @@ find build -type f -exec touch {} +
 The site-build workflow will use the outputs from the analysis-workflow and build all of the content for the selection atlas website. To run this workflow:
 
 ```
-snakemake -c1 --snakefile workflow/Snakefile-site-build.smk
+MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/Snakefile-site-build.smk
 ```
 
 You can run this workflow on a smaller computer as it should not need to perform any heavy computations.
