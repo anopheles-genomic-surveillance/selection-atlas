@@ -37,7 +37,7 @@ rule home_page:
         cohorts_geojson = f"{build_dir}/final_cohorts.geojson",
         kernel=".kernel.set"
     output:
-        nb = "docs/home-page.ipynb"
+        nb = f"{build_dir}/notebooks/home-page.ipynb"
     log:
         "logs/home_page.log"
     shell:
