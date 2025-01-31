@@ -1,6 +1,6 @@
 # custom
 Mambaforge-Linux-x86_64.sh
-malariagen_data_cache
+build/malariagen_data_cache
 gcs_cache
 .snakemake
 
@@ -12,6 +12,8 @@ docs/genome/*.ipynb
 docs/cohort/*.ipynb
 docs/_toc.yml
 log
+selection-atlas.html
+.kernel.set
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

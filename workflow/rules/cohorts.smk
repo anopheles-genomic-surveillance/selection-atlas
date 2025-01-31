@@ -6,14 +6,12 @@ checkpoint setup_cohorts:
     input:
         nb = f"{workflow.basedir}/notebooks/setup-cohorts.ipynb",
         config = configpath,
-        kernel="build/.kernel.set"
+        kernel = ".kernel.set",
     output:
-        nb = "build/notebooks/setup-cohorts.ipynb",
-        cohorts = "build/cohorts.csv"
+        nb = f"{build_dir}/notebooks/setup-cohorts.ipynb",
+        cohorts = f"{build_dir}/cohorts.csv",
     log:
         "logs/setup_cohorts.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
         papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
@@ -27,18 +25,16 @@ checkpoint final_cohorts:
         yamls = get_h12_calibration_yamls,
         nb = f"{workflow.basedir}/notebooks/final-cohorts.ipynb",
         config = configpath,
-        cohorts = "build/cohorts.csv",
-        kernel="build/.kernel.set"
+        cohorts = f"{build_dir}/cohorts.csv",
+        kernel=".kernel.set"
     output:
-        nb = "build/notebooks/final-cohorts.ipynb",
-        final_cohorts = "build/final_cohorts.csv"
+        nb = f"{build_dir}/notebooks/final-cohorts.ipynb",
+        final_cohorts = f"{build_dir}/final_cohorts.csv",
     log:
         "logs/final_cohorts.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas 2> {log}
+        papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
         """
 
 checkpoint geolocate_cohorts:
@@ -47,13 +43,11 @@ checkpoint geolocate_cohorts:
         config = configpath,
         final_cohorts = lambda wildcards: checkpoints.final_cohorts.get().output[1],
     output:
-        nb = "build/notebooks/geolocate-cohorts.ipynb",
-        cohorts_geojson = "build/final_cohorts.geojson",
+        nb = f"{build_dir}/notebooks/geolocate-cohorts.ipynb",
+        cohorts_geojson = f"{build_dir}/final_cohorts.geojson",
     log:
         "logs/geolocate_cohorts.log"
-    conda:
-        f"{workflow.basedir}/../environment.yml"
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas 2> {log}
+        papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
         """

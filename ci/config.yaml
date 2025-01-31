@@ -1,3 +1,9 @@
+# Set the analysis version identifier. This will be used to identify
+# the outputs from a particular run of the analysis workflow. If you
+# change any of the parameters in this configuration file then please
+# also update the analysis version.
+analysis_version: "2025.01.30"
+
 # Set minimum and maximum cohort size parameters.
 min_cohort_size: 20  # TODO Could we live with 15 here?
 max_cohort_size: 50  # TODO Maybe increase this for production?
@@ -14,10 +20,14 @@ contigs:
     
 # Pin the cohorts analysis version in order to get reproducible
 # builds.
-cohorts_analysis: "20230223"
+cohorts_analysis: "20240924"
 
 # Select the contig to use for H12 window size calibration.
 h12_calibration_contig: "3L"
+# Configuration for H12 signal detection.
+h12_signal_detection_min_delta_aic: 1000
+h12_signal_detection_min_stat_max: 0.1
+h12_signal_detection_gflanks: [6]
 
 # Set this value to False when running on Google Cloud, because it's 
 # better to read data directly from GCS.

@@ -10,6 +10,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - id: auth
+        name: Set up Google Cloud authentication
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          version: '>= 363.0.0'
+
+      - name: Check gcloud CLI
+        run: gcloud info
+
       - name: Restore GCS cache
         uses: actions/cache/restore@v3
         with:
@@ -20,22 +34,27 @@ jobs:
       - name: Restore results cache
         uses: actions/cache/restore@v3
         with:
-          path: malariagen_data_cache
+          path: build/malariagen_data_cache
           # Change this key if you ever want to force clear the cache.
           key: results_cache_20230512
 
       - name: Install conda environment
-        uses: mamba-org/provision-with-micromamba@main
+        uses: mamba-org/setup-micromamba@v2
         with:
           environment-file: environment.yml
           environment-name: selection-atlas
           cache-downloads: true
 
-      - name: Run snakemake workflow
+      - name: Run analysis snakemake workflow
         shell: bash -l {0}
         run: |
-          snakemake -c1 --configfile ci/config.yaml
+          snakemake -c1 --configfile ci/config.yaml --snakefile workflow/Snakefile-analysis.smk --show-failed-logs
 
+      - name: Run site build snakemake workflow
+        shell: bash -l {0}
+        run: |
+          snakemake -c1 --configfile ci/config.yaml --snakefile workflow/Snakefile-site-build.smk --show-failed-logs
+          
       - name: Save GCS cache
         uses: actions/cache/save@v3
         if: always()
@@ -48,6 +67,6 @@ jobs:
         uses: actions/cache/save@v3
         if: always()
         with:
-          path: malariagen_data_cache
+          path: build/malariagen_data_cache
           # Change this key if you ever want to force clear the cache.
           key: results_cache_20230512
