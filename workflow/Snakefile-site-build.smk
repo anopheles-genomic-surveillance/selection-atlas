@@ -23,7 +23,7 @@ def get_selection_atlas_site_pages(wildcards):
                     ],    
                  country=df['country_alpha2'],
                  chrom=chromosomes,
-                 cohort=df['cohort_id'].unique()
+                 cohort=df['cohort_id'].unique(),
               )
     )
     return wanted_outputs 

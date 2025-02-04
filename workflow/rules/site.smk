@@ -16,6 +16,13 @@ rule build_site:
 
 rule generate_toc:
     input:
+        "docs/alert/SA-AG-01.ipynb",
+        "docs/alert/SA-AG-02.ipynb",
+        "docs/alert/SA-AG-03.ipynb",
+        "docs/alert/SA-AG-04.ipynb",
+        "docs/alert/SA-AG-05.ipynb",
+        "docs/alert/SA-AG-06.ipynb",
+        "docs/alert/SA-AG-07.ipynb",
         nb = f"{workflow.basedir}/notebooks/generate-toc.ipynb",
         cohorts_geojson = f"{build_dir}/final_cohorts.geojson",
         config = configpath,
