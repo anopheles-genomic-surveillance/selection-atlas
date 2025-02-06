@@ -2,6 +2,7 @@ rule build_site:
     input:
         "docs/_config.yml",
         "docs/_toc.yml",
+        "docs/alerts.ipynb",
         get_selection_atlas_site_pages,
         config = configpath,
     output:
