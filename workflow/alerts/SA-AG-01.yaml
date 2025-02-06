@@ -1,15 +1,12 @@
 label: "Voltage-gated sodium channel gene"
 region: "2RL:63,000,000-65,000,000"
-candidate_genes: 
+ir_candidate_genes: 
   - identifier: "AGAP004707"
     names: ["Vgsc", "Para"]
     references:
-      - citation: "Clarkson et al. 2021"
+      - citation: "Clarkson et al. (2021)"
+        title: "The genetic architecture of target-site resistance to pyrethroid insecticides in the African malaria vectors Anopheles gambiae and Anopheles coluzzii"
         url: "https://doi.org/10.1111/mec.15845"
-        statements:
-          - "Reported positive selection on amino acid substitions within this gene, including L995F, L995S and V402L."
-          - "Another statement here."
-      - citation: "Martinez-Torres et al. 1998"
+      - citation: "Martinez-Torres et al. (1998)"
+        title: "Molecular characterization of pyrethroid knockdown resistance (kdr) in the major malaria vector Anopheles gambiae s.s"
         url: "https://pubmed.ncbi.nlm.nih.gov/9535162/"
-        statements:
-          - "Discovered amino acid substition L995F TODO check."
