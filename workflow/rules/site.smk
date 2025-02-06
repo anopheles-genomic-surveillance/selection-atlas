@@ -14,15 +14,9 @@ rule build_site:
         ln -sf docs/_build/html/index.html selection-atlas.html
         """
 
+
 rule generate_toc:
     input:
-        "docs/alert/SA-AG-01.ipynb",
-        "docs/alert/SA-AG-02.ipynb",
-        "docs/alert/SA-AG-03.ipynb",
-        "docs/alert/SA-AG-04.ipynb",
-        "docs/alert/SA-AG-05.ipynb",
-        "docs/alert/SA-AG-06.ipynb",
-        "docs/alert/SA-AG-07.ipynb",
         nb = f"{workflow.basedir}/notebooks/generate-toc.ipynb",
         cohorts_geojson = f"{build_dir}/final_cohorts.geojson",
         config = configpath,
@@ -36,6 +30,7 @@ rule generate_toc:
         """
         papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
         """
+
 
 rule home_page:
     input:
@@ -52,6 +47,7 @@ rule home_page:
         papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
         """
 
+
 rule country_pages:
     input:
         nb = f"{workflow.basedir}/notebooks/country-page.ipynb",
@@ -66,6 +62,7 @@ rule country_pages:
         """
         papermill {input.nb} {output.nb} -k selection-atlas -p country {wildcards.country} -f {input.config} 2> {log}
         """
+
 
 rule chromosome_pages:
     input:
@@ -82,6 +79,7 @@ rule chromosome_pages:
         """
         papermill {input.nb} {output.nb} -k selection-atlas -p contig {wildcards.chrom} -f {input.config} 2> {log}
         """
+
 
 rule cohort_pages:
     input:
@@ -100,4 +98,102 @@ rule cohort_pages:
     shell:
         """
         papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -f {input.config} 2> {log}
+        """
+
+
+rule alert_pages:
+    input:
+        nb = f"{workflow.basedir}/notebooks/alert-page.ipynb",
+        cohorts_geojson = f"{build_dir}/final_cohorts.geojson",
+        config = configpath,
+        alert_config = f"{workflow.basedir}/alerts/{{alert}}.yaml",
+        signals = get_h12_signal_detection_csvs,
+        kernel=".kernel.set"
+    output:
+        nb = f"{build_dir}/notebooks/alert/{{alert}}.ipynb",
+    log:
+        "logs/alert_pages/{alert}.log"
+    shell:
+        """
+        papermill {input.nb} {output.nb} -k selection-atlas -p alert_id {wildcards.alert} -f {input.config} -f {input.alert_config} 2> {log}
+        """
+
+
+rule process_headers_home:
+    input:
+        nb = "workflow/notebooks/add-headers.ipynb",
+        homepage_nb = f"{build_dir}/notebooks/home-page.ipynb",
+        kernel=".kernel.set"
+    output:
+        nb = f"{build_dir}/notebooks/add_headers/home-page.ipynb",
+        homepage_nb = "docs/home-page.ipynb",       
+    log:
+        "logs/add_headers/home-page.log"
+    shell:
+        """
+        papermill {input.nb} {output.nb} -k selection-atlas -p input_nb {input.homepage_nb} -p output_nb {output.homepage_nb} -p page_type homepage -p analysis_version {analysis_version} 2> {log}
+        """
+
+
+rule process_headers_chrom:
+    input:
+        nb = "workflow/notebooks/add-headers.ipynb",
+        chrom_nb = f"{build_dir}/notebooks/genome/ag-{{contig}}.ipynb",
+        kernel=".kernel.set"
+    output:
+        nb = f"{build_dir}/notebooks/add_headers/{{contig}}.ipynb",
+        chrom_nb = "docs/genome/ag-{contig}.ipynb",
+    log:
+        "logs/add_headers/chrom-{contig}.log"
+    shell:
+        """
+        papermill {input.nb} {output.nb} -k selection-atlas -p input_nb {input.chrom_nb} -p output_nb {output.chrom_nb} -p wildcard {wildcards.contig} -p page_type chrom -p analysis_version {analysis_version} 2> {log}
+        """
+
+
+rule process_headers_country:
+    input:
+        nb = "workflow/notebooks/add-headers.ipynb",
+        country_nb = f"{build_dir}/notebooks/country/{{country}}.ipynb",
+        kernel=".kernel.set"
+    output:
+        nb = f"{build_dir}/notebooks/add_headers/{{country}}.ipynb",
+        country_nb = "docs/country/{country}.ipynb",        
+    log:
+        "logs/add_headers/country-{country}.log"
+    shell:
+        """
+        papermill {input.nb} {output.nb} -k selection-atlas -p input_nb {input.country_nb} -p output_nb {output.country_nb} -p wildcard {wildcards.country} -p page_type country -p analysis_version {analysis_version} 2> {log}
+        """
+
+    
+rule process_headers_cohort:
+    input:
+        nb = "workflow/notebooks/add-headers.ipynb",
+        cohort_nb = f"{build_dir}/notebooks/cohort/{{cohort}}.ipynb",
+        kernel=".kernel.set"
+    output:
+        nb = f"{build_dir}/notebooks/add_headers/{{cohort}}.ipynb",
+        cohort_nb = "docs/cohort/{cohort}.ipynb",       
+    log:
+        "logs/add_headers/cohort-{cohort}.log"
+    shell:
+        """
+        papermill {input.nb} {output.nb} -k selection-atlas -p input_nb {input.cohort_nb} -p output_nb {output.cohort_nb} -p wildcard {wildcards.cohort} -p page_type cohort -p analysis_version {analysis_version} 2> {log}
+        """
+
+
+rule process_headers_alert:
+    input:
+        nb = "workflow/notebooks/add-headers.ipynb",
+        alert_nb = f"{build_dir}/notebooks/alert/{{alert}}.ipynb",
+        kernel=".kernel.set"
+    output:
+        nb = f"{build_dir}/notebooks/add_headers/{{alert}}.ipynb",
+        alert_nb = "docs/alert/{alert}.ipynb",       
+    log:
+        "logs/add_headers/alert-{alert}.log"
+    shell:
+        """
+        papermill {input.nb} {output.nb} -k selection-atlas -p input_nb {input.alert_nb} -p output_nb {output.alert_nb} -p wildcard {wildcards.alert} -p page_type alert -p analysis_version {analysis_version} 2> {log}
         """
