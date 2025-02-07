@@ -24,7 +24,7 @@ rule prepare_site:
     shell:
         f"""
         mkdir -pv {site_dir}/docs/
-        cp -rv {workflow.basedir}/docs/ {site_dir}/docs/
+        cp -rv {workflow.basedir}/docs/* {site_dir}/docs/
         """
 
 
