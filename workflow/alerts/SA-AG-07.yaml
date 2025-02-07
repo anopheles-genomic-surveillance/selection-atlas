@@ -1,5 +1,5 @@
 label: "Alpha-esterase genes"
-region: "2L:27,545,000-29,545,000"
+region: "2RL:89,000,000-91,000,000"
 ir_candidate_genes:
     - identifier: "AGAP006227, AGAP006228"
       names:

@@ -1,5 +1,5 @@
 label: "Glutathione S-transferase epsilon 2"
-region: "3R:27,597,686-29,599,040"
+region: "3RL:27,597,686-29,599,040"
 ir_candidate_genes:
     - identifier: "AGAP009194"
       names:

@@ -1,5 +1,5 @@
 label: "Resistance to dieldrin"
-region: "2L:24,500,000-26,500,000"
+region: "2RL:85,980,000-87,980,000"
 ir_candidate_genes:
     - identifier: "AGAP006028"
       names:
