@@ -1,0 +1,17 @@
+label: "Acetylcholinesterase 1"
+region: "2RL:2,383,000-4,497,000"
+ir_candidate_genes:
+    - identifier: "AGAP001356"
+      names:
+        - "Ace1"
+      notes: >
+        Encodes acetylcholinesterase enzyme targeted by organophosphate and carbamate insecticides. The G280S mutation and copy number variation around this gene confer resistance (119 in Torpedo Californica codon numbering) 
+      references:
+        - citation: "Weill et al. (2004)"
+          title: >
+            The unique mutation in ace-1 giving high insecticide resistance is easily detectable in mosquito vectors
+          url: "https://doi.org/10.1111/j.1365-2583.2004.00452.x"
+        - citation: "Grau-Bove et al. (2021)"
+          title: >
+            Resistance to pirimiphos-methyl in West African Anopheles is spreading via duplication and introgression of the Ace1 locus
+          url: "https://doi.org/10.1371/journal.pgen.1009253"

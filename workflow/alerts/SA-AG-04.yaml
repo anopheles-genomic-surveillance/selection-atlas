@@ -1,0 +1,21 @@
+label: "Cytochrome P450 6P cluster"
+region: "2RL:27,500,500-29,500,000"
+ir_candidate_genes:
+    - identifier: "AGAP002862-AGAP002866"
+      names:
+        - "Cyp6aa1"
+        - "Cyp6p3"
+        - "Cyp6p4"
+        - "Cyp6p5"
+      notes: >
+        Cluster of P450 genes involved in metabolic resistance to pyrethroids and other insecticides.
+      references:
+        - citation: "Müller et al. (2008)"
+          title: >
+            Field-caught permethrin-resistant Anopheles gambiae overexpress CYP6P3, a P450 that metabolises pyrethroids
+          url: "https://doi.org/10.1371/journal.pgen.1000286"
+        - citation: "Njoroge et al. (2022)"
+          title: >
+            Identification of a rapidly‐spreading triple mutant for high‐level metabolic insecticide resistance in Anopheles gambiae provides a real‐time molecular diagnostic for antimalarial intervention deployment
+          url: "https://doi.org/10.1111/mec.16591"
+

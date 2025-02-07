@@ -1,0 +1,13 @@
+label: "Kelch-like ECH-associated protein 1"
+region: "2RL:40,000,000-42,000,000"
+ir_candidate_genes:
+    - identifier: "AGAP003645"
+      names:
+        - "Keap1"
+      notes: >
+        Regulatory protein involved in oxidative stress response and the uprregulation of metabolic resistance genes.
+      references:
+        - citation: "Ingham et al. (2017)"
+          title: >
+            The transcription factor Maf-S regulates metabolic resistance to insecticides in the malaria vector Anopheles gambiae
+          url: "https://doi.org/10.1186/s12864-017-4086-7"

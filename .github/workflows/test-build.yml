@@ -24,13 +24,6 @@ jobs:
       - name: Check gcloud CLI
         run: gcloud info
 
-      - name: Restore GCS cache
-        uses: actions/cache/restore@v3
-        with:
-          path: gcs_cache
-          # Change this key if you ever want to force clear the cache.
-          key: gcs_cache_20230512
-
       - name: Restore results cache
         uses: actions/cache/restore@v3
         with:
@@ -55,14 +48,6 @@ jobs:
         run: |
           snakemake -c1 --configfile ci/config.yaml --snakefile workflow/Snakefile-site-build.smk --show-failed-logs
           
-      - name: Save GCS cache
-        uses: actions/cache/save@v3
-        if: always()
-        with:
-          path: gcs_cache
-          # Change this key if you ever want to force clear the cache.
-          key: gcs_cache_20230512
-
       - name: Save results cache
         uses: actions/cache/save@v3
         if: always()

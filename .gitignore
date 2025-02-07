@@ -10,6 +10,7 @@ docs/home-page.ipynb
 docs/country/*.ipynb
 docs/genome/*.ipynb
 docs/cohort/*.ipynb
+docs/alert/*.ipynb
 docs/_toc.yml
 log
 selection-atlas.html
