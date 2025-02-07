@@ -17,10 +17,12 @@ def get_h12_calibration_yamls(wildcards):
     paths = f"{analysis_dir}/h12-calibration/" + df['cohort_id'] + ".yaml"
     return paths
 
+
 def get_h12_signal_detection_csvs(wildcards):
     df = pd.read_csv(checkpoints.final_cohorts.get().output[1])
     paths = expand("{analysis_dir}/h12-signal-detection/{cohort}_{contig}.csv", cohort=df['cohort_id'], contig=chromosomes, analysis_dir=analysis_dir)
     return paths
+
 
 def get_selection_atlas_outputs(wildcards):
     # retrieve output file of final cohorts checkpoint
@@ -72,4 +74,3 @@ def get_country_page_notebooks(wildcards):
         country=df['country_alpha2']
     )
     return outputs
-
