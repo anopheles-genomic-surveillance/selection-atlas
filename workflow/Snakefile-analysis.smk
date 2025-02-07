@@ -13,7 +13,6 @@ build_dir = f"build/{analysis_version}"
 include: "rules/common.smk"
 include: "rules/cohorts.smk"
 include: "rules/gwss.smk"
-include: "rules/utility.smk"
 
 rule all:
     input:
