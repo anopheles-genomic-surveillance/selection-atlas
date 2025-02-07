@@ -16,7 +16,7 @@ sample_sets:
     
 # Select the contigs to analyse.
 contigs:
-    - "3L"
+    - "2R"
     
 # Pin the cohorts analysis version in order to get reproducible
 # builds.
