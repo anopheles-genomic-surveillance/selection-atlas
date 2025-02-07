@@ -1,0 +1,13 @@
+- label: "Cytochrome P450 9K1"
+  region: "X:14,220,000-16,220,000"
+  ir_candidate_genes:
+    - identifier: "AGAP000818"
+      names:
+        - "Cyp9k1"
+      notes: >
+        P450 gene associated with pyrethroid resistance through increased expression and copy number variation.
+      references:
+        - citation: "Vontas et al. (2018)"
+          title: >
+                Rapid selection of a pyrethroid metabolic enzyme CYP9K1 by operational malaria control activities
+          url: "https://doi.org/10.1073/pnas.1719663115"

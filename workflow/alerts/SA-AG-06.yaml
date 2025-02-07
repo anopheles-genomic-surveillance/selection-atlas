@@ -1,0 +1,15 @@
+- label: "Glutathione S-transferase epsilon 2"
+  region: "3R:27,597,686-29,599,040"
+  ir_candidate_genes:
+    - identifier: "AGAP009194"
+      names:
+        - "Gste2"
+      notes: >
+        Key metabolic resistance gene, particularly associated with DDT resistance. 
+        I114T mutation enhances DDT metabolism.
+      references:
+        - citation: "Mitchell et al. (2014)"
+          title: >
+            Metabolic and target-site mechanisms combine to confer strong DDT 
+            resistance in Anopheles gambiae
+          url: "https://doi.org/10.1371/journal.pone.0092662"

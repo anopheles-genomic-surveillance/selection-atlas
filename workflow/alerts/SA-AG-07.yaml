@@ -1,0 +1,15 @@
+
+- label: "Alpha-esterase genes"
+  region: "2L:27,545,000-29,545,000"
+  ir_candidate_genes:
+    - identifier: "AGAP006227, AGAP006228"
+      names:
+        - "Coeae1f"
+        - "Coeae2f"
+      notes: >
+        Carboxylesterase genes involved in metabolic resistance to organophosphates and potentially other insecticides.
+      references:
+        - citation: "Nagi et al. (2024)"
+          title: >
+             Parallel Evolution in Mosquito Vectors—A Duplicated Esterase Locus is Associated With Resistance to Pirimiphos-methyl in Anopheles gambiae
+          url: "https://doi.org/10.1093/molbev/msae140"

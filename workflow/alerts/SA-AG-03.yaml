@@ -1,0 +1,19 @@
+
+- label: "Resistance to dieldrin"
+  region: "2L:24,500,000-26,500,000"
+  ir_candidate_genes:
+    - identifier: "AGAP006028"
+      names:
+        - "Rdl"
+        - "GABA receptor"
+      notes: >
+        GABA-gated chloride channel targeted by cyclodiene insecticides. A296G/S mutations associated with dieldrin resistance. Alleles persist in sub-Saharan Africa despite ban on dieldrin in the 1980s.
+      references:
+        - citation: "Du et al. (2005)"
+          title: >
+            Independent mutations in the Rdl locus confer dieldrin resistance to Anopheles gambiae and An. arabiensis
+          url: "https://doi.org/10.1111/j.1365-2583.2005.00544.x"
+        - citation: "Grau-Bove et al. (2020)"
+          title: >
+            Evolution of the Insecticide Target Rdl in African Anopheles Is Driven by Interspecific and Interkaryotypic Introgression
+          url: "https://doi.org/10.1093/molbev/msaa128"
