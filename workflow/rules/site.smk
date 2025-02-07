@@ -10,6 +10,22 @@ rule build_site:
         f"""
         jupyter-book build {site_dir}/docs
         """
+        
+        
+rule prepare_site:
+    output:
+        f"{site_dir}/docs/_config.yml",
+        f"{site_dir}/docs/alerts.ipynb",
+        f"{site_dir}/docs/favicon.ico",
+    input:
+        f"{workflow.basedir}/docs/_config.yml",
+        f"{workflow.basedir}/docs/alerts.ipynb",
+        f"{workflow.basedir}/docs/favicon.ico",
+    shell:
+        f"""
+        mkdir -pv {site_dir}/docs/
+        cp -rv {workflow.basedir}/docs/ {site_dir}/docs/
+        """
 
 
 rule generate_toc:
