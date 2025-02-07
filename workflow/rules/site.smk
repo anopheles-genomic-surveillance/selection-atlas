@@ -155,7 +155,7 @@ rule process_headers_chrom:
         kernel=".kernel.set"
     output:
         nb = f"{site_dir}/notebooks/add_headers/{{contig}}.ipynb",
-        chrom_nb = f"{site_dir}/docs/genome/ag-{contig}.ipynb",
+        chrom_nb = f"{site_dir}/docs/genome/ag-{{contig}}.ipynb",
     log:
         "logs/add_headers/chrom-{contig}.log"
     shell:
@@ -171,7 +171,7 @@ rule process_headers_country:
         kernel=".kernel.set"
     output:
         nb = f"{site_dir}/notebooks/add_headers/{{country}}.ipynb",
-        country_nb = f"{site_dir}/docs/country/{country}.ipynb",        
+        country_nb = f"{site_dir}/docs/country/{{country}}.ipynb",        
     log:
         "logs/add_headers/country-{country}.log"
     shell:
@@ -187,7 +187,7 @@ rule process_headers_cohort:
         kernel=".kernel.set"
     output:
         nb = f"{site_dir}/notebooks/add_headers/{{cohort}}.ipynb",
-        cohort_nb = f"{site_dir}/docs/cohort/{cohort}.ipynb",       
+        cohort_nb = f"{site_dir}/docs/cohort/{{cohort}}.ipynb",       
     log:
         "logs/add_headers/cohort-{cohort}.log"
     shell:
@@ -203,7 +203,7 @@ rule process_headers_alert:
         kernel=".kernel.set"
     output:
         nb = f"{site_dir}/notebooks/add_headers/{{alert}}.ipynb",
-        alert_nb = f"{site_dir}/docs/alert/{alert}.ipynb",       
+        alert_nb = f"{site_dir}/docs/alert/{{alert}}.ipynb",       
     log:
         "logs/add_headers/alert-{alert}.log"
     shell:

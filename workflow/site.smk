@@ -25,10 +25,10 @@ def get_selection_atlas_site_files(wildcards):
             f"{site_dir}/docs/_toc.yml",
             f"{site_dir}/docs/home-page.ipynb",
             f"{site_dir}/docs/alerts.ipynb",
-            f"{site_dir}/docs/country/{country}.ipynb",
-            f"{site_dir}/docs/genome/ag-{chrom}.ipynb",
-            f"{site_dir}/docs/cohort/{cohort}.ipynb",
-            f"{site_dir}/docs/alert/SA-AG-{alert}.ipynb",
+            f"{site_dir}/docs/country/{{country}}.ipynb",
+            f"{site_dir}/docs/genome/ag-{{chrom}}.ipynb",
+            f"{site_dir}/docs/cohort/{{cohort}}.ipynb",
+            f"{site_dir}/docs/alert/SA-AG-{{alert}}.ipynb",
         ],    
         country=df['country_alpha2'],
         chrom=chromosomes,
@@ -59,7 +59,7 @@ include: "rules/site.smk"
 
 rule all:
     input:
-        build = f"{analysis_dir}/docs/_build"
+        build = f"{site_dir}/docs/_build"
 
 
 rule set_kernel:
