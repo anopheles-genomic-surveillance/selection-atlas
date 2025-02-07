@@ -17,13 +17,6 @@ def get_selection_atlas_site_pages(wildcards):
     # Read in cohorts dataframe.
     df = gpd.read_file(f"{build_dir}/final_cohorts.geojson")
     
-    # Find all alert config files.
-    alerts = [
-        f.split(".")[0] 
-        for f in os.listdir("workflow/alerts")
-        if f.startswith("SA-")
-    ]
-
     # Build a list of all required files.
     wanted_outputs = expand(
         [
@@ -31,12 +24,12 @@ def get_selection_atlas_site_pages(wildcards):
             "docs/country/{country}.ipynb",
             "docs/genome/ag-{chrom}.ipynb",
             "docs/cohort/{cohort}.ipynb",
-            "docs/alert/{alert}.ipynb",
+            "docs/alert/SA-AG-{alert}.ipynb",
         ],    
         country=df['country_alpha2'],
         chrom=chromosomes,
         cohort=df['cohort_id'].unique(),
-        alert=alerts,
+        alert=config['alerts'],
     )
     
     return wanted_outputs 
