@@ -1,7 +1,6 @@
-
-- label: "Resistance to dieldrin"
-  region: "2L:24,500,000-26,500,000"
-  ir_candidate_genes:
+label: "Resistance to dieldrin"
+region: "2L:24,500,000-26,500,000"
+ir_candidate_genes:
     - identifier: "AGAP006028"
       names:
         - "Rdl"

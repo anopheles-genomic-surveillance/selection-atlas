@@ -1,6 +1,6 @@
-- label: "Acetylcholinesterase 1"
-  region: "2R:2,383,000-4,497,000"
-  ir_candidate_genes:
+label: "Acetylcholinesterase 1"
+region: "2R:2,383,000-4,497,000"
+ir_candidate_genes:
     - identifier: "AGAP001356"
       names:
         - "Ace1"

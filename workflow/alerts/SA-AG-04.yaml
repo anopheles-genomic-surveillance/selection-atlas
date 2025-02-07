@@ -1,7 +1,6 @@
-
-- label: "Cytochrome P450 6P cluster"
-  region: "2R:27,500,500-29,500,000"
-  ir_candidate_genes:
+label: "Cytochrome P450 6P cluster"
+region: "2R:27,500,500-29,500,000"
+ir_candidate_genes:
     - identifier: "AGAP002862-AGAP002866"
       names:
         - "Cyp6aa1"

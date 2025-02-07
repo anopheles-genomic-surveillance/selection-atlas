@@ -1,7 +1,6 @@
-
-- label: "Kelch-like ECH-associated protein 1"
-  region: "2R:40,000,000-42,000,000"
-  ir_candidate_genes:
+label: "Kelch-like ECH-associated protein 1"
+region: "2R:40,000,000-42,000,000"
+ir_candidate_genes:
     - identifier: "AGAP003645"
       names:
         - "Keap1"

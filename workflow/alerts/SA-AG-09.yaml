@@ -1,6 +1,6 @@
-- label: "Diacylglycerol kinase"
-  region: "X:8,500,000-10,500,000"
-  ir_candidate_genes:
+label: "Diacylglycerol kinase"
+region: "X:8,500,000-10,500,000"
+ir_candidate_genes:
     - identifier: "AGAP000519"
       names:
         - "Dgk"

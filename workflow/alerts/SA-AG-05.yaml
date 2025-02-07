@@ -1,6 +1,6 @@
-- label: "Cytochrome P450 9K1"
-  region: "X:14,220,000-16,220,000"
-  ir_candidate_genes:
+label: "Cytochrome P450 9K1"
+region: "X:14,220,000-16,220,000"
+ir_candidate_genes:
     - identifier: "AGAP000818"
       names:
         - "Cyp9k1"

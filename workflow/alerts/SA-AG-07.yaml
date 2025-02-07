@@ -1,7 +1,6 @@
-
-- label: "Alpha-esterase genes"
-  region: "2L:27,545,000-29,545,000"
-  ir_candidate_genes:
+label: "Alpha-esterase genes"
+region: "2L:27,545,000-29,545,000"
+ir_candidate_genes:
     - identifier: "AGAP006227, AGAP006228"
       names:
         - "Coeae1f"
