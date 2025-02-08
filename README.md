@@ -60,13 +60,13 @@ Please note that this workflow will generally require a lot of computation and d
 During development, you may want to run the workflow without any parallelisation:
 
 ```
-snakemake -c1 --snakefile workflow/Snakefile-analysis.smk
+snakemake -c1 --snakefile workflow/analysis.smk
 ```
 
 To run the workflow fully, you can try running with parallelisation. Note this will need to be on a machine with sufficient cores and memory. E.g.:
 
 ```
-snakemake -c4 --snakefile workflow/Snakefile-analysis.smk
+snakemake -c4 --snakefile workflow/analysis.smk
 ```
 
 The outputs of the analysis workflow will be stored in the "build" folder, under a sub-folder named according to the "analysis_version" parameter given in the workflow configuration file. 
@@ -90,12 +90,12 @@ gcloud storage rsync -r -u gs://vo_selection_atlas_dev_us_central1/build/ build/
 find build -type f -exec touch {} +
 ```
 
-## Running the site-build workflow
+## Running the site workflow
 
-The site-build workflow will use the outputs from the analysis-workflow and build all of the content for the selection atlas website. To run this workflow:
+The site workflow will use the outputs from the analysis-workflow and build all of the content for the selection atlas website. To run this workflow:
 
 ```
-MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/Snakefile-site-build.smk
+MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site.smk
 ```
 
 You can run this workflow on a smaller computer as it should not need to perform any heavy computations.

@@ -1,30 +1,42 @@
 rule build_site:
     input:
-        "docs/_config.yml",
-        "docs/_toc.yml",
-        "docs/alerts.ipynb",
-        get_selection_atlas_site_pages,
+        get_selection_atlas_site_files,
         config = configpath,
     output:
-        directory("docs/_build"),
+        directory(f"{site_dir}/docs/_build"),
     log:    
         "logs/build-jupyter-book.log"
     shell:
+        f"""
+        jupyter-book build {site_dir}/docs
         """
-        jupyter-book build docs
-        ln -sf docs/_build/html/index.html selection-atlas.html
+        
+        
+rule prepare_site:
+    output:
+        f"{site_dir}/docs/_config.yml",
+        f"{site_dir}/docs/alerts.ipynb",
+        f"{site_dir}/docs/favicon.ico",
+    input:
+        f"{workflow.basedir}/docs/_config.yml",
+        f"{workflow.basedir}/docs/alerts.ipynb",
+        f"{workflow.basedir}/docs/favicon.ico",
+    shell:
+        f"""
+        mkdir -pv {site_dir}/docs/
+        cp -rv {workflow.basedir}/docs/* {site_dir}/docs/
         """
 
 
 rule generate_toc:
     input:
         nb = f"{workflow.basedir}/notebooks/generate-toc.ipynb",
-        cohorts_geojson = f"{build_dir}/final_cohorts.geojson",
+        cohorts_geojson = f"{analysis_dir}/final_cohorts.geojson",
         config = configpath,
         kernel=".kernel.set"
     output:
-        nb = f"{build_dir}/notebooks/generate-toc.ipynb",
-        toc = "docs/_toc.yml",
+        nb = f"{site_dir}/notebooks/generate-toc.ipynb",
+        toc = f"{site_dir}/docs/_toc.yml",
     log:
         "logs/generate_toc.log"
     shell:
@@ -37,10 +49,10 @@ rule home_page:
     input:
         nb = f"{workflow.basedir}/notebooks/home-page.ipynb",
         config = configpath,
-        cohorts_geojson = f"{build_dir}/final_cohorts.geojson",
+        cohorts_geojson = f"{analysis_dir}/final_cohorts.geojson",
         kernel=".kernel.set"
     output:
-        nb = f"{build_dir}/notebooks/home-page.ipynb"
+        nb = f"{site_dir}/notebooks/home-page.ipynb"
     log:
         "logs/home_page.log"
     shell:
@@ -53,10 +65,10 @@ rule country_pages:
     input:
         nb = f"{workflow.basedir}/notebooks/country-page.ipynb",
         config = configpath,
-        cohorts_geojson = f"{build_dir}/final_cohorts.geojson",
+        cohorts_geojson = f"{analysis_dir}/final_cohorts.geojson",
         kernel=".kernel.set"
     output:
-        nb = f"{build_dir}/notebooks/country/{{country}}.ipynb"
+        nb = f"{site_dir}/notebooks/country/{{country}}.ipynb"
     log:
         "logs/country_pages/{country}.log"
     shell:
@@ -69,11 +81,11 @@ rule chromosome_pages:
     input:
         nb = f"{workflow.basedir}/notebooks/chromosome-page.ipynb",
         config = configpath,
-        cohorts_geojson = f"{build_dir}/final_cohorts.geojson",
+        cohorts_geojson = f"{analysis_dir}/final_cohorts.geojson",
         signals = get_h12_signal_detection_csvs,
         kernel=".kernel.set"
     output:
-        nb = f"{build_dir}/notebooks/genome/ag-{{chrom}}.ipynb"
+        nb = f"{site_dir}/notebooks/genome/ag-{{chrom}}.ipynb"
     log:
         "logs/chromosome_pages/{chrom}.log"
     shell:
@@ -85,15 +97,15 @@ rule chromosome_pages:
 rule cohort_pages:
     input:
         nb = f"{workflow.basedir}/notebooks/cohort-page.ipynb",
-        cohorts_geojson = f"{build_dir}/final_cohorts.geojson",
-        output_h12 = f"{build_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
-        output_g123 = f"{build_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
-        output_ihs = f"{build_dir}/notebooks/ihs-gwss-{{cohort}}.ipynb",
+        cohorts_geojson = f"{analysis_dir}/final_cohorts.geojson",
+        output_h12 = f"{analysis_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
+        output_g123 = f"{analysis_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
+        output_ihs = f"{analysis_dir}/notebooks/ihs-gwss-{{cohort}}.ipynb",
         config = configpath,
-        signals = expand("{build_dir}/h12-signal-detection/{{cohort}}_{contig}.csv", contig=chromosomes, build_dir=build_dir),
+        signals = expand("{analysis_dir}/h12-signal-detection/{{cohort}}_{contig}.csv", contig=chromosomes, analysis_dir=analysis_dir),
         kernel=".kernel.set"
     output:
-        nb = f"{build_dir}/notebooks/cohort/{{cohort}}.ipynb",
+        nb = f"{site_dir}/notebooks/cohort/{{cohort}}.ipynb",
     log:
         "logs/cohort_pages/{cohort}.log"
     shell:
@@ -105,13 +117,13 @@ rule cohort_pages:
 rule alert_pages:
     input:
         nb = f"{workflow.basedir}/notebooks/alert-page.ipynb",
-        cohorts_geojson = f"{build_dir}/final_cohorts.geojson",
+        cohorts_geojson = f"{analysis_dir}/final_cohorts.geojson",
         config = configpath,
         alert_config = f"{workflow.basedir}/alerts/{{alert}}.yaml",
         signals = get_h12_signal_detection_csvs,
         kernel=".kernel.set"
     output:
-        nb = f"{build_dir}/notebooks/alert/{{alert}}.ipynb",
+        nb = f"{site_dir}/notebooks/alert/{{alert}}.ipynb",
     log:
         "logs/alert_pages/{alert}.log"
     shell:
@@ -123,11 +135,11 @@ rule alert_pages:
 rule process_headers_home:
     input:
         nb = "workflow/notebooks/add-headers.ipynb",
-        homepage_nb = f"{build_dir}/notebooks/home-page.ipynb",
+        homepage_nb = f"{site_dir}/notebooks/home-page.ipynb",
         kernel=".kernel.set"
     output:
-        nb = f"{build_dir}/notebooks/add_headers/home-page.ipynb",
-        homepage_nb = "docs/home-page.ipynb",       
+        nb = f"{site_dir}/notebooks/add_headers/home-page.ipynb",
+        homepage_nb = f"{site_dir}/docs/home-page.ipynb",       
     log:
         "logs/add_headers/home-page.log"
     shell:
@@ -139,11 +151,11 @@ rule process_headers_home:
 rule process_headers_chrom:
     input:
         nb = "workflow/notebooks/add-headers.ipynb",
-        chrom_nb = f"{build_dir}/notebooks/genome/ag-{{contig}}.ipynb",
+        chrom_nb = f"{site_dir}/notebooks/genome/ag-{{contig}}.ipynb",
         kernel=".kernel.set"
     output:
-        nb = f"{build_dir}/notebooks/add_headers/{{contig}}.ipynb",
-        chrom_nb = "docs/genome/ag-{contig}.ipynb",
+        nb = f"{site_dir}/notebooks/add_headers/{{contig}}.ipynb",
+        chrom_nb = f"{site_dir}/docs/genome/ag-{{contig}}.ipynb",
     log:
         "logs/add_headers/chrom-{contig}.log"
     shell:
@@ -155,11 +167,11 @@ rule process_headers_chrom:
 rule process_headers_country:
     input:
         nb = "workflow/notebooks/add-headers.ipynb",
-        country_nb = f"{build_dir}/notebooks/country/{{country}}.ipynb",
+        country_nb = f"{site_dir}/notebooks/country/{{country}}.ipynb",
         kernel=".kernel.set"
     output:
-        nb = f"{build_dir}/notebooks/add_headers/{{country}}.ipynb",
-        country_nb = "docs/country/{country}.ipynb",        
+        nb = f"{site_dir}/notebooks/add_headers/{{country}}.ipynb",
+        country_nb = f"{site_dir}/docs/country/{{country}}.ipynb",        
     log:
         "logs/add_headers/country-{country}.log"
     shell:
@@ -171,11 +183,11 @@ rule process_headers_country:
 rule process_headers_cohort:
     input:
         nb = "workflow/notebooks/add-headers.ipynb",
-        cohort_nb = f"{build_dir}/notebooks/cohort/{{cohort}}.ipynb",
+        cohort_nb = f"{site_dir}/notebooks/cohort/{{cohort}}.ipynb",
         kernel=".kernel.set"
     output:
-        nb = f"{build_dir}/notebooks/add_headers/{{cohort}}.ipynb",
-        cohort_nb = "docs/cohort/{cohort}.ipynb",       
+        nb = f"{site_dir}/notebooks/add_headers/{{cohort}}.ipynb",
+        cohort_nb = f"{site_dir}/docs/cohort/{{cohort}}.ipynb",       
     log:
         "logs/add_headers/cohort-{cohort}.log"
     shell:
@@ -187,11 +199,11 @@ rule process_headers_cohort:
 rule process_headers_alert:
     input:
         nb = "workflow/notebooks/add-headers.ipynb",
-        alert_nb = f"{build_dir}/notebooks/alert/{{alert}}.ipynb",
+        alert_nb = f"{site_dir}/notebooks/alert/{{alert}}.ipynb",
         kernel=".kernel.set"
     output:
-        nb = f"{build_dir}/notebooks/add_headers/{{alert}}.ipynb",
-        alert_nb = "docs/alert/{alert}.ipynb",       
+        nb = f"{site_dir}/notebooks/add_headers/{{alert}}.ipynb",
+        alert_nb = f"{site_dir}/docs/alert/{{alert}}.ipynb",       
     log:
         "logs/add_headers/alert-{alert}.log"
     shell:
