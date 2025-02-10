@@ -5,7 +5,7 @@ ir_candidate_genes:
       names:
         - "Ace1"
       notes: >
-        Encodes acetylcholinesterase enzyme targeted by organophosphate and carbamate insecticides. The G280S mutation and copy number variation around this gene confer resistance (119 in Torpedo Californica codon numbering) 
+        Encodes acetylcholinesterase enzyme targeted by organophosphate and carbamate insecticides. The G280S mutation and copy number variation around this gene confer resistance (119 in Torpedo Californica codon numbering)
       references:
         - citation: "Weill et al. (2004)"
           title: >

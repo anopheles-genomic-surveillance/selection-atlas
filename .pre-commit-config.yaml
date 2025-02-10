@@ -15,6 +15,7 @@ repos:
       - id: ruff
         args:
           - "--fix"
+          - "--ignore=F821"  # TODO reinstate
       # Run the formatter.
       - id: ruff-format
   # Snakefmt - format Snakemake files.

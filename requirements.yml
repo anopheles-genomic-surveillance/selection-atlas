@@ -31,6 +31,9 @@ dependencies:
     - pyprojroot
     - geopandas
     - iso3166
+    - pre-commit
+    - ruff
+    - snakefmt
     - pip
     - pip:
           - jsonschema>=3.1.0

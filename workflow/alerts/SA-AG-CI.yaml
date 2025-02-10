@@ -1,8 +1,8 @@
 label: "imaginary resistance gene"
 region: "2R:27,500,000-29,500,000"
-ir_candidate_genes: 
+ir_candidate_genes:
   - identifier: "AGAP002865"
-    names: 
+    names:
       - "cyp6p3"
     notes: >
       p450s blah blah
