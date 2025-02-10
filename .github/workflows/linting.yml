@@ -1,0 +1,31 @@
+name: linting
+on: pull_request
+jobs:
+    linting:
+        strategy:
+            fail-fast: true
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout source
+              uses: actions/checkout@v4
+
+            - name: Setup python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: '3.12'
+                  cache: 'pip'
+
+            - name: Run pre-commit checks
+              uses: pre-commit/action@v3.0.0
+
+            - name: Lint analysis workflow
+              uses: snakemake/snakemake-github-action@v1
+              with:
+                  snakefile: 'workflow/analysis.smk'
+                  args: '--lint'
+
+            - name: Lint site workflow
+              uses: snakemake/snakemake-github-action@v1
+              with:
+                  snakefile: 'workflow/site.smk'
+                  args: '--lint'
