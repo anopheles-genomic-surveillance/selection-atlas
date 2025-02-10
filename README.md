@@ -42,6 +42,14 @@ mamba env export -f environment.yml -n selection-atlas-requirements --override-c
 sed -i "s/selection-atlas-requirements/selection-atlas/" environment.yml
 ```
 
+## Pre-commit hooks
+
+There are several pre-commit hooks configured to automatically lint and format source code files, including Python files, Jupyter notebooks and Snakemake files. These will be automatically run before any code is committed if you install pre-commit hooks:
+
+```
+pre-commit install
+```
+
 ## Authenticating with Google Cloud
 
 In order to run workflows, you will need to be authenticated with Google Cloud. With the selection-atlas environment activated, run the following commands and follow the instructions given:
