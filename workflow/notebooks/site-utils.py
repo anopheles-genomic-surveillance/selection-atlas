@@ -3,6 +3,7 @@
 # from within a Jupyter notebook.
 
 # Standad library imports.
+from textwrap import dedent  # noqa
 import warnings
 
 # Third party library imports.
@@ -15,9 +16,11 @@ import geopandas as gpd
 import bokeh.layouts as bklay
 import bokeh.plotting as bkplt
 import bokeh.models as bkmod
+import yaml  # noqa
+from bokeh.io import output_notebook  # noqa
 
-# Expect that these variables will have been assigned prior to
-# importing this module.
+# Expect that these variables will have been defined prior to
+# runnin this module.
 assert dask_scheduler is not None
 assert analysis_version is not None
 assert cohorts_analysis is not None
