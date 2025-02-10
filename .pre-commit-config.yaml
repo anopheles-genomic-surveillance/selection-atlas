@@ -1,0 +1,24 @@
+# https://pre-commit.com/
+repos:
+  # General pre-commit checks.
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+  # Ruff - lint and format Python and Jupyter notebook files.
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.6
+    hooks:
+      # Run the linter.
+      - id: ruff
+        args:
+          - "--fix"
+      # Run the formatter.
+      - id: ruff-format
+  # Snakefmt - format Snakemake files.
+  - repo: https://github.com/snakemake/snakefmt
+    rev: v0.10.2
+    hooks:
+      - id: snakefmt
