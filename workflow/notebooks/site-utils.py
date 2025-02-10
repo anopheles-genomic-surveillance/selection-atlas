@@ -106,13 +106,16 @@ def load_signals(contig, start=None, stop=None):
     # Merge with cohorts data.
     df_signals = df_signals.merge(gdf_cohorts, on="cohort_id")
     
-    # Color by taxon.
-    color_dict = {
-        'gambiae': '#BEC4FF',
-        'coluzzii': '#D7B2A6',
-        'arabiensis': '#A6D7CA',
-    }
-    df_signals['color'] = df_signals['taxon'].map(color_dict).fillna('lightgrey')
+    # # Color by taxon.
+    # color_dict = {
+    #     'gambiae': '#BEC4FF',
+    #     'coluzzii': '#D7B2A6',
+    #     'arabiensis': '#A6D7CA',
+    # }
+    # df_signals['color'] = df_signals['taxon'].map(color_dict).fillna('lightgrey')
+    
+    # Fixed color.
+    df_signals["color"] = "#D7B2A6"
     
     # Filter to region.
     if start and stop:
@@ -131,7 +134,7 @@ def plot_signals(
     df, 
     contig, 
     patch_height=0.7, 
-    row_height=20,
+    row_height=10,
     min_height=60,
     genes_height=80,
     x_min=None, 
@@ -146,59 +149,46 @@ def plot_signals(
         x_max = ag3.genome_sequence(contig).shape[0]
 
     # Set up triangle shapes for bokeh patches glyphs.
-    left_xs = [
+    source = df.drop("geometry", axis=1).copy()
+    source["left_xs"] = [
         np.array([row.span2_pstart, row.focus_pstart, row.focus_pstart])
         for idx, row in df.iterrows()
     ]
-    left_ys = [
+    source["left_ys"] = [
         np.array([row.level + patch_height / 2, row.level, row.level + patch_height])
         for idx, row in df.iterrows()
     ]
-    right_xs = [
+    source["right_xs"] = [
         np.array([row.focus_pstop, row.focus_pstop, row.span2_pstop])
         for idx, row in df.iterrows()
     ]
-    right_ys = [
+    source["right_ys"] = [
         np.array([row.level, row.level + patch_height, row.level + patch_height / 2])
         for idx, row in df.iterrows()
     ]
-    center_xs = [
+    source["center_xs"] = [
         np.array([row.pcenter, row.pcenter])
         for idx, row in df.iterrows()
     ]
-    center_ys = [
+    source["center_ys"] = [
         np.array([row.level, row.level + patch_height])
         for idx, row in df.iterrows()
     ]
-
-    source = bkmod.ColumnDataSource(data={
-        'cohort': df.cohort_id,
-        'taxon': df.taxon,
-        'statistic': df.statistic,
-        'chromosome': df.contig,
-        'score': df.delta_i.astype(int),
-        'peak_start': df.span2_pstart,
-        'peak_stop': df.span2_pstop,
-        'focus_start': df.focus_pstart,
-        'focus_stop': df.focus_pstop,    
-        'left_xs':left_xs,
-        'left_ys':left_ys,
-        'right_xs':right_xs,
-        'right_ys':right_ys,
-        'center_xs': center_xs,
-        'center_ys': center_ys,
-        'bottom': df.level,
-        'mid': df.level + .5,
-        'top': df.level + patch_height,
-        'taxon_color':df.color
-    })
+    source["bottom"] = source["level"]
+    source["mid"] = source["level"] + 0.5
+    source["top"] = source["level"] + patch_height
+    source["score"] = source["delta_i"].astype(int)
+    source = bkmod.ColumnDataSource(data=source)
 
     hover = bkmod.HoverTool(
         tooltips=[
-            ("Cohort", '@cohort'),
+            ("Cohort", '@cohort_id'),
+            ("Taxon", "@taxon"),
+            ("Location", "@admin2_name, @admin1_name (@admin1_iso), @country"),
+            ("Date", "@year quarter @quarter"),
             ("Statistic", '@statistic'),
             ("Score", '@score'),
-            ("Focus", "@focus_start{,} - @focus_stop{,}"),
+            ("Focus", "@focus_pstart{,} - @focus_pstop{,} bp"),
         ],
     )
 
@@ -223,26 +213,24 @@ def plot_signals(
         xs='left_xs', 
         ys='left_ys', 
         source=source, 
-        color="taxon_color", 
+        color="color", 
         alpha=.7, 
         line_width=2, 
-        # legend_field='taxon',
     )
     fig1.patches(
         xs='right_xs', 
         ys='right_ys', 
         source=source, 
-        color="taxon_color", 
+        color="color", 
         alpha=.7, 
         line_width=2, 
-        # legend_field='taxon',
     )
 
     fig1.quad(
         bottom='bottom', 
         top='top', 
-        left='focus_start', 
-        right='focus_stop', 
+        left='focus_pstart', 
+        right='focus_pstop', 
         source=source, 
         color="red", 
         alpha=.5, 
