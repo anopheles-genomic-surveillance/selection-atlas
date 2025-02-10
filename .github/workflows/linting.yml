@@ -21,3 +21,6 @@ jobs:
 
       - name: Lint analysis workflow
         run: snakemake --snakefile workflow/analysis.smk --lint
+
+      - name: Lint site workflow
+        run: snakemake --snakefile workflow/site.smk --lint
