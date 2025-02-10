@@ -12,15 +12,15 @@ jobs:
       - name: Run pre-commit checks
         uses: pre-commit/action@v3.0.0
 
-      - name: Install conda environment
-        uses: mamba-org/setup-micromamba@v2
-        with:
-          environment-file: environment.yml
-          environment-name: selection-atlas
-          cache-downloads: true
-
-      # Park these for now, requires more recent conda installed
-      # within the environment.
+      # Park snakemake linting for now, requires more recent conda
+      # installed within the environment.
+      #
+      # - name: Install conda environment
+      #   uses: mamba-org/setup-micromamba@v2
+      #   with:
+      #     environment-file: environment.yml
+      #     environment-name: selection-atlas
+      #     cache-downloads: true
       #
       # - name: Lint analysis workflow
       #   shell: bash -l {0}
