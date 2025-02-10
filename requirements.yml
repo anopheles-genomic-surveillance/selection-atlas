@@ -18,7 +18,6 @@ dependencies:
     - jupyter-book
     - BioPython
     - google-cloud-sdk
-    - scikit-allel
     - bokeh
     - statsmodels
     - ipyleaflet

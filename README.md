@@ -38,7 +38,7 @@ If you are developing and need to add or upgrade a package, edit `requirements.y
 
 ```
 mamba env create --file requirements.yml
-mamba env export -f environment.yml -n selection-atlas-requirements --override-channels --channel conda-forge --channel bioconda
+conda env export -f environment.yml -n selection-atlas-requirements --override-channels --channel conda-forge --channel bioconda
 sed -i "s/selection-atlas-requirements/selection-atlas/" environment.yml
 ```
 
