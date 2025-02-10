@@ -22,3 +22,5 @@ include: "rules/gwss.smk"
 rule all:
     input:
         analyses=get_selection_atlas_outputs,
+    conda:
+        "environment.yml"

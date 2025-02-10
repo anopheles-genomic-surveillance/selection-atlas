@@ -19,10 +19,13 @@ jobs:
           environment-name: selection-atlas
           cache-downloads: true
 
-      - name: Lint analysis workflow
-        shell: bash -l {0}
-        run: snakemake --snakefile workflow/analysis.smk --lint
-
-      - name: Lint site workflow
-        shell: bash -l {0}
-        run: snakemake --snakefile workflow/site.smk --lint
+      # Park these for now, requires more recent conda installed
+      # within the environment.
+      #
+      # - name: Lint analysis workflow
+      #   shell: bash -l {0}
+      #   run: snakemake --snakefile workflow/analysis.smk --lint
+      #
+      # - name: Lint site workflow
+      #   shell: bash -l {0}
+      #   run: snakemake --snakefile workflow/site.smk --lint
