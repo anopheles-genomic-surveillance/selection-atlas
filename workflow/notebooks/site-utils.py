@@ -2,11 +2,14 @@
 # We expect this script to be executed via a %run magic command
 # from within a Jupyter notebook.
 
-# Standad library imports.
+# Imports. Use "noqa" to mark imports that aren't used within this
+# file but you want to be made available to the notebooks that run
+# this file. (Otherwise they will get stripped out by ruff.)
 from textwrap import dedent  # noqa
 import warnings
-
-# Third party library imports.
+from IPython.display import Markdown, HTML  # noqa
+from ipyleaflet import Map, Marker, basemaps, AwesomeIcon  # noqa
+from ipywidgets import HTML  # noqa
 import malariagen_data
 import numpy as np
 import pandas as pd
