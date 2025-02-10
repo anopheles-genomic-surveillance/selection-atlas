@@ -1,21 +1,23 @@
 name: linting
 on: pull_request
 jobs:
-    linting:
-        strategy:
-            fail-fast: true
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout source
-              uses: actions/checkout@v4
+  linting:
+    strategy:
+      fail-fast: true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
 
-            - name: Run pre-commit checks
-              uses: pre-commit/action@v3.0.0
+      - name: Run pre-commit checks
+        uses: pre-commit/action@v3.0.0
 
-            - uses: conda-incubator/setup-miniconda@v3
-              with:
-                environment-file: environment.yml
-                miniforge-version: latest
+      - name: Install conda environment
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: environment.yml
+          environment-name: selection-atlas
+          cache-downloads: true
 
-            - name: Lint analysis workflow
-              run: snakemake --snakefile workflow/analysis.smk --lint
+      - name: Lint analysis workflow
+        run: snakemake --snakefile workflow/analysis.smk --lint
