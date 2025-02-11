@@ -1,103 +1,13 @@
-def get_selection_atlas_site_files(wildcards):
-    """Construct a list of all files required to compile the Jupyter book site."""
-
-    # Read in cohorts dataframe.
-    df = gpd.read_file(final_cohorts_geojson_file)
-    cohorts = df["cohort_id"]  # .unique()
-    countries = df["country_alpha2"]
-    alerts = config["alerts"]
-
-    # Create a list of all required files.
-    site_files = expand(
-        [
-            f"{site_results_dir}/docs/_config.yml",
-            f"{site_results_dir}/docs/_toc.yml",
-            f"{site_results_dir}/docs/home-page.ipynb",
-            f"{site_results_dir}/docs/alerts.ipynb",
-            f"{site_results_dir}/docs/country/{{country}}.ipynb",
-            f"{site_results_dir}/docs/contig/ag-{{contig}}.ipynb",
-            f"{site_results_dir}/docs/cohort/{{cohort}}.ipynb",
-            f"{site_results_dir}/docs/alert/SA-AG-{{alert}}.ipynb",
-        ],
-        country=countries,
-        contig=contigs,
-        cohort=cohorts,
-        alert=alerts,
-    )
-
-    return site_files
-
-
-def get_h12_signal_files(wildcards):
-
-    # Read in cohorts.
-    df = pd.read_csv(final_cohorts_file)
-    cohorts = df["cohort_id"]
-
-    # Create a list of file paths.
-    paths = expand(
-        h12_signal_files,
-        cohort=cohorts,
-        contig=contigs,
-    )
-    return paths
-
-
-rule compile_site:
-    """Run the Jupyter book build."""
-    input:
-        get_selection_atlas_site_files,
-        config=workflow_config_file,
-        kernel=kernel_set_file,
-    output:
-        directory(jb_build_dir),
-    log:
-        "logs/compile_site.log",
-    shell:
-        f"""
-        jupyter-book build {jb_source_dir}
-        """
-
-
-rule prepare_site:
-    """Copy static files to the staging area, in preparation for running
-    the Jupyter book build."""
-    input:
-        f"{workflow.basedir}/docs/_config.yml",
-        f"{workflow.basedir}/docs/alerts.ipynb",
-        f"{workflow.basedir}/docs/favicon.ico",
-    output:
-        f"{site_results_dir}/docs/_config.yml",
-        f"{site_results_dir}/docs/alerts.ipynb",
-        f"{site_results_dir}/docs/favicon.ico",
-    shell:
-        f"""
-        mkdir -pv {site_results_dir}/docs/
-        cp -rv {workflow.basedir}/docs/* {site_results_dir}/docs/
-        """
-
-
-rule generate_toc:
-    input:
-        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
-        nb=f"{workflow.basedir}/notebooks/generate-toc.ipynb",
-        cohorts_geojson=final_cohorts_geojson_file,
-        config=workflow_config_file,
-        kernel=kernel_set_file,
-    output:
-        nb=f"{site_results_dir}/notebooks/generate-toc.ipynb",
-        toc=f"{site_results_dir}/docs/_toc.yml",
-    log:
-        "logs/generate_toc.log",
-    shell:
-        """
-        papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
-        """
+# Expects that variables and functions defined in workflow/scripts/setup.py
+# are available.
 
 
 rule home_page:
+    """
+    Generate the home page.
+    """
     input:
-        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
+        site_utils=f"{workflow.basedir}/notebooks/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/home-page.ipynb",
         config=workflow_config_file,
         cohorts_geojson=final_cohorts_geojson_file,
@@ -113,8 +23,11 @@ rule home_page:
 
 
 rule country_pages:
+    """
+    Generate the country pages.
+    """
     input:
-        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
+        site_utils=f"{workflow.basedir}/notebooks/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/country-page.ipynb",
         config=workflow_config_file,
         cohorts_geojson=final_cohorts_geojson_file,
@@ -130,8 +43,11 @@ rule country_pages:
 
 
 rule contig_pages:
+    """
+    Generate the contig pages.
+    """
     input:
-        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
+        site_utils=f"{workflow.basedir}/notebooks/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/contig-page.ipynb",
         config=workflow_config_file,
         cohorts_geojson=final_cohorts_geojson_file,
@@ -148,8 +64,11 @@ rule contig_pages:
 
 
 rule cohort_pages:
+    """
+    Generate the cohort pages.
+    """
     input:
-        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
+        site_utils=f"{workflow.basedir}/notebooks/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/cohort-page.ipynb",
         cohorts_geojson=final_cohorts_geojson_file,
         h12_gwss=f"{analysis_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
@@ -169,8 +88,11 @@ rule cohort_pages:
 
 
 rule alert_pages:
+    """
+    Generate the alert pages.
+    """
     input:
-        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
+        site_utils=f"{workflow.basedir}/notebooks/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/alert-page.ipynb",
         cohorts_geojson=final_cohorts_geojson_file,
         alert_config=f"{workflow.basedir}/alerts/{{alert}}.yaml",
@@ -188,6 +110,9 @@ rule alert_pages:
 
 
 rule process_headers_home:
+    """
+    Process the home page to fix page titles and remove papermill parameters.
+    """
     input:
         nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         homepage_nb=f"{site_results_dir}/notebooks/home-page.ipynb",
@@ -204,6 +129,9 @@ rule process_headers_home:
 
 
 rule process_headers_contig:
+    """
+    Process the contig pages to fix page titles and remove papermill parameters.
+    """
     input:
         nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         contig_nb=f"{site_results_dir}/notebooks/contig/ag-{{contig}}.ipynb",
@@ -220,6 +148,9 @@ rule process_headers_contig:
 
 
 rule process_headers_country:
+    """
+    Process the country pages to fix page titles and remove papermill parameters.
+    """
     input:
         nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         country_nb=f"{site_results_dir}/notebooks/country/{{country}}.ipynb",
@@ -236,6 +167,9 @@ rule process_headers_country:
 
 
 rule process_headers_cohort:
+    """
+    Process the cohort pages to fix page titles and remove papermill parameters.
+    """
     input:
         nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         cohort_nb=f"{site_results_dir}/notebooks/cohort/{{cohort}}.ipynb",
@@ -252,6 +186,9 @@ rule process_headers_cohort:
 
 
 rule process_headers_alert:
+    """
+    Process the alert pages to fix page titles and remove papermill parameters.
+    """
     input:
         nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         alert_nb=f"{site_results_dir}/notebooks/alert/{{alert}}.ipynb",
@@ -264,4 +201,63 @@ rule process_headers_alert:
     shell:
         """
         papermill {input.nb} {output.nb} -k selection-atlas -p input_nb {input.alert_nb} -p output_nb {output.alert_nb} -p wildcard {wildcards.alert} -p page_type alert -p analysis_version {analysis_version} 2> {log}
+        """
+
+
+rule generate_toc:
+    """
+    Generate the table of contents for the Jupyter book.
+    """
+    input:
+        site_utils=f"{workflow.basedir}/notebooks/page-setup.py",
+        nb=f"{workflow.basedir}/notebooks/generate-toc.ipynb",
+        cohorts_geojson=final_cohorts_geojson_file,
+        config=workflow_config_file,
+        kernel=kernel_set_file,
+    output:
+        nb=f"{site_results_dir}/notebooks/generate-toc.ipynb",
+        toc=f"{site_results_dir}/docs/_toc.yml",
+    log:
+        "logs/generate_toc.log",
+    shell:
+        """
+        papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
+        """
+
+
+rule prepare_site:
+    """
+    Copy static files to the staging area, in preparation for running
+    the Jupyter book build.
+    """
+    input:
+        f"{workflow.basedir}/docs/_config.yml",
+        f"{workflow.basedir}/docs/alerts.ipynb",
+        f"{workflow.basedir}/docs/favicon.ico",
+    output:
+        f"{site_results_dir}/docs/_config.yml",
+        f"{site_results_dir}/docs/alerts.ipynb",
+        f"{site_results_dir}/docs/favicon.ico",
+    shell:
+        f"""
+        mkdir -pv {site_results_dir}/docs/
+        cp -rv {workflow.basedir}/docs/* {site_results_dir}/docs/
+        """
+
+
+rule compile_site:
+    """
+    Run the Jupyter book build.
+    """
+    input:
+        get_selection_atlas_site_files,
+        config=workflow_config_file,
+        kernel=kernel_set_file,
+    output:
+        directory(jb_build_dir),
+    log:
+        "logs/compile_site.log",
+    shell:
+        f"""
+        jupyter-book build {jb_source_dir}
         """

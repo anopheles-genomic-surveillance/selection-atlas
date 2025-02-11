@@ -2,6 +2,9 @@
 # We expect this script to be executed via a %run magic command
 # from within a Jupyter notebook.
 
+# Expects that variables and functions defined in workflow/scripts/setup.py
+# are available.
+
 # Imports. Use "noqa" to mark imports that aren't used within this
 # file but you want to be made available to the notebooks that run
 # this file. (Otherwise they will get stripped out by ruff.)
@@ -9,41 +12,13 @@ from textwrap import dedent  # noqa
 from IPython.display import Markdown, HTML  # noqa
 from ipyleaflet import Map, Marker, basemaps, AwesomeIcon  # noqa
 from ipywidgets import HTML  # noqa
-import malariagen_data
-import numpy as np
-import pandas as pd
-from pyprojroot import here
-import geopandas as gpd
 import bokeh.layouts as bklay
 import bokeh.plotting as bkplt
 import bokeh.models as bkmod
-import yaml  # noqa
 from bokeh.io import output_notebook  # noqa
 
-# Expect that these variables will have been defined prior to
-# runnin this module.
-assert isinstance(analysis_version, str)
-assert isinstance(cohorts_analysis, str)
-assert isinstance(dask_scheduler, str)
-assert isinstance(contigs, list)
-
-# Setup access to malariagen data.
-results_cache_path = here() / "results" / "malariagen_data_cache"
-ag3 = malariagen_data.Ag3(
-    # Pin the version of the cohorts analysis for reproducibility.
-    cohorts_analysis=cohorts_analysis,
-    results_cache=results_cache_path.as_posix(),
-)
-
-# Read in the final cohorts dataframe.
-final_cohorts_path = (
-    here() / "results" / analysis_version / "analysis" / "final_cohorts.geojson"
-)
-gdf_cohorts = gpd.read_file(final_cohorts_path)
-
-# Paths to H12 and G123 calibration outputs.
-h12_calibration_dir = f"results/{analysis_version}/analysis/h12-calibration"
-g123_calibration_dir = f"results/{analysis_version}/analysis/g123-calibration"
+# Read in the cohorts geojson.
+gdf_cohorts = gpd.read_file(final_cohorts_geojson_file)
 
 
 def stack_overlaps(df, start_col, end_col, tolerance=10000):
@@ -67,14 +42,7 @@ def stack_overlaps(df, start_col, end_col, tolerance=10000):
 def load_cohort_signals(contig, cohort_id):
     """Load selection signals for a given contig and cohort."""
 
-    signals_path = (
-        here()
-        / "results"
-        / analysis_version
-        / "analysis"
-        / "h12-signal-detection"
-        / f"{cohort_id}_{contig}.csv"
-    )
+    signals_path = h12_signal_files.as_posix().format(contig=contig, cohort=cohort_id)
     try:
         df_signals = pd.read_csv(signals_path)
     except pd.errors.EmptyDataError:
