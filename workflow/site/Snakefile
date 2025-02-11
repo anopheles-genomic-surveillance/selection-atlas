@@ -14,11 +14,10 @@ analysis_version = config["analysis_version"]
 # Includes.
 include: "../rules/constants.py"
 include: "../rules/common.smk"
-include: "rules/cohorts.smk"
-include: "rules/gwss.smk"
+include: "rules/site.smk"
 
 
-# Main rule.
 rule all:
     input:
-        analyses=get_gwss_results,
+        # This is the output from the Jupyter book compilation.
+        jb_build_dir,
