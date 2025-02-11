@@ -7,7 +7,7 @@ rule home_page:
     Generate the home page.
     """
     input:
-        site_utils=f"{workflow.basedir}/notebooks/page-setup.py",
+        site_utils=f"{workflow.basedir}/scripts/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/home-page.ipynb",
         config=workflow_config_file,
         cohorts_geojson=final_cohorts_geojson_file,
@@ -27,7 +27,7 @@ rule country_pages:
     Generate the country pages.
     """
     input:
-        site_utils=f"{workflow.basedir}/notebooks/page-setup.py",
+        site_utils=f"{workflow.basedir}/scripts/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/country-page.ipynb",
         config=workflow_config_file,
         cohorts_geojson=final_cohorts_geojson_file,
@@ -47,11 +47,11 @@ rule contig_pages:
     Generate the contig pages.
     """
     input:
-        site_utils=f"{workflow.basedir}/notebooks/page-setup.py",
+        site_utils=f"{workflow.basedir}/scripts/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/contig-page.ipynb",
         config=workflow_config_file,
         cohorts_geojson=final_cohorts_geojson_file,
-        signals=get_h12_signal_detection_csvs,
+        signals=get_h12_signal_files,
         kernel=kernel_set_file,
     output:
         nb=f"{site_results_dir}/notebooks/contig/ag-{{contig}}.ipynb",
@@ -68,12 +68,12 @@ rule cohort_pages:
     Generate the cohort pages.
     """
     input:
-        site_utils=f"{workflow.basedir}/notebooks/page-setup.py",
+        site_utils=f"{workflow.basedir}/scripts/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/cohort-page.ipynb",
         cohorts_geojson=final_cohorts_geojson_file,
-        h12_gwss=f"{analysis_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
-        g123_gwss=f"{analysis_results_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
-        ihs_gwss=f"{analysis_results_dir}/notebooks/ihs-gwss-{{cohort}}.ipynb",
+        h12_gwss=f"{gwss_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
+        g123_gwss=f"{gwss_results_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
+        ihs_gwss=f"{gwss_results_dir}/notebooks/ihs-gwss-{{cohort}}.ipynb",
         signals=get_h12_signal_files,
         config=workflow_config_file,
         kernel=kernel_set_file,
@@ -92,7 +92,7 @@ rule alert_pages:
     Generate the alert pages.
     """
     input:
-        site_utils=f"{workflow.basedir}/notebooks/page-setup.py",
+        site_utils=f"{workflow.basedir}/scripts/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/alert-page.ipynb",
         cohorts_geojson=final_cohorts_geojson_file,
         alert_config=f"{workflow.basedir}/alerts/{{alert}}.yaml",
@@ -209,7 +209,7 @@ rule generate_toc:
     Generate the table of contents for the Jupyter book.
     """
     input:
-        site_utils=f"{workflow.basedir}/notebooks/page-setup.py",
+        site_utils=f"{workflow.basedir}/scripts/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/generate-toc.ipynb",
         cohorts_geojson=final_cohorts_geojson_file,
         config=workflow_config_file,
