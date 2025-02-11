@@ -5,7 +5,7 @@ import os
 
 
 # Open configuration file and set up utility variables.
-configfile: "workflow/config.yaml"
+configfile: "config/main.yaml"
 
 
 # Define global variables.

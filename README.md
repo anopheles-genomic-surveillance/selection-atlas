@@ -61,7 +61,7 @@ gcloud auth application-default login
 
 ## Running the analysis workflow
 
-The analysis workflow will run genome-wide selections over all cohorts found within the sample sets given in the workflow configuration. See the file `workflow/config.yaml` for workflow configuration.
+The analysis workflow will run genome-wide selections over all cohorts found within the sample sets given in the workflow configuration. See the file `config/main.yaml` for workflow configuration.
 
 Please note that this workflow will generally require a lot of computation and data access, and so needs to be run on a machine within Google Cloud in the us-central1 region. This can be achieved by using datalab-bespin or by using a Vertex AI Workbench VM.
 

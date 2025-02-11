@@ -4,7 +4,7 @@ import yaml
 
 
 # open configuration file
-configfile: "workflow/config.yaml"
+configfile: "config/main.yaml"
 
 
 configpath = workflow.configfiles[0]
