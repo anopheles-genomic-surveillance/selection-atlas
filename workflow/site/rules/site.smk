@@ -2,7 +2,10 @@ def get_selection_atlas_site_files(wildcards):
     """Construct a list of all files required to compile the Jupyter book site."""
 
     # Read in cohorts dataframe.
-    df = gpd.read_file(f"{analysis_results_dir}/final_cohorts.geojson")
+    df = gpd.read_file(final_cohorts_geojson_file)
+    cohorts = df["cohort_id"]  # .unique()
+    countries = df["country_alpha2"]
+    alerts = config["alerts"]
 
     # Create a list of all required files.
     site_files = expand(
@@ -16,67 +19,71 @@ def get_selection_atlas_site_files(wildcards):
             f"{site_results_dir}/docs/cohort/{{cohort}}.ipynb",
             f"{site_results_dir}/docs/alert/SA-AG-{{alert}}.ipynb",
         ],
-        country=df["country_alpha2"],
+        country=countries,
         contig=contigs,
-        cohort=df["cohort_id"].unique(),
-        alert=config["alerts"],
+        cohort=cohorts,
+        alert=alerts,
     )
 
     return site_files
 
 
-def get_h12_signal_detection_csvs(wildcards):
+def get_h12_signal_files(wildcards):
 
     # Read in cohorts.
-    df = pd.read_csv(f"{analysis_results_dir}/final_cohorts.csv")
+    df = pd.read_csv(final_cohorts_file)
+    cohorts = df["cohort_id"]
 
     # Create a list of file paths.
     paths = expand(
-        "{analysis_results_dir}/h12-signal-detection/{cohort}_{contig}.csv",
-        cohort=df["cohort_id"],
+        h12_signal_files,
+        cohort=cohorts,
         contig=contigs,
-        analysis_results_dir=analysis_results_dir,
     )
     return paths
 
 
 rule compile_site:
+    """Run the Jupyter book build."""
     input:
         get_selection_atlas_site_files,
-        config=config_file,
+        config=workflow_config_file,
+        kernel=kernel_set_file,
     output:
-        directory(f"{site_results_dir}/docs/_build"),
+        directory(jb_build_dir),
     log:
         "logs/compile_site.log",
     shell:
         f"""
-        jupyter-book build {site_results_dir}/docs
+        jupyter-book build {jb_source_dir}
         """
 
 
 rule prepare_site:
+    """Copy static files to the staging area, in preparation for running
+    the Jupyter book build."""
+    input:
+        f"{workflow.basedir}/docs/_config.yml",
+        f"{workflow.basedir}/docs/alerts.ipynb",
+        f"{workflow.basedir}/docs/favicon.ico",
     output:
         f"{site_results_dir}/docs/_config.yml",
         f"{site_results_dir}/docs/alerts.ipynb",
         f"{site_results_dir}/docs/favicon.ico",
-    input:
-        f"workflow/docs/_config.yml",
-        f"workflow/docs/alerts.ipynb",
-        f"workflow/docs/favicon.ico",
     shell:
         f"""
         mkdir -pv {site_results_dir}/docs/
-        cp -rv workflow/docs/* {site_results_dir}/docs/
+        cp -rv {workflow.basedir}/docs/* {site_results_dir}/docs/
         """
 
 
 rule generate_toc:
     input:
-        site_utils=f"workflow/notebooks/site-utils.py",
-        nb=f"workflow/notebooks/generate-toc.ipynb",
-        cohorts_geojson=f"{analysis_results_dir}/final_cohorts.geojson",
-        config=config_file,
-        kernel="results/kernel.set",
+        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
+        nb=f"{workflow.basedir}/notebooks/generate-toc.ipynb",
+        cohorts_geojson=final_cohorts_geojson_file,
+        config=workflow_config_file,
+        kernel=kernel_set_file,
     output:
         nb=f"{site_results_dir}/notebooks/generate-toc.ipynb",
         toc=f"{site_results_dir}/docs/_toc.yml",
@@ -90,11 +97,11 @@ rule generate_toc:
 
 rule home_page:
     input:
-        site_utils=f"workflow/notebooks/site-utils.py",
-        nb=f"workflow/notebooks/home-page.ipynb",
-        config=config_file,
-        cohorts_geojson=f"{analysis_results_dir}/final_cohorts.geojson",
-        kernel="results/kernel.set",
+        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
+        nb=f"{workflow.basedir}/notebooks/home-page.ipynb",
+        config=workflow_config_file,
+        cohorts_geojson=final_cohorts_geojson_file,
+        kernel=kernel_set_file,
     output:
         nb=f"{site_results_dir}/notebooks/home-page.ipynb",
     log:
@@ -107,11 +114,11 @@ rule home_page:
 
 rule country_pages:
     input:
-        site_utils=f"workflow/notebooks/site-utils.py",
-        nb=f"workflow/notebooks/country-page.ipynb",
-        config=config_file,
-        cohorts_geojson=f"{analysis_results_dir}/final_cohorts.geojson",
-        kernel="results/kernel.set",
+        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
+        nb=f"{workflow.basedir}/notebooks/country-page.ipynb",
+        config=workflow_config_file,
+        cohorts_geojson=final_cohorts_geojson_file,
+        kernel=kernel_set_file,
     output:
         nb=f"{site_results_dir}/notebooks/country/{{country}}.ipynb",
     log:
@@ -124,12 +131,12 @@ rule country_pages:
 
 rule contig_pages:
     input:
-        site_utils=f"workflow/notebooks/site-utils.py",
-        nb=f"workflow/notebooks/contig-page.ipynb",
-        config=config_file,
-        cohorts_geojson=f"{analysis_results_dir}/final_cohorts.geojson",
+        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
+        nb=f"{workflow.basedir}/notebooks/contig-page.ipynb",
+        config=workflow_config_file,
+        cohorts_geojson=final_cohorts_geojson_file,
         signals=get_h12_signal_detection_csvs,
-        kernel="results/kernel.set",
+        kernel=kernel_set_file,
     output:
         nb=f"{site_results_dir}/notebooks/contig/ag-{{contig}}.ipynb",
     log:
@@ -142,19 +149,15 @@ rule contig_pages:
 
 rule cohort_pages:
     input:
-        site_utils=f"workflow/notebooks/site-utils.py",
-        nb=f"workflow/notebooks/cohort-page.ipynb",
-        cohorts_geojson=f"{analysis_results_dir}/final_cohorts.geojson",
-        output_h12=f"{analysis_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
-        output_g123=f"{analysis_results_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
-        output_ihs=f"{analysis_results_dir}/notebooks/ihs-gwss-{{cohort}}.ipynb",
-        config=config_file,
-        signals=expand(
-            "{analysis_results_dir}/h12-signal-detection/{{cohort}}_{contig}.csv",
-            contig=contigs,
-            analysis_results_dir=analysis_results_dir,
-        ),
-        kernel="results/kernel.set",
+        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
+        nb=f"{workflow.basedir}/notebooks/cohort-page.ipynb",
+        cohorts_geojson=final_cohorts_geojson_file,
+        h12_gwss=f"{analysis_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
+        g123_gwss=f"{analysis_results_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
+        ihs_gwss=f"{analysis_results_dir}/notebooks/ihs-gwss-{{cohort}}.ipynb",
+        signals=get_h12_signal_files,
+        config=workflow_config_file,
+        kernel=kernel_set_file,
     output:
         nb=f"{site_results_dir}/notebooks/cohort/{{cohort}}.ipynb",
     log:
@@ -167,13 +170,13 @@ rule cohort_pages:
 
 rule alert_pages:
     input:
-        site_utils=f"workflow/notebooks/site-utils.py",
-        nb=f"workflow/notebooks/alert-page.ipynb",
-        cohorts_geojson=f"{analysis_results_dir}/final_cohorts.geojson",
-        config=config_file,
-        alert_config=f"workflow/alerts/{{alert}}.yaml",
-        signals=get_h12_signal_detection_csvs,
-        kernel="results/kernel.set",
+        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
+        nb=f"{workflow.basedir}/notebooks/alert-page.ipynb",
+        cohorts_geojson=final_cohorts_geojson_file,
+        alert_config=f"{workflow.basedir}/alerts/{{alert}}.yaml",
+        signals=get_h12_signal_files,
+        config=workflow_config_file,
+        kernel=kernel_set_file,
     output:
         nb=f"{site_results_dir}/notebooks/alert/{{alert}}.ipynb",
     log:
@@ -186,9 +189,9 @@ rule alert_pages:
 
 rule process_headers_home:
     input:
-        nb="workflow/notebooks/add-headers.ipynb",
+        nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         homepage_nb=f"{site_results_dir}/notebooks/home-page.ipynb",
-        kernel="results/kernel.set",
+        kernel=kernel_set_file,
     output:
         nb=f"{site_results_dir}/notebooks/add_headers/home-page.ipynb",
         homepage_nb=f"{site_results_dir}/docs/home-page.ipynb",
@@ -202,9 +205,9 @@ rule process_headers_home:
 
 rule process_headers_contig:
     input:
-        nb="workflow/notebooks/add-headers.ipynb",
+        nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         contig_nb=f"{site_results_dir}/notebooks/contig/ag-{{contig}}.ipynb",
-        kernel="results/kernel.set",
+        kernel=kernel_set_file,
     output:
         nb=f"{site_results_dir}/notebooks/add_headers/{{contig}}.ipynb",
         contig_nb=f"{site_results_dir}/docs/contig/ag-{{contig}}.ipynb",
@@ -218,9 +221,9 @@ rule process_headers_contig:
 
 rule process_headers_country:
     input:
-        nb="workflow/notebooks/add-headers.ipynb",
+        nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         country_nb=f"{site_results_dir}/notebooks/country/{{country}}.ipynb",
-        kernel="results/kernel.set",
+        kernel=kernel_set_file,
     output:
         nb=f"{site_results_dir}/notebooks/add_headers/{{country}}.ipynb",
         country_nb=f"{site_results_dir}/docs/country/{{country}}.ipynb",
@@ -234,9 +237,9 @@ rule process_headers_country:
 
 rule process_headers_cohort:
     input:
-        nb="workflow/notebooks/add-headers.ipynb",
+        nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         cohort_nb=f"{site_results_dir}/notebooks/cohort/{{cohort}}.ipynb",
-        kernel="results/kernel.set",
+        kernel=kernel_set_file,
     output:
         nb=f"{site_results_dir}/notebooks/add_headers/{{cohort}}.ipynb",
         cohort_nb=f"{site_results_dir}/docs/cohort/{{cohort}}.ipynb",
@@ -250,9 +253,9 @@ rule process_headers_cohort:
 
 rule process_headers_alert:
     input:
-        nb="workflow/notebooks/add-headers.ipynb",
+        nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         alert_nb=f"{site_results_dir}/notebooks/alert/{{alert}}.ipynb",
-        kernel="results/kernel.set",
+        kernel=kernel_set_file,
     output:
         nb=f"{site_results_dir}/notebooks/add_headers/{{alert}}.ipynb",
         alert_nb=f"{site_results_dir}/docs/alert/{{alert}}.ipynb",

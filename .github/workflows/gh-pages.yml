@@ -43,8 +43,8 @@ jobs:
 
       # - name: Download results from GCS
       #   run: |
-      #       mkdir -pv results/{analysis_version}
-      #       gcloud storage rsync -r gs://vo_selection_atlas_dev_us_central1/results/{analysis_version}/ results/{analysis_version}/
+      #       mkdir -pv results/{analysis_version}/gwss
+      #       gcloud storage rsync -r gs://vo_selection_atlas_dev_us_central1/results/{analysis_version}/gwss/ results/{analysis_version}/gwss/
       #       find results -type f -exec touch {} +
 
       # - name: Run site workflow

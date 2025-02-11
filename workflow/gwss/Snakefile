@@ -1,0 +1,23 @@
+configfile: "config/main.yaml"
+
+
+# Path to workflow config file.
+workflow_config_file = workflow.configfiles[0]
+
+# Access configuration variables and make available as global variables for convenience.
+contigs = config["contigs"]
+analysis_version = config["analysis_version"]
+dask_scheduler = config["dask_scheduler"]
+cohorts_analysis = config["cohorts_analysis"]
+
+
+# Includes.
+include: "../scripts/setup.py"
+include: "../rules/common.smk"
+include: "rules/gwss.smk"
+
+
+# Main rule.
+rule all:
+    input:
+        analyses=get_gwss_results,

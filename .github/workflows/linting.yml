@@ -22,10 +22,10 @@ jobs:
       #     environment-name: selection-atlas
       #     cache-downloads: true
       #
-      # - name: Lint analysis workflow
+      # - name: Lint gwss workflow
       #   shell: bash -l {0}
-      #   run: snakemake --snakefile workflow/analysis/Snakefile --lint
+      #   run: snakemake --snakefile workflow/gwss/Snakefile --lint
       #
       # - name: Lint site workflow
       #   shell: bash -l {0}
-      #   run: snakemake --snakefile workflow/site.smk --lint
+      #   run: snakemake --snakefile workflow/site/Snakefile --lint

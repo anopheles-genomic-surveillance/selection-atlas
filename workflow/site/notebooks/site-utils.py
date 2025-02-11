@@ -6,7 +6,6 @@
 # file but you want to be made available to the notebooks that run
 # this file. (Otherwise they will get stripped out by ruff.)
 from textwrap import dedent  # noqa
-import warnings
 from IPython.display import Markdown, HTML  # noqa
 from ipyleaflet import Map, Marker, basemaps, AwesomeIcon  # noqa
 from ipywidgets import HTML  # noqa
@@ -14,7 +13,6 @@ import malariagen_data
 import numpy as np
 import pandas as pd
 from pyprojroot import here
-import dask
 import geopandas as gpd
 import bokeh.layouts as bklay
 import bokeh.plotting as bkplt
@@ -24,15 +22,10 @@ from bokeh.io import output_notebook  # noqa
 
 # Expect that these variables will have been defined prior to
 # runnin this module.
-assert dask_scheduler is not None
-assert analysis_version is not None
-assert cohorts_analysis is not None
-
-# Configure dask.
-dask.config.set(scheduler=dask_scheduler)
-
-# Ignore all warnings.
-warnings.filterwarnings("ignore")
+assert isinstance(analysis_version, str)
+assert isinstance(cohorts_analysis, str)
+assert isinstance(dask_scheduler, str)
+assert isinstance(contigs, list)
 
 # Setup access to malariagen data.
 results_cache_path = here() / "results" / "malariagen_data_cache"

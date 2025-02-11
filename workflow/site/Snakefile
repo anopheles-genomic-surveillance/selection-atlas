@@ -1,0 +1,23 @@
+configfile: "config/main.yaml"
+
+
+# Path to workflow config file.
+workflow_config_file = workflow.configfiles[0]
+
+# Contigs to be analysed.
+contigs = config["contigs"]
+
+# Analysis version identifier.
+analysis_version = config["analysis_version"]
+
+
+# Includes.
+include: "../scripts/setup.py"
+include: "../rules/common.smk"
+include: "rules/site.smk"
+
+
+rule all:
+    input:
+        # This is the output from the Jupyter book compilation.
+        jb_build_dir,
