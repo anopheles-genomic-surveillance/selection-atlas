@@ -35,6 +35,7 @@ dependencies:
     - pre-commit
     - ruff
     - snakefmt
+    - conda
     - pip
     - pip:
           - jsonschema>=3.1.0
