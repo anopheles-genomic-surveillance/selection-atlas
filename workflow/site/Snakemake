@@ -9,11 +9,11 @@ configfile: "config/main.yaml"
 
 
 # Define global variables.
-configpath = workflow.configfiles[0]
-chromosomes = config["contigs"]
+config_file = workflow.configfiles[0]
+contigs = config["contigs"]
 analysis_version = config["analysis_version"]
-analysis_dir = f"results/{analysis_version}/analysis"
-site_dir = f"results/{analysis_version}/site"
+analysis_results_dir = f"results/{analysis_version}/analysis"
+site_results_dir = f"results/{analysis_version}/site"
 
 
 include: "rules/site.smk"
@@ -22,7 +22,7 @@ include: "rules/site.smk"
 rule all:
     input:
         # This is the output from the Jupyter book compilation.
-        f"{site_dir}/docs/_build",
+        f"{site_results_dir}/docs/_build",
 
 
 rule set_kernel:
