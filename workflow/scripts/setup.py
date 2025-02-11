@@ -12,6 +12,7 @@ import numpy as np  # noqa
 import pandas as pd  # noqa
 import geopandas as gpd  # noqa
 import iso3166  # noqa
+import matplotlib.pyplot as plt  # noqa
 
 # Locate repo root dir.
 root = here()
