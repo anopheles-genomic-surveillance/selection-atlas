@@ -59,31 +59,31 @@ gcloud auth login
 gcloud auth application-default login
 ```
 
-## Running the analysis workflow
+## Running the gwss workflow
 
-The analysis workflow will run genome-wide selections over all cohorts found within the sample sets given in the workflow configuration. See the file `config/main.yaml` for workflow configuration.
+The gwss workflow will run genome-wide selections over all cohorts found within the sample sets given in the workflow configuration. See the file `config/main.yaml` for workflow configuration.
 
 Please note that this workflow will generally require a lot of computation and data access, and so needs to be run on a machine within Google Cloud in the us-central1 region. This can be achieved by using datalab-bespin or by using a Vertex AI Workbench VM.
 
 During development, you may want to run the workflow without any parallelisation:
 
 ```
-snakemake -c1 --snakefile workflow/analysis/Snakefile
+snakemake -c1 --snakefile workflow/gwss/Snakefile
 ```
 
 To run the workflow fully, you can try running with parallelisation. Note this will need to be on a machine with sufficient cores and memory. E.g.:
 
 ```
-snakemake -c4 --snakefile workflow/analysis/Snakefile
+snakemake -c4 --snakefile workflow/gwss/Snakefile
 ```
 
-The outputs of the analysis workflow will be stored in the "results" folder, under a sub-folder named according to the "analysis_version" parameter given in the workflow configuration file.
+The outputs of the gwss workflow will be stored in the "results" folder, under a sub-folder named according to the "analysis_version" parameter given in the workflow configuration file.
 
 Remember that if you make any significant changes to the configuration and rerun the workflow, change the "analysis_version" parameter in the workflow configuration file.
 
-## Saving/restoring outputs of a successful analysis workflow run
+## Saving/restoring outputs of a successful gwss workflow run
 
-After a successful run of the analysis workflow, copy the workflow outputs to GCS. This will allow you or other developers to continue working to improve the site based on these outputs, without having to do a complete analysis workflow run themselves.
+After a successful run of the gwss workflow, copy the workflow outputs to GCS. This will allow you or other developers to continue working to improve the site based on these outputs, without having to do a complete gwss workflow run themselves.
 
 With the selection-atlas environment activated, copy workflow outputs to GCS:
 
@@ -100,7 +100,7 @@ find results -type f -exec touch {} +
 
 ## Running the site workflow
 
-The site workflow will use the outputs from the analysis-workflow and compile all of the content for the selection atlas website. To run this workflow:
+The site workflow will use the outputs from the gwss workflow and compile all of the content for the selection atlas website. To run this workflow:
 
 ```
 MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site.smk

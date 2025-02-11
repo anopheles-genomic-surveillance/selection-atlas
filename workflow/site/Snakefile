@@ -12,7 +12,7 @@ analysis_version = config["analysis_version"]
 
 
 # Includes.
-include: "../rules/constants.py"
+include: "../scripts/setup.py"
 include: "../rules/common.smk"
 include: "rules/site.smk"
 
