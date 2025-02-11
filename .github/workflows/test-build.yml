@@ -47,7 +47,7 @@ jobs:
         shell: bash -l {0}
         run: |
           snakemake -c1 --configfile ci/config.yaml --snakefile workflow/site.smk --show-failed-logs
-          
+
       - name: Save results cache
         uses: actions/cache/save@v3
         if: always()

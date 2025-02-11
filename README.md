@@ -14,11 +14,11 @@ The following documents capture early design work and implementation planning. T
 
 ## Conda environment management
 
-In order to develop or contribute to the selection atlas, you will need to create a conda environment on the system where you are working. 
+In order to develop or contribute to the selection atlas, you will need to create a conda environment on the system where you are working.
 
 Instructions below assume you have a recent version of conda and mamba installed. Alternatively you could use micromamba instead of conda and mamba.
 
-The file `environment.yml` has a fully pinned conda environment specification. This is the environment to use for development work and running workflows. 
+The file `environment.yml` has a fully pinned conda environment specification. This is the environment to use for development work and running workflows.
 
 To create and activate an environment on your own computer:
 
@@ -38,8 +38,16 @@ If you are developing and need to add or upgrade a package, edit `requirements.y
 
 ```
 mamba env create --file requirements.yml
-mamba env export -f environment.yml -n selection-atlas-requirements --override-channels --channel conda-forge --channel bioconda
+conda env export -f environment.yml -n selection-atlas-requirements --override-channels --channel conda-forge --channel bioconda
 sed -i "s/selection-atlas-requirements/selection-atlas/" environment.yml
+```
+
+## Pre-commit hooks
+
+There are several pre-commit hooks configured to automatically lint and format source code files, including Python files, Jupyter notebooks and Snakemake files. These will be automatically run before any code is committed if you install pre-commit hooks:
+
+```
+pre-commit install
 ```
 
 ## Authenticating with Google Cloud
@@ -69,13 +77,13 @@ To run the workflow fully, you can try running with parallelisation. Note this w
 snakemake -c4 --snakefile workflow/analysis.smk
 ```
 
-The outputs of the analysis workflow will be stored in the "build" folder, under a sub-folder named according to the "analysis_version" parameter given in the workflow configuration file. 
+The outputs of the analysis workflow will be stored in the "build" folder, under a sub-folder named according to the "analysis_version" parameter given in the workflow configuration file.
 
 Remember that if you make any significant changes to the configuration and rerun the workflow, change the "analysis_version" parameter in the workflow configuration file.
 
 ## Saving/restoring outputs of a successful analysis workflow run
 
-After a successful run of the analysis workflow, copy the workflow outputs to GCS. This will allow you or other developers to continue working to improve the site based on these outputs, without having to do a complete analysis workflow run themselves. 
+After a successful run of the analysis workflow, copy the workflow outputs to GCS. This will allow you or other developers to continue working to improve the site based on these outputs, without having to do a complete analysis workflow run themselves.
 
 With the selection-atlas environment activated, copy workflow outputs to GCS:
 

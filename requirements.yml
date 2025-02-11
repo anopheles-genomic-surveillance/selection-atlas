@@ -3,7 +3,7 @@ channels:
     - conda-forge
     - bioconda
 dependencies:
-    - python=3.11
+    - python=3.12
     - numpy
     - snakemake
     - papermill
@@ -18,7 +18,6 @@ dependencies:
     - jupyter-book
     - BioPython
     - google-cloud-sdk
-    - scikit-allel
     - bokeh
     - statsmodels
     - ipyleaflet
@@ -31,6 +30,11 @@ dependencies:
     - pyprojroot
     - geopandas
     - iso3166
+    - pytorch-cpu
+    - nomkl
+    - pre-commit
+    - ruff
+    - snakefmt
     - pip
     - pip:
           - jsonschema>=3.1.0

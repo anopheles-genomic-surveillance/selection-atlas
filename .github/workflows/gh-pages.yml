@@ -1,62 +1,66 @@
 name: deploy-site
 
-on: pull_request
+on:
+  push:
+    branches:
+      - master
+
 
 jobs:
   deploy-docs:
     runs-on: ubuntu-latest
     steps:
-    - name: Check out code
-      uses: actions/checkout@v3
+      - name: Check out code
+        uses: actions/checkout@v3
 
-    # Install dependencies
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.10"
+      # Install dependencies
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
 
-    - name: Install conda environment
-       uses: mamba-org/setup-micromamba@v2
-       with:
-         environment-file: environment.yml
-         environment-name: selection-atlas
-         cache-downloads: true
-         
-    # set up google cloud
-    - id: auth
-      name: Set up Google Cloud authentication
-      uses: google-github-actions/auth@v2
-      with:
-        credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+      - name: Install conda environment
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: environment.yml
+          environment-name: selection-atlas
+          cache-downloads: true
 
-    - name: Set up Google Cloud SDK
-      uses: google-github-actions/setup-gcloud@v2
-      with:
-        version: >= 363.0.0
+      # set up google cloud
+      - id: auth
+        name: Set up Google Cloud authentication
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
 
-    - name: Check gcloud CLI
-       run: gcloud info
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          version: ">= 363.0.0"
 
-    - name: Download build from GCS
-       run: |
-           mkdir build
-           gsutil -m rsync -r gs://vo_selection_atlas_dev_us_central1/build/ build/
-           find build -type f -exec touch {} +
-           find build/*/notebooks -type f -exec touch {} +
-           find build/*/notebooks/cohort -type f -exec touch {} +
+      - name: Check gcloud CLI
+        run: gcloud info
 
-    - name: Build sel-atlas site
-      uses: snakemake/snakemake-github-action@v1
-      with:
-        directory: '.'
-        snakefile: 'workflow/Snakefile-site-build.smk'
-        args: '--cores 1 --conda-cleanup-pkgs cache'
-        stagein: '' # additional preliminary commands to run (can be multiline)
-        show-disk-usage-on-error: true
-    
-    # Push the book's HTML to github-pages
-    - name: GitHub Pages action
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: docs/_build/html
+      - name: Download build from GCS
+        run: |
+            mkdir build
+            gsutil -m rsync -r gs://vo_selection_atlas_dev_us_central1/build/ build/
+            find build -type f -exec touch {} +
+            find build/*/notebooks -type f -exec touch {} +
+            find build/*/notebooks/cohort -type f -exec touch {} +
+
+      - name: Build sel-atlas site
+        uses: snakemake/snakemake-github-action@v1
+        with:
+          directory: '.'
+          snakefile: 'workflow/Snakefile-site-build.smk'
+          args: '--cores 1 --conda-cleanup-pkgs cache'
+          stagein: '' # additional preliminary commands to run (can be multiline)
+          show-disk-usage-on-error: true
+
+      # Push the book's HTML to github-pages
+      - name: GitHub Pages action
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/_build/html
