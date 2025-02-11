@@ -60,20 +60,20 @@ rule prepare_site:
         f"{site_dir}/docs/alerts.ipynb",
         f"{site_dir}/docs/favicon.ico",
     input:
-        f"{workflow.basedir}/docs/_config.yml",
-        f"{workflow.basedir}/docs/alerts.ipynb",
-        f"{workflow.basedir}/docs/favicon.ico",
+        f"workflow/docs/_config.yml",
+        f"workflow/docs/alerts.ipynb",
+        f"workflow/docs/favicon.ico",
     shell:
         f"""
         mkdir -pv {site_dir}/docs/
-        cp -rv {workflow.basedir}/docs/* {site_dir}/docs/
+        cp -rv workflow/docs/* {site_dir}/docs/
         """
 
 
 rule generate_toc:
     input:
-        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
-        nb=f"{workflow.basedir}/notebooks/generate-toc.ipynb",
+        site_utils=f"workflow/notebooks/site-utils.py",
+        nb=f"workflow/notebooks/generate-toc.ipynb",
         cohorts_geojson=f"{analysis_dir}/final_cohorts.geojson",
         config=configpath,
         kernel="results/kernel.set",
@@ -90,8 +90,8 @@ rule generate_toc:
 
 rule home_page:
     input:
-        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
-        nb=f"{workflow.basedir}/notebooks/home-page.ipynb",
+        site_utils=f"workflow/notebooks/site-utils.py",
+        nb=f"workflow/notebooks/home-page.ipynb",
         config=configpath,
         cohorts_geojson=f"{analysis_dir}/final_cohorts.geojson",
         kernel="results/kernel.set",
@@ -107,8 +107,8 @@ rule home_page:
 
 rule country_pages:
     input:
-        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
-        nb=f"{workflow.basedir}/notebooks/country-page.ipynb",
+        site_utils=f"workflow/notebooks/site-utils.py",
+        nb=f"workflow/notebooks/country-page.ipynb",
         config=configpath,
         cohorts_geojson=f"{analysis_dir}/final_cohorts.geojson",
         kernel="results/kernel.set",
@@ -124,8 +124,8 @@ rule country_pages:
 
 rule chromosome_pages:
     input:
-        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
-        nb=f"{workflow.basedir}/notebooks/chromosome-page.ipynb",
+        site_utils=f"workflow/notebooks/site-utils.py",
+        nb=f"workflow/notebooks/chromosome-page.ipynb",
         config=configpath,
         cohorts_geojson=f"{analysis_dir}/final_cohorts.geojson",
         signals=get_h12_signal_detection_csvs,
@@ -142,8 +142,8 @@ rule chromosome_pages:
 
 rule cohort_pages:
     input:
-        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
-        nb=f"{workflow.basedir}/notebooks/cohort-page.ipynb",
+        site_utils=f"workflow/notebooks/site-utils.py",
+        nb=f"workflow/notebooks/cohort-page.ipynb",
         cohorts_geojson=f"{analysis_dir}/final_cohorts.geojson",
         output_h12=f"{analysis_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
         output_g123=f"{analysis_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
@@ -167,11 +167,11 @@ rule cohort_pages:
 
 rule alert_pages:
     input:
-        site_utils=f"{workflow.basedir}/notebooks/site-utils.py",
-        nb=f"{workflow.basedir}/notebooks/alert-page.ipynb",
+        site_utils=f"workflow/notebooks/site-utils.py",
+        nb=f"workflow/notebooks/alert-page.ipynb",
         cohorts_geojson=f"{analysis_dir}/final_cohorts.geojson",
         config=configpath,
-        alert_config=f"{workflow.basedir}/alerts/{{alert}}.yaml",
+        alert_config=f"workflow/alerts/{{alert}}.yaml",
         signals=get_h12_signal_detection_csvs,
         kernel="results/kernel.set",
     output:

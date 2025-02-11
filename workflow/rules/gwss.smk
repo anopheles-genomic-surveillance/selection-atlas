@@ -4,7 +4,7 @@ rule h12_calibration:
     Calibrate the window size for each cohort.
     """
     input:
-        nb=f"{workflow.basedir}/notebooks/h12-calibration.ipynb",
+        nb=f"workflow/notebooks/h12-calibration.ipynb",
         config=configpath,
     output:
         nb=f"{analysis_dir}/notebooks/h12-calibration-{{cohort}}.ipynb",
@@ -23,7 +23,7 @@ rule h12_gwss:
     Run the H12 GWSS
     """
     input:
-        template=f"{workflow.basedir}/notebooks/h12-gwss.ipynb",
+        template=f"workflow/notebooks/h12-gwss.ipynb",
         window_size=f"{analysis_dir}/h12-calibration/{{cohort}}.yaml",
         cohorts=f"{analysis_dir}/final_cohorts.csv",
         config=configpath,
@@ -43,9 +43,9 @@ rule h12_signal_detection:
     Detect peaks/signals from the H12 GWSS data
     """
     input:
-        template=f"{workflow.basedir}/notebooks/h12-signal-detection.ipynb",
+        template=f"workflow/notebooks/h12-signal-detection.ipynb",
         gwss_nb=f"{analysis_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
-        utils_nb=f"{workflow.basedir}/notebooks/peak-utils.ipynb",
+        utils_nb=f"workflow/notebooks/peak-utils.ipynb",
         cohorts=f"{analysis_dir}/final_cohorts.csv",
         config=configpath,
     output:
@@ -65,7 +65,7 @@ rule g123_calibration:
     Calibrate the window size for each cohort.
     """
     input:
-        nb=f"{workflow.basedir}/notebooks/g123-calibration.ipynb",
+        nb=f"workflow/notebooks/g123-calibration.ipynb",
         config=configpath,
     output:
         nb=f"{analysis_dir}/notebooks/g123-calibration-{{cohort}}.ipynb",
@@ -84,7 +84,7 @@ rule g123_gwss:
     Run the g123 GWSS
     """
     input:
-        template=f"{workflow.basedir}/notebooks/g123-gwss.ipynb",
+        template=f"workflow/notebooks/g123-gwss.ipynb",
         window_size=f"{analysis_dir}/g123-calibration/{{cohort}}.yaml",
         cohorts=f"{analysis_dir}/final_cohorts.csv",
         config=configpath,
@@ -104,7 +104,7 @@ rule ihs_gwss:
     Run the iHS GWSS
     """
     input:
-        template=f"{workflow.basedir}/notebooks/ihs-gwss.ipynb",
+        template=f"workflow/notebooks/ihs-gwss.ipynb",
         cohorts=f"{analysis_dir}/final_cohorts.csv",
         config=configpath,
     output:

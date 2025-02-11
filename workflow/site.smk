@@ -28,7 +28,7 @@ rule all:
 rule set_kernel:
     # Rule to force setting a kernel, required for papermill.
     input:
-        f"{workflow.basedir}/../environment.yml",
+        f"workflow/envs/selection-atlas.yaml",
     output:
         touch("results/kernel.set"),
     log:

@@ -1,7 +1,7 @@
 
 rule set_kernel:
     input:
-        f"{workflow.basedir}/../environment.yml",
+        f"workflow/envs/selection-atlas.yaml",
     output:
         touch("results/kernel.set"),
     log:
