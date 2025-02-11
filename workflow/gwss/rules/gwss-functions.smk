@@ -15,7 +15,7 @@ def get_h12_calibration_files(wildcards):
 
 
 def get_h12_signal_files(wildcards):
-    df = pd.read_csv(checkpoints.final_cohorts.get().output.final_cohorts)
+    df = pd.read_csv(checkpoints.finalize_cohorts.get().output.final_cohorts)
     cohorts = df["cohort_id"]
     paths = expand(
         h12_signal_files,
@@ -29,7 +29,7 @@ def get_gwss_results(wildcards):
     """Collect all expected result files from the GWSS."""
 
     # df = gpd.read_file(checkpoints.geolocate_cohorts.get().output.final_cohorts_geojson)
-    df = pd.read_csv(checkpoints.final_cohorts.get().output.final_cohorts)
+    df = pd.read_csv(checkpoints.finalize_cohorts.get().output.final_cohorts)
     cohorts = df["cohort_id"]
 
     # Define paths to output files.

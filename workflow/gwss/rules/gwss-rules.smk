@@ -13,8 +13,6 @@ checkpoint setup_cohorts:
     output:
         nb=f"{gwss_results_dir}/notebooks/setup-cohorts.ipynb",
         cohorts=cohorts_file,
-    conda:
-        environment_file
     log:
         "logs/setup_cohorts.log",
     shell:
@@ -24,7 +22,9 @@ checkpoint setup_cohorts:
 
 
 rule h12_calibration:
-    """Calibrate the window size for each cohort."""
+    """
+    Calibrate the window size for each cohort.
+    """
     input:
         nb=f"{workflow.basedir}/notebooks/h12-calibration.ipynb",
         config=workflow_config_file,
@@ -63,10 +63,13 @@ checkpoint finalize_cohorts:
 
 
 checkpoint geolocate_cohorts:
+    """
+    Add geoboundaries data for each cohort.
+    """
     input:
         nb=f"{workflow.basedir}/notebooks/geolocate-cohorts.ipynb",
         config=workflow_config_file,
-        final_cohorts=lambda wildcards: checkpoints.final_cohorts.get().output.final_cohorts,
+        final_cohorts=lambda wildcards: checkpoints.finalize_cohorts.get().output.final_cohorts,
         kernel=kernel_set_file,
     output:
         nb=f"{gwss_results_dir}/notebooks/geolocate-cohorts.ipynb",
@@ -80,7 +83,9 @@ checkpoint geolocate_cohorts:
 
 
 rule h12_gwss:
-    """Run the H12 GWSS."""
+    """
+    Run the H12 GWSS.
+    """
     input:
         nb=f"{workflow.basedir}/notebooks/h12-gwss.ipynb",
         calibration=h12_calibration_files,
@@ -99,7 +104,9 @@ rule h12_gwss:
 
 
 rule h12_signal_detection:
-    """Detect peaks/signals from the H12 GWSS data."""
+    """
+    Detect peaks/signals from the H12 GWSS data.
+    """
     input:
         nb=f"{workflow.basedir}/notebooks/h12-signal-detection.ipynb",
         gwss_nb=f"{gwss_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
@@ -120,7 +127,9 @@ rule h12_signal_detection:
 
 
 rule g123_calibration:
-    """Calibrate the window size for each cohort."""
+    """
+    Calibrate the window size for each cohort.
+    """
     input:
         nb=f"{workflow.basedir}/notebooks/g123-calibration.ipynb",
         config=workflow_config_file,
@@ -138,7 +147,9 @@ rule g123_calibration:
 
 
 rule g123_gwss:
-    """Run the G123 GWSS."""
+    """
+    Run the G123 GWSS.
+    """
     input:
         nb=f"{workflow.basedir}/notebooks/g123-gwss.ipynb",
         calibration=g123_calibration_files,
@@ -157,7 +168,9 @@ rule g123_gwss:
 
 
 rule ihs_gwss:
-    """Run the iHS GWSS."""
+    """
+    Run the iHS GWSS.
+    """
     input:
         nb=f"{workflow.basedir}/notebooks/ihs-gwss.ipynb",
         cohorts=final_cohorts_file,
