@@ -10,7 +10,7 @@ configfile: "config/main.yaml"
 
 # Define global variables.
 configpath = workflow.configfiles[0]
-chromosomes = config["contigs"]
+contigs = config["contigs"]
 analysis_version = config["analysis_version"]
 analysis_dir = f"results/{analysis_version}/analysis"
 site_dir = f"results/{analysis_version}/site"

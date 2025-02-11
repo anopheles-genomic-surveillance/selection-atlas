@@ -12,12 +12,12 @@ def get_selection_atlas_site_files(wildcards):
             f"{site_dir}/docs/home-page.ipynb",
             f"{site_dir}/docs/alerts.ipynb",
             f"{site_dir}/docs/country/{{country}}.ipynb",
-            f"{site_dir}/docs/genome/ag-{{chrom}}.ipynb",
+            f"{site_dir}/docs/contig/ag-{{contig}}.ipynb",
             f"{site_dir}/docs/cohort/{{cohort}}.ipynb",
             f"{site_dir}/docs/alert/SA-AG-{{alert}}.ipynb",
         ],
         country=df["country_alpha2"],
-        chrom=chromosomes,
+        contig=contigs,
         cohort=df["cohort_id"].unique(),
         alert=config["alerts"],
     )
@@ -34,7 +34,7 @@ def get_h12_signal_detection_csvs(wildcards):
     paths = expand(
         "{analysis_dir}/h12-signal-detection/{cohort}_{contig}.csv",
         cohort=df["cohort_id"],
-        contig=chromosomes,
+        contig=contigs,
         analysis_dir=analysis_dir,
     )
     return paths
@@ -122,21 +122,21 @@ rule country_pages:
         """
 
 
-rule chromosome_pages:
+rule contig_pages:
     input:
         site_utils=f"workflow/notebooks/site-utils.py",
-        nb=f"workflow/notebooks/chromosome-page.ipynb",
+        nb=f"workflow/notebooks/contig-page.ipynb",
         config=configpath,
         cohorts_geojson=f"{analysis_dir}/final_cohorts.geojson",
         signals=get_h12_signal_detection_csvs,
         kernel="results/kernel.set",
     output:
-        nb=f"{site_dir}/notebooks/genome/ag-{{chrom}}.ipynb",
+        nb=f"{site_dir}/notebooks/contig/ag-{{contig}}.ipynb",
     log:
-        "logs/chromosome_pages/{chrom}.log",
+        "logs/contig_pages/{contig}.log",
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas -p contig {wildcards.chrom} -f {input.config} 2> {log}
+        papermill {input.nb} {output.nb} -k selection-atlas -p contig {wildcards.contig} -f {input.config} 2> {log}
         """
 
 
@@ -151,7 +151,7 @@ rule cohort_pages:
         config=configpath,
         signals=expand(
             "{analysis_dir}/h12-signal-detection/{{cohort}}_{contig}.csv",
-            contig=chromosomes,
+            contig=contigs,
             analysis_dir=analysis_dir,
         ),
         kernel="results/kernel.set",
@@ -200,19 +200,19 @@ rule process_headers_home:
         """
 
 
-rule process_headers_chrom:
+rule process_headers_contig:
     input:
         nb="workflow/notebooks/add-headers.ipynb",
-        chrom_nb=f"{site_dir}/notebooks/genome/ag-{{contig}}.ipynb",
+        contig_nb=f"{site_dir}/notebooks/contig/ag-{{contig}}.ipynb",
         kernel="results/kernel.set",
     output:
         nb=f"{site_dir}/notebooks/add_headers/{{contig}}.ipynb",
-        chrom_nb=f"{site_dir}/docs/genome/ag-{{contig}}.ipynb",
+        contig_nb=f"{site_dir}/docs/contig/ag-{{contig}}.ipynb",
     log:
-        "logs/add_headers/chrom-{contig}.log",
+        "logs/add_headers/contig-{contig}.log",
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas -p input_nb {input.chrom_nb} -p output_nb {output.chrom_nb} -p wildcard {wildcards.contig} -p page_type chrom -p analysis_version {analysis_version} 2> {log}
+        papermill {input.nb} {output.nb} -k selection-atlas -p input_nb {input.contig_nb} -p output_nb {output.contig_nb} -p wildcard {wildcards.contig} -p page_type contig -p analysis_version {analysis_version} 2> {log}
         """
 
 

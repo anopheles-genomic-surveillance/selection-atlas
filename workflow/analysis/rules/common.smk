@@ -23,13 +23,13 @@ def get_h12_signal_detection_csvs(wildcards):
     paths = expand(
         "{analysis_dir}/h12-signal-detection/{cohort}_{contig}.csv",
         cohort=df["cohort_id"],
-        contig=chromosomes,
+        contig=contigs,
         analysis_dir=analysis_dir,
     )
     return paths
 
 
-def get_selection_atlas_outputs(wildcards):
+def get_analysis_results(wildcards):
     # retrieve output file of final cohorts checkpoint
     df = gpd.read_file(checkpoints.geolocate_cohorts.get().output.cohorts_geojson)
 
@@ -42,7 +42,7 @@ def get_selection_atlas_outputs(wildcards):
     h12_signal_paths = expand(
         "{analysis_dir}/h12-signal-detection/{cohort}_{contig}.csv",
         cohort=df["cohort_id"],
-        contig=chromosomes,
+        contig=contigs,
         analysis_dir=analysis_dir,
     )
 
