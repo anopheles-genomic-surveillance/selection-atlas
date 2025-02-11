@@ -5,7 +5,7 @@ checkpoint setup_cohorts:
     """
     input:
         nb=f"workflow/notebooks/setup-cohorts.ipynb",
-        config=configpath,
+        config=config_file,
         kernel="results/kernel.set",
     output:
         nb=f"{analysis_results_dir}/notebooks/setup-cohorts.ipynb",
@@ -25,7 +25,7 @@ checkpoint final_cohorts:
     input:
         yamls=get_h12_calibration_yamls,
         nb=f"workflow/notebooks/final-cohorts.ipynb",
-        config=configpath,
+        config=config_file,
         cohorts=f"{analysis_results_dir}/cohorts.csv",
         kernel="results/kernel.set",
     output:
@@ -42,7 +42,7 @@ checkpoint final_cohorts:
 checkpoint geolocate_cohorts:
     input:
         nb=f"workflow/notebooks/geolocate-cohorts.ipynb",
-        config=configpath,
+        config=config_file,
         final_cohorts=lambda wildcards: checkpoints.final_cohorts.get().output[1],
     output:
         nb=f"{analysis_results_dir}/notebooks/geolocate-cohorts.ipynb",

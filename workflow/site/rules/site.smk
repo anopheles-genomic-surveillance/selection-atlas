@@ -43,7 +43,7 @@ def get_h12_signal_detection_csvs(wildcards):
 rule compile_site:
     input:
         get_selection_atlas_site_files,
-        config=configpath,
+        config=config_file,
     output:
         directory(f"{site_results_dir}/docs/_build"),
     log:
@@ -75,7 +75,7 @@ rule generate_toc:
         site_utils=f"workflow/notebooks/site-utils.py",
         nb=f"workflow/notebooks/generate-toc.ipynb",
         cohorts_geojson=f"{analysis_results_dir}/final_cohorts.geojson",
-        config=configpath,
+        config=config_file,
         kernel="results/kernel.set",
     output:
         nb=f"{site_results_dir}/notebooks/generate-toc.ipynb",
@@ -92,7 +92,7 @@ rule home_page:
     input:
         site_utils=f"workflow/notebooks/site-utils.py",
         nb=f"workflow/notebooks/home-page.ipynb",
-        config=configpath,
+        config=config_file,
         cohorts_geojson=f"{analysis_results_dir}/final_cohorts.geojson",
         kernel="results/kernel.set",
     output:
@@ -109,7 +109,7 @@ rule country_pages:
     input:
         site_utils=f"workflow/notebooks/site-utils.py",
         nb=f"workflow/notebooks/country-page.ipynb",
-        config=configpath,
+        config=config_file,
         cohorts_geojson=f"{analysis_results_dir}/final_cohorts.geojson",
         kernel="results/kernel.set",
     output:
@@ -126,7 +126,7 @@ rule contig_pages:
     input:
         site_utils=f"workflow/notebooks/site-utils.py",
         nb=f"workflow/notebooks/contig-page.ipynb",
-        config=configpath,
+        config=config_file,
         cohorts_geojson=f"{analysis_results_dir}/final_cohorts.geojson",
         signals=get_h12_signal_detection_csvs,
         kernel="results/kernel.set",
@@ -148,7 +148,7 @@ rule cohort_pages:
         output_h12=f"{analysis_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
         output_g123=f"{analysis_results_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
         output_ihs=f"{analysis_results_dir}/notebooks/ihs-gwss-{{cohort}}.ipynb",
-        config=configpath,
+        config=config_file,
         signals=expand(
             "{analysis_results_dir}/h12-signal-detection/{{cohort}}_{contig}.csv",
             contig=contigs,
@@ -170,7 +170,7 @@ rule alert_pages:
         site_utils=f"workflow/notebooks/site-utils.py",
         nb=f"workflow/notebooks/alert-page.ipynb",
         cohorts_geojson=f"{analysis_results_dir}/final_cohorts.geojson",
-        config=configpath,
+        config=config_file,
         alert_config=f"workflow/alerts/{{alert}}.yaml",
         signals=get_h12_signal_detection_csvs,
         kernel="results/kernel.set",

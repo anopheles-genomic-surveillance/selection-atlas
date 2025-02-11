@@ -6,13 +6,8 @@ import yaml
 configfile: "config/main.yaml"
 
 
-configpath = workflow.configfiles[0]
-contigs = config["contigs"]
-analysis_version = config["analysis_version"]
-analysis_results_dir = f"results/{analysis_version}/analysis"
-
-
-include: "rules/common.smk"
+include: "../rules/common-functions.py"
+include: "../rules/common-rules.smk"
 include: "rules/cohorts.smk"
 include: "rules/gwss.smk"
 

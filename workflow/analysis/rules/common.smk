@@ -1,17 +1,3 @@
-
-rule set_kernel:
-    input:
-        f"workflow/envs/selection-atlas.yaml",
-    output:
-        touch("results/kernel.set"),
-    log:
-        "logs/set_kernel.log",
-    shell:
-        """
-        python -m ipykernel install --user --name selection-atlas 2> {log}
-        """
-
-
 def get_h12_calibration_yamls(wildcards):
     df = pd.read_csv(checkpoints.setup_cohorts.get().output[1])
     paths = f"{analysis_results_dir}/h12-calibration/" + df["cohort_id"] + ".yaml"
@@ -81,18 +67,3 @@ def get_analysis_results(wildcards):
     wanted_outputs.extend(ihs_gwss_paths)
 
     return wanted_outputs
-
-
-def get_cohort_page_notebooks(wildcards):
-    df = gpd.read_file(checkpoints.geolocate_cohorts.get().output.cohorts_geojson)
-
-    outputs = expand("docs/cohort/{cohort}.ipynb", cohort=df["cohort_id"].unique())
-
-    return outputs
-
-
-def get_country_page_notebooks(wildcards):
-    df = gpd.read_file(checkpoints.geolocate_cohorts.get().output.cohorts_geojson)
-
-    outputs = expand("docs/country/{country}.ipynb", country=df["country_alpha2"])
-    return outputs

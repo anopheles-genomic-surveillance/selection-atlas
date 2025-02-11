@@ -5,7 +5,7 @@ rule h12_calibration:
     """
     input:
         nb=f"workflow/notebooks/h12-calibration.ipynb",
-        config=configpath,
+        config=config_file,
     output:
         nb=f"{analysis_results_dir}/notebooks/h12-calibration-{{cohort}}.ipynb",
         yaml=f"{analysis_results_dir}/h12-calibration/{{cohort}}.yaml",
@@ -26,7 +26,7 @@ rule h12_gwss:
         template=f"workflow/notebooks/h12-gwss.ipynb",
         window_size=f"{analysis_results_dir}/h12-calibration/{{cohort}}.yaml",
         cohorts=f"{analysis_results_dir}/final_cohorts.csv",
-        config=configpath,
+        config=config_file,
     output:
         nb=f"{analysis_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
     log:
@@ -47,7 +47,7 @@ rule h12_signal_detection:
         gwss_nb=f"{analysis_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
         utils_nb=f"workflow/notebooks/peak-utils.ipynb",
         cohorts=f"{analysis_results_dir}/final_cohorts.csv",
-        config=configpath,
+        config=config_file,
     output:
         nb=f"{analysis_results_dir}/notebooks/h12-signal-detection-{{cohort}}-{{contig}}.ipynb",
         csv=f"{analysis_results_dir}/h12-signal-detection/{{cohort}}_{{contig}}.csv",
@@ -66,7 +66,7 @@ rule g123_calibration:
     """
     input:
         nb=f"workflow/notebooks/g123-calibration.ipynb",
-        config=configpath,
+        config=config_file,
     output:
         nb=f"{analysis_results_dir}/notebooks/g123-calibration-{{cohort}}.ipynb",
         yaml=f"{analysis_results_dir}/g123-calibration/{{cohort}}.yaml",
@@ -87,7 +87,7 @@ rule g123_gwss:
         template=f"workflow/notebooks/g123-gwss.ipynb",
         window_size=f"{analysis_results_dir}/g123-calibration/{{cohort}}.yaml",
         cohorts=f"{analysis_results_dir}/final_cohorts.csv",
-        config=configpath,
+        config=config_file,
     output:
         nb=f"{analysis_results_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
     log:
@@ -106,7 +106,7 @@ rule ihs_gwss:
     input:
         template=f"workflow/notebooks/ihs-gwss.ipynb",
         cohorts=f"{analysis_results_dir}/final_cohorts.csv",
-        config=configpath,
+        config=config_file,
     output:
         nb=f"{analysis_results_dir}/notebooks/ihs-gwss-{{cohort}}.ipynb",
     log:
