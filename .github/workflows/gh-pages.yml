@@ -41,26 +41,24 @@ jobs:
       - name: Check gcloud CLI
         run: gcloud info
 
-      - name: Download build from GCS
-        run: |
-            mkdir build
-            gsutil -m rsync -r gs://vo_selection_atlas_dev_us_central1/build/ build/
-            find build -type f -exec touch {} +
-            find build/*/notebooks -type f -exec touch {} +
-            find build/*/notebooks/cohort -type f -exec touch {} +
+      # - name: Download results from GCS
+      #   run: |
+      #       mkdir -pv results/{analysis_version}
+      #       gcloud storage rsync -r gs://vo_selection_atlas_dev_us_central1/results/{analysis_version}/ results/{analysis_version}/
+      #       find results -type f -exec touch {} +
 
-      - name: Build sel-atlas site
-        uses: snakemake/snakemake-github-action@v1
-        with:
-          directory: '.'
-          snakefile: 'workflow/Snakefile-site-build.smk'
-          args: '--cores 1 --conda-cleanup-pkgs cache'
-          stagein: '' # additional preliminary commands to run (can be multiline)
-          show-disk-usage-on-error: true
+      # - name: Run site workflow
+      #   uses: snakemake/snakemake-github-action@v1
+      #   with:
+      #     directory: '.'
+      #     snakefile: 'workflow/site.smk'
+      #     args: '--cores 1 --conda-cleanup-pkgs cache'
+      #     show-disk-usage-on-error: true
 
-      # Push the book's HTML to github-pages
-      - name: GitHub Pages action
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: docs/_build/html
+      # TODO fix this to the right directory path.
+      # # Push the book's HTML to github-pages
+      # - name: GitHub Pages action
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: results/{analysis_version}/site/docs/_build/html

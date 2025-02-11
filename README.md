@@ -77,7 +77,7 @@ To run the workflow fully, you can try running with parallelisation. Note this w
 snakemake -c4 --snakefile workflow/analysis.smk
 ```
 
-The outputs of the analysis workflow will be stored in the "build" folder, under a sub-folder named according to the "analysis_version" parameter given in the workflow configuration file.
+The outputs of the analysis workflow will be stored in the "results" folder, under a sub-folder named according to the "analysis_version" parameter given in the workflow configuration file.
 
 Remember that if you make any significant changes to the configuration and rerun the workflow, change the "analysis_version" parameter in the workflow configuration file.
 
@@ -88,19 +88,19 @@ After a successful run of the analysis workflow, copy the workflow outputs to GC
 With the selection-atlas environment activated, copy workflow outputs to GCS:
 
 ```
-gcloud storage rsync -r -u build/ gs://vo_selection_atlas_dev_us_central1/build/
+gcloud storage rsync -r -u results/ gs://vo_selection_atlas_dev_us_central1/results/
 ```
 
 To restore outputs from a previous workflow run to your local filesystem:
 
 ```
-gcloud storage rsync -r -u gs://vo_selection_atlas_dev_us_central1/build/ build/
-find build -type f -exec touch {} +
+gcloud storage rsync -r -u gs://vo_selection_atlas_dev_us_central1/results/ results/
+find results -type f -exec touch {} +
 ```
 
 ## Running the site workflow
 
-The site workflow will use the outputs from the analysis-workflow and build all of the content for the selection atlas website. To run this workflow:
+The site workflow will use the outputs from the analysis-workflow and compile all of the content for the selection atlas website. To run this workflow:
 
 ```
 MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site.smk

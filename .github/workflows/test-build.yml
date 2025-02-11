@@ -1,4 +1,4 @@
-name: test-build
+name: test-results
 
 on: pull_request
 
@@ -27,7 +27,7 @@ jobs:
       - name: Restore results cache
         uses: actions/cache/restore@v3
         with:
-          path: build/malariagen_data_cache
+          path: results/malariagen_data_cache
           # Change this key if you ever want to force clear the cache.
           key: results_cache_20230512
 
@@ -43,7 +43,7 @@ jobs:
         run: |
           snakemake -c1 --configfile ci/config.yaml --snakefile workflow/analysis.smk --show-failed-logs
 
-      - name: Run site build snakemake workflow
+      - name: Run site snakemake workflow
         shell: bash -l {0}
         run: |
           snakemake -c1 --configfile ci/config.yaml --snakefile workflow/site.smk --show-failed-logs
@@ -52,6 +52,6 @@ jobs:
         uses: actions/cache/save@v3
         if: always()
         with:
-          path: build/malariagen_data_cache
+          path: results/malariagen_data_cache
           # Change this key if you ever want to force clear the cache.
           key: results_cache_20230512

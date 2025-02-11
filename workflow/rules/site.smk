@@ -1,10 +1,10 @@
 def get_selection_atlas_site_files(wildcards):
-    """Construct a list of all files required to build the Jupyter book site."""
+    """Construct a list of all files required to compile the Jupyter book site."""
 
     # Read in cohorts dataframe.
     df = gpd.read_file(f"{analysis_dir}/final_cohorts.geojson")
 
-    # Build a list of all required files.
+    # Create a list of all required files.
     site_files = expand(
         [
             f"{site_dir}/docs/_config.yml",
@@ -30,7 +30,7 @@ def get_h12_signal_detection_csvs(wildcards):
     # Read in cohorts.
     df = pd.read_csv(f"{analysis_dir}/final_cohorts.csv")
 
-    # Build a list of file paths.
+    # Create a list of file paths.
     paths = expand(
         "{analysis_dir}/h12-signal-detection/{cohort}_{contig}.csv",
         cohort=df["cohort_id"],
@@ -40,14 +40,14 @@ def get_h12_signal_detection_csvs(wildcards):
     return paths
 
 
-rule build_site:
+rule compile_site:
     input:
         get_selection_atlas_site_files,
         config=configpath,
     output:
         directory(f"{site_dir}/docs/_build"),
     log:
-        "logs/build-jupyter-book.log",
+        "logs/compile_site.log",
     shell:
         f"""
         jupyter-book build {site_dir}/docs
@@ -76,7 +76,7 @@ rule generate_toc:
         nb=f"{workflow.basedir}/notebooks/generate-toc.ipynb",
         cohorts_geojson=f"{analysis_dir}/final_cohorts.geojson",
         config=configpath,
-        kernel=".kernel.set",
+        kernel="results/kernel.set",
     output:
         nb=f"{site_dir}/notebooks/generate-toc.ipynb",
         toc=f"{site_dir}/docs/_toc.yml",
@@ -94,7 +94,7 @@ rule home_page:
         nb=f"{workflow.basedir}/notebooks/home-page.ipynb",
         config=configpath,
         cohorts_geojson=f"{analysis_dir}/final_cohorts.geojson",
-        kernel=".kernel.set",
+        kernel="results/kernel.set",
     output:
         nb=f"{site_dir}/notebooks/home-page.ipynb",
     log:
@@ -111,7 +111,7 @@ rule country_pages:
         nb=f"{workflow.basedir}/notebooks/country-page.ipynb",
         config=configpath,
         cohorts_geojson=f"{analysis_dir}/final_cohorts.geojson",
-        kernel=".kernel.set",
+        kernel="results/kernel.set",
     output:
         nb=f"{site_dir}/notebooks/country/{{country}}.ipynb",
     log:
@@ -129,7 +129,7 @@ rule chromosome_pages:
         config=configpath,
         cohorts_geojson=f"{analysis_dir}/final_cohorts.geojson",
         signals=get_h12_signal_detection_csvs,
-        kernel=".kernel.set",
+        kernel="results/kernel.set",
     output:
         nb=f"{site_dir}/notebooks/genome/ag-{{chrom}}.ipynb",
     log:
@@ -154,7 +154,7 @@ rule cohort_pages:
             contig=chromosomes,
             analysis_dir=analysis_dir,
         ),
-        kernel=".kernel.set",
+        kernel="results/kernel.set",
     output:
         nb=f"{site_dir}/notebooks/cohort/{{cohort}}.ipynb",
     log:
@@ -173,7 +173,7 @@ rule alert_pages:
         config=configpath,
         alert_config=f"{workflow.basedir}/alerts/{{alert}}.yaml",
         signals=get_h12_signal_detection_csvs,
-        kernel=".kernel.set",
+        kernel="results/kernel.set",
     output:
         nb=f"{site_dir}/notebooks/alert/{{alert}}.ipynb",
     log:
@@ -188,7 +188,7 @@ rule process_headers_home:
     input:
         nb="workflow/notebooks/add-headers.ipynb",
         homepage_nb=f"{site_dir}/notebooks/home-page.ipynb",
-        kernel=".kernel.set",
+        kernel="results/kernel.set",
     output:
         nb=f"{site_dir}/notebooks/add_headers/home-page.ipynb",
         homepage_nb=f"{site_dir}/docs/home-page.ipynb",
@@ -204,7 +204,7 @@ rule process_headers_chrom:
     input:
         nb="workflow/notebooks/add-headers.ipynb",
         chrom_nb=f"{site_dir}/notebooks/genome/ag-{{contig}}.ipynb",
-        kernel=".kernel.set",
+        kernel="results/kernel.set",
     output:
         nb=f"{site_dir}/notebooks/add_headers/{{contig}}.ipynb",
         chrom_nb=f"{site_dir}/docs/genome/ag-{{contig}}.ipynb",
@@ -220,7 +220,7 @@ rule process_headers_country:
     input:
         nb="workflow/notebooks/add-headers.ipynb",
         country_nb=f"{site_dir}/notebooks/country/{{country}}.ipynb",
-        kernel=".kernel.set",
+        kernel="results/kernel.set",
     output:
         nb=f"{site_dir}/notebooks/add_headers/{{country}}.ipynb",
         country_nb=f"{site_dir}/docs/country/{{country}}.ipynb",
@@ -236,7 +236,7 @@ rule process_headers_cohort:
     input:
         nb="workflow/notebooks/add-headers.ipynb",
         cohort_nb=f"{site_dir}/notebooks/cohort/{{cohort}}.ipynb",
-        kernel=".kernel.set",
+        kernel="results/kernel.set",
     output:
         nb=f"{site_dir}/notebooks/add_headers/{{cohort}}.ipynb",
         cohort_nb=f"{site_dir}/docs/cohort/{{cohort}}.ipynb",
@@ -252,7 +252,7 @@ rule process_headers_alert:
     input:
         nb="workflow/notebooks/add-headers.ipynb",
         alert_nb=f"{site_dir}/notebooks/alert/{{alert}}.ipynb",
-        kernel=".kernel.set",
+        kernel="results/kernel.set",
     output:
         nb=f"{site_dir}/notebooks/add_headers/{{alert}}.ipynb",
         alert_nb=f"{site_dir}/docs/alert/{{alert}}.ipynb",

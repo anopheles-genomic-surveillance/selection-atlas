@@ -3,7 +3,7 @@ rule set_kernel:
     input:
         f"{workflow.basedir}/../environment.yml",
     output:
-        touch(".kernel.set"),
+        touch("results/kernel.set"),
     log:
         "logs/set_kernel.log",
     shell:

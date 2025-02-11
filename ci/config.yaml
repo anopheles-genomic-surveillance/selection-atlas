@@ -8,7 +8,7 @@ analysis_version: "CI"
 min_cohort_size: 20  # TODO Could we live with 15 here?
 max_cohort_size: 50  # TODO Maybe increase this for production?
 
-# Select the sample sets to include in the build.
+# Select the sample sets to include in the analysis.
 sample_sets:
     # - "3.0"
     # smaller dataset for development
@@ -18,8 +18,7 @@ sample_sets:
 contigs:
     - "2R"
 
-# Pin the cohorts analysis version in order to get reproducible
-# builds.
+# Pin the cohorts analysis version in order to get reproducible results.
 cohorts_analysis: "20240924"
 
 # Select the contig to use for H12 window size calibration.

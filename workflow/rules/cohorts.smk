@@ -6,7 +6,7 @@ checkpoint setup_cohorts:
     input:
         nb=f"{workflow.basedir}/notebooks/setup-cohorts.ipynb",
         config=configpath,
-        kernel=".kernel.set",
+        kernel="results/kernel.set",
     output:
         nb=f"{analysis_dir}/notebooks/setup-cohorts.ipynb",
         cohorts=f"{analysis_dir}/cohorts.csv",
@@ -27,7 +27,7 @@ checkpoint final_cohorts:
         nb=f"{workflow.basedir}/notebooks/final-cohorts.ipynb",
         config=configpath,
         cohorts=f"{analysis_dir}/cohorts.csv",
-        kernel=".kernel.set",
+        kernel="results/kernel.set",
     output:
         nb=f"{analysis_dir}/notebooks/final-cohorts.ipynb",
         final_cohorts=f"{analysis_dir}/final_cohorts.csv",

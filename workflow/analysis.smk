@@ -10,7 +10,7 @@ configfile: "workflow/config.yaml"
 configpath = workflow.configfiles[0]
 chromosomes = config["contigs"]
 analysis_version = config["analysis_version"]
-analysis_dir = f"build/{analysis_version}/analysis"
+analysis_dir = f"results/{analysis_version}/analysis"
 
 
 # include rule files

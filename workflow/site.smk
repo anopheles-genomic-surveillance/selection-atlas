@@ -12,8 +12,8 @@ configfile: "workflow/config.yaml"
 configpath = workflow.configfiles[0]
 chromosomes = config["contigs"]
 analysis_version = config["analysis_version"]
-analysis_dir = f"build/{analysis_version}/analysis"
-site_dir = f"build/{analysis_version}/site"
+analysis_dir = f"results/{analysis_version}/analysis"
+site_dir = f"results/{analysis_version}/site"
 
 
 include: "rules/site.smk"
@@ -21,8 +21,8 @@ include: "rules/site.smk"
 
 rule all:
     input:
-        # This is the output from the Jupyter book build.
-        build=f"{site_dir}/docs/_build",
+        # This is the output from the Jupyter book compilation.
+        f"{site_dir}/docs/_build",
 
 
 rule set_kernel:
@@ -30,7 +30,7 @@ rule set_kernel:
     input:
         f"{workflow.basedir}/../environment.yml",
     output:
-        touch(".kernel.set"),
+        touch("results/kernel.set"),
     log:
         "logs/set_kernel.log",
     shell:

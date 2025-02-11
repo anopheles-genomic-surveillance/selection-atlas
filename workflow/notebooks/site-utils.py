@@ -35,7 +35,7 @@ dask.config.set(scheduler=dask_scheduler)
 warnings.filterwarnings("ignore")
 
 # Setup access to malariagen data.
-results_cache_path = here() / "build" / "malariagen_data_cache"
+results_cache_path = here() / "results" / "malariagen_data_cache"
 ag3 = malariagen_data.Ag3(
     # Pin the version of the cohorts analysis for reproducibility.
     cohorts_analysis=cohorts_analysis,
@@ -44,13 +44,13 @@ ag3 = malariagen_data.Ag3(
 
 # Read in the final cohorts dataframe.
 final_cohorts_path = (
-    here() / "build" / analysis_version / "analysis" / "final_cohorts.geojson"
+    here() / "results" / analysis_version / "analysis" / "final_cohorts.geojson"
 )
 gdf_cohorts = gpd.read_file(final_cohorts_path)
 
 # Paths to H12 and G123 calibration outputs.
-h12_calibration_dir = f"build/{analysis_version}/analysis/h12-calibration"
-g123_calibration_dir = f"build/{analysis_version}/analysis/g123-calibration"
+h12_calibration_dir = f"results/{analysis_version}/analysis/h12-calibration"
+g123_calibration_dir = f"results/{analysis_version}/analysis/g123-calibration"
 
 
 def stack_overlaps(df, start_col, end_col, tolerance=10000):
@@ -76,7 +76,7 @@ def load_cohort_signals(contig, cohort_id):
 
     signals_path = (
         here()
-        / "build"
+        / "results"
         / analysis_version
         / "analysis"
         / "h12-signal-detection"

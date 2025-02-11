@@ -6,7 +6,7 @@ author: Sanjinho & Alimanfoo
 copyright: '2023'
 logo: logo.png
 
-# Force re-execution of notebooks on each build.
+# Force re-execution of notebooks when the site is compiled.
 # See https://jupyterbook.org/content/execute.html
 execute:
     execute_notebooks: off
@@ -29,7 +29,7 @@ sphinx:
             - https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js
         suppress_warnings: ["mystnb.unknown_mime_type"]
 
-# Define the name of the latex output file for PDF builds
+# Define the name of the latex output file for PDF compilation.
 latex:
     latex_documents:
         targetname: malaria-vector-selection-atlas-docs.tex
