@@ -41,7 +41,7 @@ jobs:
       - name: Run analysis snakemake workflow
         shell: bash -l {0}
         run: |
-          snakemake -c1 --configfile config/ci.yaml --snakefile workflow/analysis.smk --show-failed-logs
+          snakemake -c1 --configfile config/ci.yaml --snakefile workflow/analysis/Snakefile --show-failed-logs
 
       - name: Run site snakemake workflow
         shell: bash -l {0}

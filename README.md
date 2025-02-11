@@ -68,13 +68,13 @@ Please note that this workflow will generally require a lot of computation and d
 During development, you may want to run the workflow without any parallelisation:
 
 ```
-snakemake -c1 --snakefile workflow/analysis.smk
+snakemake -c1 --snakefile workflow/analysis/Snakefile
 ```
 
 To run the workflow fully, you can try running with parallelisation. Note this will need to be on a machine with sufficient cores and memory. E.g.:
 
 ```
-snakemake -c4 --snakefile workflow/analysis.smk
+snakemake -c4 --snakefile workflow/analysis/Snakefile
 ```
 
 The outputs of the analysis workflow will be stored in the "results" folder, under a sub-folder named according to the "analysis_version" parameter given in the workflow configuration file.
