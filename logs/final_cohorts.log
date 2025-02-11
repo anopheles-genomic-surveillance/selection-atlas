@@ -1,10 +1,0 @@
-Input Notebook:  /home/alimanfoo/selection-atlas/workflow/gwss/notebooks/final-cohorts.ipynb
-Output Notebook: /home/alimanfoo/selection-atlas/results/CI/gwss/notebooks/final-cohorts.ipynb
-Passed unknown parameter: h12_calibration_contig
-Passed unknown parameter: h12_signal_detection_min_delta_aic
-Passed unknown parameter: h12_signal_detection_min_stat_max
-Passed unknown parameter: h12_signal_detection_gflanks
-Passed unknown parameter: use_gcs_cache
-Passed unknown parameter: alerts
-Executing:   0%|                                                                                                                                      | 0/7 [00:00<?, ?cell/s]Executing notebook with kernel: selection-atlas
-Executing:  14%|██████████████████                                                                                                            | 1/7 [00:01<00:09,  1.59s/cell]Executing:  57%|████████████████████████████████████████████████████████████████████████                                                      | 4/7 [00:07<00:05,  1.95s/cell]Executing: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [00:07<00:00,  1.08cell/s]Executing: 100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 7/7 [00:08<00:00,  1.28s/cell]

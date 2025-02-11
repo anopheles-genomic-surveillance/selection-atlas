@@ -1,9 +1,0 @@
-Input Notebook:  /home/alimanfoo/selection-atlas/workflow/gwss/notebooks/h12-calibration.ipynb
-Output Notebook: /home/alimanfoo/selection-atlas/results/CI/gwss/notebooks/h12-calibration-ML-2_Kati_colu_2014_Q3.ipynb
-Passed unknown parameter: h12_signal_detection_min_delta_aic
-Passed unknown parameter: h12_signal_detection_min_stat_max
-Passed unknown parameter: h12_signal_detection_gflanks
-Passed unknown parameter: use_gcs_cache
-Passed unknown parameter: alerts
-Executing:   0%|                                                                                                                                     | 0/20 [00:00<?, ?cell/s]Executing notebook with kernel: selection-atlas
-Executing:   5%|██████▎                                                                                                                      | 1/20 [00:01<00:34,  1.80s/cell]Executing:  25%|███████████████████████████████▎                                                                                             | 5/20 [00:07<00:22,  1.51s/cell]Executing:  40%|██████████████████████████████████████████████████                                                                           | 8/20 [00:07<00:09,  1.24cell/s]Executing:  60%|██████████████████████████████████████████████████████████████████████████▍                                                 | 12/20 [00:07<00:03,  2.27cell/s]Executing:  75%|█████████████████████████████████████████████████████████████████████████████████████████████                               | 15/20 [00:08<00:02,  2.42cell/s]Executing:  90%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████▌            | 18/20 [00:09<00:00,  3.43cell/s]Executing: 100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 20/20 [00:10<00:00,  1.96cell/s]

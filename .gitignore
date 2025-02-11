@@ -5,7 +5,7 @@ gcs_cache
 
 # generated files
 results
-log
+logs
 selection-atlas.html
 
 # Jupyter Notebook
