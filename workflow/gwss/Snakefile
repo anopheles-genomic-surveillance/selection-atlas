@@ -14,10 +14,11 @@ cohorts_analysis = config["cohorts_analysis"]
 # Includes.
 include: "../scripts/setup.py"
 include: "../rules/common.smk"
-include: "rules/gwss.smk"
+include: "rules/gwss-functions.smk"
+include: "rules/gwss-rules.smk"
 
 
 # Main rule.
 rule all:
     input:
-        analyses=get_gwss_results,
+        results=get_gwss_results,
