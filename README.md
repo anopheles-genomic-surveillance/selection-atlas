@@ -18,28 +18,28 @@ In order to develop or contribute to the selection atlas, you will need to creat
 
 Instructions below assume you have a recent version of conda and mamba installed. Alternatively you could use micromamba instead of conda and mamba.
 
-The file `environment.yml` has a fully pinned conda environment specification. This is the environment to use for development work and running workflows.
+The file `workflow/common/envs/selection-atlas.yaml` has a fully pinned conda environment specification. This is the environment to use for development work and running workflows.
 
 To create and activate an environment on your own computer:
 
 ```
-mamba env create --file environment.yml
+mamba env create --file workflow/common/envs/selection-atlas.yaml
 conda activate selection-atlas
 ```
 
 To create and activate an environment on datalab-bespin:
 
 ```
-mamba env create --prefix=${HOME}/envs/selection-atlas --file environment.yml
+mamba env create --prefix=${HOME}/envs/selection-atlas --file workflow/common/envs/selection-atlas.yaml
 conda activate ${HOME}/envs/selection-atlas
 ```
 
-If you are developing and need to add or upgrade a package, edit `requirements.yml`. **Do not edit `environment.yml`**. Then re-solve the environment to regenerate `environment.yml` as follows:
+If you are developing and need to add or upgrade a package, edit `workflow/common/envs/selection-atlas-requirements.yaml`. **Do not edit `workflow/common/envs/selection-atlas.yaml`**. Then re-solve the environment to regenerate `workflow/common/envs/selection-atlas.yaml` as follows:
 
 ```
-mamba env create --file requirements.yml
-conda env export -f environment.yml -n selection-atlas-requirements --override-channels --channel conda-forge --channel bioconda
-sed -i "s/selection-atlas-requirements/selection-atlas/" environment.yml
+mamba env create --file workflow/common/envs/selection-atlas-requirements.yaml
+conda env export -f workflow/common/envs/selection-atlas.yaml -n selection-atlas-requirements --override-channels --channel conda-forge --channel bioconda
+sed -i "s/selection-atlas-requirements/selection-atlas/" workflow/common/envs/selection-atlas.yaml
 ```
 
 ## Pre-commit hooks
@@ -59,48 +59,48 @@ gcloud auth login
 gcloud auth application-default login
 ```
 
-## Running the analysis workflow
+## Running the gwss workflow
 
-The analysis workflow will run genome-wide selections over all cohorts found within the sample sets given in the workflow configuration. See the file `workflow/config.yaml` for workflow configuration.
+The gwss workflow will run genome-wide selections over all cohorts found within the sample sets given in the workflow configuration. See the file `config/main.yaml` for workflow configuration.
 
 Please note that this workflow will generally require a lot of computation and data access, and so needs to be run on a machine within Google Cloud in the us-central1 region. This can be achieved by using datalab-bespin or by using a Vertex AI Workbench VM.
 
 During development, you may want to run the workflow without any parallelisation:
 
 ```
-snakemake -c1 --snakefile workflow/analysis.smk
+snakemake -c1 --snakefile workflow/gwss/Snakefile
 ```
 
 To run the workflow fully, you can try running with parallelisation. Note this will need to be on a machine with sufficient cores and memory. E.g.:
 
 ```
-snakemake -c4 --snakefile workflow/analysis.smk
+snakemake -c4 --snakefile workflow/gwss/Snakefile
 ```
 
-The outputs of the analysis workflow will be stored in the "build" folder, under a sub-folder named according to the "analysis_version" parameter given in the workflow configuration file.
+The outputs of the gwss workflow will be stored in the "results" folder, under a sub-folder named according to the "analysis_version" parameter given in the workflow configuration file.
 
 Remember that if you make any significant changes to the configuration and rerun the workflow, change the "analysis_version" parameter in the workflow configuration file.
 
-## Saving/restoring outputs of a successful analysis workflow run
+## Saving/restoring outputs of a successful gwss workflow run
 
-After a successful run of the analysis workflow, copy the workflow outputs to GCS. This will allow you or other developers to continue working to improve the site based on these outputs, without having to do a complete analysis workflow run themselves.
+After a successful run of the gwss workflow, copy the workflow outputs to GCS. This will allow you or other developers to continue working to improve the site based on these outputs, without having to do a complete gwss workflow run themselves.
 
 With the selection-atlas environment activated, copy workflow outputs to GCS:
 
 ```
-gcloud storage rsync -r -u build/ gs://vo_selection_atlas_dev_us_central1/build/
+gcloud storage rsync -r -u results/ gs://vo_selection_atlas_dev_us_central1/results/
 ```
 
 To restore outputs from a previous workflow run to your local filesystem:
 
 ```
-gcloud storage rsync -r -u gs://vo_selection_atlas_dev_us_central1/build/ build/
-find build -type f -exec touch {} +
+gcloud storage rsync -r -u gs://vo_selection_atlas_dev_us_central1/results/ results/
+find results -type f -exec touch {} +
 ```
 
 ## Running the site workflow
 
-The site workflow will use the outputs from the analysis-workflow and build all of the content for the selection atlas website. To run this workflow:
+The site workflow will use the outputs from the gwss workflow and compile all of the content for the selection atlas website. To run this workflow:
 
 ```
 MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site.smk

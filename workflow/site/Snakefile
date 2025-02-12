@@ -1,0 +1,25 @@
+configfile: "config/main.yaml"
+
+
+# Path to workflow config file.
+workflow_config_file = workflow.configfiles[0]
+
+# Access configuration variables and make available as global variables for convenience.
+contigs = config["contigs"]
+analysis_version = config["analysis_version"]
+dask_scheduler = config["dask_scheduler"]
+cohorts_analysis = config["cohorts_analysis"]
+
+
+# Includes.
+include: "../common/scripts/setup.py"
+include: "../common/rules/common.smk"
+include: "rules/site-functions.smk"
+include: "rules/site-rules.smk"
+
+
+# Main rule.
+rule all:
+    input:
+        # This is the output directory from the Jupyter book compilation.
+        jb_build_dir,

@@ -1,0 +1,59 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  ANALYSIS_VERSION: "2025.02.12"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Install conda environment
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: workflow/common/envs/selection-atlas.yaml
+          environment-name: selection-atlas
+          cache-downloads: true
+
+      - id: auth
+        name: Set up Google Cloud authentication
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          version: ">= 363.0.0"
+
+      - name: Check gcloud CLI
+        run: gcloud info
+
+      # - name: Download results from GCS
+      #   run: |
+      #       mkdir -pv results/${ANALYSIS_VERSION}/gwss
+      #       gcloud storage rsync -r gs://vo_selection_atlas_dev_us_central1/results/${ANALYSIS_VERSION}/gwss/ results/${ANALYSIS_VERSION}/gwss/
+
+      # TODO run this directly from shell.
+      # - name: Run site workflow
+      #   uses: snakemake/snakemake-github-action@v1
+      #   with:
+      #     directory: '.'
+      #     snakefile: 'workflow/site.smk'
+      #     args: '--cores 1 --conda-cleanup-pkgs cache'
+      #     show-disk-usage-on-error: true
+
+      # TODO fix this to the right directory path.
+      # # Push the book's HTML to github-pages
+      # - name: GitHub Pages action
+      #   uses: peaceiris/actions-gh-pages@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: results/${ANALYSIS_VERSION}/site/docs/_build/html

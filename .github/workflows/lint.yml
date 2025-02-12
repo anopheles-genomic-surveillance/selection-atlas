@@ -1,0 +1,36 @@
+name: lint
+on: pull_request
+jobs:
+  lint:
+    strategy:
+      fail-fast: true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Run pre-commit checks
+        uses: pre-commit/action@v3.0.0
+
+      - name: Install conda environment
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: workflow/common/envs/selection-atlas.yaml
+          environment-name: selection-atlas
+          cache-downloads: true
+
+      # Snakemake linting requires Google Cloud authentication, because it runs the
+      # workflow/common/scripts/setup.py script.
+      - id: auth
+        name: Set up Google Cloud authentication
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      - name: Lint gwss workflow
+        shell: bash -l {0}
+        run: snakemake --snakefile workflow/gwss/Snakefile --lint
+
+      - name: Lint site workflow
+        shell: bash -l {0}
+        run: snakemake --snakefile workflow/site/Snakefile --lint

@@ -1,0 +1,46 @@
+# Set the analysis version identifier. This will be used to identify
+# the outputs from a particular run of the analysis workflow. If you
+# change any of the parameters in this configuration file then please
+# also update the analysis version.
+analysis_version: "2025.02.12"
+
+# Set minimum and maximum cohort size parameters.
+min_cohort_size: 15
+max_cohort_size: 50  # TODO Maybe increase this for production?
+
+# Select the sample sets to include in the analysis.
+sample_sets:
+    # - "3.0"
+    # smaller dataset for development
+    - "AG1000G-ML-A"
+    - "AG1000G-BF-A"
+    - "AG1000G-AO"
+    - "AG1000G-CD"
+    - "AG1000G-CI"
+    - "AG1000G-UG"
+    - "AG1000G-TZ"
+
+# Select the contigs to analyse.
+contigs:
+    - "2RL"
+    - "3RL"
+    - "X"
+
+# Pin the cohorts analysis version in order to get reproducible results.
+cohorts_analysis: "20240924"
+
+# Select the contig to use for H12 window size calibration.
+h12_calibration_contig: "3L"
+
+# Configuration for H12 signal detection.
+h12_signal_detection_min_delta_aic: 1000
+h12_signal_detection_min_stat_max: 0.1
+h12_signal_detection_gflanks: [6]
+
+# Set this value to "single-threaded" when running snakemake with
+# more than 1 CPU to avoid thrashing. Otherwise, both dask and
+# snakemake will be trying to use multiple CPUs, and so CPU
+# resources are likely to be oversubscribed.
+dask_scheduler: "single-threaded"
+
+alerts:  ['01', '02', '03', '04', '05', '06', '07', '08', '09']
