@@ -1,4 +1,4 @@
-name: deploy-site
+name: deploy
 
 on:
   push:
@@ -9,26 +9,19 @@ env:
   ANALYSIS_VERSION: "2025.02.12"
 
 jobs:
-  deploy-site:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkout@v3
 
-      # Install dependencies
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.10"
-
       - name: Install conda environment
         uses: mamba-org/setup-micromamba@v2
         with:
-          environment-file: workflow/common/envs/selection-atlas.yamlas.yaml
+          environment-file: workflow/common/envs/selection-atlas.yaml
           environment-name: selection-atlas
           cache-downloads: true
 
-      # set up google cloud
       - id: auth
         name: Set up Google Cloud authentication
         uses: google-github-actions/auth@v2
@@ -48,6 +41,7 @@ jobs:
       #       mkdir -pv results/${ANALYSIS_VERSION}/gwss
       #       gcloud storage rsync -r gs://vo_selection_atlas_dev_us_central1/results/${ANALYSIS_VERSION}/gwss/ results/${ANALYSIS_VERSION}/gwss/
 
+      # TODO run this directly from shell.
       # - name: Run site workflow
       #   uses: snakemake/snakemake-github-action@v1
       #   with:
