@@ -3,7 +3,7 @@ name: deploy
 on:
   push:
     branches:
-      - master
+      - main
 
 env:
   ANALYSIS_VERSION: "2025.02.12"
@@ -36,24 +36,21 @@ jobs:
       - name: Check gcloud CLI
         run: gcloud info
 
-      # - name: Download results from GCS
-      #   run: |
-      #       mkdir -pv results/${ANALYSIS_VERSION}/gwss
-      #       gcloud storage rsync -r gs://vo_selection_atlas_dev_us_central1/results/${ANALYSIS_VERSION}/gwss/ results/${ANALYSIS_VERSION}/gwss/
+      - name: Download results from GCS
+        run: |
+            mkdir -pv results/${ANALYSIS_VERSION}/gwss
+            gcloud storage rsync -r \
+              gs://vo_selection_atlas_dev_us_central1/results/${ANALYSIS_VERSION}/gwss/ \
+              results/${ANALYSIS_VERSION}/gwss/
 
-      # TODO run this directly from shell.
-      # - name: Run site workflow
-      #   uses: snakemake/snakemake-github-action@v1
-      #   with:
-      #     directory: '.'
-      #     snakefile: 'workflow/site.smk'
-      #     args: '--cores 1 --conda-cleanup-pkgs cache'
-      #     show-disk-usage-on-error: true
+      - name: Run site snakemake workflow
+        shell: bash -l {0}
+        run: |
+          snakemake -c1 --snakefile workflow/site/Snakefile --show-failed-logs
 
-      # TODO fix this to the right directory path.
-      # # Push the book's HTML to github-pages
-      # - name: GitHub Pages action
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: results/${ANALYSIS_VERSION}/site/docs/_build/html
+      # Push the book's HTML to github-pages
+      - name: GitHub Pages action
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: results/${ANALYSIS_VERSION}/site/docs/_build/html
