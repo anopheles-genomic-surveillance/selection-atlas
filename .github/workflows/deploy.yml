@@ -43,10 +43,15 @@ jobs:
               gs://vo_selection_atlas_dev_us_central1/results/ \
               results/
 
-      - name: Run site snakemake workflow
-        shell: bash -l {0}
+      - name: Debug
         run: |
-          snakemake -c1 --snakefile workflow/site/Snakefile --show-failed-logs
+          ls -alh results/${ANALYSIS_VERSION}/site/docs/_build/html
+          tree results/${ANALYSIS_VERSION}/site/docs/_build/html
+
+      # - name: Run site snakemake workflow
+      #   shell: bash -l {0}
+      #   run: |
+      #     snakemake -c1 --snakefile workflow/site/Snakefile --show-failed-logs
 
       # Push the book's HTML to github-pages
       - name: GitHub Pages action
