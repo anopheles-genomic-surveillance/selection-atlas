@@ -43,15 +43,10 @@ jobs:
               gs://vo_selection_atlas_dev_us_central1/results/ \
               results/
 
-      # - name: Run site snakemake workflow
-      #   shell: bash -l {0}
-      #   run: |
-      #     snakemake -c1 --snakefile workflow/site/Snakefile --show-failed-logs
-
-      - name: Debug
+      - name: Run site snakemake workflow
+        shell: bash -l {0}
         run: |
-          ls -alh results/${ANALYSIS_VERSION}/site/docs/_build/html
-          tree results/${ANALYSIS_VERSION}/site/docs/_build/html
+          snakemake -c1 --snakefile workflow/site/Snakefile --show-failed-logs --forceall
 
       - name: Link to publication directory
         run: |
