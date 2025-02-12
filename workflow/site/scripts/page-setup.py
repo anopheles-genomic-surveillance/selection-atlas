@@ -2,7 +2,7 @@
 # We expect this script to be executed via a %run magic command
 # from within a Jupyter notebook.
 
-# Expects that variables and functions defined in workflow/scripts/setup.py
+# Expects that variables and functions defined in workflow/common/scripts/setup.py
 # are available.
 
 # Imports. Use "noqa" to mark imports that aren't used within this

@@ -18,7 +18,7 @@ jobs:
       # - name: Install conda environment
       #   uses: mamba-org/setup-micromamba@v2
       #   with:
-      #     environment-file: workflow/envs/selection-atlas.yaml
+      #     environment-file: workflow/common/envs/selection-atlas.yaml
       #     environment-name: selection-atlas
       #     cache-downloads: true
       #

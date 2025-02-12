@@ -1,10 +1,14 @@
-# Expects that variables and functions defined in workflow/scripts/setup.py
+# Expects that variables defined in workflow/common/scripts/setup.py
 # are available.
+#
+# Rules here are declared in roughly the order the are executed.
 
 
 checkpoint setup_cohorts:
     """
-    Setup cohorts for analysis using the config file.
+    Setup cohorts for analysis using the config file. This step reads the sample
+    metadata and figures out which cohorts (groups of samples) are going to be
+    analysed. The output is a CSV file, one row for each cohort.
     """
     input:
         nb=f"{workflow.basedir}/notebooks/setup-cohorts.ipynb",
@@ -23,7 +27,9 @@ checkpoint setup_cohorts:
 
 rule h12_calibration:
     """
-    Calibrate the window size for each cohort.
+    Calibrate the H12 window size for each cohort. Note that some cohorts may not
+    succeed the calibration process, e.g., if they have extreme demography and so
+    a reasonable window size cannot be found.
     """
     input:
         nb=f"{workflow.basedir}/notebooks/h12-calibration.ipynb",
@@ -43,7 +49,9 @@ rule h12_calibration:
 
 checkpoint finalize_cohorts:
     """
-    Finalize cohorts for analysis based on the calibration results.
+    Finalize cohorts for analysis based on the calibration results. This creates
+    a new CSV file of cohorts for which H12 window size calibration succeeded and
+    therefore which can be included in GWSS.
     """
     input:
         calibration=get_h12_calibration_files,
@@ -64,7 +72,8 @@ checkpoint finalize_cohorts:
 
 checkpoint geolocate_cohorts:
     """
-    Add geoboundaries data for each cohort.
+    Add geoboundaries data for each cohort. This allows us to locate cohorts on a
+    map.
     """
     input:
         nb=f"{workflow.basedir}/notebooks/geolocate-cohorts.ipynb",

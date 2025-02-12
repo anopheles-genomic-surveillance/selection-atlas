@@ -12,8 +12,8 @@ cohorts_analysis = config["cohorts_analysis"]
 
 
 # Includes.
-include: "../scripts/setup.py"
-include: "../rules/common.smk"
+include: "../common/scripts/setup.py"
+include: "../common/rules/common.smk"
 include: "rules/site-functions.smk"
 include: "rules/site-rules.smk"
 

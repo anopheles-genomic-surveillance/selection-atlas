@@ -14,6 +14,13 @@ import geopandas as gpd  # noqa
 import iso3166  # noqa
 import matplotlib.pyplot as plt  # noqa
 
+# Assume these variables come from the workflow configuration and have
+# already been assigned as global variables somehow.
+assert isinstance(analysis_version, str)
+assert isinstance(cohorts_analysis, str)
+assert isinstance(dask_scheduler, str)
+assert isinstance(contigs, list)
+
 # Locate repo root dir.
 root = here()
 
@@ -23,20 +30,13 @@ dask.config.set(scheduler=dask_scheduler)
 # Configure warnings.
 warnings.filterwarnings("ignore")
 
-# Assume these variables come from the workflow configuration and have
-# already been set somehow.
-assert isinstance(analysis_version, str)
-assert isinstance(cohorts_analysis, str)
-assert isinstance(dask_scheduler, str)
-assert isinstance(contigs, list)
-
 # Path to kernel set flag file.
 kernel_set_file = root / "results/kernel.set"
 
 # Path to main environment file.
-environment_file = root / "workflow/envs/selection-atlas.yaml"
+environment_file = root / "workflow/common/envs/selection-atlas.yaml"
 
-# Paths to analysis workflow results.
+# Paths to gwss workflow results.
 results_dir = root / "results" / analysis_version
 gwss_results_dir = results_dir / "gwss"
 os.makedirs(gwss_results_dir, exist_ok=True)

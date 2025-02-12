@@ -2,7 +2,7 @@
 # the outputs from a particular run of the analysis workflow. If you
 # change any of the parameters in this configuration file then please
 # also update the analysis version.
-analysis_version: "2025.02.11"
+analysis_version: "2025.02.12"
 
 # Set minimum and maximum cohort size parameters.
 min_cohort_size: 15
@@ -18,6 +18,7 @@ sample_sets:
     - "AG1000G-CD"
     - "AG1000G-CI"
     - "AG1000G-UG"
+    - "AG1000G-TZ"
 
 # Select the contigs to analyse.
 contigs:

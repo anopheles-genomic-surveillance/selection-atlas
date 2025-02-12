@@ -18,28 +18,28 @@ In order to develop or contribute to the selection atlas, you will need to creat
 
 Instructions below assume you have a recent version of conda and mamba installed. Alternatively you could use micromamba instead of conda and mamba.
 
-The file `workflow/envs/selection-atlas.yaml` has a fully pinned conda environment specification. This is the environment to use for development work and running workflows.
+The file `workflow/common/envs/selection-atlas.yaml` has a fully pinned conda environment specification. This is the environment to use for development work and running workflows.
 
 To create and activate an environment on your own computer:
 
 ```
-mamba env create --file workflow/envs/selection-atlas.yaml
+mamba env create --file workflow/common/envs/selection-atlas.yaml
 conda activate selection-atlas
 ```
 
 To create and activate an environment on datalab-bespin:
 
 ```
-mamba env create --prefix=${HOME}/envs/selection-atlas --file workflow/envs/selection-atlas.yaml
+mamba env create --prefix=${HOME}/envs/selection-atlas --file workflow/common/envs/selection-atlas.yaml
 conda activate ${HOME}/envs/selection-atlas
 ```
 
-If you are developing and need to add or upgrade a package, edit `workflow/envs/selection-atlas-requirements.yaml`. **Do not edit `workflow/envs/selection-atlas.yaml`**. Then re-solve the environment to regenerate `workflow/envs/selection-atlas.yaml` as follows:
+If you are developing and need to add or upgrade a package, edit `workflow/common/envs/selection-atlas-requirements.yaml`. **Do not edit `workflow/common/envs/selection-atlas.yaml`**. Then re-solve the environment to regenerate `workflow/common/envs/selection-atlas.yaml` as follows:
 
 ```
-mamba env create --file workflow/envs/selection-atlas-requirements.yaml
-conda env export -f workflow/envs/selection-atlas.yaml -n selection-atlas-requirements --override-channels --channel conda-forge --channel bioconda
-sed -i "s/selection-atlas-requirements/selection-atlas/" workflow/envs/selection-atlas.yaml
+mamba env create --file workflow/common/envs/selection-atlas-requirements.yaml
+conda env export -f workflow/common/envs/selection-atlas.yaml -n selection-atlas-requirements --override-channels --channel conda-forge --channel bioconda
+sed -i "s/selection-atlas-requirements/selection-atlas/" workflow/common/envs/selection-atlas.yaml
 ```
 
 ## Pre-commit hooks

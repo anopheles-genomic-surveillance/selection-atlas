@@ -1,4 +1,4 @@
-# Expects that variables and functions defined in workflow/scripts/setup.py
+# Expects that variables and functions defined in workflow/common/scripts/setup.py
 # are available.
 
 import pandas as pd
