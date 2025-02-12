@@ -17,6 +17,8 @@ checkpoint setup_cohorts:
     output:
         nb=f"{gwss_results_dir}/notebooks/setup-cohorts.ipynb",
         cohorts=cohorts_file,
+    conda:
+        environment_file
     log:
         "logs/setup_cohorts.log",
     shell:
@@ -38,6 +40,8 @@ rule h12_calibration:
     output:
         nb=f"{gwss_results_dir}/notebooks/h12-calibration-{{cohort}}.ipynb",
         calibration=h12_calibration_files,
+    conda:
+        environment_file
     log:
         "logs/h12_calibration/{cohort}.log",
     shell:
@@ -62,6 +66,8 @@ checkpoint finalize_cohorts:
     output:
         nb=f"{gwss_results_dir}/notebooks/final-cohorts.ipynb",
         final_cohorts=final_cohorts_file,
+    conda:
+        environment_file
     log:
         "logs/final_cohorts.log",
     shell:
@@ -83,6 +89,8 @@ checkpoint geolocate_cohorts:
     output:
         nb=f"{gwss_results_dir}/notebooks/geolocate-cohorts.ipynb",
         final_cohorts_geojson=final_cohorts_geojson_file,
+    conda:
+        environment_file
     log:
         "logs/geolocate_cohorts.log",
     shell:
@@ -103,6 +111,8 @@ rule h12_gwss:
         kernel=kernel_set_file,
     output:
         nb=f"{gwss_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
+    conda:
+        environment_file
     log:
         "logs/h12_gwss/{cohort}.log",
     shell:
@@ -126,6 +136,8 @@ rule h12_signal_detection:
     output:
         nb=f"{gwss_results_dir}/notebooks/h12-signal-detection-{{cohort}}-{{contig}}.ipynb",
         signals=h12_signal_files,
+    conda:
+        environment_file
     log:
         "logs/h12_signal_detection/{cohort}_{contig}.log",
     shell:
@@ -146,6 +158,8 @@ rule g123_calibration:
     output:
         nb=f"{gwss_results_dir}/notebooks/g123-calibration-{{cohort}}.ipynb",
         calibration=g123_calibration_files,
+    conda:
+        environment_file
     log:
         "logs/g123_calibration/{cohort}.log",
     shell:
@@ -167,6 +181,8 @@ rule g123_gwss:
         kernel=kernel_set_file,
     output:
         nb=f"{gwss_results_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
+    conda:
+        environment_file
     log:
         "logs/g123_gwss/{cohort}.log",
     shell:
@@ -187,6 +203,8 @@ rule ihs_gwss:
         kernel=kernel_set_file,
     output:
         nb=f"{gwss_results_dir}/notebooks/ihs-gwss-{{cohort}}.ipynb",
+    conda:
+        environment_file
     log:
         "logs/ihs_gwss/{cohort}.log",
     shell:

@@ -12,20 +12,17 @@ jobs:
       - name: Run pre-commit checks
         uses: pre-commit/action@v3.0.0
 
-      # Park snakemake linting for now, requires more recent conda
-      # installed within the environment.
-      #
-      # - name: Install conda environment
-      #   uses: mamba-org/setup-micromamba@v2
-      #   with:
-      #     environment-file: workflow/common/envs/selection-atlas.yaml
-      #     environment-name: selection-atlas
-      #     cache-downloads: true
-      #
-      # - name: Lint gwss workflow
-      #   shell: bash -l {0}
-      #   run: snakemake --snakefile workflow/gwss/Snakefile --lint
-      #
-      # - name: Lint site workflow
-      #   shell: bash -l {0}
-      #   run: snakemake --snakefile workflow/site/Snakefile --lint
+      - name: Install conda environment
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: workflow/common/envs/selection-atlas.yaml
+          environment-name: selection-atlas
+          cache-downloads: true
+
+      - name: Lint gwss workflow
+        shell: bash -l {0}
+        run: snakemake --snakefile workflow/gwss/Snakefile --lint
+
+      - name: Lint site workflow
+        shell: bash -l {0}
+        run: snakemake --snakefile workflow/site/Snakefile --lint
