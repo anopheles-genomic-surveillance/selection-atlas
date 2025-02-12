@@ -2,23 +2,18 @@
 # the outputs from a particular run of the analysis workflow. If you
 # change any of the parameters in this configuration file then please
 # also update the analysis version.
-analysis_version: "2025.02.12"
+analysis_version: "2025.02.13"
 
 # Set minimum and maximum cohort size parameters.
 min_cohort_size: 15
-max_cohort_size: 50  # TODO Maybe increase this for production?
+max_cohort_size: 70  # TODO Maybe increase this for production?
 
 # Select the sample sets to include in the analysis.
 sample_sets:
-    # - "3.0"
-    # smaller dataset for development
-    - "AG1000G-ML-A"
-    - "AG1000G-BF-A"
-    - "AG1000G-AO"
-    - "AG1000G-CD"
-    - "AG1000G-CI"
-    - "AG1000G-UG"
-    - "AG1000G-TZ"
+    - "3.0"
+
+# Filter samples to include in the analysis.
+sample_query: "unrestricted_use and taxon in ['gambiae', 'coluzzii', 'arabiensis', 'bissau']"
 
 # Select the contigs to analyse.
 contigs:
