@@ -38,10 +38,10 @@ jobs:
 
       - name: Download results from GCS
         run: |
-            mkdir -pv results/${ANALYSIS_VERSION}/gwss
+            mkdir -pv results
             gcloud storage rsync -r \
-              gs://vo_selection_atlas_dev_us_central1/results/${ANALYSIS_VERSION}/gwss/ \
-              results/${ANALYSIS_VERSION}/gwss/
+              gs://vo_selection_atlas_dev_us_central1/results/ \
+              results/
 
       - name: Run site snakemake workflow
         shell: bash -l {0}
