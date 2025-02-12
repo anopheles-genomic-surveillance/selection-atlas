@@ -68,13 +68,13 @@ Please note that this workflow will generally require a lot of computation and d
 During development, you may want to run the workflow without any parallelisation:
 
 ```
-snakemake -c1 --snakefile workflow/gwss/Snakefile --show-failed-logs
+MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/gwss/Snakefile --show-failed-logs
 ```
 
 To run the workflow fully, you can try running with parallelisation. Note this will need to be on a machine with sufficient cores and memory. E.g.:
 
 ```
-snakemake -c4 --snakefile workflow/gwss/Snakefile --show-failed-logs
+MGEN_SHOW_PROGRESS=0 snakemake -c4 --snakefile workflow/gwss/Snakefile --show-failed-logs
 ```
 
 The outputs of the gwss workflow will be stored in the "results" folder, under a sub-folder named according to the "analysis_version" parameter given in the workflow configuration file.
@@ -103,7 +103,7 @@ find results -type f -exec touch {} +
 The site workflow will use the outputs from the gwss workflow and compile all of the content for the selection atlas website. To run this workflow:
 
 ```
-MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site.smk
+MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --show-failed-logs
 ```
 
 You can run this workflow on a smaller computer as it should not need to perform any heavy computations.
