@@ -38,7 +38,7 @@ jobs:
           environment-name: selection-atlas
           cache-downloads: true
 
-      - name: Run analysis snakemake workflow
+      - name: Run gwss snakemake workflow
         shell: bash -l {0}
         run: |
           snakemake -c1 --configfile config/ci.yaml --snakefile workflow/gwss/Snakefile --show-failed-logs
