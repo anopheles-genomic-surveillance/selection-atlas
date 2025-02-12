@@ -43,19 +43,22 @@ jobs:
               gs://vo_selection_atlas_dev_us_central1/results/ \
               results/
 
-      - name: Debug
-        run: |
-          ls -alh results/${ANALYSIS_VERSION}/site/docs/_build/html
-          tree results/${ANALYSIS_VERSION}/site/docs/_build/html
-
       # - name: Run site snakemake workflow
       #   shell: bash -l {0}
       #   run: |
       #     snakemake -c1 --snakefile workflow/site/Snakefile --show-failed-logs
 
-      # Push the book's HTML to github-pages
-      - name: GitHub Pages action
+      - name: Debug
+        run: |
+          ls -alh results/${ANALYSIS_VERSION}/site/docs/_build/html
+          tree results/${ANALYSIS_VERSION}/site/docs/_build/html
+
+      - name: Link to publication directory
+        run: |
+          ln -sv results/${ANALYSIS_VERSION}/site/docs/_build/html public
+
+      - name: Publish to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: results/${ANALYSIS_VERSION}/site/docs/_build/html
+          publish_dir: ./public
