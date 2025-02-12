@@ -19,6 +19,14 @@ jobs:
           environment-name: selection-atlas
           cache-downloads: true
 
+      # Snakemake linting requires Google Cloud authentication, because it runs the
+      # workflow/common/scripts/setup.py script.
+      - id: auth
+        name: Set up Google Cloud authentication
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+
       - name: Lint gwss workflow
         shell: bash -l {0}
         run: snakemake --snakefile workflow/gwss/Snakefile --lint

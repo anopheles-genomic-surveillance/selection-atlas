@@ -5,6 +5,8 @@ on:
     branches:
       - master
 
+env:
+  ANALYSIS_VERSION: "2025.02.12"
 
 jobs:
   deploy-site:
@@ -43,9 +45,8 @@ jobs:
 
       # - name: Download results from GCS
       #   run: |
-      #       mkdir -pv results/{analysis_version}/gwss
-      #       gcloud storage rsync -r gs://vo_selection_atlas_dev_us_central1/results/{analysis_version}/gwss/ results/{analysis_version}/gwss/
-      #       find results -type f -exec touch {} +
+      #       mkdir -pv results/${ANALYSIS_VERSION}/gwss
+      #       gcloud storage rsync -r gs://vo_selection_atlas_dev_us_central1/results/${ANALYSIS_VERSION}/gwss/ results/${ANALYSIS_VERSION}/gwss/
 
       # - name: Run site workflow
       #   uses: snakemake/snakemake-github-action@v1
@@ -61,4 +62,4 @@ jobs:
       #   uses: peaceiris/actions-gh-pages@v3
       #   with:
       #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: results/{analysis_version}/site/docs/_build/html
+      #     publish_dir: results/${ANALYSIS_VERSION}/site/docs/_build/html
