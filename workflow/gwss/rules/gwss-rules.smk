@@ -76,7 +76,7 @@ checkpoint finalize_cohorts:
         """
 
 
-checkpoint geolocate_cohorts:
+rule geolocate_cohorts:
     """
     Add geoboundaries data for each cohort. This allows us to locate cohorts on a
     map.

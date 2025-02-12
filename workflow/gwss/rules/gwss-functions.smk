@@ -68,7 +68,7 @@ def get_gwss_results(wildcards):
     )
 
     # Add all output files to a list.
-    results = []
+    results = [final_cohorts_geojson_file]
     results.extend(h12_cal_paths)
     results.extend(h12_cal_nb_paths)
     results.extend(h12_gwss_nb_paths)

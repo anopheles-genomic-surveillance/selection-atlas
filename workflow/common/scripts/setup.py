@@ -1,8 +1,12 @@
 # Common setup for both workflows. Designed so that this file can be
 # included into the workflows and also run from within a notebook.
 
+# Imports. Use "noqa" to mark imports that aren't used within this
+# file but you want to be made available to the notebooks that run
+# this file. (Otherwise they will get stripped out by ruff.)
 import os
 import warnings
+import json  # noqa
 import functools  # noqa
 from pyprojroot import here
 import dask
