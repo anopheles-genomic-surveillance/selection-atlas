@@ -1,7 +1,7 @@
-name: linting
+name: lint
 on: pull_request
 jobs:
-  linting:
+  lint:
     strategy:
       fail-fast: true
     runs-on: ubuntu-latest

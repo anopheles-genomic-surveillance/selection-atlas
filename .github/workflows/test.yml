@@ -1,9 +1,9 @@
-name: test-results
+name: test
 
 on: pull_request
 
 jobs:
-  run-workflow:
+  test:
     runs-on: ubuntu-latest
     steps:
 
