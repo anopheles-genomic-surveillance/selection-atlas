@@ -30,14 +30,16 @@ dask.config.set(scheduler=dask_scheduler)
 # Configure warnings.
 warnings.filterwarnings("ignore")
 
-# Path to kernel set flag file.
-kernel_set_file = root / "results/kernel.set"
-
 # Path to main environment file.
 environment_file = root / "workflow/common/envs/selection-atlas.yaml"
 
-# Paths to gwss workflow results.
+# Path to all workflow results.
 results_dir = root / "results" / analysis_version
+
+# Path to kernel set flag file.
+kernel_set_file = results_dir / "kernel.set"
+
+# Paths to gwss workflow results.
 gwss_results_dir = results_dir / "gwss"
 os.makedirs(gwss_results_dir, exist_ok=True)
 cohorts_file = gwss_results_dir / "cohorts.csv"

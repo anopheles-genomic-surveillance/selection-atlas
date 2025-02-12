@@ -9,6 +9,8 @@ rule set_kernel:
         environment_file,
     output:
         touch(kernel_set_file),
+    conda:
+        environment_file
     log:
         "logs/set_kernel.log",
     shell:
