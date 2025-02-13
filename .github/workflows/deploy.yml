@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  ANALYSIS_VERSION: "2025.02.12"
+  ANALYSIS_VERSION: "2025.02.13"
 
 jobs:
   deploy:
