@@ -5,15 +5,21 @@ on:
     branches:
       - main
 
-env:
-  ANALYSIS_VERSION: "2025.02.12"
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
         uses: actions/checkout@v3
+
+      - name: Get analysis version
+        id: get_analysis_version
+        uses: mikefarah/yq@master
+        with:
+          cmd: yq '.analysis_version' config/main.yaml
+
+      - name: Echo analysis version
+        run: echo ${{ steps.get_analysis_version.outputs.result }}
 
       - name: Install conda environment
         uses: mamba-org/setup-micromamba@v2
@@ -46,11 +52,11 @@ jobs:
       - name: Run site snakemake workflow
         shell: bash -l {0}
         run: |
-          snakemake -c1 --snakefile workflow/site/Snakefile --show-failed-logs --forceall
+          MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --show-failed-logs --forceall
 
       - name: Link to publication directory
         run: |
-          ln -sv results/${ANALYSIS_VERSION}/site/docs/_build/html public
+          ln -sv results/${{ steps.get_analysis_version.outputs.result }}/site/docs/_build/html public
 
       - name: Publish to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

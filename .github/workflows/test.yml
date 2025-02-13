@@ -27,9 +27,9 @@ jobs:
       - name: Restore results cache
         uses: actions/cache/restore@v3
         with:
-          path: results/malariagen_data_cache
+          path: results
           # Change this key if you ever want to force clear the cache.
-          key: results_cache_20230512
+          key: results_cache_20250213
 
       - name: Install conda environment
         uses: mamba-org/setup-micromamba@v2
@@ -41,17 +41,17 @@ jobs:
       - name: Run gwss snakemake workflow
         shell: bash -l {0}
         run: |
-          snakemake -c1 --configfile config/ci.yaml --snakefile workflow/gwss/Snakefile --show-failed-logs
+          snakemake -c1 --configfile config/ci.yaml --snakefile workflow/gwss/Snakefile --show-failed-logs --forceall
 
       - name: Run site snakemake workflow
         shell: bash -l {0}
         run: |
-          snakemake -c1 --configfile config/ci.yaml --snakefile workflow/site/Snakefile --show-failed-logs
+          snakemake -c1 --configfile config/ci.yaml --snakefile workflow/site/Snakefile --show-failed-logs --forceall
 
       - name: Save results cache
         uses: actions/cache/save@v3
         if: always()
         with:
-          path: results/malariagen_data_cache
+          path: results
           # Change this key if you ever want to force clear the cache.
-          key: results_cache_20230512
+          key: results_cache_20250213
