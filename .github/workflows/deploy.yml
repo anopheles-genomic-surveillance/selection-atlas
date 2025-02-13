@@ -46,7 +46,7 @@ jobs:
       - name: Run site snakemake workflow
         shell: bash -l {0}
         run: |
-          snakemake -c1 --snakefile workflow/site/Snakefile --show-failed-logs --forceall
+          MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --show-failed-logs --forceall
 
       - name: Link to publication directory
         run: |
