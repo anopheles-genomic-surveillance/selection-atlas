@@ -10,7 +10,7 @@
 # this file. (Otherwise they will get stripped out by ruff.)
 from textwrap import dedent  # noqa
 from IPython.display import Markdown, HTML  # noqa
-from ipyleaflet import Map, Marker, basemaps, AwesomeIcon  # noqa
+from ipyleaflet import Map, Marker, basemaps, AwesomeIcon, GeoData  # noqa
 from ipywidgets import HTML  # noqa
 import bokeh.layouts as bklay
 import bokeh.plotting as bkplt
@@ -225,3 +225,87 @@ def plot_signals(
     )
 
     bkplt.show(fig)
+
+
+def plot_cohorts_map(
+    gdf_cohorts,
+    center=None,
+    zoom=3,
+    basemap=basemaps.OpenTopoMap,
+    url_prefix="",
+):
+    # Extract unique admin2 regions.
+    gdf_admin2 = gdf_cohorts[
+        [
+            "country",
+            "admin1_iso",
+            "admin1_name",
+            "admin2_name",
+            "country_alpha2",
+            "country_alpha3",
+            "shapeID",
+            "shapeGroup",
+            "shapeType",
+            "representative_lon",
+            "representative_lat",
+            "geometry",
+        ]
+    ].drop_duplicates()
+
+    # Automatically determine center from data.
+    if center is None:
+        center = (
+            gdf_admin2[["representative_lat", "representative_lon"]].mean().to_list()
+        )
+
+    # Create an ipyleaflet map.
+    m = Map(center=center, zoom=zoom, basemap=basemap)
+
+    # Plot the admin unit boundaries.
+    geo_data = GeoData(
+        geo_dataframe=gdf_admin2,
+        style={
+            "color": "black",
+            "opacity": 1,
+            "weight": 1,
+            "fillColor": "#3366cc",
+            "fillOpacity": 0.6,
+        },
+        # hover_style={
+        #     'fillColor': 'red',
+        #     'fillOpacity': 0.2,
+        # },
+        name="Level 2 administrative units",
+    )
+    m.add(geo_data)
+
+    # Plot cohort markers.
+    for index, df in gdf_cohorts.groupby(
+        ["shapeID", "admin1_name", "admin1_iso", "admin2_name"]
+    ):
+        shape_id, admin1_name, admin1_iso, admin2_name = index
+        if shape_id is None:
+            continue
+        country_name = df["country"].iloc[0]
+        html_text = f"<strong>{admin2_name}, {admin1_name} ({admin1_iso}), {country_name}</strong>. Cohorts analysed:<br/>"
+
+        for _, row in df.iterrows():
+            html_text += f'<li><a href="{url_prefix}cohort/{row.cohort_id}.html">{row.taxon} / {row.year} / Q{row.quarter} (n={row.cohort_size})</a></li>'
+        html_text += "</ul>"
+
+        lat, lon = (
+            df[["representative_lat", "representative_lon"]].drop_duplicates().values[0]
+        )
+
+        marker = Marker(
+            location=(lat, lon),
+            draggable=False,
+            opacity=1,
+            title=f"{admin2_name}, {admin1_name}, {country_name} - {len(df)} cohort{'s' if len(df) > 1 else ''} analysed - click for more information",
+        )
+        m.add(marker)
+        message = HTML()
+        message.value = html_text
+        marker.popup = message
+
+    return m
