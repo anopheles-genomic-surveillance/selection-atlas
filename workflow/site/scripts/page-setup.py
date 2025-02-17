@@ -21,6 +21,15 @@ from bokeh.io import output_notebook  # noqa
 gdf_cohorts = gpd.read_file(final_cohorts_geojson_file)
 
 
+# Colours for signal plotting.
+signal_span_color = "#D7B2A6"
+signal_span_alpha = 0.6
+signal_focus_color = "red"
+signal_focus_alpha = 0.4
+signal_center_color = "red"
+signal_center_alpha = 1.0
+
+
 def stack_overlaps(df, start_col, end_col, tolerance=10000):
     """Stack overlapping objects."""
     occupants = [None]
@@ -72,7 +81,7 @@ def load_signals(contig, start=None, stop=None):
     # df_signals['color'] = df_signals['taxon'].map(color_dict).fillna('lightgrey')
 
     # Fixed color.
-    df_signals["color"] = "#D7B2A6"
+    df_signals["color"] = signal_span_color
 
     # Filter to region.
     if start and stop:
@@ -166,16 +175,16 @@ def plot_signals(
         xs="left_xs",
         ys="left_ys",
         source=source,
-        color="color",
-        alpha=0.7,
+        color=signal_span_color,
+        alpha=signal_span_alpha,
         line_width=2,
     )
     fig1.patches(
         xs="right_xs",
         ys="right_ys",
         source=source,
-        color="color",
-        alpha=0.7,
+        color=signal_span_color,
+        alpha=signal_span_alpha,
         line_width=2,
     )
 
@@ -185,17 +194,17 @@ def plot_signals(
         left="focus_pstart",
         right="focus_pstop",
         source=source,
-        color="red",
-        alpha=0.4,
+        color=signal_focus_color,
+        alpha=signal_focus_alpha,
         line_width=2,
     )
 
     glyph = bkmod.MultiLine(
         xs="center_xs",
         ys="center_ys",
-        line_color="red",
+        line_color=signal_center_color,
         line_width=2,
-        line_alpha=0.8,
+        line_alpha=signal_center_alpha,
     )
     fig1.add_glyph(source, glyph)
 
