@@ -186,7 +186,7 @@ def plot_signals(
         right="focus_pstop",
         source=source,
         color="red",
-        alpha=0.5,
+        alpha=0.4,
         line_width=2,
     )
 
