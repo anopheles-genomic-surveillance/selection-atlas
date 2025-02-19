@@ -130,7 +130,7 @@ rule process_headers_home:
         kernel=kernel_set_file,
     output:
         nb=f"{site_results_dir}/notebooks/add_headers/home-page.ipynb",
-        homepage_nb=f"{site_results_dir}/docs/home-page.ipynb",
+        homepage_nb=f"{site_results_dir}/docs/index.ipynb",
     conda:
         environment_file
     log:
@@ -294,10 +294,16 @@ rule prepare_site:
     input:
         f"{workflow.basedir}/docs/_config.yml",
         f"{workflow.basedir}/docs/alerts.ipynb",
+        f"{workflow.basedir}/docs/methods.md",
+        f"{workflow.basedir}/docs/faq.md",
+        f"{workflow.basedir}/docs/glossary.md",
         f"{workflow.basedir}/docs/favicon.ico",
     output:
         f"{site_results_dir}/docs/_config.yml",
         f"{site_results_dir}/docs/alerts.ipynb",
+        f"{site_results_dir}/docs/methods.md",
+        f"{site_results_dir}/docs/faq.md",
+        f"{site_results_dir}/docs/glossary.md",
         f"{site_results_dir}/docs/favicon.ico",
     conda:
         environment_file

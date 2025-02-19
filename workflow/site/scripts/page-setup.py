@@ -213,7 +213,7 @@ def plot_signals(
     fig1.xaxis.visible = False
     fig1.ygrid.visible = False
     # fig1.legend.background_fill_alpha = 0.2
-    url = "../cohort/@cohort.html"
+    url = "../cohort/@cohort_id.html"
     taptool = fig1.select(type=bkmod.TapTool)
     taptool.callback = bkmod.OpenURL(url=url)
 
@@ -240,7 +240,7 @@ def plot_cohorts_map(
     gdf_cohorts,
     center=None,
     zoom=3,
-    basemap=basemaps.OpenTopoMap,
+    basemap=basemaps.Esri.NatGeoWorldMap,
     url_prefix="",
 ):
     # Extract unique admin2 regions.
