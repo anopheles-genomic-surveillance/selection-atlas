@@ -29,6 +29,8 @@ def get_selection_atlas_site_files(wildcards):
             f"{site_results_dir}/docs/methods.md",
             f"{site_results_dir}/docs/faq.md",
             f"{site_results_dir}/docs/glossary.md",
+            f"{site_results_dir}/docs/logo.png",
+            f"{site_results_dir}/docs/favicon.ico",
         ],
         country=countries,
         contig=contigs,
