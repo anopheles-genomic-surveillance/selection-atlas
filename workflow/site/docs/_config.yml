@@ -4,7 +4,7 @@
 title: "Malaria vector selection atlas — <em>Anopheles gambiae</em> complex"
 author: "Sanjay Nagi (<a href='https://github.com/sanjaynagi'>@sanjaynagi</a>) and Alistair Miles (<a href='https://github.com/alimanfoo/'>@alimanfoo</a>)."
 copyright: "2025"
-logo: logo.png
+logo: logo2.png
 
 # Force re-execution of notebooks when the site is compiled.
 # See https://jupyterbook.org/content/execute.html
