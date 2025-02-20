@@ -213,7 +213,7 @@ def plot_signals(
     fig1.xaxis.visible = False
     fig1.ygrid.visible = False
     # fig1.legend.background_fill_alpha = 0.2
-    url = "../cohort/@cohort.html"
+    url = "../cohort/@cohort_id.html"
     taptool = fig1.select(type=bkmod.TapTool)
     taptool.callback = bkmod.OpenURL(url=url)
 
@@ -236,11 +236,14 @@ def plot_signals(
     bkplt.show(fig)
 
 
+default_basemap = basemaps.Esri.NatGeoWorldMap
+
+
 def plot_cohorts_map(
     gdf_cohorts,
     center=None,
     zoom=3,
-    basemap=basemaps.OpenTopoMap,
+    basemap=default_basemap,
     url_prefix="",
 ):
     # Extract unique admin2 regions.
@@ -299,7 +302,14 @@ def plot_cohorts_map(
         html_text = f"<strong>{admin2_name}, {admin1_name} ({admin1_iso}), {country_name}</strong>. Cohorts analysed:<br/>"
 
         for _, row in df.iterrows():
-            html_text += f'<li><a href="{url_prefix}cohort/{row.cohort_id}.html">{row.taxon} / {row.year} / Q{row.quarter} (n={row.cohort_size})</a></li>'
+            if row.quarter > 0:
+                link_text = (
+                    f"{row.taxon} / {row.year} / Q{row.quarter} (n={row.cohort_size})"
+                )
+            else:
+                link_text = f"{row.taxon} / {row.year} (n={row.cohort_size})"
+            link_url = f"{url_prefix}cohort/{row.cohort_id}.html"
+            html_text += f'<li><a href="{link_url}">{link_text}</a></li>'
         html_text += "</ul>"
 
         lat, lon = (
