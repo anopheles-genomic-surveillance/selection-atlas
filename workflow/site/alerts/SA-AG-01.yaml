@@ -1,4 +1,4 @@
-label: "Voltage-gated sodium channel gene"
+label: "Vgsc"
 region: "2RL:63,000,000-65,000,000"
 ir_candidate_genes:
   - identifier: "AGAP004707"
@@ -10,13 +10,18 @@ ir_candidate_genes:
       and pyrethroid insecticides. Variants in this gene are associated with resistance to
       DDT and/or pyrethroids.
     references:
-      - citation: "Clarkson et al. (2021)"
-        title: >
-          The genetic architecture of target-site resistance to pyrethroid insecticides in
-          the African malaria vectors Anopheles gambiae and Anopheles coluzzii
-        url: "https://doi.org/10.1111/mec.15845"
       - citation: "Martinez-Torres et al. (1998)"
         title: >
           Molecular characterization of pyrethroid knockdown resistance (kdr) in the major
           malaria vector Anopheles gambiae s.s.
         url: "https://pubmed.ncbi.nlm.nih.gov/9535162/"
+      - citation: "Ranson et al. (2000)"
+        title: >
+          Identification of a point mutation in the voltage-gated sodium channel gene of 
+          Kenyan Anopheles gambiae associated with resistance to DDT and pyrethroids
+        url: "https://pubmed.ncbi.nlm.nih.gov/11029667/"
+      - citation: "Clarkson et al. (2021)"
+        title: >
+          The genetic architecture of target-site resistance to pyrethroid insecticides in
+          the African malaria vectors Anopheles gambiae and Anopheles coluzzii
+        url: "https://doi.org/10.1111/mec.15845"
