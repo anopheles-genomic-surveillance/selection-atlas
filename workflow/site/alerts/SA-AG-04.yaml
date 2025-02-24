@@ -1,20 +1,59 @@
-label: "Cytochrome P450 6P cluster"
-region: "2RL:27,500,500-29,500,000"
+label: "Cyp6aa/Cyp6p gene cluster"
+region: "2RL:28,253,772-28,833,846"
 ir_candidate_genes:
-    - identifier: "AGAP002862-AGAP002866"
-      names:
-        - "Cyp6aa1"
-        - "Cyp6p3"
-        - "Cyp6p4"
-        - "Cyp6p5"
-      notes: >
-        Cluster of P450 genes involved in metabolic resistance to pyrethroids and other insecticides.
-      references:
-        - citation: "Müller et al. (2008)"
-          title: >
-            Field-caught permethrin-resistant Anopheles gambiae overexpress CYP6P3, a P450 that metabolises pyrethroids
-          url: "https://doi.org/10.1371/journal.pgen.1000286"
-        - citation: "Njoroge et al. (2022)"
-          title: >
-            Identification of a rapidly‐spreading triple mutant for high‐level metabolic insecticide resistance in Anopheles gambiae provides a real‐time molecular diagnostic for antimalarial intervention deployment
-          url: "https://doi.org/10.1111/mec.16591"
+
+  - identifier: "AGAP002862"
+    names:
+      - "Cyp6aa1"
+      - "Cytochrome P450"
+    notes: >
+      This gene encodes a cytochrome P450 enzyme where spanning copy number variants are
+      found in populations of Anopheles gambiae, Anopheles coluzzii and Anopheles
+      arabiensis and variants have been associated with pyrethroid resistance.
+    references:
+      - citation: "Lucas et al. (2019)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6673711/"
+        title: >
+          Whole-genome sequencing reveals high complexity of copy number variation at
+          insecticide resistance loci in malaria mosquitoes
+      - citation: "Njoroge et al. (2022)"
+        url: "https://doi.org/10.1111/mec.16591"
+        title: >
+          Identification of a rapidly-spreading triple mutant for high-level metabolic
+          insecticide resistance in Anopheles gambiae provides a real-time molecular
+          diagnostic for antimalarial intervention deployment
+      - citation: "Lucas et al. (2023)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10432508/"
+        title: >
+          Genome-wide association studies reveal novel loci associated with pyrethroid
+          and organophosphate resistance in Anopheles gambiae and Anopheles coluzzii
+      - citation: "Lucas et al. (2024)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11620391/"
+        title: >
+          Copy number variants underlie major selective sweeps in insecticide resistance
+          genes in Anopheles arabiensis
+
+  - identifier: "AGAP002865"
+    names:
+      - "Cyp6p3"
+      - "Cytochrome P450"
+    notes: >
+      This gene encodes a cytochrome P450 enzyme where spanning copy number variants are
+      found in populations of Anopheles gambiae, Anopheles coluzzii and Anopheles
+      arabiensis, and which has been associated with pyrethroid resistance.
+    references:
+      - citation: "Müller et al. (2008)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC2583951/"
+        title: >
+          Field-Caught Permethrin-Resistant Anopheles gambiae Overexpress CYP6P3, a P450
+          That Metabolises Pyrethroids
+      - citation: "Lucas et al. (2019)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6673711/"
+        title: >
+          Whole-genome sequencing reveals high complexity of copy number variation at
+          insecticide resistance loci in malaria mosquitoes
+      - citation: "Lucas et al. (2024)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11620391/"
+        title: >
+          Copy number variants underlie major selective sweeps in insecticide resistance
+          genes in Anopheles arabiensis
