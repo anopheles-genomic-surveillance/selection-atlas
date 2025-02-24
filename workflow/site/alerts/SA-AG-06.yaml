@@ -1,15 +1,41 @@
-label: "Glutathione S-transferase epsilon 2"
-region: "3RL:27,597,686-29,599,040"
+label: "Gste"
+region: "3RL:28,382,941-28,652,998"
 ir_candidate_genes:
-    - identifier: "AGAP009194"
-      names:
-        - "Gste2"
-      notes: >
-        Key metabolic resistance gene, particularly associated with DDT resistance.
-        I114T mutation enhances DDT metabolism.
-      references:
-        - citation: "Mitchell et al. (2014)"
-          title: >
-            Metabolic and target-site mechanisms combine to confer strong DDT
-            resistance in Anopheles gambiae
-          url: "https://doi.org/10.1371/journal.pone.0092662"
+  - identifier: "AGAP009194"
+    names:
+      - "Gste2"
+    notes: >
+      This gene encodes a glutathione S-transferase enzyme which is assocated with DDT,
+      pyrethroid and organophosphate resistance. Copy number variation spanning this
+      gene has been observed in Anopheles gambiae and Anopheles coluzzii.
+    references:
+      - citation: "Ranson et al. (2001)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1222147/"
+        title: >
+          Identification of a novel class of insect glutathione S-transferases involved
+          in resistance to DDT in the malaria vector Anopheles gambiae
+      - citation: "Ding et al. (2003)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC194574/"
+        title: >
+          The Anopheles gambiae glutathione transferase supergene family: annotation,
+          phylogeny and expression profiles
+      - citation: "Mitchell et al. (2014)"
+        url: "https://doi.org/10.1371/journal.pone.0092662"
+        title: >
+          Metabolic and target-site mechanisms combine to confer strong DDT
+          resistance in Anopheles gambiae
+      - citation: "Riveron et al. (2014)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4054843/"
+        title: >
+          A single mutation in the GSTe2 gene allows tracking of metabolically based
+          insecticide resistance in a major malaria vector
+      - citation: "Lucas et al. (2019)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6673711/"
+        title: >
+          Whole-genome sequencing reveals high complexity of copy number variation at
+          insecticide resistance loci in malaria mosquitoes
+      - citation: "Adolfi et al. (2019)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6926047/"
+        title: >
+          Functional genetic validation of key genes conferring insecticide resistance
+          in the major African malaria vector, Anopheles gambiae
