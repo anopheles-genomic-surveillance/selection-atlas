@@ -1,5 +1,5 @@
 label: "Vgsc"
-region: "2RL:63,000,000-65,000,000"
+region: "2RL:63,203,099-64,808,132"
 ir_candidate_genes:
   - identifier: "AGAP004707"
     names:
