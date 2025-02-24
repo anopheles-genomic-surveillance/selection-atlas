@@ -1,13 +1,37 @@
-label: "Cytochrome P450 9K1"
-region: "X:14,220,000-16,220,000"
+label: "Cyp9k1"
+region: "X:14,992,258-15,583,310"
 ir_candidate_genes:
-    - identifier: "AGAP000818"
-      names:
-        - "Cyp9k1"
-      notes: >
-        P450 gene associated with pyrethroid resistance through increased expression and copy number variation.
-      references:
-        - citation: "Vontas et al. (2018)"
-          title: >
-                Rapid selection of a pyrethroid metabolic enzyme CYP9K1 by operational malaria control activities
-          url: "https://doi.org/10.1073/pnas.1719663115"
+  - identifier: "AGAP000818"
+    names:
+      - "Cyp9k1"
+      - "Cytochrome P450"
+    notes: >
+      This gene encodes a cytochrome P450 enzyme which is associated with pyrethroid
+      resistance through increased expression and where copy number variation has been
+      observed in Anopheles gambiae and Anopheles coluzzii.
+    references:
+      - citation: "Main et al. (2015)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4615556/"
+        title: >
+          Complex genome evolution in Anopheles coluzzii associated with increased
+          insecticide usage in Mali
+      - citation: "Main et al. (2018)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5885317/"
+        title: >
+          Genetic variation associated with increased insecticide resistance in the
+          malaria mosquito, Anopheles coluzzii
+      - citation: "Vontas et al. (2018)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5939083/"
+        title: >
+          Rapid selection of a pyrethroid metabolic enzyme CYP9K1 by operational
+          malaria control activities
+      - citation: "Lucas et al. (2019)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6673711/"
+        title: >
+          Whole-genome sequencing reveals high complexity of copy number variation at
+          insecticide resistance loci in malaria mosquitoes
+      - citation: "Lucas et al. (2023)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10432508/"
+        title: >
+          Genome-wide association studies reveal novel loci associated with pyrethroid
+          and organophosphate resistance in Anopheles gambiae and Anopheles coluzzii
