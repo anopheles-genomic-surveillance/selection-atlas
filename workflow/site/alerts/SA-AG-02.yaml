@@ -4,6 +4,7 @@ ir_candidate_genes:
   - identifier: "AGAP001356"
     names:
       - "Ace1"
+      - "Acetylcholinesterase"
     notes: >
       This gene encodes an acetylcholinesterase enzyme wich is the binding
       target of organophosphate and carbamate insecticides. Variants in this

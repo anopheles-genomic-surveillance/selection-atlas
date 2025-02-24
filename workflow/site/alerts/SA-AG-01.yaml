@@ -5,6 +5,7 @@ ir_candidate_genes:
     names:
       - "Vgsc"
       - "Para"
+      - "Voltage-gated sodium channel"
     notes: >
       This gene encodes a voltage-gated sodium channel which is the binding target of DDT
       and pyrethroid insecticides. Variants in this gene are associated with resistance to
