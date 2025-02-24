@@ -5,7 +5,7 @@ ir_candidate_genes:
   - identifier: "AGAP002862"
     names:
       - "Cyp6aa1"
-      - "Cytochrome P450"
+      - "cytochrome P450"
     notes: >
       This gene encodes a cytochrome P450 enzyme where spanning copy number variants are
       found in populations of Anopheles gambiae, Anopheles coluzzii and Anopheles
@@ -36,7 +36,7 @@ ir_candidate_genes:
   - identifier: "AGAP002865"
     names:
       - "Cyp6p3"
-      - "Cytochrome P450"
+      - "cytochrome P450"
     notes: >
       This gene encodes a cytochrome P450 enzyme where spanning copy number variants are
       found in populations of Anopheles gambiae, Anopheles coluzzii and Anopheles

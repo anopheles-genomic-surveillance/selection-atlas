@@ -4,7 +4,7 @@ ir_candidate_genes:
   - identifier: "AGAP006028"
     names:
       - "Rdl"
-      - "Resistance to dieldrin"
+      - "resistance to dieldrin"
       - "GABA-gated chloride channel subunit"
     notes: >
       This gene encodes a subunit of a GABA-gated chloride channel which is the

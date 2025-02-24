@@ -4,7 +4,7 @@ ir_candidate_genes:
   - identifier: "AGAP000818"
     names:
       - "Cyp9k1"
-      - "Cytochrome P450"
+      - "cytochrome P450"
     notes: >
       This gene encodes a cytochrome P450 enzyme which is associated with pyrethroid
       resistance through increased expression and where copy number variation has been

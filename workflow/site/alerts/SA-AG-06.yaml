@@ -4,6 +4,7 @@ ir_candidate_genes:
   - identifier: "AGAP009194"
     names:
       - "Gste2"
+      - "glutathione S-transferase"
     notes: >
       This gene encodes a glutathione S-transferase enzyme which is assocated with DDT,
       pyrethroid and organophosphate resistance. Copy number variation spanning this
