@@ -46,6 +46,7 @@ rule h12_calibration:
         "logs/h12_calibration/{cohort}.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} -k selection-atlas \
         -p cohort_id {wildcards.cohort} -f {input.config} 2> {log}
         """
@@ -117,6 +118,7 @@ rule h12_gwss:
         "logs/h12_gwss/{cohort}.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} \
         -f {input.config} 2> {log}
         """
@@ -142,6 +144,7 @@ rule h12_signal_detection:
         "logs/h12_signal_detection/{cohort}_{contig}.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} \
          -p contig {wildcards.contig} -f {input.config} 2> {log}
         """
@@ -164,6 +167,7 @@ rule g123_calibration:
         "logs/g123_calibration/{cohort}.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} -k selection-atlas \
         -p cohort_id {wildcards.cohort} -f {input.config} 2> {log}
         """
@@ -187,6 +191,7 @@ rule g123_gwss:
         "logs/g123_gwss/{cohort}.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} \
         -f {input.config} 2> {log}
         """
@@ -209,6 +214,7 @@ rule ihs_gwss:
         "logs/ihs_gwss/{cohort}.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} \
         -f {input.config} 2> {log}
         """
