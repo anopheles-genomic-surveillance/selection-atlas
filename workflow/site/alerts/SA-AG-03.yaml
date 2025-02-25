@@ -1,18 +1,40 @@
-label: "Resistance to dieldrin"
-region: "2RL:85,980,000-87,980,000"
+label: "Rdl"
+region: "2RL:86,890,285-87,194,711"
 ir_candidate_genes:
-    - identifier: "AGAP006028"
-      names:
-        - "Rdl"
-        - "GABA receptor"
-      notes: >
-        GABA-gated chloride channel targeted by cyclodiene insecticides. A296G/S mutations associated with dieldrin resistance. Alleles persist in sub-Saharan Africa despite ban on dieldrin in the 1980s.
-      references:
-        - citation: "Du et al. (2005)"
-          title: >
-            Independent mutations in the Rdl locus confer dieldrin resistance to Anopheles gambiae and An. arabiensis
-          url: "https://doi.org/10.1111/j.1365-2583.2005.00544.x"
-        - citation: "Grau-Bove et al. (2020)"
-          title: >
-            Evolution of the Insecticide Target Rdl in African Anopheles Is Driven by Interspecific and Interkaryotypic Introgression
-          url: "https://doi.org/10.1093/molbev/msaa128"
+  - identifier: "AGAP006028"
+    names:
+      - "Rdl"
+      - "resistance to dieldrin"
+      - "GABA-gated chloride channel subunit"
+    notes: >
+      This gene encodes a subunit of a GABA-gated chloride channel which is the
+      binding target of cyclodiene insecticides including dieldrin and lindane.
+      Mutations in this gene are associated with dieldrin resistance in multiple insect
+      species, including A296G and A296S (codon 302 in Drosophila melanogaster).
+      Resistance alleles persist in Anopheles populations in sub-Saharan Africa despite
+      a ban on dieldrin use in the 1980s.
+    references:
+      - citation: "Thomson et al. (1993)"
+        url: "https://pubmed.ncbi.nlm.nih.gov/9087552/"
+        title: >
+          Conservation of cyclodiene insecticide resistance-associated mutations in
+          insects
+      - citation: "Ffrench-Constant et al. (2000)"
+        url: "https://pubmed.ncbi.nlm.nih.gov/10761585/"
+        title: >
+          Cyclodiene insecticide resistance: from molecular to population genetics
+      - citation: "Du et al. (2005)"
+        url: "https://doi.org/10.1111/j.1365-2583.2005.00544.x"
+        title: >
+          Independent mutations in the Rdl locus confer dieldrin resistance to Anopheles
+          gambiae and An. arabiensis
+      - citation: "Wondji et al. (2011)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3579012/"
+        title: >
+          Identification and distribution of a GABA receptor mutation conferring
+          dieldrin resistance in the malaria vector Anopheles funestus in Africa
+      - citation: "Grau-Bové et al. (2020)"
+        url: "https://doi.org/10.1093/molbev/msaa128"
+        title: >
+          Evolution of the Insecticide Target Rdl in African Anopheles Is Driven by
+          Interspecific and Interkaryotypic Introgression

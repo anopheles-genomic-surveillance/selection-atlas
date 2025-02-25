@@ -1,17 +1,54 @@
-label: "Acetylcholinesterase 1"
-region: "2RL:2,383,000-4,497,000"
+label: "Ace1"
+region: "2RL:3,298,461-3,757,532"
 ir_candidate_genes:
-    - identifier: "AGAP001356"
-      names:
-        - "Ace1"
-      notes: >
-        Encodes acetylcholinesterase enzyme targeted by organophosphate and carbamate insecticides. The G280S mutation and copy number variation around this gene confer resistance (119 in Torpedo Californica codon numbering)
-      references:
-        - citation: "Weill et al. (2004)"
-          title: >
-            The unique mutation in ace-1 giving high insecticide resistance is easily detectable in mosquito vectors
-          url: "https://doi.org/10.1111/j.1365-2583.2004.00452.x"
-        - citation: "Grau-Bove et al. (2021)"
-          title: >
-            Resistance to pirimiphos-methyl in West African Anopheles is spreading via duplication and introgression of the Ace1 locus
-          url: "https://doi.org/10.1371/journal.pgen.1009253"
+  - identifier: "AGAP001356"
+    names:
+      - "Ace1"
+      - "acetylcholinesterase"
+    notes: >
+      This gene encodes an acetylcholinesterase enzyme wich is the binding
+      target of organophosphate and carbamate insecticides. Variants in this
+      gene are associated with insecticide resistance, including the G280S
+      mutation (also known as G119S in Torpedo californica codon numbering)
+      and copy number variation.
+    references:
+      - citation: "Weill et al. (2003)"
+        url: "https://doi.org/10.1038/423136b"
+        title: >
+          Insecticide resistance in mosquito vectors
+      - citation: "Weill et al. (2004)"
+        url: "https://pubmed.ncbi.nlm.nih.gov/14728661/"
+        title: >
+          The unique mutation in ace-1 giving high insecticide resistance is
+          easily detectable in mosquito vectors
+      - citation: "Fournier (2005)"
+        url: "https://pubmed.ncbi.nlm.nih.gov/16274684/"
+        title: >
+          Mutations of acetylcholinesterase which confer insecticide resistance
+          in insect populations
+      - citation: "Oakeshott et al. (2005)"
+        url: "https://pubmed.ncbi.nlm.nih.gov/16289012/"
+        title: >
+          Comparing the organophosphorus and carbamate insecticide resistance
+          mutations in cholin- and carboxyl-esterases
+      - citation: "Labbé et al. (2007)"
+        url: "https://pubmed.ncbi.nlm.nih.gov/17283366/"
+        title: >
+          Independent duplications of the acetylcholinesterase gene conferring
+          insecticide resistance in the mosquito Culex pipiens
+      - citation: "Weetman et al. (2015)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4447564/"
+        title: >
+          Contemporary evolution of resistance at the major insecticide target
+          site gene Ace-1 by mutation and copy number variation in the malaria
+          mosquito Anopheles gambiae
+      - citation: "Cheung et al. (2018)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/pmid/29276037/"
+        title: >
+          Structure of the G119S Mutant Acetylcholinesterase of the Malaria Vector
+          Anopheles gambiae Reveals Basis of Insecticide Resistance
+      - citation: "Grau-Bove et al. (2021)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7853456/"
+        title: >
+          Resistance to pirimiphos-methyl in West African Anopheles is spreading
+          via duplication and introgression of the Ace1 locus

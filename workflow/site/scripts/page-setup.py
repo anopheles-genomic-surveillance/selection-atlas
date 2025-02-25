@@ -83,10 +83,10 @@ def load_signals(contig, start=None, stop=None):
     # Fixed color.
     df_signals["color"] = signal_span_color
 
-    # Filter to region.
+    # Filter to region using an overlap query.
     if start and stop:
         df_signals = df_signals.query(
-            f"focus_pstop < {int(stop)} and focus_pstart > {int(start)}"
+            f"focus_pstop > {int(start)} and focus_pstart < {int(stop)}"
         )
 
     # Sort and stack

@@ -1,14 +1,42 @@
-label: "Diacylglycerol kinase"
-region: "X:8,500,000-10,500,000"
+label: "Dgk"
+region: "X:9,127,402-9,363,702"
 ir_candidate_genes:
-    - identifier: "AGAP000519"
-      names:
-        - "Dgk"
-        - "Rdga"
-      notes: >
-        Repeatedly appears under selection in wild cohorts, but mechanism of resistance unclear. May be involved in vision.
-      references:
-        - citation: ""
-          title: >
-            ""
-          url: ""
+  - identifier: "AGAP000519"
+    names:
+      - "Dgk"
+      - "Rdga"
+      - "diacylglycerol kinase"
+    notes: >
+      This gene encodes a diacylglycerol kinase. This gene has not been directly
+      implicated in resistance to pesticides in any insect species to date, but there
+      are two hypotheses regarding a potential link to insecticide resistance in
+      Anopheles based on studies in other species. (1) In several systems, Dgk genes
+      act as negative regulators of synaptic transmission between cholinergenic neurons
+      by limiting the amount of acetylcholine available at synaptic junctions. In
+      C. elegans, loss of function mutations in a Dgk gene cause hyperactivity and
+      hypersensitivity to aldicarb, a carbamate insecticide, presumably because of an
+      increase in acetylcholine levels available at synaptic junctions. If Dgk performs
+      a similar function in Anopheles, then a gain of function mutation might reduce
+      sensitivity to carbamate and/or organophosphate insecticides. (2) In Drosophila
+      melanogaster, the ortholog of this gene Rdga is expressed exclusively in the
+      retina and modulates sensitivity to light, via the same pathway and mechanism
+      described above. This gene is also under circadian control in Anopheles gambiae.
+      If mutations in this gene affected sensitivity to light in Anopheles, and the gene
+      is expressed under a circadian rhythm, then such mutations might also affect
+      circadian behaviours, such as the timing of host-seeking and feeding behaviours.
+    references:
+      - citation: "Miller et al. (1999)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4703424/"
+        title: >
+          Goα and Diacylglycerol Kinase Negatively Regulate the Gqα Pathway in
+          C. elegans
+      - citation: "Rund et al. (2011)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3156198/"
+        title: >
+          Genome-wide profiling of diel and circadian gene expression in the malaria
+          vector Anopheles gambiae
+      - citation: "Kientega et al. (2024)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11406867/"
+        title: >
+          Whole-genome sequencing of major malaria vectors reveals the evolution of
+          new insecticide resistance variants in a longitudinal study in Burkina Faso

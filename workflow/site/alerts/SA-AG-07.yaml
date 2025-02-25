@@ -1,14 +1,45 @@
-label: "Alpha-esterase genes"
-region: "2RL:89,000,000-91,000,000"
+label: "Coeae1f/Coeae2f"
+region: "2RL:89,888,868-90,271,142"
 ir_candidate_genes:
-    - identifier: "AGAP006227, AGAP006228"
-      names:
-        - "Coeae1f"
-        - "Coeae2f"
-      notes: >
-        Carboxylesterase genes involved in metabolic resistance to organophosphates and potentially other insecticides.
-      references:
-        - citation: "Nagi et al. (2024)"
-          title: >
-             Parallel Evolution in Mosquito Vectors—A Duplicated Esterase Locus is Associated With Resistance to Pirimiphos-methyl in Anopheles gambiae
-          url: "https://doi.org/10.1093/molbev/msae140"
+  - identifier: "AGAP006227"
+    names:
+      - "Coeae1f"
+      - "Est3"
+      - "alpha esterase"
+      - "carboxylesterase"
+    notes: >
+      This gene encodes a carboxylesterase enzyme. Genetic variation at this gene is
+      associated with resistance to organophosphate insecticides in Anopheles gambiae
+      and Culex pipiens.
+    references:
+      - citation: "Raymond et al. (1998)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1692391/"
+        title: >
+            An overview of the evolution of overproduced esterases in the mosquito
+            Culex pipiens
+      - citation: "Nagi et al. (2024)"
+        title: >
+            Parallel Evolution in Mosquito Vectors — A Duplicated Esterase Locus is
+            Associated With Resistance to Pirimiphos-methyl in Anopheles gambiae
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11267716/"
+  - identifier: "AGAP006228"
+    names:
+      - "Coeae2f"
+      - "Est2"
+      - "alpha esterase"
+      - "carboxylesterase"
+    notes: >
+      This gene encodes a carboxylesterase enzyme. Genetic variation at this gene is
+      associated with resistance to organophosphate insecticides in Anopheles gambiae
+      and Culex pipiens.
+    references:
+      - citation: "Raymond et al. (1998)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1692391/"
+        title: >
+            An overview of the evolution of overproduced esterases in the mosquito
+            Culex pipiens
+      - citation: "Nagi et al. (2024)"
+        title: >
+            Parallel Evolution in Mosquito Vectors — A Duplicated Esterase Locus is
+            Associated With Resistance to Pirimiphos-methyl in Anopheles gambiae
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11267716/"

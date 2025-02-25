@@ -1,22 +1,51 @@
-label: "Voltage-gated sodium channel gene"
-region: "2RL:63,000,000-65,000,000"
+label: "Vgsc"
+region: "2RL:63,203,099-64,808,132"
 ir_candidate_genes:
   - identifier: "AGAP004707"
     names:
       - "Vgsc"
       - "Para"
+      - "voltage-gated sodium channel"
     notes: >
       This gene encodes a voltage-gated sodium channel which is the binding target of DDT
       and pyrethroid insecticides. Variants in this gene are associated with resistance to
       DDT and/or pyrethroids.
     references:
-      - citation: "Clarkson et al. (2021)"
-        title: >
-          The genetic architecture of target-site resistance to pyrethroid insecticides in
-          the African malaria vectors Anopheles gambiae and Anopheles coluzzii
-        url: "https://doi.org/10.1111/mec.15845"
       - citation: "Martinez-Torres et al. (1998)"
+        url: "https://pubmed.ncbi.nlm.nih.gov/9535162/"
         title: >
           Molecular characterization of pyrethroid knockdown resistance (kdr) in the major
           malaria vector Anopheles gambiae s.s.
-        url: "https://pubmed.ncbi.nlm.nih.gov/9535162/"
+      - citation: "Ranson et al. (2000)"
+        url: "https://pubmed.ncbi.nlm.nih.gov/11029667/"
+        title: >
+          Identification of a point mutation in the voltage-gated sodium channel gene of
+          Kenyan Anopheles gambiae associated with resistance to DDT and pyrethroids
+      - citation: "Davies et al. (2007a)"
+        url: "https://pubmed.ncbi.nlm.nih.gov/17433068/"
+        title: >
+          A comparative study of voltage-gated sodium channels in the Insecta: implications
+          for pyrethroid resistance in Anopheline and other Neopteran species
+      - citation: "Davies (2007b)"
+        url: "https://pubmed.ncbi.nlm.nih.gov/17487686/"
+        title: >
+          DDT, pyrethrins, pyrethroids and insect sodium channel
+      - citation: "Jones et al. (2012)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3340067/"
+        title: >
+          Footprints of positive selection associated with a mutation (N1575Y) in the
+          voltage-gated sodium channel of Anopheles gambiae
+      - citation: "Dong et al. (2014)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4484874/"
+        title: >
+          Molecular Biology of Insect Sodium Channels and Pyrethroid Resistance
+      - citation: "Wang et al. (2015)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4352587/"
+        title: >
+          A Mutation in the Intracellular Loop III/IV of Mosquito Sodium Channel Synergizes the
+          Effect of Mutations in Helix IIS6 on Pyrethroid Resistance
+      - citation: "Clarkson et al. (2021)"
+        url: "https://doi.org/10.1111/mec.15845"
+        title: >
+          The genetic architecture of target-site resistance to pyrethroid insecticides in
+          the African malaria vectors Anopheles gambiae and Anopheles coluzzii
