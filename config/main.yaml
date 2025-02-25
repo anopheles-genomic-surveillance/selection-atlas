@@ -2,18 +2,31 @@
 # the outputs from a particular run of the analysis workflow. If you
 # change any of the parameters in this configuration file then please
 # also update the analysis version.
-analysis_version: "2025.02.13"
+analysis_version: "2025.02.25"
 
 # Set minimum and maximum cohort size parameters.
 min_cohort_size: 15
-max_cohort_size: 70  # TODO Maybe increase this for production?
+max_cohort_size: 100  # If larger, will be randomly downsampled.
 
 # Select the sample sets to include in the analysis.
 sample_sets:
-    - "3.0"
+    - "3.0"  # All of Ag1000G phase 3, unrestricted
+    - "1237-VO-BJ-DJOGBENOU-VMF00050"  # GAARD Benin, unrestricted
+    - "1237-VO-BJ-DJOGBENOU-VMF00067"  # GAARD Benin, unrestricted
+    - "1244-VO-GH-YAWSON-VMF00051"  # GAARD Ghana, unrestricted
+    - "1245-VO-CI-CONSTANT-VMF00054"  # GAARD Cote d'Ivoire, unrestricted
+    - "1253-VO-TG-DJOGBENOU-VMF00052"  # GAARD Togo, unrestricted
+    - "1178-VO-UG-LAWNICZAK-VMF00025"  # Ugandan samples via Mara, unrestricted
+    - "1244-VO-GH-YAWSON-VMF00149"  # GAARDIAN Ghana, with Martin Donnelly's permission
+    - "barron-2019"  # unrestricted
+    - "crawford-2016"  # unrestricted
+    - "tennessen-2021"  # unrestricted
+    - "bergey-2019"  # unrestricted
+    - "campos-2021"  # unrestricted
+    - "fontaine-2015-rebuild"  # unrestricted
 
 # Filter samples to include in the analysis.
-sample_query: "unrestricted_use and taxon in ['gambiae', 'coluzzii', 'arabiensis', 'bissau']"
+sample_query: "taxon in ['gambiae', 'coluzzii', 'arabiensis', 'bissau']"
 
 # Select the contigs to analyse.
 contigs:
