@@ -20,6 +20,7 @@ rule home_page:
         "logs/home_page.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
         """
 
@@ -42,6 +43,7 @@ rule country_pages:
         "logs/country_pages/{country}.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} -k selection-atlas -p country {wildcards.country} -f {input.config} 2> {log}
         """
 
@@ -65,6 +67,7 @@ rule contig_pages:
         "logs/contig_pages/{contig}.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} -k selection-atlas -p contig {wildcards.contig} -f {input.config} 2> {log}
         """
 
@@ -91,6 +94,7 @@ rule cohort_pages:
         "logs/cohort_pages/{cohort}.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -f {input.config} 2> {log}
         """
 
@@ -115,6 +119,7 @@ rule alert_pages:
         "logs/alert_pages/{alert}.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} -k selection-atlas -p alert_id {wildcards.alert} -f {input.config} -f {input.alert_config} 2> {log}
         """
 
@@ -137,6 +142,7 @@ rule process_headers_home:
         "logs/add_headers/home-page.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} \
             -k selection-atlas \
             -p input_nb {input.homepage_nb} \
@@ -165,6 +171,7 @@ rule process_headers_contig:
         "logs/add_headers/contig-{contig}.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} \
             -k selection-atlas \
             -p input_nb {input.contig_nb} \
@@ -194,6 +201,7 @@ rule process_headers_country:
         "logs/add_headers/country-{country}.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} \
             -k selection-atlas \
             -p input_nb {input.country_nb} \
@@ -223,6 +231,7 @@ rule process_headers_cohort:
         "logs/add_headers/cohort-{cohort}.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} \
             -k selection-atlas \
             -p input_nb {input.cohort_nb} \
@@ -252,6 +261,7 @@ rule process_headers_alert:
         "logs/add_headers/alert-{alert}.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} \
             -k selection-atlas \
             -p input_nb {input.alert_nb} \
@@ -282,6 +292,7 @@ rule generate_toc:
         "logs/generate_toc.log",
     shell:
         """
+        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
         """
 
