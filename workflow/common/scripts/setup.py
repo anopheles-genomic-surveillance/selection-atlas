@@ -72,4 +72,5 @@ ag3 = malariagen_data.Ag3(
     # Pin the version of the cohorts analysis for reproducibility.
     cohorts_analysis=cohorts_analysis,
     results_cache=malariagen_data_cache_path.as_posix(),
+    check_location=False,
 )
