@@ -26,8 +26,11 @@ genes
 
 
 genome
+genomes
+genome region
+genome regions
 reference genome
-  A genome is all the genetic information of an organism. In the case of *Anopheles* mosquitoes, the nuclear genome comprises DNA sequences organised into three chromosomes, named Chromosome 2 (a.k.a. 2RL), Chromosome 3 (a.k.a. 3RL) and Chromosome X. A reference genome is a specific set of nucleotide sequences representing a particular species. All analyses reported in the selection atlas are based on the AgamP4 reference genome, also known as "PEST". Note that in the AgamP4 reference genome, Chromosome 2 is divided into two arms named 2R and 2L, and similarly Chromosome 3 is divided into arms 3R and 3L. To simplify analyses, we have concatenated these arms together to create sequences representing entire chromosomes (2RL and 3RL).
+  A genome is all the genetic information of an organism. In the case of *Anopheles* mosquitoes, the nuclear genome comprises DNA sequences organised into three chromosomes, named Chromosome 2 (a.k.a. 2RL), Chromosome 3 (a.k.a. 3RL) and Chromosome X. A reference genome is a specific set of nucleotide sequences representing a particular species. All analyses reported in the selection atlas are based on the AgamP4 reference genome, also known as "PEST". Note that in the AgamP4 reference genome, Chromosome 2 is divided into two arms named 2R and 2L, and similarly Chromosome 3 is divided into arms 3R and 3L. To simplify analyses, we have concatenated these arms together to create sequences representing entire chromosomes (2RL and 3RL). A genome region is a section of a chromosome with a defined start and end position relative to the reference genome coordinate system.
 
 
 genome-wide selection scan
