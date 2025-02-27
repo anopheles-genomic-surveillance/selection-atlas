@@ -6,13 +6,11 @@
 
 
 cohort
-cohorts
-  A cohort is a group of mosquito specimens which are analysed together. For the selection atlas, mosquito specimens are grouped into cohorts by taxon, level 2 administrative divisions, and year quarter. For example, the cohort labelled "Burkina Faso / Houet / coluzzii / 2012 / Q3" includes *Anopheles coluzzii* mosquitoes collected from Houet Province, Burkina Faso, during the third quarter of 2012.
+  A group of mosquito specimens which are analysed together. For the selection atlas, mosquito specimens are grouped into cohorts by taxon, level 2 administrative divisions, and year quarter. For example, the cohort labelled "Burkina Faso / Houet / coluzzii / 2012 / Q3" includes *Anopheles coluzzii* mosquitoes collected from Houet Province, Burkina Faso, during the third quarter of 2012.
 
 
 copy number variation
 CNV
-CNVs
   A genetic mutation where multiple additional copies of a particular DNA sequence are present in some individuals in a population. If a CNV spans one or more protein-coding {term}`genes` then expression of those genes may be increased as a result. If the protein product interacts with insecticides in some way, then increased expression may alter insecticide susceptibility. For example, CNVs affecting cytochrome P450 genes which metabolise pyrethroid insecticides may cause resistance to pyrethroids.
 
 
@@ -21,22 +19,21 @@ G123
 
 
 gene
-genes
   A gene is a sequence of nucleotides in DNA that is transcribed to produce a functional RNA. Most genes are protein-coding, meaning that the RNA is then translated into an amino acid sequence to synthesize a protein.
 
 
 genome
-genomes
-genome region
-genome regions
 reference genome
-  A genome is all the genetic information of an organism. In the case of *Anopheles* mosquitoes, the nuclear genome comprises DNA sequences organised into three chromosomes, named Chromosome 2 (a.k.a. 2RL), Chromosome 3 (a.k.a. 3RL) and Chromosome X. A reference genome is a specific set of nucleotide sequences representing a particular species. All analyses reported in the selection atlas are based on the AgamP4 reference genome, also known as "PEST". Note that in the AgamP4 reference genome, Chromosome 2 is divided into two arms named 2R and 2L, and similarly Chromosome 3 is divided into arms 3R and 3L. To simplify analyses, we have concatenated these arms together to create sequences representing entire chromosomes (2RL and 3RL). A genome region is a section of a chromosome with a defined start and end position relative to the reference genome coordinate system.
+  A genome is all the genetic information of an organism. In the case of *Anopheles* mosquitoes, the nuclear genome comprises DNA sequences organised into three chromosomes, named Chromosome 2 (a.k.a. 2RL), Chromosome 3 (a.k.a. 3RL) and Chromosome X. A reference genome is a specific set of nucleotide sequences representing a particular species. All analyses reported in the selection atlas are based on the AgamP4 reference genome, also known as "PEST". Note that in the AgamP4 reference genome, Chromosome 2 is divided into two arms named 2R and 2L, and similarly Chromosome 3 is divided into arms 3R and 3L. To simplify analyses, we have concatenated these arms together to create sequences representing entire chromosomes (2RL and 3RL).
+
+
+genome region
+  A section of a chromosome with a defined start and end position relative to the {term}`reference genome` coordinate system.
 
 
 genome-wide selection scan
-genome-wide selection scans
 GWSS
-  A genome-wide selection scan is a statistical analysis of genetic variation data derived from a given cohort of mosquitoes, which aims to detect patterns indicating that a specific genome region has experienced recent positive selection within the population from which that cohort was sampled. There are several different statistical methods available to perform genome-wide selection scans, such as {term}`H12`, {term}`G123` and {term}`IHS`.
+  A statistical analysis of genetic variation data derived from a given cohort of mosquitoes, which aims to detect patterns indicating that a specific genome region has experienced recent positive selection within the population from which that cohort was sampled. There are several different statistical methods available to perform genome-wide selection scans, such as {term}`H12`, {term}`G123` and {term}`IHS`.
 
 
 H12
@@ -44,8 +41,7 @@ H12
 
 
 haplotype
-haplotypes
-  A haplotype is a physical grouping of genetic variants that have been inherited together.
+  A physical grouping of genetic variants that have been inherited together.
 
 
 integrated haplotype score
@@ -63,7 +59,6 @@ IR
 
 
 malaria vector
-malaria vectors
   A malaria vector is a mosquito species which transmits malaria.
 
 
@@ -73,13 +68,11 @@ recent positive selection
 
 
 selection signal
-selection signals
   A selection signal is a region of the genome where there is strong statistical evidence for recent positive selection, inferred from the results of a {term}`genome-wide selection scan`.
 
 
 single nucleotide polymorphism
 SNP
-SNPs
   A genetic mutation where a single nucleotide in a DNA sequence is replaced by a different nucleotide.
 
 
