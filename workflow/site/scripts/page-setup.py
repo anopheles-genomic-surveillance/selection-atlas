@@ -105,6 +105,7 @@ def plot_signals(
     genes_height=80,
     x_min=None,
     x_max=None,
+    gene_labels=None,
 ):
     """Plot an overview of selection signals."""
 
@@ -223,6 +224,7 @@ def plot_signals(
         x_range=fig1.x_range,
         height=genes_height,
         show=False,
+        gene_labels=gene_labels,
     )
 
     fig = bklay.gridplot(

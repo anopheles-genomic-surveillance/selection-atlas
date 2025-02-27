@@ -11,11 +11,11 @@ cohort
 
 copy number variation
 CNV
-  A genetic mutation where multiple additional copies of a particular DNA sequence are present in some individuals in a population. If a CNV spans one or more protein-coding {term}`genes` then expression of those genes may be increased as a result. If the protein product interacts with insecticides in some way, then increased expression may alter insecticide susceptibility. For example, CNVs affecting cytochrome P450 genes which metabolise pyrethroid insecticides may cause resistance to pyrethroids.
+  A genetic mutation where multiple additional copies of a particular DNA sequence are present in some individuals in a population. If a CNV spans one or more protein-coding {term}`gene`s then expression of those genes may be increased as a result. If the protein product interacts with insecticides in some way, then increased expression may alter insecticide susceptibility. For example, CNVs affecting cytochrome P450 genes which metabolise pyrethroid insecticides may cause resistance to pyrethroids.
 
 
 G123
-  A statistical method for performing {term}`genome-wide selection scans` using unphased {term}`SNP` data and multi-locus genotype (diplotype) frequencies. See also [Harris et al. (2018)](https://pmc.ncbi.nlm.nih.gov/articles/PMC6283157/).
+  A statistical method for performing {term}`genome-wide selection scan`s using unphased {term}`SNP` data and multi-locus genotype (diplotype) frequencies. See also [Harris et al. (2018)](https://pmc.ncbi.nlm.nih.gov/articles/PMC6283157/).
 
 
 gene
@@ -37,7 +37,7 @@ GWSS
 
 
 H12
-  A statistical method for performing {term}`genome-wide selection scans` using data on {term}`haplotype` frequencies. See also [Garud et al. (2015)](https://pmc.ncbi.nlm.nih.gov/articles/PMC4338236/).
+  A statistical method for performing {term}`genome-wide selection scan`s using data on {term}`haplotype` frequencies. See also [Garud et al. (2015)](https://pmc.ncbi.nlm.nih.gov/articles/PMC4338236/).
 
 
 haplotype
@@ -46,7 +46,7 @@ haplotype
 
 integrated haplotype score
 IHS
-  A statistical method for performing {term}`genome-wide selection scans` using data on the length of shared {term}`haplotypes`. See also [Voight et al. (2006)](https://pmc.ncbi.nlm.nih.gov/articles/PMC1382018/).
+  A statistical method for performing {term}`genome-wide selection scan`s using data on the length of shared {term}`haplotype`s. See also [Voight et al. (2006)](https://pmc.ncbi.nlm.nih.gov/articles/PMC1382018/).
 
 
 insecticide resistance
