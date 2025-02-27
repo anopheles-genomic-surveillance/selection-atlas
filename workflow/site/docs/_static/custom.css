@@ -15,3 +15,30 @@
   }
 
 }
+
+a {
+    text-decoration: none;
+}
+
+a::hover {
+    text-underline-offset: .1578em;
+}
+
+a.external {
+    text-decoration: underline;
+    text-underline-offset: .1578em;
+}
+
+a.internal .doc {
+    text-decoration: underline;
+    text-underline-offset: .1578em;
+}
+
+a.internal .std-term {
+    /* Make glossary links look different */
+    color: black;
+    text-decoration: underline;
+    text-decoration-color: #999999;
+    text-decoration-style: dashed;
+    text-underline-offset: .1578em;
+}
