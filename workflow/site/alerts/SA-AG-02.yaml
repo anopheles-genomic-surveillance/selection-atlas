@@ -4,12 +4,11 @@ ir_candidate_genes:
   - identifier: "AGAP001356"
     names:
       - "Ace1"
-      - "acetylcholinesterase"
     notes: >
       This gene encodes an acetylcholinesterase enzyme wich is the binding
       target of organophosphate and carbamate insecticides. Variants in this
       gene are associated with insecticide resistance, including the G280S
-      mutation (also known as G119S in Torpedo californica codon numbering)
+      mutation (also known as G119S in *Torpedo californica* codon numbering)
       and copy number variation.
     references:
       - citation: "Weill et al. (2003)"

@@ -5,23 +5,22 @@ ir_candidate_genes:
     names:
       - "Dgk"
       - "Rdga"
-      - "diacylglycerol kinase"
     notes: >
       This gene encodes a diacylglycerol kinase. This gene has not been directly
       implicated in resistance to pesticides in any insect species to date, but there
       are two hypotheses regarding a potential link to insecticide resistance in
-      Anopheles based on studies in other species. (1) In several systems, Dgk genes
+      *Anopheles* based on studies in other species. (1) In several systems, *Dgk* genes
       act as negative regulators of synaptic transmission between cholinergenic neurons
       by limiting the amount of acetylcholine available at synaptic junctions. In
-      C. elegans, loss of function mutations in a Dgk gene cause hyperactivity and
+      *C. elegans*, loss of function mutations in a *Dgk* gene cause hyperactivity and
       hypersensitivity to aldicarb, a carbamate insecticide, presumably because of an
-      increase in acetylcholine levels available at synaptic junctions. If Dgk performs
-      a similar function in Anopheles, then a gain of function mutation might reduce
-      sensitivity to carbamate and/or organophosphate insecticides. (2) In Drosophila
-      melanogaster, the ortholog of this gene Rdga is expressed exclusively in the
+      increase in acetylcholine levels available at synaptic junctions. If *Dgk* performs
+      a similar function in *Anopheles*, then a gain of function mutation might reduce
+      sensitivity to carbamate and/or organophosphate insecticides. (2) In *Drosophila
+      melanogaster*, the ortholog of this gene *Rdga* is expressed exclusively in the
       retina and modulates sensitivity to light, via the same pathway and mechanism
-      described above. This gene is also under circadian control in Anopheles gambiae.
-      If mutations in this gene affected sensitivity to light in Anopheles, and the gene
+      described above. This gene is also under circadian control in *Anopheles gambiae*.
+      If mutations in this gene affected sensitivity to light in *Anopheles*, and the gene
       is expressed under a circadian rhythm, then such mutations might also affect
       circadian behaviours, such as the timing of host-seeking and feeding behaviours.
     references:
