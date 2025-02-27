@@ -4,14 +4,12 @@ ir_candidate_genes:
   - identifier: "AGAP006028"
     names:
       - "Rdl"
-      - "resistance to dieldrin"
-      - "GABA-gated chloride channel subunit"
     notes: >
       This gene encodes a subunit of a GABA-gated chloride channel which is the
       binding target of cyclodiene insecticides including dieldrin and lindane.
       Mutations in this gene are associated with dieldrin resistance in multiple insect
-      species, including A296G and A296S (codon 302 in Drosophila melanogaster).
-      Resistance alleles persist in Anopheles populations in sub-Saharan Africa despite
+      species, including A296G and A296S (codon 302 in *Drosophila melanogaster*).
+      Resistance alleles persist in *Anopheles* populations in sub-Saharan Africa despite
       a ban on dieldrin use in the 1980s.
     references:
       - citation: "Thomson et al. (1993)"

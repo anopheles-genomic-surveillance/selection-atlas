@@ -4,11 +4,10 @@ ir_candidate_genes:
   - identifier: "AGAP009194"
     names:
       - "Gste2"
-      - "glutathione S-transferase"
     notes: >
       This gene encodes a glutathione S-transferase enzyme which is assocated with DDT,
       pyrethroid and organophosphate resistance. Copy number variation spanning this
-      gene has been observed in Anopheles gambiae and Anopheles coluzzii.
+      gene has been observed in *Anopheles gambiae* and *Anopheles coluzzii*.
     references:
       - citation: "Ranson et al. (2001)"
         url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1222147/"

@@ -4,16 +4,15 @@ ir_candidate_genes:
   - identifier: "AGAP003645"
     names:
       - "Keap1"
-      - "kelch-like protein 19"
     notes: >
-      This gene encodes a protein within the Maf-S/cnc/Keap1 pathway which regulates the
+      This gene encodes a protein within the *Maf-S*/*cnc*/*Keap1* pathway which regulates the
       expression metabolic insecticide resistance genes in response to oxidative stress.
-      Under oxidative stress conditions, cnc is released by Keap1, which translocates
-      into the nucleus and binds to the transcription factor Maf-S. The cnc/Maf-S
+      Under oxidative stress conditions, *cnc* is released by *Keap1*, which translocates
+      into the nucleus and binds to the transcription factor *Maf-S*. The *cnc*/*Maf-S*
       complex then binds to antioxidant response elements in the genome, initiating
-      transcription. Maf-S expression correlates with expression of multiple insecticide
-      resistance candidates in Anopheles gambiae. Constitutive activation of this
-      pathway causes resistance to multiple insecticides in Drosophila melanogaster.
+      transcription. *Maf-S* expression correlates with expression of multiple insecticide
+      resistance candidates in *Anopheles gambiae*. Constitutive activation of this
+      pathway causes resistance to multiple insecticides in *Drosophila melanogaster*.
     references:
       - citation: "Misra et al. (2013)"
         url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3852162/"

@@ -31,6 +31,7 @@ def get_selection_atlas_site_files(wildcards):
             f"{site_results_dir}/docs/glossary.md",
             f"{site_results_dir}/docs/logo.png",
             f"{site_results_dir}/docs/favicon.ico",
+            f"{site_results_dir}/docs/_static/custom.css",
         ],
         country=countries,
         contig=contigs,

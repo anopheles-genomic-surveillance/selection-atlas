@@ -4,11 +4,10 @@ ir_candidate_genes:
   - identifier: "AGAP000818"
     names:
       - "Cyp9k1"
-      - "cytochrome P450"
     notes: >
       This gene encodes a cytochrome P450 enzyme which is associated with pyrethroid
       resistance through increased expression and where copy number variation has been
-      observed in Anopheles gambiae and Anopheles coluzzii.
+      observed in *Anopheles gambiae* and *Anopheles coluzzii*.
     references:
       - citation: "Main et al. (2015)"
         url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4615556/"

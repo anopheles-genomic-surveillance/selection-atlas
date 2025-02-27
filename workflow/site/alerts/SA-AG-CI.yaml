@@ -3,7 +3,7 @@ region: "2R:27,500,000-29,500,000"
 ir_candidate_genes:
   - identifier: "AGAP002865"
     names:
-      - "cyp6p3"
+      - "Cyp6p3"
     notes: >
       p450s blah blah
     references:
