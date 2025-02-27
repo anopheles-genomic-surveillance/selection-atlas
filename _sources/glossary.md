@@ -10,6 +10,12 @@ cohorts
   A cohort is a group of mosquito specimens which are analysed together. For the selection atlas, mosquito specimens are grouped into cohorts by taxon, level 2 administrative divisions, and year quarter. For example, the cohort labelled "Burkina Faso / Houet / coluzzii / 2012 / Q3" includes *Anopheles coluzzii* mosquitoes collected from Houet Province, Burkina Faso, during the third quarter of 2012.
 
 
+copy number variation
+CNV
+CNVs
+  A genetic mutation where multiple additional copies of a particular DNA sequence are present in some individuals in a population. If a CNV spans one or more protein-coding {term}`genes` then expression of those genes may be increased as a result. If the protein product interacts with insecticides in some way, then increased expression may alter insecticide susceptibility. For example, CNVs affecting cytochrome P450 genes which metabolise pyrethroid insecticides may cause resistance to pyrethroids.
+
+
 G123
   A statistical method for performing {term}`genome-wide selection scans` using unphased {term}`SNP` data and multi-locus genotype (diplotype) frequencies. See also [Harris et al. (2018)](https://pmc.ncbi.nlm.nih.gov/articles/PMC6283157/).
 
@@ -20,7 +26,11 @@ genes
 
 
 genome
-  A genome is all the genetic information of an organism. In the case of *Anopheles* mosquitoes, the nuclear genome comprises DNA sequences organised into three chromosomes, named Chromosome 2 (a.k.a. 2RL), Chromosome 3 (a.k.a. 3RL) and Chromosome X. A reference genome is a specific set of nucleotide sequences representing a particular species. All analyses reported in the selection atlas are based on the AgamP4 reference genome, also known as "PEST". Note that in the AgamP4 reference genome, Chromosome 2 is divided into two arms named 2R and 2L, and similarly Chromosome 3 is divided into arms 3R and 3L. To simplify analyses, we have concatenated these arms together to create sequences representing entire chromosomes (2RL and 3RL).
+genomes
+genome region
+genome regions
+reference genome
+  A genome is all the genetic information of an organism. In the case of *Anopheles* mosquitoes, the nuclear genome comprises DNA sequences organised into three chromosomes, named Chromosome 2 (a.k.a. 2RL), Chromosome 3 (a.k.a. 3RL) and Chromosome X. A reference genome is a specific set of nucleotide sequences representing a particular species. All analyses reported in the selection atlas are based on the AgamP4 reference genome, also known as "PEST". Note that in the AgamP4 reference genome, Chromosome 2 is divided into two arms named 2R and 2L, and similarly Chromosome 3 is divided into arms 3R and 3L. To simplify analyses, we have concatenated these arms together to create sequences representing entire chromosomes (2RL and 3RL). A genome region is a section of a chromosome with a defined start and end position relative to the reference genome coordinate system.
 
 
 genome-wide selection scan
@@ -57,6 +67,11 @@ malaria vectors
   A malaria vector is a mosquito species which transmits malaria.
 
 
+selection
+recent positive selection
+  Selection here refers to the evolution of a mosquito population by natural selection, where genetic variants change in frequency because they provide a survival or other reproductive advantage. The selection atlas focuses on recent positive selection, which is a type of selection where genetic variants increase rapidly in frequency because they provide a strong survival advantage, and this change has occurred within the recent past. For example, the use of insecticide-treated bednets has caused recent positive selection for genetic variants which confer {term}`insecticide resistance` in *Anopheles* mosquito populations.
+
+
 selection signal
 selection signals
   A selection signal is a region of the genome where there is strong statistical evidence for recent positive selection, inferred from the results of a {term}`genome-wide selection scan`.
@@ -64,6 +79,7 @@ selection signals
 
 single nucleotide polymorphism
 SNP
+SNPs
   A genetic mutation where a single nucleotide in a DNA sequence is replaced by a different nucleotide.
 
 
