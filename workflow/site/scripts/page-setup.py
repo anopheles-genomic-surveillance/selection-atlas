@@ -59,7 +59,7 @@ def load_cohort_signals(contig, cohort_id):
     return df_signals
 
 
-def load_signals(contig, start=None, stop=None):
+def load_signals(contig, start=None, stop=None, query=None):
     """Load all selection signals for a given genome region."""
 
     # Load signal dataframes for all cohorts.
@@ -88,6 +88,10 @@ def load_signals(contig, start=None, stop=None):
         df_signals = df_signals.query(
             f"focus_pstop > {int(start)} and focus_pstart < {int(stop)}"
         )
+
+    # Apply optional query.
+    if query is not None:
+        df_signals = df_signals.query(query)
 
     # Sort and stack
     df_signals = df_signals.sort_values(by="span2_pstart")
