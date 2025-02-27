@@ -1,0 +1,17 @@
+.bd-article-container {
+
+  /* Top two headers are slightly bolder */
+  h1,
+  h2 {
+    font-weight: 500;
+  }
+
+  /* Other headers are normal weight */
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: 400;
+  }
+
+}

@@ -310,6 +310,7 @@ rule prepare_site:
         f"{workflow.basedir}/docs/glossary.md",
         f"{workflow.basedir}/docs/favicon.ico",
         f"{workflow.basedir}/docs/logo.png",
+        f"{workflow.basedir}/docs/_static/custom.css",
     output:
         f"{site_results_dir}/docs/_config.yml",
         f"{site_results_dir}/docs/alerts.ipynb",
@@ -318,6 +319,7 @@ rule prepare_site:
         f"{site_results_dir}/docs/glossary.md",
         f"{site_results_dir}/docs/favicon.ico",
         f"{site_results_dir}/docs/logo.png",
+        f"{site_results_dir}/docs/_static/custom.css",
     conda:
         environment_file
     log:
