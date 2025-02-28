@@ -59,7 +59,7 @@ def load_cohort_signals(contig, cohort_id):
     return df_signals
 
 
-def load_signals(contig, start=None, stop=None):
+def load_signals(contig, start=None, stop=None, query=None):
     """Load all selection signals for a given genome region."""
 
     # Load signal dataframes for all cohorts.
@@ -89,6 +89,10 @@ def load_signals(contig, start=None, stop=None):
             f"focus_pstop > {int(start)} and focus_pstart < {int(stop)}"
         )
 
+    # Apply optional query.
+    if query is not None:
+        df_signals = df_signals.query(query)
+
     # Sort and stack
     df_signals = df_signals.sort_values(by="span2_pstart")
     df_signals["level"] = stack_overlaps(df_signals, "span2_pstart", "span2_pstop")
@@ -105,6 +109,7 @@ def plot_signals(
     genes_height=80,
     x_min=None,
     x_max=None,
+    gene_labels=None,
 ):
     """Plot an overview of selection signals."""
 
@@ -223,6 +228,7 @@ def plot_signals(
         x_range=fig1.x_range,
         height=genes_height,
         show=False,
+        gene_labels=gene_labels,
     )
 
     fig = bklay.gridplot(
