@@ -1,3 +1,9 @@
+# Declare an identifier for this atlas. Will also be used as a URL slug.
+atlas_id: "ag"
+
+# Atlas subtitle describing the taxon or taxonomic group covered.
+atlas_subtitle: "Anopheles gambiae complex"
+
 # Set the analysis version identifier. This will be used to identify
 # the outputs from a particular run of the analysis workflow. If you
 # change any of the parameters in this configuration file then please
@@ -51,4 +57,5 @@ h12_signal_detection_gflanks: [6]
 # resources are likely to be oversubscribed.
 dask_scheduler: "single-threaded"
 
+# TODO make these atlas-specific.
 alerts:  ['01', '02', '03', '04', '05', '06', '07', '08', '09']

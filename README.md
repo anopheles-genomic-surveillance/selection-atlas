@@ -4,6 +4,7 @@ This repo contains the source code for the [Malaria Vector Selection Atlas](http
 
 This README contains information for developers and contributors to the selection atlas.
 
+
 ## Development docs
 
 The following documents capture early design work and implementation planning. These are mostly redundant now as the proposed work has been completed, and further work will be discussed via GitHub issues, but these may still be of some historical interest:
@@ -11,6 +12,7 @@ The following documents capture early design work and implementation planning. T
 -   [Implementation plan](https://docs.google.com/document/d/1VvVZqIQWP8a2zH_CqTgKOp7_KotiJX8bcQ-RWfxiEj8/edit?usp=sharing)
 -   [UI design](https://www.figma.com/file/k8lS8xUvYmPopMv1MpyYO0/Selection-atlas?node-id=3487%3A6008&t=bUqtIieBnHcFTzk3-1)
 -   [Workflow design](https://miro.com/app/board/uXjVPlYc-lM=/?share_link_id=382195427430)
+
 
 ## Conda environment management
 
@@ -42,6 +44,7 @@ conda env export -f workflow/common/envs/selection-atlas.yaml -n selection-atlas
 sed -i "s/selection-atlas-requirements/selection-atlas/" workflow/common/envs/selection-atlas.yaml
 ```
 
+
 ## Pre-commit hooks
 
 There are several pre-commit hooks configured to automatically lint and format source code files, including Python files, Jupyter notebooks and Snakemake files. These will be automatically run before any code is committed if you install pre-commit hooks:
@@ -49,6 +52,7 @@ There are several pre-commit hooks configured to automatically lint and format s
 ```
 pre-commit install
 ```
+
 
 ## Authenticating with Google Cloud
 
@@ -59,6 +63,7 @@ gcloud auth login
 gcloud auth application-default login
 ```
 
+
 ## Running the gwss workflow
 
 The gwss workflow will run genome-wide selections over all cohorts found within the sample sets given in the workflow configuration. See the file `config/main.yaml` for workflow configuration.
@@ -68,18 +73,15 @@ Please note that this workflow will generally require a lot of computation and d
 During development, you may want to run the workflow without any parallelisation:
 
 ```
-MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/gwss/Snakefile --show-failed-logs --rerun-incomplete
+MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/gwss/Snakefile --configfile config/ag.yaml --show-failed-logs --rerun-incomplete
 ```
 
-To run the workflow fully, you can try running with parallelisation. Note this will need to be on a machine with sufficient cores and memory. E.g.:
+To run the workflow fully, you can try running with parallelisation by changing the value of the `-c` option. Note this will need to be on a machine with sufficient cores and memory.
 
-```
-MGEN_SHOW_PROGRESS=0 snakemake -c4 --snakefile workflow/gwss/Snakefile --show-failed-logs --rerun-incomplete
-```
-
-The outputs of the gwss workflow will be stored in the "results" folder, under a sub-folder named according to the "analysis_version" parameter given in the workflow configuration file.
+The outputs of the gwss workflow will be stored in the "results" folder, under a sub-folder named according to the "atlas_id" and "analysis_version" parameters given in the workflow configuration file.
 
 Remember that if you make any significant changes to the configuration and rerun the workflow, change the "analysis_version" parameter in the workflow configuration file.
+
 
 ## Saving/restoring outputs of a successful gwss workflow run
 
@@ -98,12 +100,13 @@ gcloud storage rsync -r -u gs://vo_selection_atlas_dev_us_central1/results/ resu
 find results -type f -exec touch {} +
 ```
 
+
 ## Running the site workflow
 
 The site workflow will use the outputs from the gwss workflow and compile all of the content for the selection atlas website. To run this workflow:
 
 ```
-MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --show-failed-logs --rerun-incomplete
+MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --configfile config/ag.yaml --show-failed-logs --rerun-incomplete
 ```
 
 You can run this workflow on a smaller computer as it should not need to perform any heavy computations.

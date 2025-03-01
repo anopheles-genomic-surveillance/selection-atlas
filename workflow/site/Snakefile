@@ -1,6 +1,3 @@
-configfile: "config/main.yaml"
-
-
 # Path to workflow config file.
 workflow_config_file = workflow.configfiles[0]
 
