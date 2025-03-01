@@ -8,11 +8,11 @@ atlas_subtitle: "Anopheles gambiae complex"
 # the outputs from a particular run of the analysis workflow. If you
 # change any of the parameters in this configuration file then please
 # also update the analysis version.
-analysis_version: "2025.02.25"
+analysis_version: "2025.03.01"
 
 # Set minimum and maximum cohort size parameters.
 min_cohort_size: 15
-max_cohort_size: 100  # If larger, will be randomly downsampled.
+max_cohort_size: 120  # If larger, will be randomly downsampled.
 
 # Select the sample sets to include in the analysis.
 sample_sets:

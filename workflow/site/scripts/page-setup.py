@@ -117,7 +117,7 @@ def plot_signals(
     if x_min is None:
         x_min = 0
     if x_max is None:
-        x_max = ag3.genome_sequence(contig).shape[0]
+        x_max = malariagen_api.genome_sequence(contig).shape[0]
 
     # Set up triangle shapes for bokeh patches glyphs.
     source = df.drop("geometry", axis=1).copy()
@@ -222,7 +222,7 @@ def plot_signals(
     taptool = fig1.select(type=bkmod.TapTool)
     taptool.callback = bkmod.OpenURL(url=url)
 
-    fig2 = ag3.plot_genes(
+    fig2 = malariagen_api.plot_genes(
         region=contig,
         sizing_mode="stretch_width",
         x_range=fig1.x_range,

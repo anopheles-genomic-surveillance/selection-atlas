@@ -20,6 +20,7 @@ import matplotlib.pyplot as plt  # noqa
 
 # Assume these variables come from the workflow configuration and have
 # already been assigned as global variables somehow.
+assert isinstance(atlas_id, str)
 assert isinstance(analysis_version, str)
 assert isinstance(cohorts_analysis, str)
 assert isinstance(dask_scheduler, str)
@@ -39,7 +40,8 @@ environment_file = root / "workflow/common/envs/selection-atlas.yaml"
 
 # Path to all workflow results.
 output_dir = root / "results"
-analysis_dir = output_dir / analysis_version
+analysis_dir = output_dir / atlas_id / analysis_version
+os.makedirs(analysis_dir, exist_ok=True)
 
 # Path to kernel set flag file.
 kernel_set_file = analysis_dir / "kernel.set"
@@ -68,9 +70,22 @@ jb_build_dir = jb_source_dir / "_build"
 
 # Setup access to malariagen data.
 malariagen_data_cache_path = output_dir / "malariagen_data_cache"
-ag3 = malariagen_data.Ag3(
-    # Pin the version of the cohorts analysis for reproducibility.
-    cohorts_analysis=cohorts_analysis,
-    results_cache=malariagen_data_cache_path.as_posix(),
-    check_location=False,
-)
+
+if atlas_id == "ag":
+    malariagen_api = malariagen_data.Ag3(
+        # Pin the version of the cohorts analysis for reproducibility.
+        cohorts_analysis=cohorts_analysis,
+        results_cache=malariagen_data_cache_path.as_posix(),
+        check_location=False,
+    )
+
+elif atlas_id == "af":
+    malariagen_api = malariagen_data.Af1(
+        # Pin the version of the cohorts analysis for reproducibility.
+        cohorts_analysis=cohorts_analysis,
+        results_cache=malariagen_data_cache_path.as_posix(),
+        check_location=False,
+    )
+
+else:
+    raise RuntimeError(f"Unexpected atlas_id: {atlas_id}.")
