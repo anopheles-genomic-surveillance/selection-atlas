@@ -22,7 +22,7 @@ class AtlasSetup:
         self.analysis_version = analysis_version
         self.cohorts_analysis = cohorts_analysis
         self.dask_scheduler = dask_scheduler
-        self.contigs = contigs
+        self.contigs = tuple(contigs)
 
         # Locate repo root dir.
         self.here = here()
@@ -36,6 +36,9 @@ class AtlasSetup:
         # Path to main environment file.
         self.environment_file = self.here / "workflow/common/envs/selection-atlas.yaml"
 
+        # Path to alerts.
+        self.alerts_dir = self.here / "alerts"
+
         # Path to all workflow results.
         self.output_dir = self.here / "results"
         self.analysis_dir = self.output_dir / atlas_id / analysis_version
@@ -47,17 +50,23 @@ class AtlasSetup:
         # Paths to gwss workflow results.
         self.gwss_results_dir = self.analysis_dir / "gwss"
         os.makedirs(self.gwss_results_dir, exist_ok=True)
+
+        # Cohorts files.
         self.cohorts_file = self.gwss_results_dir / "cohorts.csv"
         self.final_cohorts_file = self.gwss_results_dir / "final_cohorts.csv"
         self.final_cohorts_geojson_file = (
             self.gwss_results_dir / "final_cohorts.geojson"
         )
+
+        # H12 files.
         self.h12_calibration_dir = self.gwss_results_dir / "h12-calibration"
         os.makedirs(self.h12_calibration_dir, exist_ok=True)
         self.h12_calibration_files = self.h12_calibration_dir / "{cohort}.yaml"
         self.h12_signal_dir = self.gwss_results_dir / "h12-signal-detection"
         os.makedirs(self.h12_signal_dir, exist_ok=True)
         self.h12_signal_files = self.h12_signal_dir / "{cohort}_{contig}.csv"
+
+        # G123 files.
         self.g123_calibration_dir = self.gwss_results_dir / "g123-calibration"
         os.makedirs(self.g123_calibration_dir, exist_ok=True)
         self.g123_calibration_files = self.g123_calibration_dir / "{cohort}.yaml"
@@ -71,7 +80,7 @@ class AtlasSetup:
         # Setup access to malariagen data.
         self.malariagen_data_cache_path = self.output_dir / "malariagen_data_cache"
 
-        if atlas_id == "ag":
+        if atlas_id == "agam":
             self.malariagen_api = malariagen_data.Ag3(
                 # Pin the version of the cohorts analysis for reproducibility.
                 cohorts_analysis=cohorts_analysis,
@@ -79,7 +88,7 @@ class AtlasSetup:
                 check_location=False,
             )
 
-        elif atlas_id == "af":
+        elif atlas_id == "afun":
             self.malariagen_api = malariagen_data.Af1(
                 # Pin the version of the cohorts analysis for reproducibility.
                 cohorts_analysis=cohorts_analysis,
@@ -89,3 +98,11 @@ class AtlasSetup:
 
         else:
             raise RuntimeError(f"Unexpected atlas_id: {atlas_id}.")
+
+    def __hash__(self):
+        return hash(
+            self.atlas_id,
+            self.analysis_version,
+            self.cohorts_analysis,
+            self.contigs,
+        )

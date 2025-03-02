@@ -60,7 +60,7 @@ rule contig_pages:
         signals=get_h12_signal_files,
         kernel=kernel_set_file,
     output:
-        nb=f"{site_results_dir}/notebooks/contig/ag-{{contig}}.ipynb",
+        nb=f"{site_results_dir}/notebooks/contig/{{contig}}.ipynb",
     conda:
         environment_file
     log:
@@ -107,7 +107,7 @@ rule alert_pages:
         site_utils=f"{workflow.basedir}/scripts/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/alert-page.ipynb",
         cohorts_geojson=final_cohorts_geojson_file,
-        alert_config=f"{workflow.basedir}/alerts/{{alert}}.yaml",
+        alert_config=f"{alerts_dir}/{{alert}}.yaml",
         signals=get_h12_signal_files,
         config=workflow_config_file,
         kernel=kernel_set_file,

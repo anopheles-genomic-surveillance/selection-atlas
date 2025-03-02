@@ -1,5 +1,5 @@
 # Declare an identifier for this atlas. Will also be used as a URL slug.
-atlas_id: "ag"
+atlas_id: "agam"
 
 # Atlas subtitle describing the taxon or taxonomic group covered.
 atlas_subtitle: "Anopheles gambiae complex"
@@ -57,5 +57,14 @@ h12_signal_detection_gflanks: [6]
 # resources are likely to be oversubscribed.
 dask_scheduler: "single-threaded"
 
-# TODO make these atlas-specific.
-alerts:  ['01', '02', '03', '04', '05', '06', '07', '08', '09']
+# Current alerts.
+alerts:
+    - 'SA-AGAM-01'
+    - 'SA-AGAM-02'
+    - 'SA-AGAM-03'
+    - 'SA-AGAM-04'
+    - 'SA-AGAM-05'
+    - 'SA-AGAM-06'
+    - 'SA-AGAM-07'
+    - 'SA-AGAM-08'
+    - 'SA-AGAM-09'

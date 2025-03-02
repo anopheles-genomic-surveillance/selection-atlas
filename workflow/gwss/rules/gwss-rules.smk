@@ -61,12 +61,12 @@ checkpoint finalize_cohorts:
     """
     input:
         calibration=get_h12_calibration_files,
-        nb=f"{workflow.basedir}/notebooks/final-cohorts.ipynb",
+        nb=f"{workflow.basedir}/notebooks/finalize-cohorts.ipynb",
         config=workflow.configfiles,
         cohorts=lambda wildcards: checkpoints.setup_cohorts.get().output.cohorts,
         kernel=setup.kernel_set_file,
     output:
-        nb=f"{setup.gwss_results_dir}/notebooks/final-cohorts.ipynb",
+        nb=f"{setup.gwss_results_dir}/notebooks/finalize-cohorts.ipynb",
         final_cohorts=setup.final_cohorts_file,
     conda:
         setup.environment_file
@@ -132,7 +132,7 @@ rule h12_signal_detection:
     input:
         nb=f"{workflow.basedir}/notebooks/h12-signal-detection.ipynb",
         gwss_nb=f"{setup.gwss_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
-        utils_nb=f"{workflow.basedir}/notebooks/peak-utils.ipynb",
+        # TODO add selection_atlas.peak_utils module
         cohorts=setup.final_cohorts_file,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,

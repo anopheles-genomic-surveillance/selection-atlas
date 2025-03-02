@@ -73,7 +73,7 @@ Please note that this workflow will generally require a lot of computation and d
 During development, you may want to run the workflow without any parallelisation:
 
 ```
-MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/gwss/Snakefile --configfile config/ag.yaml --show-failed-logs --rerun-incomplete
+MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/gwss/Snakefile --configfile config/agam.yaml --show-failed-logs --rerun-incomplete
 ```
 
 To run the workflow fully, you can try running with parallelisation by changing the value of the `-c` option. Note this will need to be on a machine with sufficient cores and memory.
@@ -106,7 +106,7 @@ find results -type f -exec touch {} +
 The site workflow will use the outputs from the gwss workflow and compile all of the content for the selection atlas website. To run this workflow:
 
 ```
-MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --configfile config/ag.yaml --show-failed-logs --rerun-incomplete
+MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --configfile config/agam.yaml --show-failed-logs --rerun-incomplete
 ```
 
 You can run this workflow on a smaller computer as it should not need to perform any heavy computations.

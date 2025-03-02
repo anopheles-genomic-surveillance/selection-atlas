@@ -1,9 +1,5 @@
-import sys
-import pyprojroot
+from selection_atlas.setup import AtlasSetup
 
-# Import setup module.
-sys.path.append(here() / "workflow" / "common" / "scripts")
-from setup import AtlasSetup
 
 # Initialise the atlas setup.
 setup = AtlasSetup(

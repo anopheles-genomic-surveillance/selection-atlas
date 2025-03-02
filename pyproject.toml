@@ -1,0 +1,7 @@
+[build-system]
+requires = ["setuptools >= 64.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "selection_atlas"
+version = "0.0.0"
