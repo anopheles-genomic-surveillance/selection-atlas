@@ -28,10 +28,6 @@ h12_signal_detection_min_delta_aic: 1000
 h12_signal_detection_min_stat_max: 0.1
 h12_signal_detection_gflanks: [6]
 
-# Set this value to False when running on Google Cloud, because it's
-# better to read data directly from GCS.
-use_gcs_cache: True
-
 # Set this value to "single-threaded" when running snakemake with
 # more than 1 CPU to avoid thrashing. Otherwise, both dask and
 # snakemake will be trying to use multiple CPUs, and so CPU
