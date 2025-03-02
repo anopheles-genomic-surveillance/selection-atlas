@@ -27,6 +27,7 @@ To create and activate an environment on your own computer:
 ```
 mamba env create --file workflow/common/envs/selection-atlas.yaml
 conda activate selection-atlas
+pip install -e .
 ```
 
 To create and activate an environment on datalab-bespin:
@@ -34,6 +35,7 @@ To create and activate an environment on datalab-bespin:
 ```
 mamba env create --prefix=${HOME}/envs/selection-atlas --file workflow/common/envs/selection-atlas.yaml
 conda activate ${HOME}/envs/selection-atlas
+pip install -e .
 ```
 
 If you are developing and need to add or upgrade a package, edit `workflow/common/envs/selection-atlas-requirements.yaml`. **Do not edit `workflow/common/envs/selection-atlas.yaml`**. Then re-solve the environment to regenerate `workflow/common/envs/selection-atlas.yaml` as follows:
