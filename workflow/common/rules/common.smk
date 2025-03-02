@@ -1,4 +1,6 @@
 # Common rules for both workflows.
+#
+# Assume a `setup` variable has been assigned as an instance of `AtlasSetup`.
 
 
 rule set_kernel:
@@ -6,11 +8,11 @@ rule set_kernel:
     # environment has been configured as a Jupyter kernel, so it is
     # accessible by name via papermill.
     input:
-        environment_file,
+        setup.environment_file,
     output:
-        touch(kernel_set_file),
+        touch(setup.kernel_set_file),
     conda:
-        environment_file
+        setup.environment_file
     log:
         "logs/set_kernel.log",
     shell:

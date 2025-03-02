@@ -1,7 +1,8 @@
-# Expects that variables defined in workflow/common/scripts/setup.py
-# are available.
+# Rules for the GWSS workflow.
 #
 # Rules here are declared in roughly the order the are executed.
+#
+# Assume a `setup` variable has been assigned as an instance of `AtlasSetup`.
 
 
 checkpoint setup_cohorts:
@@ -12,13 +13,13 @@ checkpoint setup_cohorts:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/setup-cohorts.ipynb",
-        config=workflow_config_file,
-        kernel=kernel_set_file,
+        config=workflow.configfiles,
+        kernel=setup.kernel_set_file,
     output:
-        nb=f"{gwss_results_dir}/notebooks/setup-cohorts.ipynb",
-        cohorts=cohorts_file,
+        nb=f"{setup.gwss_results_dir}/notebooks/setup-cohorts.ipynb",
+        cohorts=setup.cohorts_file,
     conda:
-        environment_file
+        setup.environment_file
     log:
         "logs/setup_cohorts.log",
     shell:
@@ -35,13 +36,13 @@ rule h12_calibration:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/h12-calibration.ipynb",
-        config=workflow_config_file,
-        kernel=kernel_set_file,
+        config=workflow.configfiles,
+        kernel=setup.kernel_set_file,
     output:
-        nb=f"{gwss_results_dir}/notebooks/h12-calibration-{{cohort}}.ipynb",
-        calibration=h12_calibration_files,
+        nb=f"{setup.gwss_results_dir}/notebooks/h12-calibration-{{cohort}}.ipynb",
+        calibration=setup.h12_calibration_files,
     conda:
-        environment_file
+        setup.environment_file
     log:
         "logs/h12_calibration/{cohort}.log",
     shell:
@@ -61,14 +62,14 @@ checkpoint finalize_cohorts:
     input:
         calibration=get_h12_calibration_files,
         nb=f"{workflow.basedir}/notebooks/final-cohorts.ipynb",
-        config=workflow_config_file,
+        config=workflow.configfiles,
         cohorts=lambda wildcards: checkpoints.setup_cohorts.get().output.cohorts,
-        kernel=kernel_set_file,
+        kernel=setup.kernel_set_file,
     output:
-        nb=f"{gwss_results_dir}/notebooks/final-cohorts.ipynb",
-        final_cohorts=final_cohorts_file,
+        nb=f"{setup.gwss_results_dir}/notebooks/final-cohorts.ipynb",
+        final_cohorts=setup.final_cohorts_file,
     conda:
-        environment_file
+        setup.environment_file
     log:
         "logs/final_cohorts.log",
     shell:
@@ -84,14 +85,14 @@ rule geolocate_cohorts:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/geolocate-cohorts.ipynb",
-        config=workflow_config_file,
+        config=workflow.configfiles,
         final_cohorts=lambda wildcards: checkpoints.finalize_cohorts.get().output.final_cohorts,
-        kernel=kernel_set_file,
+        kernel=setup.kernel_set_file,
     output:
-        nb=f"{gwss_results_dir}/notebooks/geolocate-cohorts.ipynb",
-        final_cohorts_geojson=final_cohorts_geojson_file,
+        nb=f"{setup.gwss_results_dir}/notebooks/geolocate-cohorts.ipynb",
+        final_cohorts_geojson=setup.final_cohorts_geojson_file,
     conda:
-        environment_file
+        setup.environment_file
     log:
         "logs/geolocate_cohorts.log",
     shell:
@@ -106,10 +107,10 @@ rule h12_gwss:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/h12-gwss.ipynb",
-        calibration=h12_calibration_files,
-        cohorts=final_cohorts_file,
-        config=workflow_config_file,
-        kernel=kernel_set_file,
+        calibration=setup.h12_calibration_files,
+        cohorts=setup.final_cohorts_file,
+        config=workflow.configfiles,
+        kernel=setup.kernel_set_file,
     output:
         nb=f"{gwss_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
     conda:
@@ -130,16 +131,16 @@ rule h12_signal_detection:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/h12-signal-detection.ipynb",
-        gwss_nb=f"{gwss_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
+        gwss_nb=f"{setup.gwss_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
         utils_nb=f"{workflow.basedir}/notebooks/peak-utils.ipynb",
-        cohorts=final_cohorts_file,
-        config=workflow_config_file,
-        kernel=kernel_set_file,
+        cohorts=setup.final_cohorts_file,
+        config=workflow.configfiles,
+        kernel=setup.kernel_set_file,
     output:
-        nb=f"{gwss_results_dir}/notebooks/h12-signal-detection-{{cohort}}-{{contig}}.ipynb",
-        signals=h12_signal_files,
+        nb=f"{setup.gwss_results_dir}/notebooks/h12-signal-detection-{{cohort}}-{{contig}}.ipynb",
+        signals=setup.h12_signal_files,
     conda:
-        environment_file
+        setup.environment_file
     log:
         "logs/h12_signal_detection/{cohort}_{contig}.log",
     shell:
@@ -156,13 +157,13 @@ rule g123_calibration:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/g123-calibration.ipynb",
-        config=workflow_config_file,
-        kernel=kernel_set_file,
+        config=workflow.configfiles,
+        kernel=setup.kernel_set_file,
     output:
-        nb=f"{gwss_results_dir}/notebooks/g123-calibration-{{cohort}}.ipynb",
-        calibration=g123_calibration_files,
+        nb=f"{setup.gwss_results_dir}/notebooks/g123-calibration-{{cohort}}.ipynb",
+        calibration=setup.g123_calibration_files,
     conda:
-        environment_file
+        setup.environment_file
     log:
         "logs/g123_calibration/{cohort}.log",
     shell:
@@ -179,12 +180,12 @@ rule g123_gwss:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/g123-gwss.ipynb",
-        calibration=g123_calibration_files,
-        cohorts=final_cohorts_file,
-        config=workflow_config_file,
-        kernel=kernel_set_file,
+        calibration=setup.g123_calibration_files,
+        cohorts=setup.final_cohorts_file,
+        config=workflow.configfiles,
+        kernel=setup.kernel_set_file,
     output:
-        nb=f"{gwss_results_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
+        nb=f"{setup.gwss_results_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
     conda:
         environment_file
     log:
@@ -203,13 +204,13 @@ rule ihs_gwss:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/ihs-gwss.ipynb",
-        cohorts=final_cohorts_file,
-        config=workflow_config_file,
-        kernel=kernel_set_file,
+        cohorts=setup.final_cohorts_file,
+        config=workflow.configfiles,
+        kernel=setup.kernel_set_file,
     output:
-        nb=f"{gwss_results_dir}/notebooks/ihs-gwss-{{cohort}}.ipynb",
+        nb=f"{setup.gwss_results_dir}/notebooks/ihs-gwss-{{cohort}}.ipynb",
     conda:
-        environment_file
+        setup.environment_file
     log:
         "logs/ihs_gwss/{cohort}.log",
     shell:

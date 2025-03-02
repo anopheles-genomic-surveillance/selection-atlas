@@ -1,15 +1,21 @@
-# Path to workflow config file.
-workflow_config_file = workflow.configfiles[0]
+import sys
+import pyprojroot
 
-# Access configuration variables and make available as global variables for convenience.
-contigs = config["contigs"]
-analysis_version = config["analysis_version"]
-dask_scheduler = config["dask_scheduler"]
-cohorts_analysis = config["cohorts_analysis"]
+# Import setup module.
+sys.path.append(here() / "workflow" / "common" / "scripts")
+from setup import AtlasSetup
+
+# Initialise the atlas setup.
+setup = AtlasSetup(
+    atlas_id=config["atlas_id"],
+    analysis_version=config["analysis_version"],
+    cohorts_analysis=config["cohorts_analysis"],
+    contigs=config["contigs"],
+    dask_scheduler=config["dask_scheduler"],
+)
 
 
 # Includes.
-include: "../common/scripts/setup.py"
 include: "../common/rules/common.smk"
 include: "rules/gwss-functions.smk"
 include: "rules/gwss-rules.smk"
