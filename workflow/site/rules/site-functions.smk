@@ -7,6 +7,20 @@ import pandas as pd
 import geopandas as gpd
 
 
+# These files are completely static, no dynamically-generated content.
+static_site_files = [
+    "_config.yml",
+    "index.ipynb",
+    "alerts.ipynb",
+    "methods.md",
+    "faq.md",
+    "glossary.md",
+    "logo.png",
+    "favicon.ico",
+    "_static/custom.css",
+]
+
+
 def get_selection_atlas_site_files(wildcards):
     """Construct a list of all files required to compile the Jupyter book site."""
 
@@ -16,29 +30,23 @@ def get_selection_atlas_site_files(wildcards):
     countries = df["country_alpha2"]
     alerts = config["alerts"]
 
-    # Create a list of all required files.
+    # Dynamically-generated files.
     site_files = expand(
         [
-            f"{setup.site_results_dir}/docs/_config.yml",
             f"{setup.site_results_dir}/docs/_toc.yml",
-            f"{setup.site_results_dir}/docs/index.ipynb",
-            f"{setup.site_results_dir}/docs/alerts.ipynb",
             f"{setup.site_results_dir}/docs/country/{{country}}.ipynb",
             f"{setup.site_results_dir}/docs/contig/{{contig}}.ipynb",
             f"{setup.site_results_dir}/docs/cohort/{{cohort}}.ipynb",
             f"{setup.site_results_dir}/docs/alert/{{alert}}.ipynb",
-            f"{setup.site_results_dir}/docs/methods.md",
-            f"{setup.site_results_dir}/docs/faq.md",
-            f"{setup.site_results_dir}/docs/glossary.md",
-            f"{setup.site_results_dir}/docs/logo.png",
-            f"{setup.site_results_dir}/docs/favicon.ico",
-            f"{setup.site_results_dir}/docs/_static/custom.css",
         ],
         country=countries,
         contig=contigs,
         cohort=cohorts,
         alert=alerts,
     )
+
+    # Static files.
+    site_files += [f"{setup.site_results_dir}/docs/{p}" for p in static_site_files]
 
     return site_files
 

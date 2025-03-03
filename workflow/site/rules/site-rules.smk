@@ -306,23 +306,9 @@ rule prepare_site:
     the Jupyter book build.
     """
     input:
-        f"{workflow.basedir}/docs/_config.yml",
-        f"{workflow.basedir}/docs/alerts.ipynb",
-        f"{workflow.basedir}/docs/methods.md",
-        f"{workflow.basedir}/docs/faq.md",
-        f"{workflow.basedir}/docs/glossary.md",
-        f"{workflow.basedir}/docs/favicon.ico",
-        f"{workflow.basedir}/docs/logo.png",
-        f"{workflow.basedir}/docs/_static/custom.css",
+        [f"{workflow.basedir}/docs/{p}" for p in static_site_files],
     output:
-        f"{setup.site_results_dir}/docs/_config.yml",
-        f"{setup.site_results_dir}/docs/alerts.ipynb",
-        f"{setup.site_results_dir}/docs/methods.md",
-        f"{setup.site_results_dir}/docs/faq.md",
-        f"{setup.site_results_dir}/docs/glossary.md",
-        f"{setup.site_results_dir}/docs/favicon.ico",
-        f"{setup.site_results_dir}/docs/logo.png",
-        f"{setup.site_results_dir}/docs/_static/custom.css",
+        [f"{setup.site_results_dir}/docs/{p}" for p in static_site_files],
     conda:
         setup.environment_file
     log:
