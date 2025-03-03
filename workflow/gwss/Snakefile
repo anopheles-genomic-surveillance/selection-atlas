@@ -20,4 +20,4 @@ include: "rules/gwss-rules.smk"
 # Main rule.
 rule all:
     input:
-        results=get_gwss_results,
+        get_gwss_results,
