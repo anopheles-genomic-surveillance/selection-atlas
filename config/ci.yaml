@@ -1,3 +1,9 @@
+# Declare an identifier for this atlas. Will also be used as a URL slug.
+atlas_id: "ci"
+
+# Atlas subtitle describing the taxon or taxonomic group covered.
+atlas_subtitle: "CI"
+
 # Set the analysis version identifier. This will be used to identify
 # the outputs from a particular run of the analysis workflow. If you
 # change any of the parameters in this configuration file then please
@@ -5,14 +11,15 @@
 analysis_version: "CI"
 
 # Set minimum and maximum cohort size parameters.
-min_cohort_size: 20  # TODO Could we live with 15 here?
-max_cohort_size: 50  # TODO Maybe increase this for production?
+min_cohort_size: 20
+max_cohort_size: 30
 
 # Select the sample sets to include in the analysis.
 sample_sets:
-    # - "3.0"
-    # smaller dataset for development
     - "AG1000G-ML-A"
+
+# Filter samples to include in the analysis.
+sample_query: "taxon in ['gambiae', 'coluzzii']"
 
 # Select the contigs to analyse.
 contigs:
@@ -23,6 +30,7 @@ cohorts_analysis: "20240924"
 
 # Select the contig to use for H12 window size calibration.
 h12_calibration_contig: "3L"
+
 # Configuration for H12 signal detection.
 h12_signal_detection_min_delta_aic: 1000
 h12_signal_detection_min_stat_max: 0.1
@@ -34,4 +42,5 @@ h12_signal_detection_gflanks: [6]
 # resources are likely to be oversubscribed.
 dask_scheduler: "single-threaded"
 
-alerts:  ['CI']
+alerts:
+    - 'CI'
