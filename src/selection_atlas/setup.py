@@ -45,6 +45,7 @@ class AtlasSetup:
         self.taxa = self.config["taxa"]
         self.taxon_phasing_analysis = self.config["taxon_phasing_analysis"]
         self.taxon_site_mask = self.config["taxon_site_mask"]
+        self.alerts = self.config["alerts"]
 
         # Locate repo root dir.
         self.here = here()
@@ -120,6 +121,7 @@ class AtlasSetup:
 
         # Paths to the Jupyter Book files.
         self.jb_source_dir = self.site_results_dir / "docs"
+        os.makedirs(self.jb_source_dir, exist_ok=True)
         self.jb_build_dir = self.jb_source_dir / "_build"
 
         # Setup access to malariagen data.

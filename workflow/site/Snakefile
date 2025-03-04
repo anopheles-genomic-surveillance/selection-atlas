@@ -1,15 +1,10 @@
-# Path to workflow config file.
 from selection_atlas.setup import AtlasSetup
 
+# Access path to the workflow config file.
+config_file = workflow.configfiles[0]
 
 # Initialise the atlas setup.
-setup = AtlasSetup(
-    atlas_id=config["atlas_id"],
-    analysis_version=config["analysis_version"],
-    cohorts_analysis=config["cohorts_analysis"],
-    contigs=config["contigs"],
-    dask_scheduler=config["dask_scheduler"],
-)
+setup = AtlasSetup(config_file=config_file)
 
 
 # Includes.

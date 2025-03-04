@@ -3,6 +3,7 @@
 import numpy as np
 import pandas as pd
 import geopandas as gpd
+import yaml
 import bokeh.layouts as bklay
 import bokeh.plotting as bkplt
 import bokeh.models as bkmod
@@ -34,6 +35,16 @@ class AtlasPageUtils:
         self.signal_center_alpha = 1.0
 
         self.default_basemap = default_basemap
+
+    def load_gwss_calibration(self, cohort_id):
+        with open(self.setup.calibration_dir / f"{cohort_id}.yaml") as f:
+            calibration_params = yaml.safe_load(f)
+        return calibration_params
+
+    def load_alert(self, alert_id):
+        with open(self.setup.alerts_dir / f"{alert_id}.yaml", mode="r") as f:
+            alert = yaml.safe_load(f)
+        return alert
 
     def load_cohort_signals(self, contig, cohort_id):
         """Load selection signals for a given contig and cohort."""
@@ -323,9 +334,6 @@ class AtlasPageUtils:
         return m
 
     def plot_locations_map(self, cohort, df_samples):
-        center = cohort[["latitude", "longitude"]].to_list()
-        m = Map(center=center, zoom=9, basemap=self.default_basemap)
-
         df = (
             df_samples[["latitude", "longitude", "taxon"]]
             .groupby(["latitude", "longitude", "taxon"])
@@ -334,6 +342,9 @@ class AtlasPageUtils:
             .rename(columns={0: "count"})
             .reset_index()
         )
+
+        center = (df["latitude"].mean(), df["longitude"].mean())
+        m = Map(center=center, zoom=9, basemap=self.default_basemap)
 
         for _, row in df.iterrows():
             lat, long = row[["latitude", "longitude"]]

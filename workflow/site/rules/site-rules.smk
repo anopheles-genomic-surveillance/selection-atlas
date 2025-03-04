@@ -10,21 +10,24 @@ rule home_page:
     Generate the home page.
     """
     input:
-        nb=f"{workflow.basedir}/notebooks/home-page.ipynb",
+        nb=f"{workflow.basedir}/notebooks/index.ipynb",
         cohorts_geojson=setup.final_cohorts_geojson_file,
         src=setup.site_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
-        nb=f"{setup.site_results_dir}/notebooks/home-page.ipynb",
+        nb=f"{setup.site_results_dir}/notebooks/index.ipynb",
     conda:
         setup.environment_file
     log:
         "logs/home_page.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
-        papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -36,7 +39,7 @@ rule country_pages:
         nb=f"{workflow.basedir}/notebooks/country-page.ipynb",
         cohorts_geojson=setup.final_cohorts_geojson_file,
         src=setup.site_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.site_results_dir}/notebooks/country/{{country}}.ipynb",
@@ -46,8 +49,12 @@ rule country_pages:
         "logs/country_pages/{country}.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
-        papermill {input.nb} {output.nb} -k selection-atlas -p country {wildcards.country} -f {input.config} 2> {log}
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p country {wildcards.country} \
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -60,7 +67,7 @@ rule contig_pages:
         cohorts_geojson=setup.final_cohorts_geojson_file,
         signals=get_h12_signal_files,
         src=setup.site_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.site_results_dir}/notebooks/contig/{{contig}}.ipynb",
@@ -70,8 +77,12 @@ rule contig_pages:
         "logs/contig_pages/{contig}.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
-        papermill {input.nb} {output.nb} -k selection-atlas -p contig {wildcards.contig} -f {input.config} 2> {log}
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p contig {wildcards.contig} \
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -87,7 +98,7 @@ rule cohort_pages:
         ihs_gwss=f"{setup.gwss_results_dir}/notebooks/ihs-gwss-{{cohort}}.ipynb",
         signals=get_h12_signal_files,
         src=setup.site_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.site_results_dir}/notebooks/cohort/{{cohort}}.ipynb",
@@ -97,8 +108,12 @@ rule cohort_pages:
         "logs/cohort_pages/{cohort}.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
-        papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} -f {input.config} 2> {log}
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p cohort_id {wildcards.cohort} \
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -112,7 +127,7 @@ rule alert_pages:
         alert_config=f"{setup.alerts_dir}/{{alert}}.yaml",
         signals=get_h12_signal_files,
         src=setup.site_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.site_results_dir}/notebooks/alert/{{alert}}.ipynb",
@@ -122,8 +137,12 @@ rule alert_pages:
         "logs/alert_pages/{alert}.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
-        papermill {input.nb} {output.nb} -k selection-atlas -p alert_id {wildcards.alert} -f {input.config} -f {input.alert_config} 2> {log}
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p alert_id {wildcards.alert} \
+            -p config_file {input.config_file} \
+            -f {input.alert_config} &> {log}
         """
 
 
@@ -133,12 +152,12 @@ rule process_headers_home:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
-        homepage_nb=f"{setup.site_results_dir}/notebooks/home-page.ipynb",
+        homepage_nb=f"{setup.site_results_dir}/notebooks/index.ipynb",
         src=setup.site_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
-        nb=f"{setup.site_results_dir}/notebooks/add_headers/home-page.ipynb",
+        nb=f"{setup.site_results_dir}/notebooks/add_headers/index.ipynb",
         homepage_nb=f"{setup.jb_source_dir}/index.ipynb",
     conda:
         setup.environment_file
@@ -146,14 +165,14 @@ rule process_headers_home:
         "logs/add_headers/home-page.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} \
             -k selection-atlas \
             -p input_nb {input.homepage_nb} \
             -p output_nb {output.homepage_nb} \
             -p page_type homepage \
-            -f {input.config} \
-            2> {log}
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -165,26 +184,26 @@ rule process_headers_contig:
         nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         contig_nb=f"{setup.site_results_dir}/notebooks/contig/ag-{{contig}}.ipynb",
         src=setup.site_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
-        nb=f"{setup.site_results_dir}/notebooks/add_headers/{{contig}}.ipynb",
-        contig_nb=f"{setup.jb_source_dir}/contig/ag-{{contig}}.ipynb",
+        nb=f"{setup.site_results_dir}/notebooks/add_headers/contig-{{contig}}.ipynb",
+        contig_nb=f"{setup.jb_source_dir}/contig/{{contig}}.ipynb",
     conda:
         setup.environment_file
     log:
         "logs/add_headers/contig-{contig}.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} \
             -k selection-atlas \
             -p input_nb {input.contig_nb} \
             -p output_nb {output.contig_nb} \
             -p wildcard {wildcards.contig} \
             -p page_type contig \
-            -f {input.config} \
-            2> {log}
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -196,10 +215,10 @@ rule process_headers_country:
         nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         country_nb=f"{setup.site_results_dir}/notebooks/country/{{country}}.ipynb",
         src=setup.site_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
-        nb=f"{setup.site_results_dir}/notebooks/add_headers/{{country}}.ipynb",
+        nb=f"{setup.site_results_dir}/notebooks/add_headers/country-{{country}}.ipynb",
         country_nb=f"{setup.jb_source_dir}/country/{{country}}.ipynb",
     conda:
         setup.environment_file
@@ -207,15 +226,15 @@ rule process_headers_country:
         "logs/add_headers/country-{country}.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} \
             -k selection-atlas \
             -p input_nb {input.country_nb} \
             -p output_nb {output.country_nb} \
             -p wildcard {wildcards.country} \
             -p page_type country \
-            -f {input.config} \
-            2> {log}
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -227,10 +246,10 @@ rule process_headers_cohort:
         nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         cohort_nb=f"{setup.site_results_dir}/notebooks/cohort/{{cohort}}.ipynb",
         src=setup.site_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
-        nb=f"{setup.site_results_dir}/notebooks/add_headers/{{cohort}}.ipynb",
+        nb=f"{setup.site_results_dir}/notebooks/add_headers/cohort-{{cohort}}.ipynb",
         cohort_nb=f"{setup.jb_source_dir}/cohort/{{cohort}}.ipynb",
     conda:
         setup.environment_file
@@ -238,15 +257,15 @@ rule process_headers_cohort:
         "logs/add_headers/cohort-{cohort}.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} \
             -k selection-atlas \
             -p input_nb {input.cohort_nb} \
             -p output_nb {output.cohort_nb} \
             -p wildcard {wildcards.cohort} \
             -p page_type cohort \
-            -f {input.config} \
-            2> {log}
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -258,10 +277,10 @@ rule process_headers_alert:
         nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         alert_nb=f"{setup.site_results_dir}/notebooks/alert/{{alert}}.ipynb",
         src=setup.site_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
-        nb=f"{setup.site_results_dir}/notebooks/add_headers/{{alert}}.ipynb",
+        nb=f"{setup.site_results_dir}/notebooks/add_headers/alert-{{alert}}.ipynb",
         alert_nb=f"{setup.jb_source_dir}/alert/{{alert}}.ipynb",
     conda:
         setup.environment_file
@@ -269,15 +288,15 @@ rule process_headers_alert:
         "logs/add_headers/alert-{alert}.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
         papermill {input.nb} {output.nb} \
             -k selection-atlas \
             -p input_nb {input.alert_nb} \
             -p output_nb {output.alert_nb} \
             -p wildcard {wildcards.alert} \
             -p page_type alert \
-            -f {input.config} \
-            2> {log}
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -289,7 +308,7 @@ rule generate_toc:
         nb=f"{workflow.basedir}/notebooks/generate-toc.ipynb",
         cohorts_geojson=setup.final_cohorts_geojson_file,
         src=setup.site_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.site_results_dir}/notebooks/generate-toc.ipynb",
@@ -300,8 +319,11 @@ rule generate_toc:
         "logs/generate_toc.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
-        papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -332,7 +354,7 @@ rule compile_site:
     input:
         get_selection_atlas_site_files,
         src=setup.site_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
         directory(setup.jb_build_dir),
