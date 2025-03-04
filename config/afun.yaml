@@ -1,8 +1,8 @@
 # Declare an identifier for this atlas. Will also be used as a URL slug.
-atlas_id: "agam"
+atlas_id: "afun"
 
 # Atlas subtitle describing the taxon or taxonomic group covered.
-atlas_subtitle: "Anopheles gambiae complex"
+atlas_subtitle: "Anopheles funestus"
 
 # Set the analysis version identifier. This will be used to identify
 # the outputs from a particular run of the analysis workflow. If you
@@ -16,40 +16,21 @@ max_cohort_size: 100  # If larger, will be randomly downsampled.
 
 # Select the sample sets to include in the analysis.
 sample_sets:
-    - "3.0"  # All of Ag1000G phase 3, unrestricted
-    - "1237-VO-BJ-DJOGBENOU-VMF00050"  # GAARD Benin, unrestricted
-    - "1237-VO-BJ-DJOGBENOU-VMF00067"  # GAARD Benin, unrestricted
-    - "1244-VO-GH-YAWSON-VMF00051"  # GAARD Ghana, unrestricted
-    - "1245-VO-CI-CONSTANT-VMF00054"  # GAARD Cote d'Ivoire, unrestricted
-    - "1253-VO-TG-DJOGBENOU-VMF00052"  # GAARD Togo, unrestricted
-    - "1178-VO-UG-LAWNICZAK-VMF00025"  # Ugandan samples via Mara, unrestricted
-    - "1244-VO-GH-YAWSON-VMF00149"  # GAARDIAN Ghana, with Martin Donnelly's permission
-    - "barron-2019"  # unrestricted
-    - "crawford-2016"  # unrestricted
-    - "tennessen-2021"  # unrestricted
-    - "bergey-2019"  # unrestricted
-    - "campos-2021"  # unrestricted
-    - "fontaine-2015-rebuild"  # unrestricted
+    - "1.0"
 
 # Filter samples to include in the analysis.
-sample_query: "taxon in ['gambiae', 'coluzzii', 'arabiensis', 'bissau']"
+sample_query: "taxon in ['funestus']"
 
 # Declare which taxa to analyse.
-taxa: ['gambiae', 'coluzzii', 'arabiensis', 'bissau']
+taxa: ['funestus']
 
 # Map taxa to phasing analysis.
 taxon_phasing_analysis:
-    gambiae: "gamb_colu"
-    coluzzii: "gamb_colu"
-    bissau: "gamb_colu"
-    arabiensis: "arab"
+    funestus: "funestus"
 
 # Map taxa to site mask.
 taxon_site_mask:
-    gambiae: "gamb_colu"
-    coluzzii: "gamb_colu"
-    bissau: "gamb_colu"
-    arabiensis: "arab"
+    funestus: "funestus"
 
 # Select the contigs to analyse.
 contigs:
@@ -58,7 +39,7 @@ contigs:
     - "X"
 
 # Pin the cohorts analysis version in order to get reproducible results.
-cohorts_analysis: "20240924"
+cohorts_analysis: "20240515"
 
 # Select the contig to use for H12 window size calibration.
 h12_calibration_contig: "3RL"
@@ -79,12 +60,4 @@ dask_scheduler: "single-threaded"
 
 # Current alerts.
 alerts:
-    - 'SA-AGAM-01'
-    - 'SA-AGAM-02'
-    - 'SA-AGAM-03'
-    - 'SA-AGAM-04'
-    - 'SA-AGAM-05'
-    - 'SA-AGAM-06'
-    - 'SA-AGAM-07'
-    - 'SA-AGAM-08'
-    - 'SA-AGAM-09'
+    - 'SA-AFUN-01'

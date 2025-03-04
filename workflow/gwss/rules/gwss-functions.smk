@@ -61,7 +61,7 @@ def get_gwss_results(wildcards):
         cohort=cohorts,
     )
     g123_gwss_nb_paths = expand(
-        f"{gwss_results_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
+        f"{setup.gwss_results_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
         cohort=cohorts,
     )
     ihs_gwss_nb_paths = expand(

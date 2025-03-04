@@ -459,7 +459,8 @@ def recursive_hampel_filter(x, size, t=3):
 
 def read_gmap(setup, contig):
     atlas_id = setup.atlas_id
-    if contig in {"2RL", "3RL"}:
+    if contig in {"2RL", "3RL"} and atlas_id == "agam":
+        # gambiae complex has maps by chromosome arm, need to concatenate
         contig = contig[0]
         contig_r, contig_l = f"{contig}R", f"{contig}L"
         df_r = read_gmap(atlas_id, contig_r)

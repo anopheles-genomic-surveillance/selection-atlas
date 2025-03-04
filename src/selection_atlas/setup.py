@@ -7,6 +7,7 @@ from pyprojroot import here
 import dask
 import yaml
 import malariagen_data
+import tqdm.std
 
 
 class AtlasSetup:
@@ -41,6 +42,8 @@ class AtlasSetup:
         self.g123_calibration_window_sizes = self.config[
             "g123_calibration_window_sizes"
         ]
+        self.taxa = self.config["taxa"]
+        self.taxon_phasing_analysis = self.config["taxon_phasing_analysis"]
 
         # Locate repo root dir.
         self.here = here()
@@ -135,6 +138,7 @@ class AtlasSetup:
                     cohorts_analysis=self.cohorts_analysis,
                     results_cache=self.malariagen_data_cache_path.as_posix(),
                     check_location=False,
+                    tqdm_class=tqdm.std.tqdm,
                 )
             elif self.atlas_id == "afun":
                 self._malariagen_api = malariagen_data.Af1(
@@ -142,6 +146,7 @@ class AtlasSetup:
                     cohorts_analysis=self.cohorts_analysis,
                     results_cache=self.malariagen_data_cache_path.as_posix(),
                     check_location=False,
+                    tqdm_class=tqdm.std.tqdm,
                 )
             else:
                 raise RuntimeError(f"Unexpected atlas_id: {atlas_id}.")
