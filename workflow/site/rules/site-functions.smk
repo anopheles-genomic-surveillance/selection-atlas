@@ -21,6 +21,7 @@ def get_selection_atlas_site_files(wildcards):
     site_files = expand(
         [
             f"{setup.jb_source_dir}/_toc.yml",
+            f"{setup.jb_source_dir}/index.ipynb",
             f"{setup.jb_source_dir}/country/{{country}}.ipynb",
             f"{setup.jb_source_dir}/contig/{{contig}}.ipynb",
             f"{setup.jb_source_dir}/cohort/{{cohort}}.ipynb",
@@ -33,7 +34,7 @@ def get_selection_atlas_site_files(wildcards):
     )
 
     # Static files.
-    site_files += [f"{setup.jb_source_dir}/{p}" for p in static_site_files]
+    site_files += [f"{setup.jb_source_dir}/{p}" for p in setup.static_site_files]
 
     return site_files
 

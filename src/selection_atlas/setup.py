@@ -76,7 +76,6 @@ class AtlasSetup:
         # These files are completely static, no dynamically-generated content.
         self.static_site_files = [
             "_config.yml",
-            "index.ipynb",
             "alerts.ipynb",
             "methods.md",
             "faq.md",

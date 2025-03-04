@@ -142,7 +142,7 @@ rule alert_pages:
             -k selection-atlas \
             -p alert_id {wildcards.alert} \
             -p config_file {input.config_file} \
-            -f {input.alert_config} &> {log}
+            &> {log}
         """
 
 
@@ -182,7 +182,7 @@ rule process_headers_contig:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
-        contig_nb=f"{setup.site_results_dir}/notebooks/contig/ag-{{contig}}.ipynb",
+        contig_nb=f"{setup.site_results_dir}/notebooks/contig/{{contig}}.ipynb",
         src=setup.site_src_files,
         config_file=config_file,
         kernel=setup.kernel_set_file,

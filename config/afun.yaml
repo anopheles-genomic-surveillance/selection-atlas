@@ -41,11 +41,11 @@ contigs:
 # Pin the cohorts analysis version in order to get reproducible results.
 cohorts_analysis: "20240515"
 
-# Select the contig to use for H12 window size calibration.
+# Window size calibration parameters.
 h12_calibration_contig: "3RL"
-h12_calibration_window_sizes: [200, 400, 600, 800, 1000, 1250, 1500, 1750, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000, 10000]
+h12_calibration_window_sizes: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400, 1600, 1800, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000, 10000]
 g123_calibration_contig: "3RL"
-g123_calibration_window_sizes: [200, 400, 600, 800, 1000, 1250, 1500, 1750, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000, 10000]
+g123_calibration_window_sizes: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400, 1600, 1800, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000, 10000]
 
 # Configuration for H12 signal detection.
 h12_signal_detection_min_delta_aic: 1000
