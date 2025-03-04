@@ -13,6 +13,7 @@ checkpoint setup_cohorts:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/setup-cohorts.ipynb",
+        src=setup.gwss_src_files,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
@@ -36,6 +37,7 @@ rule h12_calibration:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/h12-calibration.ipynb",
+        src=setup.gwss_src_files,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
@@ -60,10 +62,11 @@ checkpoint finalize_cohorts:
     therefore which can be included in GWSS.
     """
     input:
-        calibration=get_h12_calibration_files,
         nb=f"{workflow.basedir}/notebooks/finalize-cohorts.ipynb",
-        config=workflow.configfiles,
+        calibration=get_h12_calibration_files,
         cohorts=lambda wildcards: checkpoints.setup_cohorts.get().output.cohorts,
+        src=setup.gwss_src_files,
+        config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.gwss_results_dir}/notebooks/finalize-cohorts.ipynb",
@@ -85,8 +88,9 @@ rule geolocate_cohorts:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/geolocate-cohorts.ipynb",
-        config=workflow.configfiles,
         final_cohorts=lambda wildcards: checkpoints.finalize_cohorts.get().output.final_cohorts,
+        src=setup.gwss_src_files,
+        config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.gwss_results_dir}/notebooks/geolocate-cohorts.ipynb",
@@ -109,6 +113,7 @@ rule h12_gwss:
         nb=f"{workflow.basedir}/notebooks/h12-gwss.ipynb",
         calibration=setup.h12_calibration_files,
         cohorts=setup.final_cohorts_file,
+        src=setup.gwss_src_files,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
@@ -132,8 +137,8 @@ rule h12_signal_detection:
     input:
         nb=f"{workflow.basedir}/notebooks/h12-signal-detection.ipynb",
         gwss_nb=f"{setup.gwss_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
-        # TODO add selection_atlas.peak_utils module
         cohorts=setup.final_cohorts_file,
+        src=setup.gwss_src_files,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
@@ -157,6 +162,7 @@ rule g123_calibration:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/g123-calibration.ipynb",
+        src=setup.gwss_src_files,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
@@ -182,6 +188,7 @@ rule g123_gwss:
         nb=f"{workflow.basedir}/notebooks/g123-gwss.ipynb",
         calibration=setup.g123_calibration_files,
         cohorts=setup.final_cohorts_file,
+        src=setup.gwss_src_files,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
@@ -205,6 +212,7 @@ rule ihs_gwss:
     input:
         nb=f"{workflow.basedir}/notebooks/ihs-gwss.ipynb",
         cohorts=setup.final_cohorts_file,
+        src=setup.gwss_src_files,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:

@@ -7,20 +7,6 @@ import pandas as pd
 import geopandas as gpd
 
 
-# These files are completely static, no dynamically-generated content.
-static_site_files = [
-    "_config.yml",
-    "index.ipynb",
-    "alerts.ipynb",
-    "methods.md",
-    "faq.md",
-    "glossary.md",
-    "logo.png",
-    "favicon.ico",
-    "_static/custom.css",
-]
-
-
 def get_selection_atlas_site_files(wildcards):
     """Construct a list of all files required to compile the Jupyter book site."""
 
@@ -29,15 +15,16 @@ def get_selection_atlas_site_files(wildcards):
     cohorts = df["cohort_id"]  # .unique()
     countries = df["country_alpha2"]
     alerts = config["alerts"]
+    contigs = config["contigs"]
 
     # Dynamically-generated files.
     site_files = expand(
         [
-            f"{setup.site_results_dir}/docs/_toc.yml",
-            f"{setup.site_results_dir}/docs/country/{{country}}.ipynb",
-            f"{setup.site_results_dir}/docs/contig/{{contig}}.ipynb",
-            f"{setup.site_results_dir}/docs/cohort/{{cohort}}.ipynb",
-            f"{setup.site_results_dir}/docs/alert/{{alert}}.ipynb",
+            f"{setup.jb_source_dir}/_toc.yml",
+            f"{setup.jb_source_dir}/country/{{country}}.ipynb",
+            f"{setup.jb_source_dir}/contig/{{contig}}.ipynb",
+            f"{setup.jb_source_dir}/cohort/{{cohort}}.ipynb",
+            f"{setup.jb_source_dir}/alert/{{alert}}.ipynb",
         ],
         country=countries,
         contig=contigs,
@@ -46,7 +33,7 @@ def get_selection_atlas_site_files(wildcards):
     )
 
     # Static files.
-    site_files += [f"{setup.site_results_dir}/docs/{p}" for p in static_site_files]
+    site_files += [f"{setup.jb_source_dir}/{p}" for p in static_site_files]
 
     return site_files
 
@@ -59,8 +46,8 @@ def get_h12_signal_files(wildcards):
 
     # Create a list of file paths.
     paths = expand(
-        h12_signal_files,
+        setup.h12_signal_files,
         cohort=cohorts,
-        contig=contigs,
+        contig=config["contigs"],
     )
     return paths

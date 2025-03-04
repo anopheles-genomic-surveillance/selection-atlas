@@ -10,10 +10,10 @@ rule home_page:
     Generate the home page.
     """
     input:
-        site_utils=f"{workflow.basedir}/scripts/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/home-page.ipynb",
-        config=workflow.configfiles,
         cohorts_geojson=setup.final_cohorts_geojson_file,
+        src=setup.site_src_files,
+        config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.site_results_dir}/notebooks/home-page.ipynb",
@@ -33,10 +33,10 @@ rule country_pages:
     Generate the country pages.
     """
     input:
-        site_utils=f"{workflow.basedir}/scripts/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/country-page.ipynb",
-        config=workflow.configfiles,
         cohorts_geojson=setup.final_cohorts_geojson_file,
+        src=setup.site_src_files,
+        config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.site_results_dir}/notebooks/country/{{country}}.ipynb",
@@ -56,11 +56,11 @@ rule contig_pages:
     Generate the contig pages.
     """
     input:
-        site_utils=f"{workflow.basedir}/scripts/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/contig-page.ipynb",
-        config=workflow.configfiles,
         cohorts_geojson=setup.final_cohorts_geojson_file,
         signals=get_h12_signal_files,
+        src=setup.site_src_files,
+        config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.site_results_dir}/notebooks/contig/{{contig}}.ipynb",
@@ -80,13 +80,13 @@ rule cohort_pages:
     Generate the cohort pages.
     """
     input:
-        site_utils=f"{workflow.basedir}/scripts/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/cohort-page.ipynb",
         cohorts_geojson=setup.final_cohorts_geojson_file,
         h12_gwss=f"{setup.gwss_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
         g123_gwss=f"{setup.gwss_results_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
         ihs_gwss=f"{setup.gwss_results_dir}/notebooks/ihs-gwss-{{cohort}}.ipynb",
         signals=get_h12_signal_files,
+        src=setup.site_src_files,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
@@ -107,11 +107,11 @@ rule alert_pages:
     Generate the alert pages.
     """
     input:
-        site_utils=f"{workflow.basedir}/scripts/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/alert-page.ipynb",
         cohorts_geojson=setup.final_cohorts_geojson_file,
         alert_config=f"{setup.alerts_dir}/{{alert}}.yaml",
         signals=get_h12_signal_files,
+        src=setup.site_src_files,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
@@ -134,11 +134,12 @@ rule process_headers_home:
     input:
         nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         homepage_nb=f"{setup.site_results_dir}/notebooks/home-page.ipynb",
+        src=setup.site_src_files,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.site_results_dir}/notebooks/add_headers/home-page.ipynb",
-        homepage_nb=f"{setup.site_results_dir}/docs/index.ipynb",
+        homepage_nb=f"{setup.jb_source_dir}/index.ipynb",
     conda:
         setup.environment_file
     log:
@@ -163,11 +164,12 @@ rule process_headers_contig:
     input:
         nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         contig_nb=f"{setup.site_results_dir}/notebooks/contig/ag-{{contig}}.ipynb",
+        src=setup.site_src_files,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.site_results_dir}/notebooks/add_headers/{{contig}}.ipynb",
-        contig_nb=f"{setup.site_results_dir}/docs/contig/ag-{{contig}}.ipynb",
+        contig_nb=f"{setup.jb_source_dir}/contig/ag-{{contig}}.ipynb",
     conda:
         setup.environment_file
     log:
@@ -193,11 +195,12 @@ rule process_headers_country:
     input:
         nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         country_nb=f"{setup.site_results_dir}/notebooks/country/{{country}}.ipynb",
+        src=setup.site_src_files,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.site_results_dir}/notebooks/add_headers/{{country}}.ipynb",
-        country_nb=f"{setup.site_results_dir}/docs/country/{{country}}.ipynb",
+        country_nb=f"{setup.jb_source_dir}/country/{{country}}.ipynb",
     conda:
         setup.environment_file
     log:
@@ -223,11 +226,12 @@ rule process_headers_cohort:
     input:
         nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         cohort_nb=f"{setup.site_results_dir}/notebooks/cohort/{{cohort}}.ipynb",
+        src=setup.site_src_files,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.site_results_dir}/notebooks/add_headers/{{cohort}}.ipynb",
-        cohort_nb=f"{setup.site_results_dir}/docs/cohort/{{cohort}}.ipynb",
+        cohort_nb=f"{setup.jb_source_dir}/cohort/{{cohort}}.ipynb",
     conda:
         setup.environment_file
     log:
@@ -253,11 +257,12 @@ rule process_headers_alert:
     input:
         nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
         alert_nb=f"{setup.site_results_dir}/notebooks/alert/{{alert}}.ipynb",
+        src=setup.site_src_files,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.site_results_dir}/notebooks/add_headers/{{alert}}.ipynb",
-        alert_nb=f"{setup.site_results_dir}/docs/alert/{{alert}}.ipynb",
+        alert_nb=f"{setup.jb_source_dir}/alert/{{alert}}.ipynb",
     conda:
         setup.environment_file
     log:
@@ -281,14 +286,14 @@ rule generate_toc:
     Generate the table of contents for the Jupyter book.
     """
     input:
-        site_utils=f"{workflow.basedir}/scripts/page-setup.py",
         nb=f"{workflow.basedir}/notebooks/generate-toc.ipynb",
         cohorts_geojson=setup.final_cohorts_geojson_file,
+        src=setup.site_src_files,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.site_results_dir}/notebooks/generate-toc.ipynb",
-        toc=f"{setup.site_results_dir}/docs/_toc.yml",
+        toc=f"{setup.jb_source_dir}/_toc.yml",
     conda:
         setup.environment_file
     log:
@@ -306,17 +311,17 @@ rule prepare_site:
     the Jupyter book build.
     """
     input:
-        [f"{workflow.basedir}/docs/{p}" for p in static_site_files],
+        [f"{workflow.basedir}/docs/{p}" for p in setup.static_site_files],
     output:
-        [f"{setup.site_results_dir}/docs/{p}" for p in static_site_files],
+        [f"{setup.jb_source_dir}/{p}" for p in setup.static_site_files],
     conda:
         setup.environment_file
     log:
         "logs/prepare_site.log",
     shell:
         f"""
-        mkdir -pv {setup.site_results_dir}/docs/
-        cp -rv {workflow.basedir}/docs/* {setup.site_results_dir}/docs/
+        mkdir -pv {setup.jb_source_dir}
+        cp -rv {workflow.basedir}/docs/* {setup.jb_source_dir}/
         """
 
 
@@ -326,6 +331,7 @@ rule compile_site:
     """
     input:
         get_selection_atlas_site_files,
+        src=setup.site_src_files,
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:

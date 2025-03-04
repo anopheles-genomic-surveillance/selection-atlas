@@ -39,6 +39,30 @@ class AtlasSetup:
         # Path to alerts.
         self.alerts_dir = self.here / "alerts"
 
+        # Paths to Python source files.
+        self.src_dir = self.here / "src" / "selection_atlas"
+        self.gwss_src_files = [
+            self.src_dir / "setup.py",
+            self.src_dir / "peak_utils.py",
+        ]
+        self.site_src_files = [
+            self.src_dir / "setup.py",
+            self.src_dir / "page_utils.py",
+        ]
+
+        # These files are completely static, no dynamically-generated content.
+        self.static_site_files = [
+            "_config.yml",
+            "index.ipynb",
+            "alerts.ipynb",
+            "methods.md",
+            "faq.md",
+            "glossary.md",
+            "logo.png",
+            "favicon.ico",
+            "_static/custom.css",
+        ]
+
         # Path to all workflow results.
         self.output_dir = self.here / "results"
         self.analysis_dir = self.output_dir / atlas_id / analysis_version
@@ -74,6 +98,8 @@ class AtlasSetup:
         # Paths to site workflow results.
         self.site_results_dir = self.analysis_dir / "site"
         os.makedirs(self.site_results_dir, exist_ok=True)
+
+        # Paths to the Jupyter Book files.
         self.jb_source_dir = self.site_results_dir / "docs"
         self.jb_build_dir = self.jb_source_dir / "_build"
 
