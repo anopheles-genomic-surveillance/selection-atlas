@@ -463,8 +463,8 @@ def read_gmap(setup, contig):
         # gambiae complex has maps by chromosome arm, need to concatenate
         contig = contig[0]
         contig_r, contig_l = f"{contig}R", f"{contig}L"
-        df_r = read_gmap(atlas_id, contig_r)
-        df_l = read_gmap(atlas_id, contig_l)
+        df_r = read_gmap(setup, contig_r)
+        df_l = read_gmap(setup, contig_l)
         max_ppos = df_r["pposition"].iloc[-1]
         max_gpos = df_r["gposition"].iloc[-1]
         df_l = df_l.iloc[1:]
@@ -479,7 +479,7 @@ def read_gmap(setup, contig):
 @functools.lru_cache(maxsize=None)
 def load_gmap(setup, contig):
     # read in the genetic map file
-    df_gmap = read_gmap(setup.atlas_id, contig)
+    df_gmap = read_gmap(setup, contig)
 
     # set up an array of per-base recombination rate values
     rr = np.zeros(len(setup.malariagen_api.genome_sequence(contig)), dtype="f8")

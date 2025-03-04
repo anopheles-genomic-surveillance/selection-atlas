@@ -44,6 +44,7 @@ class AtlasSetup:
         ]
         self.taxa = self.config["taxa"]
         self.taxon_phasing_analysis = self.config["taxon_phasing_analysis"]
+        self.taxon_site_mask = self.config["taxon_site_mask"]
 
         # Locate repo root dir.
         self.here = here()
