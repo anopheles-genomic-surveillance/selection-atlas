@@ -117,7 +117,7 @@ rule h12_gwss:
         config=workflow.configfiles,
         kernel=setup.kernel_set_file,
     output:
-        nb=f"{gwss_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
+        nb=f"{setup.gwss_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
     conda:
         environment_file
     log:
