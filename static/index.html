@@ -3,35 +3,44 @@
     <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Malaria Vector Selection Atlas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
+    <style type="text/css">
+body {
+    margin: 1em;
+}
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Malaria Vector Selection Atlas</h1>
-        <p>This site provides web reports on recent positive selection in populations of mosquitoes which transmit malaria. Please select a report from the options below.</p>
-    </div>
-    <div class="container text-center">
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                  <img src="agam.jpg" class="card-img-top" alt="Anopheles gambiae mosquito">
-                  <div class="card-body">
-                      <h5 class="card-title"><em>Anopheles gambiae</em> complex</h5>
-                    <a href="agam" class="btn btn-primary">view report</a>
-                  </div>
+    <div class="container-sm">
+        <div>
+            <h1 class="text-center">Malaria Vector Selection Atlas</h1>
+            <p>This site provides web reports on recent positive selection in populations of mosquitoes which transmit malaria. Please select a report from the options below.</p>
+        </div>
+        <div class="text-center">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                      <img src="agam.jpg" class="card-img-top" alt="Anopheles gambiae mosquito">
+                      <div class="card-body">
+                          <h5 class="card-title"><em>Anopheles gambiae</em> complex</h5>
+                          <p class="card-text">Includes <em>Anopheles gambiae</em>, <em>Anopheles coluzzii</em> and <em>Anopheles arabiensis</em>, all major malaria vectors in sub-Saharan Africa.</p>                        <a href="agam/" class="btn btn-primary">View report</a>
+                      </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                      <img src="afun.jpg" class="card-img-top" alt="Anopheles funestus mosquito">
+                      <div class="card-body">
+                          <h5 class="card-title"><em>Anopheles funestus</em></h5>
+                          <p class="card-text"><em>Anopheles funestus</em> is a major malaria vector throughout sub-Saharan Africa.</p>
+                          <a href="#" class="btn btn-secondary disabled">In development</a>
+
+                      </div>
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card">
-                  <img src="afun.jpg" class="card-img-top" alt="Anopheles funestus mosquito">
-                  <div class="card-body">
-                      <h5 class="card-title"><em>Anopheles funestus</em></h5>
-                      <p class="card-text">in development</p>
-                    <!-- <a href="afun" class="btn btn-primary">view report</a> -->
-                  </div>
-                </div>
-            </div>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 </body>

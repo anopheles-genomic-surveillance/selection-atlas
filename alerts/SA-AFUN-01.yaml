@@ -1,0 +1,22 @@
+label: "Demo"
+region: "2RL:63,203,099-64,808,132"
+ir_candidate_genes:
+  - identifier: "Foo"
+    names:
+      - "Bar"
+      - "Baz"
+    notes: >
+      This gene encodes a voltage-gated sodium channel which is the binding target of DDT
+      and pyrethroid insecticides. Variants in this gene are associated with resistance to
+      DDT and/or pyrethroids.
+    references:
+      - citation: "Martinez-Torres et al. (1998)"
+        url: "https://pubmed.ncbi.nlm.nih.gov/9535162/"
+        title: >
+          Molecular characterization of pyrethroid knockdown resistance (kdr) in the major
+          malaria vector Anopheles gambiae s.s.
+      - citation: "Ranson et al. (2000)"
+        url: "https://pubmed.ncbi.nlm.nih.gov/11029667/"
+        title: >
+          Identification of a point mutation in the voltage-gated sodium channel gene of
+          Kenyan Anopheles gambiae associated with resistance to DDT and pyrethroids
