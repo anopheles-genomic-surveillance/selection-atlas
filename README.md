@@ -78,7 +78,7 @@ During development, you may want to run the workflow without any parallelisation
 MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/gwss/Snakefile --configfile config/agam.yaml --show-failed-logs --rerun-incomplete
 ```
 
-To run the workflow fully, you can try running with parallelisation by changing the value of the `-c` option. Note this will need to be on a machine with sufficient cores and memory.
+To run the workflow fully, you can try running with parallelisation by changing the value of the `-c` option, or omit the option to use all available cores. Note this will need to be on a machine with sufficient cores and memory.
 
 The outputs of the workflow will be stored in the "results" folder, under a sub-folder named according to the "atlas_id" and "analysis_version" parameters given in the workflow configuration file.
 
@@ -110,7 +110,7 @@ find results -type f -exec touch {} +
 The site workflow will use the outputs from the GWSS workflow and compile all of the content for the selection atlas website. To run this workflow:
 
 ```
-MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --configfile config/agam.yaml --show-failed-logs --rerun-incomplete
+MGEN_SHOW_PROGRESS=0 snakemake --snakefile workflow/site/Snakefile --configfile config/agam.yaml --show-failed-logs --rerun-incomplete
 ```
 
 You can run this workflow on a smaller computer as it should not need to perform any heavy computations.
