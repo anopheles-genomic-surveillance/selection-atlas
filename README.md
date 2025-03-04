@@ -27,7 +27,7 @@ To create and activate an environment on your own computer:
 ```
 mamba env create --file workflow/common/envs/selection-atlas.yaml
 conda activate selection-atlas
-pip install -e .
+pip install -e .  # install local Python sources in editable mode
 ```
 
 To create and activate an environment on datalab-bespin:
@@ -35,7 +35,7 @@ To create and activate an environment on datalab-bespin:
 ```
 mamba env create --prefix=${HOME}/envs/selection-atlas --file workflow/common/envs/selection-atlas.yaml
 conda activate ${HOME}/envs/selection-atlas
-pip install -e .
+pip install -e .  # install local Python sources in editable mode
 ```
 
 If you are developing and need to add or upgrade a package, edit `workflow/common/envs/selection-atlas-requirements.yaml`. **Do not edit `workflow/common/envs/selection-atlas.yaml`**. Then re-solve the environment to regenerate `workflow/common/envs/selection-atlas.yaml` as follows:
@@ -66,9 +66,9 @@ gcloud auth application-default login
 ```
 
 
-## Running the gwss workflow
+## Running the GWSS workflow
 
-The gwss workflow will run genome-wide selections over all cohorts found within the sample sets given in the workflow configuration. See the file `config/main.yaml` for workflow configuration.
+The GWSS workflow will run genome-wide selections over all cohorts found within the sample sets given in the workflow configuration. See the file `config/agam.yaml` for workflow configuration for the *Anopheles gambiae* complex selection atlas.
 
 Please note that this workflow will generally require a lot of computation and data access, and so needs to be run on a machine within Google Cloud in the us-central1 region. This can be achieved by using datalab-bespin or by using a Vertex AI Workbench VM.
 
@@ -80,20 +80,22 @@ MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/gwss/Snakefile --configf
 
 To run the workflow fully, you can try running with parallelisation by changing the value of the `-c` option. Note this will need to be on a machine with sufficient cores and memory.
 
-The outputs of the gwss workflow will be stored in the "results" folder, under a sub-folder named according to the "atlas_id" and "analysis_version" parameters given in the workflow configuration file.
+The outputs of the workflow will be stored in the "results" folder, under a sub-folder named according to the "atlas_id" and "analysis_version" parameters given in the workflow configuration file.
 
 Remember that if you make any significant changes to the configuration and rerun the workflow, change the "analysis_version" parameter in the workflow configuration file.
 
 
-## Saving/restoring outputs of a successful gwss workflow run
+## Saving/restoring results of a successful GWSS workflow run
 
-After a successful run of the gwss workflow, copy the workflow outputs to GCS. This will allow you or other developers to continue working to improve the site based on these outputs, without having to do a complete gwss workflow run themselves.
+After a successful run of the GWSS workflow, copy the workflow outputs to GCS. This will allow you or other developers to continue working to improve the site based on these outputs, without having to do a complete GWSS workflow run themselves.
 
 With the selection-atlas environment activated, copy workflow outputs to GCS:
 
 ```
 gcloud storage rsync -r -u results/ gs://vo_selection_atlas_dev_us_central1/results/
 ```
+
+N.B., you will need permission to write to the destination bucket.
 
 To restore outputs from a previous workflow run to your local filesystem:
 
@@ -105,7 +107,7 @@ find results -type f -exec touch {} +
 
 ## Running the site workflow
 
-The site workflow will use the outputs from the gwss workflow and compile all of the content for the selection atlas website. To run this workflow:
+The site workflow will use the outputs from the GWSS workflow and compile all of the content for the selection atlas website. To run this workflow:
 
 ```
 MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --configfile config/agam.yaml --show-failed-logs --rerun-incomplete
@@ -114,3 +116,19 @@ MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --configf
 You can run this workflow on a smaller computer as it should not need to perform any heavy computations.
 
 It currently does need to access some data in GCS, however, and so is also best run from a VM inside GCP.
+
+
+## Troubleshooting
+
+If you get the following error while trying to run a workflow...
+
+```
+ModuleNotFoundError in file /home/alimanfoo/selection-atlas/workflow/gwss/Snakefile, line 1:
+No module named 'selection_atlas'
+```
+
+...then you've forgotten to run...
+
+```
+pip install -e .  # install local Python sources in editable mode
+```

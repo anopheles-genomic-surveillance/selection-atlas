@@ -5,30 +5,48 @@ import os
 import warnings
 from pyprojroot import here
 import dask
+import yaml
 import malariagen_data
 
 
 class AtlasSetup:
     def __init__(
         self,
-        atlas_id: str,
-        analysis_version: str,
-        cohorts_analysis: str,
-        dask_scheduler: str,
-        contigs: list,
+        config_file: str,
     ):
-        # Given configuration parameters.
-        self.atlas_id = atlas_id
-        self.analysis_version = analysis_version
-        self.cohorts_analysis = cohorts_analysis
-        self.dask_scheduler = dask_scheduler
-        self.contigs = tuple(contigs)
+        self.config_file = config_file
+        with open(self.config_file, mode="r") as f:
+            self.config = yaml.safe_load(f)
+
+        # Store configuration parameters.
+        self.atlas_id = self.config["atlas_id"]
+        self.analysis_version = self.config["analysis_version"]
+        self.cohorts_analysis = self.config["cohorts_analysis"]
+        self.dask_scheduler = self.config["dask_scheduler"]
+        self.contigs = self.config["contigs"]
+        self.sample_sets = self.config["sample_sets"]
+        self.sample_query = self.config["sample_query"]
+        self.min_cohort_size = self.config["min_cohort_size"]
+        self.max_cohort_size = self.config["max_cohort_size"]
+        self.h12_calibration_contig = self.config["h12_calibration_contig"]
+        self.h12_calibration_window_sizes = self.config["h12_calibration_window_sizes"]
+        self.h12_signal_detection_min_delta_aic = self.config[
+            "h12_signal_detection_min_delta_aic"
+        ]
+        self.h12_signal_detection_min_stat_max = self.config[
+            "h12_signal_detection_min_stat_max"
+        ]
+        self.h12_signal_detection_gflanks = self.config["h12_signal_detection_gflanks"]
+        self.g123_calibration_contig = self.config["g123_calibration_contig"]
+        self.g123_calibration_window_sizes = self.config[
+            "g123_calibration_window_sizes"
+        ]
 
         # Locate repo root dir.
         self.here = here()
 
         # Configure dask.
-        dask.config.set(scheduler=dask_scheduler)
+        dask.config.set(scheduler=self.dask_scheduler)
 
         # Configure warnings.
         warnings.filterwarnings("ignore")
@@ -64,8 +82,8 @@ class AtlasSetup:
         ]
 
         # Path to all workflow results.
-        self.output_dir = self.here / "results"
-        self.analysis_dir = self.output_dir / atlas_id / analysis_version
+        self.results_dir = self.here / "results"
+        self.analysis_dir = self.results_dir / self.atlas_id / self.analysis_version
         os.makedirs(self.analysis_dir, exist_ok=True)
 
         # Path to kernel set flag file.
@@ -104,31 +122,35 @@ class AtlasSetup:
         self.jb_build_dir = self.jb_source_dir / "_build"
 
         # Setup access to malariagen data.
-        self.malariagen_data_cache_path = self.output_dir / "malariagen_data_cache"
+        self.malariagen_data_cache_path = self.results_dir / "malariagen_data_cache"
+        self._malariagen_api = None
 
-        if atlas_id == "agam":
-            self.malariagen_api = malariagen_data.Ag3(
-                # Pin the version of the cohorts analysis for reproducibility.
-                cohorts_analysis=cohorts_analysis,
-                results_cache=self.malariagen_data_cache_path.as_posix(),
-                check_location=False,
-            )
+    @property
+    def malariagen_api(self):
+        # Lazily initialise MalariaGEN API.
+        if self._malariagen_api is None:
+            if self.atlas_id == "agam":
+                self._malariagen_api = malariagen_data.Ag3(
+                    # Pin the version of the cohorts analysis for reproducibility.
+                    cohorts_analysis=self.cohorts_analysis,
+                    results_cache=self.malariagen_data_cache_path.as_posix(),
+                    check_location=False,
+                )
+            elif self.atlas_id == "afun":
+                self._malariagen_api = malariagen_data.Af1(
+                    # Pin the version of the cohorts analysis for reproducibility.
+                    cohorts_analysis=self.cohorts_analysis,
+                    results_cache=self.malariagen_data_cache_path.as_posix(),
+                    check_location=False,
+                )
+            else:
+                raise RuntimeError(f"Unexpected atlas_id: {atlas_id}.")
+        return self._malariagen_api
 
-        elif atlas_id == "afun":
-            self.malariagen_api = malariagen_data.Af1(
-                # Pin the version of the cohorts analysis for reproducibility.
-                cohorts_analysis=cohorts_analysis,
-                results_cache=self.malariagen_data_cache_path.as_posix(),
-                check_location=False,
-            )
-
-        else:
-            raise RuntimeError(f"Unexpected atlas_id: {atlas_id}.")
+    def sample_metadata(self):
+        return self.malariagen_api.sample_metadata(
+            sample_sets=self.sample_sets, sample_query=self.sample_query
+        )
 
     def __hash__(self):
-        return hash(
-            self.atlas_id,
-            self.analysis_version,
-            self.cohorts_analysis,
-            self.contigs,
-        )
+        return hash(self.config_file)

@@ -14,7 +14,7 @@ checkpoint setup_cohorts:
     input:
         nb=f"{workflow.basedir}/notebooks/setup-cohorts.ipynb",
         src=setup.gwss_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.gwss_results_dir}/notebooks/setup-cohorts.ipynb",
@@ -25,7 +25,11 @@ checkpoint setup_cohorts:
         "logs/setup_cohorts.log",
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -38,7 +42,7 @@ rule h12_calibration:
     input:
         nb=f"{workflow.basedir}/notebooks/h12-calibration.ipynb",
         src=setup.gwss_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.gwss_results_dir}/notebooks/h12-calibration-{{cohort}}.ipynb",
@@ -49,9 +53,12 @@ rule h12_calibration:
         "logs/h12_calibration/{cohort}.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
-        papermill {input.nb} {output.nb} -k selection-atlas \
-        -p cohort_id {wildcards.cohort} -f {input.config} 2> {log}
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p cohort_id {wildcards.cohort} \
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -66,7 +73,7 @@ checkpoint finalize_cohorts:
         calibration=get_h12_calibration_files,
         cohorts=lambda wildcards: checkpoints.setup_cohorts.get().output.cohorts,
         src=setup.gwss_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.gwss_results_dir}/notebooks/finalize-cohorts.ipynb",
@@ -77,7 +84,11 @@ checkpoint finalize_cohorts:
         "logs/final_cohorts.log",
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -90,7 +101,7 @@ rule geolocate_cohorts:
         nb=f"{workflow.basedir}/notebooks/geolocate-cohorts.ipynb",
         final_cohorts=lambda wildcards: checkpoints.finalize_cohorts.get().output.final_cohorts,
         src=setup.gwss_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.gwss_results_dir}/notebooks/geolocate-cohorts.ipynb",
@@ -101,7 +112,11 @@ rule geolocate_cohorts:
         "logs/geolocate_cohorts.log",
     shell:
         """
-        papermill {input.nb} {output.nb} -k selection-atlas -f {input.config} 2> {log}
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -114,19 +129,22 @@ rule h12_gwss:
         calibration=setup.h12_calibration_files,
         cohorts=setup.final_cohorts_file,
         src=setup.gwss_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.gwss_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
     conda:
-        environment_file
+        setup.environment_file
     log:
         "logs/h12_gwss/{cohort}.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
-        papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} \
-        -f {input.config} 2> {log}
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p cohort_id {wildcards.cohort} \
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -139,7 +157,7 @@ rule h12_signal_detection:
         gwss_nb=f"{setup.gwss_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
         cohorts=setup.final_cohorts_file,
         src=setup.gwss_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.gwss_results_dir}/notebooks/h12-signal-detection-{{cohort}}-{{contig}}.ipynb",
@@ -150,9 +168,13 @@ rule h12_signal_detection:
         "logs/h12_signal_detection/{cohort}_{contig}.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
-        papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} \
-         -p contig {wildcards.contig} -f {input.config} 2> {log}
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p cohort_id {wildcards.cohort} \
+            -p contig {wildcards.contig} \
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -163,7 +185,7 @@ rule g123_calibration:
     input:
         nb=f"{workflow.basedir}/notebooks/g123-calibration.ipynb",
         src=setup.gwss_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.gwss_results_dir}/notebooks/g123-calibration-{{cohort}}.ipynb",
@@ -174,9 +196,12 @@ rule g123_calibration:
         "logs/g123_calibration/{cohort}.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
-        papermill {input.nb} {output.nb} -k selection-atlas \
-        -p cohort_id {wildcards.cohort} -f {input.config} 2> {log}
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p cohort_id {wildcards.cohort} \
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -189,19 +214,22 @@ rule g123_gwss:
         calibration=setup.g123_calibration_files,
         cohorts=setup.final_cohorts_file,
         src=setup.gwss_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.gwss_results_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
     conda:
-        environment_file
+        setup.environment_file
     log:
         "logs/g123_gwss/{cohort}.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
-        papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} \
-        -f {input.config} 2> {log}
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p cohort_id {wildcards.cohort} \
+            -p config_file {input.config_file} \
+            &> {log}
         """
 
 
@@ -213,7 +241,7 @@ rule ihs_gwss:
         nb=f"{workflow.basedir}/notebooks/ihs-gwss.ipynb",
         cohorts=setup.final_cohorts_file,
         src=setup.gwss_src_files,
-        config=workflow.configfiles,
+        config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.gwss_results_dir}/notebooks/ihs-gwss-{{cohort}}.ipynb",
@@ -223,7 +251,10 @@ rule ihs_gwss:
         "logs/ihs_gwss/{cohort}.log",
     shell:
         """
-        sleep "$((1+RANDOM%10)).$((RANDOM%999))"
-        papermill {input.nb} {output.nb} -k selection-atlas -p cohort_id {wildcards.cohort} \
-        -f {input.config} 2> {log}
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p cohort_id {wildcards.cohort} \
+            -p config_file {input.config_file} \
+            &> {log}
         """

@@ -12,7 +12,7 @@ analysis_version: "2025.03.01"
 
 # Set minimum and maximum cohort size parameters.
 min_cohort_size: 15
-max_cohort_size: 120  # If larger, will be randomly downsampled.
+max_cohort_size: 100  # If larger, will be randomly downsampled.
 
 # Select the sample sets to include in the analysis.
 sample_sets:
@@ -45,6 +45,9 @@ cohorts_analysis: "20240924"
 
 # Select the contig to use for H12 window size calibration.
 h12_calibration_contig: "3L"
+h12_calibration_window_sizes: [200, 500, 1000, 2000, 5000, 10000]
+g123_calibration_contig: "3L"
+g123_calibration_window_sizes: [200, 500, 1000, 2000, 5000, 10000]
 
 # Configuration for H12 signal detection.
 h12_signal_detection_min_delta_aic: 1000

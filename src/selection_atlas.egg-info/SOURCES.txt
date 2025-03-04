@@ -2,7 +2,9 @@ LICENSE
 README.md
 pyproject.toml
 src/selection_atlas/__init__.py
-src/selection_atlas/spike.py
+src/selection_atlas/page_utils.py
+src/selection_atlas/peak_utils.py
+src/selection_atlas/setup.py
 src/selection_atlas.egg-info/PKG-INFO
 src/selection_atlas.egg-info/SOURCES.txt
 src/selection_atlas.egg-info/dependency_links.txt
