@@ -33,24 +33,24 @@ checkpoint setup_cohorts:
         """
 
 
-rule h12_calibration:
+rule calibration:
     """
-    Calibrate the H12 window size for each cohort. Note that some cohorts may not
-    succeed the calibration process, e.g., if they have extreme demography and so
-    a reasonable window size cannot be found.
+    Calibrate the H12 and G123 window size for each cohort. Note that some cohorts
+    may not succeed the calibration process, e.g., if they have extreme demography
+    and so a reasonable window size cannot be found.
     """
     input:
-        nb=f"{workflow.basedir}/notebooks/h12-calibration.ipynb",
+        nb=f"{workflow.basedir}/notebooks/calibration.ipynb",
         src=setup.gwss_src_files,
         config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
-        nb=f"{setup.gwss_results_dir}/notebooks/h12-calibration-{{cohort}}.ipynb",
-        calibration=setup.h12_calibration_files,
+        nb=f"{setup.gwss_results_dir}/notebooks/calibration-{{cohort}}.ipynb",
+        calibration=setup.calibration_files,
     conda:
         setup.environment_file
     log:
-        "logs/h12_calibration/{cohort}.log",
+        "logs/calibration/{cohort}.log",
     shell:
         """
         sleep "$((1+RANDOM%20)).$((RANDOM%999))"
@@ -70,7 +70,7 @@ checkpoint finalize_cohorts:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/finalize-cohorts.ipynb",
-        calibration=get_h12_calibration_files,
+        calibration=get_calibration_files,
         cohorts=lambda wildcards: checkpoints.setup_cohorts.get().output.cohorts,
         src=setup.gwss_src_files,
         config_file=config_file,
@@ -126,7 +126,7 @@ rule h12_gwss:
     """
     input:
         nb=f"{workflow.basedir}/notebooks/h12-gwss.ipynb",
-        calibration=setup.h12_calibration_files,
+        calibration=setup.calibration_files,
         cohorts=setup.final_cohorts_file,
         src=setup.gwss_src_files,
         config_file=config_file,
@@ -178,40 +178,13 @@ rule h12_signal_detection:
         """
 
 
-rule g123_calibration:
-    """
-    Calibrate the window size for each cohort.
-    """
-    input:
-        nb=f"{workflow.basedir}/notebooks/g123-calibration.ipynb",
-        src=setup.gwss_src_files,
-        config_file=config_file,
-        kernel=setup.kernel_set_file,
-    output:
-        nb=f"{setup.gwss_results_dir}/notebooks/g123-calibration-{{cohort}}.ipynb",
-        calibration=setup.g123_calibration_files,
-    conda:
-        setup.environment_file
-    log:
-        "logs/g123_calibration/{cohort}.log",
-    shell:
-        """
-        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
-        papermill {input.nb} {output.nb} \
-            -k selection-atlas \
-            -p cohort_id {wildcards.cohort} \
-            -p config_file {input.config_file} \
-            &> {log}
-        """
-
-
 rule g123_gwss:
     """
     Run the G123 GWSS.
     """
     input:
         nb=f"{workflow.basedir}/notebooks/g123-gwss.ipynb",
-        calibration=setup.g123_calibration_files,
+        calibration=setup.calibration_files,
         cohorts=setup.final_cohorts_file,
         src=setup.gwss_src_files,
         config_file=config_file,

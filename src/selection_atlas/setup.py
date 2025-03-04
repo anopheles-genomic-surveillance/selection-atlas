@@ -104,18 +104,15 @@ class AtlasSetup:
             self.gwss_results_dir / "final_cohorts.geojson"
         )
 
-        # H12 files.
-        self.h12_calibration_dir = self.gwss_results_dir / "h12-calibration"
-        os.makedirs(self.h12_calibration_dir, exist_ok=True)
-        self.h12_calibration_files = self.h12_calibration_dir / "{cohort}.yaml"
+        # Window size calibration files.
+        self.calibration_dir = self.gwss_results_dir / "calibration"
+        os.makedirs(self.calibration_dir, exist_ok=True)
+        self.calibration_files = self.calibration_dir / "{cohort}.yaml"
+
+        # Signal detection files.
         self.h12_signal_dir = self.gwss_results_dir / "h12-signal-detection"
         os.makedirs(self.h12_signal_dir, exist_ok=True)
         self.h12_signal_files = self.h12_signal_dir / "{cohort}_{contig}.csv"
-
-        # G123 files.
-        self.g123_calibration_dir = self.gwss_results_dir / "g123-calibration"
-        os.makedirs(self.g123_calibration_dir, exist_ok=True)
-        self.g123_calibration_files = self.g123_calibration_dir / "{cohort}.yaml"
 
         # Paths to site workflow results.
         self.site_results_dir = self.analysis_dir / "site"
