@@ -23,3 +23,10 @@ repos:
     rev: v0.10.2
     hooks:
       - id: snakefmt
+  # Check alert files.
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.31.2
+    hooks:
+      - id: check-jsonschema
+        files: ^alerts/SA-.*\.yaml$
+        args: ["--schemafile", "alerts/schema.yaml"]
