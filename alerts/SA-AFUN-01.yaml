@@ -1,11 +1,12 @@
 label: "Cyp6p"
 region: "2RL:8,499,270-8,818,655"
 ir_candidate_genes:
+
   - identifier: "AFUN2_008570"
     names:
-      - "LOC125764713"
       - "Cyp6p9a"
       - "Cyp6p9b"
+      - "LOC125764713"
       - "AFUN015792"
       - "AFUN015889"
     notes: >
@@ -35,11 +36,12 @@ ir_candidate_genes:
         url: "https://doi.org/10.1186/s12864-024-11148-7"
         title: >
           Genome-wide association studies unveil major genetic loci driving insecticide resistance in Anopheles funestus in four eco-geographical settings across Cameroon
+
   - identifier: "AFUN2_013390"
     names:
+      - "Cyp6p4a"
       - "LOC125764712"
       - "AFUN020895"
-      - "Cyp6p4a"
     notes: >
       This gene encodes a cytochrome P450 enzyme which has been assocated with pyrethroid resistance in *Anopheles funestus*.
     references:
@@ -51,11 +53,12 @@ ir_candidate_genes:
         url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11657943/"
         title: >
           Two highly selected mutations in the tandemly duplicated CYP6P4a and CYP6P4b genes drive pyrethroid resistance in Anopheles funestus in West Africa
+
   - identifier: "AFUN2_014070"
     names:
+      - "Cyp6p4b"
       - "LOC125764711"
       - "AFUN019365"
-      - "Cyp6p4b"
     notes: >
       This gene encodes a cytochrome P450 enzyme which has been assocated with pyrethroid resistance in *Anopheles funestus*.
     references:
@@ -67,5 +70,6 @@ ir_candidate_genes:
         url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11657943/"
         title: >
           Two highly selected mutations in the tandemly duplicated CYP6P4a and CYP6P4b genes drive pyrethroid resistance in Anopheles funestus in West Africa
+
 see_also:
-    - "*Anopheles gambiae* complex selection alert [SA-AGAM-04](../../agam/SA-AGAM-04.html)."
+  - "*Anopheles gambiae* complex selection alert [SA-AGAM-04](https://anopheles-genomic-surveillance.github.io/selection-atlas/agam/alert/SA-AGAM-04.html)."
