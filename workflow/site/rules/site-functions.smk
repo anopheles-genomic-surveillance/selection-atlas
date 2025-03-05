@@ -14,7 +14,7 @@ def get_selection_atlas_site_files(wildcards):
     df = gpd.read_file(setup.final_cohorts_geojson_file)
     cohorts = df["cohort_id"]  # .unique()
     countries = df["country_alpha2"]
-    alerts = config["alerts"]
+    ir_alerts = config["ir_alerts"]
     contigs = config["contigs"]
 
     # Dynamically-generated files.
@@ -31,7 +31,7 @@ def get_selection_atlas_site_files(wildcards):
         country=countries,
         contig=contigs,
         cohort=cohorts,
-        alert=alerts,
+        alert=ir_alerts,
     )
 
     # Static files.
