@@ -113,9 +113,16 @@ The site workflow will use the outputs from the GWSS workflow and compile all of
 MGEN_SHOW_PROGRESS=0 snakemake --snakefile workflow/site/Snakefile --configfile config/agam.yaml --show-failed-logs --rerun-incomplete
 ```
 
-You can run this workflow on a smaller computer as it should not need to perform any heavy computations.
+You can run this workflow on a smaller computer as it should not need to perform any heavy computations. It currently does need to access some data in GCS, however, and so is also best run from a VM inside GCP.
 
-It currently does need to access some data in GCS, however, and so is also best run from a VM inside GCP.
+See below for how the site is deployed.
+
+
+## Deploying the site
+
+The site is automatically built and deployed to GitHub pages via a GitHub action. The deployment action will be run whenever a new git tag is created on the repository. So, e.g., to trigger a new build and deployment of the site, create a new GitHub release. Make sure to tag the release with a version identifier like "v{analysis_version}-{site_build}" where `analysis_version` is the version of the latest GWSS workflow run, and `site_build` is a number which you increment each time you trigger a new site deployment based on that analysis version.
+
+The deployment action usually takes around an hour to run.
 
 
 ## Troubleshooting
