@@ -49,7 +49,7 @@ class AtlasSetup:
         self.taxa = self.config["taxa"]
         self.taxon_phasing_analysis = self.config["taxon_phasing_analysis"]
         self.taxon_site_mask = self.config["taxon_site_mask"]
-        self.alerts = self.config["alerts"]
+        self.ir_alerts = self.config["ir_alerts"]
 
         # Locate repo root dir.
         self.here = here()
@@ -79,7 +79,7 @@ class AtlasSetup:
 
         # These files are completely static, no dynamically-generated content.
         self.static_site_files = [
-            "alerts.ipynb",
+            "ir-alerts.ipynb",
             "methods.md",
             "faq.md",
             "glossary.md",

@@ -63,6 +63,6 @@ h12_signal_detection_gflanks: [6]
 # resources are likely to be oversubscribed.
 dask_scheduler: "single-threaded"
 
-# Current alerts.
-alerts:
+# Insecticide resistance alerts.
+ir_alerts:
     - 'SA-AFUN-01'
