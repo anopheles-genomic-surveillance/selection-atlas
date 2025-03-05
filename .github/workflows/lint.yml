@@ -9,15 +9,6 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Get analysis version
-        id: get_analysis_version
-        uses: mikefarah/yq@master
-        with:
-          cmd: yq '.analysis_version' config/main.yaml
-
-      - name: Echo analysis version
-        run: echo ${{ steps.get_analysis_version.outputs.result }}
-
       - name: Run pre-commit checks
         uses: pre-commit/action@v3.0.0
 
@@ -27,6 +18,10 @@ jobs:
           environment-file: workflow/common/envs/selection-atlas.yaml
           environment-name: selection-atlas
           cache-downloads: true
+
+      - name: Install local package
+        run: |
+          pip install -e .
 
       # Snakemake linting requires Google Cloud authentication, because it runs the
       # workflow/common/scripts/setup.py script, which initialises malariagen_data.
@@ -38,8 +33,8 @@ jobs:
 
       - name: Lint gwss workflow
         shell: bash -l {0}
-        run: snakemake --snakefile workflow/gwss/Snakefile --lint
+        run: snakemake --snakefile workflow/gwss/Snakefile --lint --configfile config/agam.yaml
 
       - name: Lint site workflow
         shell: bash -l {0}
-        run: snakemake --snakefile workflow/site/Snakefile --lint
+        run: snakemake --snakefile workflow/site/Snakefile --lint --configfile config/agam.yaml

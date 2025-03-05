@@ -1,0 +1,92 @@
+title: Config
+description: Schema for selection atlas config files.
+type: object
+required:
+    - atlas_id
+    - atlas_title
+    - analysis_version
+    - min_cohort_size
+    - max_cohort_size
+    - sample_sets
+    - sample_query
+    - taxa
+    - taxon_phasing_analysis
+    - taxon_site_mask
+    - contigs
+    - cohorts_analysis
+    - h12_calibration_contig
+    - h12_calibration_window_sizes
+    - h12_calibration_threshold
+    - g123_calibration_contig
+    - g123_calibration_window_sizes
+    - g123_calibration_threshold
+    - ihs_window_size
+    - h12_signal_detection_min_delta_aic
+    - h12_signal_detection_min_stat_max
+    - h12_signal_detection_gflanks
+    - dask_scheduler
+    - ir_alerts
+additionalProperties: false
+properties:
+    atlas_id:
+        type: string
+    atlas_title:
+        type: string
+    analysis_version:
+        type: string
+    min_cohort_size:
+        type: integer
+    max_cohort_size:
+        type: integer
+    sample_sets:
+        type: array
+        items:
+            type: string
+    sample_query:
+        type: string
+    taxa:
+        type: array
+        items:
+            type: string
+    taxon_phasing_analysis:
+        type: object
+    taxon_site_mask:
+        type: object
+    contigs:
+        type: array
+        items:
+            type: string
+    cohorts_analysis:
+        type: string
+    h12_calibration_contig:
+        type: string
+    h12_calibration_window_sizes:
+        type: array
+        items:
+            type: integer
+    h12_calibration_threshold:
+        type: number
+    g123_calibration_contig:
+        type: string
+    g123_calibration_window_sizes:
+        type: array
+        items:
+            type: integer
+    g123_calibration_threshold:
+        type: number
+    ihs_window_size:
+        type: integer
+    h12_signal_detection_min_delta_aic:
+        type: integer
+    h12_signal_detection_min_stat_max:
+        type: number
+    h12_signal_detection_gflanks:
+        type: array
+        items:
+            type: integer
+    dask_scheduler:
+        type: string
+    ir_alerts:
+        type: array
+        items:
+            type: string

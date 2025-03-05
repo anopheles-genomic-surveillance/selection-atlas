@@ -1,18 +1,13 @@
-configfile: "config/main.yaml"
+from selection_atlas.setup import AtlasSetup
 
+# Access path to the workflow config file.
+config_file = workflow.configfiles[0]
 
-# Path to workflow config file.
-workflow_config_file = workflow.configfiles[0]
-
-# Access configuration variables and make available as global variables for convenience.
-contigs = config["contigs"]
-analysis_version = config["analysis_version"]
-dask_scheduler = config["dask_scheduler"]
-cohorts_analysis = config["cohorts_analysis"]
+# Initialise the atlas setup.
+setup = AtlasSetup(config_file=config_file)
 
 
 # Includes.
-include: "../common/scripts/setup.py"
 include: "../common/rules/common.smk"
 include: "rules/site-functions.smk"
 include: "rules/site-rules.smk"
@@ -22,4 +17,4 @@ include: "rules/site-rules.smk"
 rule all:
     input:
         # This is the output directory from the Jupyter book compilation.
-        jb_build_dir,
+        setup.jb_build_dir,

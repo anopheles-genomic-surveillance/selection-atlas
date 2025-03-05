@@ -10,3 +10,7 @@ selection-atlas.html
 
 # Jupyter Notebook
 .ipynb_checkpoints
+
+# Python
+*.pyc
+*.egg-info

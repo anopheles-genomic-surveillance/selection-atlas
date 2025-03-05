@@ -1,56 +1,52 @@
 # Declare an identifier for this atlas. Will also be used as a URL slug.
-atlas_id: "agam"
+atlas_id: "afun"
 
 # Atlas title describing the taxon or taxonomic group covered.
-atlas_title: "CI"
+atlas_title: "Malaria Vector Selection Atlas — *Anopheles funestus*"
 
 # Set the analysis version identifier. This will be used to identify
 # the outputs from a particular run of the analysis workflow. If you
 # change any of the parameters in this configuration file then please
 # also update the analysis version.
-analysis_version: "CI"
+analysis_version: "2025.03.05"
 
 # Set minimum and maximum cohort size parameters.
-min_cohort_size: 20
-max_cohort_size: 30
+min_cohort_size: 15
+max_cohort_size: 100  # If larger, will be randomly downsampled.
 
 # Select the sample sets to include in the analysis.
 sample_sets:
-    - "AG1000G-ML-A"
+    - "1.0"
 
 # Filter samples to include in the analysis.
-sample_query: "taxon in ['gambiae', 'coluzzii']"
+sample_query: "taxon in ['funestus']"
 
 # Declare which taxa to analyse.
-taxa: ['gambiae', 'coluzzii']
+taxa: ['funestus']
 
 # Map taxa to phasing analysis.
 taxon_phasing_analysis:
-    gambiae: "gamb_colu"
-    coluzzii: "gamb_colu"
-    bissau: "gamb_colu"
-    arabiensis: "arab"
+    funestus: "funestus"
 
 # Map taxa to site mask.
 taxon_site_mask:
-    gambiae: "gamb_colu"
-    coluzzii: "gamb_colu"
-    bissau: "gamb_colu"
-    arabiensis: "arab"
+    funestus: "funestus"
 
 # Select the contigs to analyse.
 contigs:
-    - "2R"
+    - "2RL"
+    - "3RL"
+    - "X"
 
 # Pin the cohorts analysis version in order to get reproducible results.
-cohorts_analysis: "20240924"
+cohorts_analysis: "20240515"
 
 # Window size calibration parameters.
-h12_calibration_contig: "3L"
-h12_calibration_window_sizes: [500, 1000, 2000, 5000]
+h12_calibration_contig: "3RL"
+h12_calibration_window_sizes: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400, 1600, 1800, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000, 10000]
 h12_calibration_threshold: 0.08
-g123_calibration_contig: "3L"
-g123_calibration_window_sizes: [500, 1000, 2000, 5000]
+g123_calibration_contig: "3RL"
+g123_calibration_window_sizes: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400, 1600, 1800, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000, 10000]
 g123_calibration_threshold: 0.08
 
 # IHS configuration.
@@ -69,4 +65,4 @@ dask_scheduler: "single-threaded"
 
 # Insecticide resistance alerts.
 ir_alerts:
-    - 'CI'
+    - 'SA-AFUN-01'
