@@ -9,15 +9,6 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Get analysis version
-        id: get_analysis_version
-        uses: mikefarah/yq@master
-        with:
-          cmd: yq '.analysis_version' config/main.yaml
-
-      - name: Echo analysis version
-        run: echo ${{ steps.get_analysis_version.outputs.result }}
-
       - name: Run pre-commit checks
         uses: pre-commit/action@v3.0.0
 
