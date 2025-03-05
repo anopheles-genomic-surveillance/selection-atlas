@@ -36,9 +36,9 @@ a.internal .doc {
 
 a.internal .std-term {
     /* Make glossary links look different */
-    color: black;
+    color: var(--pst-color-text-base);
     text-decoration: underline;
-    text-decoration-color: #999999;
+    text-decoration-color: var(--pst-color-text-base);
     text-decoration-style: dashed;
     text-underline-offset: .1578em;
 }
