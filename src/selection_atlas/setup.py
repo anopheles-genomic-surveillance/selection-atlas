@@ -32,6 +32,7 @@ class AtlasSetup:
         self.max_cohort_size = self.config["max_cohort_size"]
         self.h12_calibration_contig = self.config["h12_calibration_contig"]
         self.h12_calibration_window_sizes = self.config["h12_calibration_window_sizes"]
+        self.h12_calibration_threshold = self.config["h12_calibration_threshold"]
         self.h12_signal_detection_min_delta_aic = self.config[
             "h12_signal_detection_min_delta_aic"
         ]
@@ -43,6 +44,8 @@ class AtlasSetup:
         self.g123_calibration_window_sizes = self.config[
             "g123_calibration_window_sizes"
         ]
+        self.g123_calibration_threshold = self.config["g123_calibration_threshold"]
+        self.ihs_window_size = self.config["ihs_window_size"]
         self.taxa = self.config["taxa"]
         self.taxon_phasing_analysis = self.config["taxon_phasing_analysis"]
         self.taxon_site_mask = self.config["taxon_site_mask"]

@@ -1,14 +1,14 @@
 # Declare an identifier for this atlas. Will also be used as a URL slug.
 atlas_id: "afun"
 
-# Atlas subtitle describing the taxon or taxonomic group covered.
-atlas_subtitle: "Anopheles funestus"
+# Atlas title describing the taxon or taxonomic group covered.
+atlas_title: "Malaria Vector Selection Atlas — *Anopheles funestus*"
 
 # Set the analysis version identifier. This will be used to identify
 # the outputs from a particular run of the analysis workflow. If you
 # change any of the parameters in this configuration file then please
 # also update the analysis version.
-analysis_version: "2025.03.01"
+analysis_version: "2025.03.05"
 
 # Set minimum and maximum cohort size parameters.
 min_cohort_size: 15
@@ -44,8 +44,13 @@ cohorts_analysis: "20240515"
 # Window size calibration parameters.
 h12_calibration_contig: "3RL"
 h12_calibration_window_sizes: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400, 1600, 1800, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000, 10000]
+h12_calibration_threshold: 0.08
 g123_calibration_contig: "3RL"
 g123_calibration_window_sizes: [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400, 1600, 1800, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000, 10000]
+g123_calibration_threshold: 0.08
+
+# IHS configuration.
+ihs_window_size: 100
 
 # Configuration for H12 signal detection.
 h12_signal_detection_min_delta_aic: 1000
