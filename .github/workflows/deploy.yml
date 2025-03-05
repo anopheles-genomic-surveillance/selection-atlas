@@ -6,7 +6,65 @@ on:
       - 'v*'
 
 jobs:
-  deploy:
+  agam:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Install conda environment
+        uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-file: workflow/common/envs/selection-atlas.yaml
+          environment-name: selection-atlas
+          cache-downloads: true
+
+      - name: Install local package
+        run: |
+          pip install -e .
+
+      - id: auth
+        name: Set up Google Cloud authentication
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GOOGLE_CREDENTIALS }}
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          version: ">= 363.0.0"
+
+      - name: Check gcloud CLI
+        run: gcloud info
+
+      - name: Download results from GCS
+        run: |
+            mkdir -pv results
+            gcloud storage rsync -r \
+              gs://vo_selection_atlas_dev_us_central1/results/ \
+              results/
+
+      - name: Get agam analysis version
+        id: get_agam_analysis_version
+        uses: mikefarah/yq@master
+        with:
+          cmd: yq '.analysis_version' config/agam.yaml
+
+      - name: Echo agam analysis version
+        run: echo ${{ steps.get_agam_analysis_version.outputs.result }}
+
+      # - name: Run agam site snakemake workflow
+      #   shell: bash -l {0}
+      #   run: |
+      #     MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --configfile config/agam.yaml --show-failed-logs --forceall
+
+      - name: Upload site
+        uses: actions/upload-artifact@v4
+        with:
+          name: agam
+          path: results/agam/${{ steps.get_agam_analysis_version.outputs.result }}/site/docs/_build/html
+
+  afun:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -58,31 +116,39 @@ jobs:
       #   run: |
       #     MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --configfile config/afun.yaml --show-failed-logs --forceall
 
-      - name: Get agam analysis version
-        id: get_agam_analysis_version
-        uses: mikefarah/yq@master
+      - name: Upload site
+        uses: actions/upload-artifact@v4
         with:
-          cmd: yq '.analysis_version' config/agam.yaml
+          name: afun
+          path: results/afun/${{ steps.get_afun_analysis_version.outputs.result }}/site/docs/_build/html
 
-      - name: Echo agam analysis version
-        run: echo ${{ steps.get_agam_analysis_version.outputs.result }}
+  publish:
+    runs-on: ubuntu-latest
+    needs: [agam, afun]
+    steps:
 
-      # - name: Run agam site snakemake workflow
-      #   shell: bash -l {0}
-      #   run: |
-      #     MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --configfile config/agam.yaml --show-failed-logs --forceall
+      - name: Check out code
+        uses: actions/checkout@v3
 
-      - name: Prepare publication directory
+      - name: Copy static files
         run: |
           mkdir public
           cp -rv static/* public/
-          mkdir public/afun
-          cp -rv results/afun/${{ steps.get_afun_analysis_version.outputs.result }}/site/docs/_build/html/* public/afun/
-          mkdir public/agam
-          cp -rv results/agam/${{ steps.get_agam_analysis_version.outputs.result }}/site/docs/_build/html/* public/agam/
+
+      - name: Download agam site
+        uses: actions/download-artifact@v4
+        with:
+          name: agam
+          path: public/agam
+
+      - name: Download afun site
+        uses: actions/download-artifact@v4
+        with:
+          name: afun
+          path: public/afun
 
       - name: Publish to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: public
