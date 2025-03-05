@@ -13,3 +13,4 @@ selection-atlas.html
 
 # Python
 *.pyc
+*.egg-info
