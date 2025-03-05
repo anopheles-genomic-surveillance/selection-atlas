@@ -1,0 +1,13 @@
+label: "imaginary resistance gene"
+region: "2R:27,500,000-29,500,000"
+ir_candidate_genes:
+  - identifier: "AGAP002865"
+    names:
+      - "Cyp6p3"
+    notes: >
+      p450s blah blah
+    references:
+      - citation: "sanjinho et al. (2021)"
+        title: >
+          The genetic architecture of cyp6p3
+        url: "https://doi.org/10.1111/mec.15845"

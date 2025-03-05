@@ -69,4 +69,4 @@ dask_scheduler: "single-threaded"
 
 # Insecticide resistance alerts.
 ir_alerts:
-    - 'SA-AGAM-04'
+    - 'CI'

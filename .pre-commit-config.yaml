@@ -28,5 +28,12 @@ repos:
     rev: 0.31.2
     hooks:
       - id: check-jsonschema
-        files: "^alerts/SA-.*\\.yaml$"
-        args: ["--schemafile", "alerts/schema.yaml"]
+        files: "^alerts/.*\\.yaml$"
+        args: ["--schemafile", "schemas/alert.yaml"]
+  # Check config files.
+  - repo: https://github.com/python-jsonschema/check-jsonschema
+    rev: 0.31.2
+    hooks:
+      - id: check-jsonschema
+        files: "^config/.*\\.yaml$"
+        args: ["--schemafile", "schemas/config.yaml"]
