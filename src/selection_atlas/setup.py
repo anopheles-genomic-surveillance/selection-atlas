@@ -79,12 +79,11 @@ class AtlasSetup:
 
         # These files are completely static, no dynamically-generated content.
         self.static_site_files = [
-            "_config.yml",
             "alerts.ipynb",
             "methods.md",
             "faq.md",
             "glossary.md",
-            "logo.png",
+            f"logo-{self.atlas_id}.png",
             "favicon.ico",
             "_static/custom.css",
         ]

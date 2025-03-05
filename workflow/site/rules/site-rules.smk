@@ -146,23 +146,23 @@ rule alert_pages:
         """
 
 
-rule process_headers_home:
+rule postprocess_home:
     """
     Process the home page to fix page titles and remove papermill parameters.
     """
     input:
-        nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
+        nb=f"{workflow.basedir}/notebooks/postprocess-page.ipynb",
         homepage_nb=f"{setup.site_results_dir}/notebooks/index.ipynb",
         src=setup.site_src_files,
         config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
-        nb=f"{setup.site_results_dir}/notebooks/add_headers/index.ipynb",
+        nb=f"{setup.site_results_dir}/notebooks/postprocess-page/index.ipynb",
         homepage_nb=f"{setup.jb_source_dir}/index.ipynb",
     conda:
         setup.environment_file
     log:
-        "logs/add_headers/home-page.log",
+        "logs/postprocess-page/home-page.log",
     shell:
         """
         sleep "$((1+RANDOM%20)).$((RANDOM%999))"
@@ -170,29 +170,28 @@ rule process_headers_home:
             -k selection-atlas \
             -p input_nb {input.homepage_nb} \
             -p output_nb {output.homepage_nb} \
-            -p page_type homepage \
             -p config_file {input.config_file} \
             &> {log}
         """
 
 
-rule process_headers_contig:
+rule postprocess_contig:
     """
     Process the contig pages to fix page titles and remove papermill parameters.
     """
     input:
-        nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
+        nb=f"{workflow.basedir}/notebooks/postprocess-page.ipynb",
         contig_nb=f"{setup.site_results_dir}/notebooks/contig/{{contig}}.ipynb",
         src=setup.site_src_files,
         config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
-        nb=f"{setup.site_results_dir}/notebooks/add_headers/contig-{{contig}}.ipynb",
+        nb=f"{setup.site_results_dir}/notebooks/postprocess-page/contig-{{contig}}.ipynb",
         contig_nb=f"{setup.jb_source_dir}/contig/{{contig}}.ipynb",
     conda:
         setup.environment_file
     log:
-        "logs/add_headers/contig-{contig}.log",
+        "logs/postprocess-page/contig-{contig}.log",
     shell:
         """
         sleep "$((1+RANDOM%20)).$((RANDOM%999))"
@@ -200,30 +199,28 @@ rule process_headers_contig:
             -k selection-atlas \
             -p input_nb {input.contig_nb} \
             -p output_nb {output.contig_nb} \
-            -p wildcard {wildcards.contig} \
-            -p page_type contig \
             -p config_file {input.config_file} \
             &> {log}
         """
 
 
-rule process_headers_country:
+rule postprocess_country:
     """
     Process the country pages to fix page titles and remove papermill parameters.
     """
     input:
-        nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
+        nb=f"{workflow.basedir}/notebooks/postprocess-page.ipynb",
         country_nb=f"{setup.site_results_dir}/notebooks/country/{{country}}.ipynb",
         src=setup.site_src_files,
         config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
-        nb=f"{setup.site_results_dir}/notebooks/add_headers/country-{{country}}.ipynb",
+        nb=f"{setup.site_results_dir}/notebooks/postprocess-page/country-{{country}}.ipynb",
         country_nb=f"{setup.jb_source_dir}/country/{{country}}.ipynb",
     conda:
         setup.environment_file
     log:
-        "logs/add_headers/country-{country}.log",
+        "logs/postprocess-page/country-{country}.log",
     shell:
         """
         sleep "$((1+RANDOM%20)).$((RANDOM%999))"
@@ -231,30 +228,28 @@ rule process_headers_country:
             -k selection-atlas \
             -p input_nb {input.country_nb} \
             -p output_nb {output.country_nb} \
-            -p wildcard {wildcards.country} \
-            -p page_type country \
             -p config_file {input.config_file} \
             &> {log}
         """
 
 
-rule process_headers_cohort:
+rule postprocess_cohort:
     """
     Process the cohort pages to fix page titles and remove papermill parameters.
     """
     input:
-        nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
+        nb=f"{workflow.basedir}/notebooks/postprocess-page.ipynb",
         cohort_nb=f"{setup.site_results_dir}/notebooks/cohort/{{cohort}}.ipynb",
         src=setup.site_src_files,
         config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
-        nb=f"{setup.site_results_dir}/notebooks/add_headers/cohort-{{cohort}}.ipynb",
+        nb=f"{setup.site_results_dir}/notebooks/postprocess-page/cohort-{{cohort}}.ipynb",
         cohort_nb=f"{setup.jb_source_dir}/cohort/{{cohort}}.ipynb",
     conda:
         setup.environment_file
     log:
-        "logs/add_headers/cohort-{cohort}.log",
+        "logs/postprocess-page/cohort-{cohort}.log",
     shell:
         """
         sleep "$((1+RANDOM%20)).$((RANDOM%999))"
@@ -262,30 +257,28 @@ rule process_headers_cohort:
             -k selection-atlas \
             -p input_nb {input.cohort_nb} \
             -p output_nb {output.cohort_nb} \
-            -p wildcard {wildcards.cohort} \
-            -p page_type cohort \
             -p config_file {input.config_file} \
             &> {log}
         """
 
 
-rule process_headers_alert:
+rule postprocess_alert:
     """
     Process the alert pages to fix page titles and remove papermill parameters.
     """
     input:
-        nb=f"{workflow.basedir}/notebooks/add-headers.ipynb",
+        nb=f"{workflow.basedir}/notebooks/postprocess-page.ipynb",
         alert_nb=f"{setup.site_results_dir}/notebooks/alert/{{alert}}.ipynb",
         src=setup.site_src_files,
         config_file=config_file,
         kernel=setup.kernel_set_file,
     output:
-        nb=f"{setup.site_results_dir}/notebooks/add_headers/alert-{{alert}}.ipynb",
+        nb=f"{setup.site_results_dir}/notebooks/postprocess-page/alert-{{alert}}.ipynb",
         alert_nb=f"{setup.jb_source_dir}/alert/{{alert}}.ipynb",
     conda:
         setup.environment_file
     log:
-        "logs/add_headers/alert-{alert}.log",
+        "logs/postprocess-page/alert-{alert}.log",
     shell:
         """
         sleep "$((1+RANDOM%20)).$((RANDOM%999))"
@@ -293,8 +286,6 @@ rule process_headers_alert:
             -k selection-atlas \
             -p input_nb {input.alert_nb} \
             -p output_nb {output.alert_nb} \
-            -p wildcard {wildcards.alert} \
-            -p page_type alert \
             -p config_file {input.config_file} \
             &> {log}
         """

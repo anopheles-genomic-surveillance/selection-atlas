@@ -132,3 +132,15 @@ No module named 'selection_atlas'
 ```
 pip install -e .  # install local Python sources in editable mode
 ```
+
+If you see this output in a generated notebook:
+
+```
+The history saving thread hit an unexpected error (OperationalError('no such table: history')).History will not be written to the database.
+```
+
+...then try adding this line to the file at `~/.ipython/profile_default/ipython_kernel_config.py`:
+
+```
+c.HistoryManager.enabled = False
+```

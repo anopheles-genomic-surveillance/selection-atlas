@@ -24,7 +24,7 @@ class AtlasPageUtils:
         self.setup = setup
 
         # Read in the cohorts geojson.
-        self.gdf_cohorts = gpd.read_file(setup.final_cohorts_geojson_file)
+        self._gdf_cohorts = None
 
         # Colours for signal plotting.
         self.signal_span_color = "#D7B2A6"
@@ -35,6 +35,12 @@ class AtlasPageUtils:
         self.signal_center_alpha = 1.0
 
         self.default_basemap = default_basemap
+
+    @property
+    def gdf_cohorts(self):
+        if self._gdf_cohorts is None:
+            self._gdf_cohorts = gpd.read_file(self.setup.final_cohorts_geojson_file)
+        return self._gdf_cohorts
 
     def load_gwss_calibration(self, cohort_id):
         with open(self.setup.calibration_dir / f"{cohort_id}.yaml") as f:
