@@ -9,11 +9,17 @@
 body {
     margin: 1em;
 }
+#content {
+    max-width: 720px;
+}
     </style>
 </head>
 <body>
-    <div class="container-sm">
+    <div class="container" id="content">
         <div>
+            <div class="text-center">
+                <img src="peak.png" width="200" height="auto"/>
+            </div>
             <h1 class="text-center">Malaria Vector Selection Atlas</h1>
             <p>This site provides web reports on recent positive selection in populations of mosquitoes which transmit malaria. Please select a report from the options below.</p>
         </div>
@@ -24,7 +30,7 @@ body {
                       <img src="agam.jpg" class="card-img-top" alt="Anopheles gambiae mosquito">
                       <div class="card-body">
                           <h5 class="card-title"><em>Anopheles gambiae</em> complex</h5>
-                          <p class="card-text">Includes <em>Anopheles gambiae</em>, <em>Anopheles coluzzii</em> and <em>Anopheles arabiensis</em>, all major malaria vectors in sub-Saharan Africa.</p>                        <a href="agam/" class="btn btn-primary">View report</a>
+                      <a href="agam/" class="btn btn-primary">View report</a>
                       </div>
                     </div>
                 </div>
@@ -33,8 +39,7 @@ body {
                       <img src="afun.jpg" class="card-img-top" alt="Anopheles funestus mosquito">
                       <div class="card-body">
                           <h5 class="card-title"><em>Anopheles funestus</em></h5>
-                          <p class="card-text"><em>Anopheles funestus</em> is a major malaria vector throughout sub-Saharan Africa.</p>
-                          <a href="#" class="btn btn-secondary disabled">In development</a>
+                          <a href="#" class="btn btn-secondary disabled">Under construction</a>
 
                       </div>
                     </div>
