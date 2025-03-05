@@ -1,6 +1,38 @@
+title: Alert
+description: Schema for selection alert files.
 type: object
+required: ["label", "region", "ir_candidate_genes"]
+additionalProperties: false
 properties:
   label:
     type: string
   region:
     type: string
+  ir_candidate_genes:
+    type: array
+    items:
+      type: object
+      required: ["identifier", "names", "notes", "references"]
+      additionalProperties: false
+      properties:
+        identifier:
+          type: string
+        names:
+          type: array
+          items:
+            type: string
+        notes:
+          type: string
+        references:
+          type: array
+          items:
+            type: object
+            additionalProperties: false
+            required: ["citation", "url", "title"]
+            properties:
+              citation:
+                type: string
+              url:
+                type: string
+              title:
+                type: string
