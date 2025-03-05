@@ -1,18 +1,71 @@
-label: "Demo"
-region: "2RL:8,500,000-9,000,000"
+label: "Cyp6p"
+region: "2RL:8,499,270-8,818,655"
 ir_candidate_genes:
-  - identifier: "Foo"
+  - identifier: "AFUN2_008570"
     names:
-      - "Bar"
-      - "Baz"
+      - "LOC125764713"
+      - "Cyp6p9a"
+      - "Cyp6p9b"
+      - "AFUN015792"
+      - "AFUN015889"
     notes: >
-      Blah blah.
+      This gene annotation in the AfunGA1 reference genome likely contains two genes known as *Cyp6p9a* and *Cyp6p9b*. These genes encode cytochrome P450 enzymes which have been assocated with pyrethroid and carbamate resistance in *Anopheles funestus*.
     references:
-      - citation: "Foo et al. (1998)"
-        url: "https://pubmed.ncbi.nlm.nih.gov/9535162/"
+      - citation: "Wondji et al. (2007)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1790900/"
         title: >
-          Foo bar baz
-      - citation: "Bar et al. (2000)"
-        url: "https://pubmed.ncbi.nlm.nih.gov/11029667/"
+          Mapping a Quantitative Trait Locus (QTL) conferring pyrethroid resistance in the African malaria vector Anopheles funestus
+      - citation: "Mugenzi et al. (2019)"
+        url: "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC6789023"
         title: >
-          Spam eggs ham
+          Cis-regulatory CYP6P9b P450 variants associated with loss of insecticide-treated bed net efficacy against Anopheles funestus
+      - citation: "Weedall et al. (2019)"
+        url: "https://pubmed.ncbi.nlm.nih.gov/30894503/"
+        title: >
+          A cytochrome P450 allele confers pyrethroid resistance on a major African malaria vector, reducing insecticide-treated bednet efficacy
+      - citation: "Mugenzi et al. (2023)"
+        url: "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC10089315"
+        title: >
+          The duplicated P450s CYP6P9a/b drive carbamates and pyrethroids cross-resistance in the major African malaria vector Anopheles funestus
+      - citation: "Mugenzi et al. (2024)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11309504/"
+        title: >
+          Association of a rapidly selected 4.3kb transposon-containing structural variation with a P450-based resistance to pyrethroids in the African malaria vector Anopheles funestus
+      - citation: "Gadji et al. (2024)"
+        url: "https://doi.org/10.1186/s12864-024-11148-7"
+        title: >
+          Genome-wide association studies unveil major genetic loci driving insecticide resistance in Anopheles funestus in four eco-geographical settings across Cameroon
+  - identifier: "AFUN2_013390"
+    names:
+      - "LOC125764712"
+      - "AFUN020895"
+      - "Cyp6p4a"
+    notes: >
+      This gene encodes a cytochrome P450 enzyme which has been assocated with pyrethroid resistance in *Anopheles funestus*.
+    references:
+      - citation: "Wondji et al. (2007)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1790900/"
+        title: >
+          Mapping a Quantitative Trait Locus (QTL) conferring pyrethroid resistance in the African malaria vector Anopheles funestus
+      - citation: "Tatchou-Nebangwa et al. (2024)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11657943/"
+        title: >
+          Two highly selected mutations in the tandemly duplicated CYP6P4a and CYP6P4b genes drive pyrethroid resistance in Anopheles funestus in West Africa
+  - identifier: "AFUN2_014070"
+    names:
+      - "LOC125764711"
+      - "AFUN019365"
+      - "Cyp6p4b"
+    notes: >
+      This gene encodes a cytochrome P450 enzyme which has been assocated with pyrethroid resistance in *Anopheles funestus*.
+    references:
+      - citation: "Wondji et al. (2007)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1790900/"
+        title: >
+          Mapping a Quantitative Trait Locus (QTL) conferring pyrethroid resistance in the African malaria vector Anopheles funestus
+      - citation: "Tatchou-Nebangwa et al. (2024)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11657943/"
+        title: >
+          Two highly selected mutations in the tandemly duplicated CYP6P4a and CYP6P4b genes drive pyrethroid resistance in Anopheles funestus in West Africa
+see_also:
+    - "*Anopheles gambiae* complex selection alert [SA-AGAM-04](../../agam/SA-AGAM-04.html)."

@@ -1,7 +1,7 @@
 title: Alert
 description: Schema for selection alert files.
 type: object
-required: ["label", "region", "ir_candidate_genes"]
+required: ["label", "region"]
 additionalProperties: false
 properties:
   label:
@@ -36,3 +36,7 @@ properties:
                 type: string
               title:
                 type: string
+  see_also:
+    type: array
+    items:
+      type: string
