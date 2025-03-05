@@ -39,3 +39,6 @@ ir_candidate_genes:
         title: >
           Functional genetic validation of key genes conferring insecticide resistance
           in the major African malaria vector, Anopheles gambiae
+
+see_also:
+  - "*Anopheles funestus* selection alert [SA-AFUN-03](https://anopheles-genomic-surveillance.github.io/selection-atlas/afun/alert/SA-AFUN-03.html)."

@@ -1,0 +1,31 @@
+label: "Cyp9k1"
+region: "X:8,426,728-8,602,567"
+ir_candidate_genes:
+
+  - identifier: "AFUN2_005813"
+    names:
+      - "Cyp9k1"
+      - "LOC125764232"
+      - "AFUN007549"
+    notes: >
+      This gene encodes a cytochrome P450 enzyme and has been assocated with pyrethroid resistance in *Anopheles funestus*. The ortholog of this gene in *Anopheles gambiae* and *Anopheles coluzzii* is also associated with pyrethroid resistance.
+    references:
+      - citation: "Weedall et al. (2020)"
+        url: "https://doi.org/10.1371/journal.pgen.1008822"
+        title: >
+          An Africa-wide genomic evolution of insecticide resistance in the malaria vector Anopheles funestus involves selective sweeps, copy number variations, gene conversion and transposons
+      - citation: "Hearn et al. (2022)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/pmid/35546741/"
+        title: >
+          Multi-omics analysis identifies a CYP9K1 haplotype conferring pyrethroid resistance in the malaria vector Anopheles funestus in East Africa
+      - citation: "Oruni et al. (2024)"
+        url: "https://doi.org/10.1038/s41598-024-83689-6"
+        title: >
+          Temporal evolution of insecticide resistance and bionomics in Anopheles funestus, a key malaria vector in Uganda
+      - citation: "Djoko Tagne et al. (2025)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/pmid/39509710/"
+        title: >
+          A single mutation G454A in the P450 CYP9K1 drives pyrethroid resistance in the major malaria vector Anopheles funestus reducing bed net efficacy
+
+see_also:
+  - "*Anopheles gambiae* complex selection alert [SA-AGAM-05](https://anopheles-genomic-surveillance.github.io/selection-atlas/agam/alert/SA-AGAM-05.html)."

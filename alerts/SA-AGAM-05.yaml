@@ -39,3 +39,6 @@ ir_candidate_genes:
         title: >
           Genome-wide association studies reveal novel loci associated with pyrethroid
           and organophosphate resistance in Anopheles gambiae and Anopheles coluzzii
+
+see_also:
+  - "*Anopheles funestus* selection alert [SA-AFUN-02](https://anopheles-genomic-surveillance.github.io/selection-atlas/afun/alert/SA-AFUN-02.html)."

@@ -16,6 +16,10 @@ ir_candidate_genes:
         url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC1790900/"
         title: >
           Mapping a Quantitative Trait Locus (QTL) conferring pyrethroid resistance in the African malaria vector Anopheles funestus
+      - citation: "Riveron et al. (2012)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/pmid/23248325/"
+        title: >
+          Directionally selected cytochrome P450 alleles are driving the spread of pyrethroid resistance in the major malaria vector Anopheles funestus
       - citation: "Mugenzi et al. (2019)"
         url: "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC6789023"
         title: >
@@ -24,6 +28,10 @@ ir_candidate_genes:
         url: "https://pubmed.ncbi.nlm.nih.gov/30894503/"
         title: >
           A cytochrome P450 allele confers pyrethroid resistance on a major African malaria vector, reducing insecticide-treated bednet efficacy
+      - citation: "Weedall et al. (2020)"
+        url: "https://doi.org/10.1371/journal.pgen.1008822"
+        title: >
+          An Africa-wide genomic evolution of insecticide resistance in the malaria vector Anopheles funestus involves selective sweeps, copy number variations, gene conversion and transposons
       - citation: "Mugenzi et al. (2023)"
         url: "http://www.ncbi.nlm.nih.gov/pmc/articles/PMC10089315"
         title: >
@@ -36,6 +44,10 @@ ir_candidate_genes:
         url: "https://doi.org/10.1186/s12864-024-11148-7"
         title: >
           Genome-wide association studies unveil major genetic loci driving insecticide resistance in Anopheles funestus in four eco-geographical settings across Cameroon
+      - citation: "Oruni et al. (2024)"
+        url: "https://doi.org/10.1038/s41598-024-83689-6"
+        title: >
+          Temporal evolution of insecticide resistance and bionomics in Anopheles funestus, a key malaria vector in Uganda
 
   - identifier: "AFUN2_013390"
     names:

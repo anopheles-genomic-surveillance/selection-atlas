@@ -1,0 +1,29 @@
+label: "Cyp9m1/Cyp9m2"
+region: "2RL:99,495,785-99,571,461"
+ir_candidate_genes:
+
+  - identifier: "AFUN2_007336"
+    names:
+      - "Cyp9m1"
+      - "LOC125763458"
+      - "AFUN015938"
+    notes: >
+      This gene encodes a cytochrome P450 enzyme. This gene has not been directly associated with insecticide resistance in *Anopheles* mosquitoes, but other genes encoding cytochrome P450 enzymes have been associated with pyrethroid resistance.
+    references:
+      - citation: "Hearn et al. (2022)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9321817/"
+        title: >
+          Multi‐omics analysis identifies a CYP9K1 haplotype conferring pyrethroid resistance in the malaria vector Anopheles funestus in East Africa
+
+  - identifier: "AFUN2_011244"
+    names:
+      - "Cyp9m2"
+      - "LOC125763445"
+      - "AFUN016005"
+    notes: >
+      This gene encodes a cytochrome P450 enzyme. This gene has not been directly associated with insecticide resistance in *Anopheles* mosquitoes, but other genes encoding cytochrome P450 enzymes have been associated with pyrethroid resistance.
+    references:
+      - citation: "Hearn et al. (2022)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9321817/"
+        title: >
+          Multi‐omics analysis identifies a CYP9K1 haplotype conferring pyrethroid resistance in the malaria vector Anopheles funestus in East Africa

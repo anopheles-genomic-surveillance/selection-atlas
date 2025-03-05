@@ -1,0 +1,27 @@
+label: "Gste"
+region: "2RL:76,329,285-76,586,750"
+ir_candidate_genes:
+
+  - identifier: "AFUN2_012779"
+    names:
+      - "Gste2"
+      - "LOC125763977"
+      - "AFUN015809"
+    notes: >
+      This gene encodes a glutathione S-transferase enzyme. Variants in this gene have been associated with DDT and pyrethroid insecticide resistance in *Anopheles funestus*.
+    references:
+      - citation: "Riveron et al. (2014)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/pmid/24565444/"
+        title: >
+          A single mutation in the GSTe2 gene allows tracking of metabolically based insecticide resistance in a major malaria vector
+      - citation: "Tchouaki et al. (2019)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/pmid/30962458/"
+        title: >
+          A marker of glutathione S-transferase-mediated resistance to insecticides is associated with higher Plasmodium infection in the African malaria vector Anopheles funestus
+      - citation: "Kouamo et al. (2021)"
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/pmid/33924421/"
+        title: >
+          Genome-Wide Transcriptional Analysis and Functional Validation Linked a Cluster of Epsilon Glutathione S-Transferases with Insecticide Resistance in the Major Malaria Vector Anopheles funestus across Africa
+
+see_also:
+  - "*Anopheles gambiae* complex selection alert [SA-AGAM-06](https://anopheles-genomic-surveillance.github.io/selection-atlas/agam/alert/SA-AGAM-06.html)."
