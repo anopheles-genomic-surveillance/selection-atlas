@@ -21,7 +21,7 @@ class AtlasSetup:
 
         # Store configuration parameters.
         self.atlas_id = self.config["atlas_id"]
-        self.atlas_subtitle = self.config["atlas_subtitle"]
+        self.atlas_title = self.config["atlas_title"]
         self.analysis_version = self.config["analysis_version"]
         self.cohorts_analysis = self.config["cohorts_analysis"]
         self.dask_scheduler = self.config["dask_scheduler"]
