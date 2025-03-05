@@ -53,10 +53,10 @@ jobs:
       - name: Echo agam analysis version
         run: echo ${{ steps.get_agam_analysis_version.outputs.result }}
 
-      # - name: Run agam site snakemake workflow
-      #   shell: bash -l {0}
-      #   run: |
-      #     MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --configfile config/agam.yaml --show-failed-logs --forceall
+      - name: Run agam site workflow
+        shell: bash -l {0}
+        run: |
+          MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --configfile config/agam.yaml --show-failed-logs --forceall
 
       - name: Upload site
         uses: actions/upload-artifact@v4
@@ -111,10 +111,10 @@ jobs:
       - name: Echo afun analysis version
         run: echo ${{ steps.get_afun_analysis_version.outputs.result }}
 
-      # - name: Run afun site snakemake workflow
-      #   shell: bash -l {0}
-      #   run: |
-      #     MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --configfile config/afun.yaml --show-failed-logs --forceall
+      - name: Run afun site workflow
+        shell: bash -l {0}
+        run: |
+          MGEN_SHOW_PROGRESS=0 snakemake -c1 --snakefile workflow/site/Snakefile --configfile config/afun.yaml --show-failed-logs --forceall
 
       - name: Upload site
         uses: actions/upload-artifact@v4
