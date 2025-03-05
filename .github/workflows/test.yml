@@ -38,6 +38,10 @@ jobs:
           environment-name: selection-atlas
           cache-downloads: true
 
+      - name: Install local package
+        run: |
+          pip install -e .
+
       - name: Run gwss snakemake workflow
         shell: bash -l {0}
         run: |
