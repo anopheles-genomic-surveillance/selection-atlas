@@ -1,8 +1,8 @@
 # Declare an identifier for this atlas. Will also be used as a URL slug.
-atlas_id: "ci"
+atlas_id: "agam"
 
-# Atlas subtitle describing the taxon or taxonomic group covered.
-atlas_subtitle: "CI"
+# Atlas title describing the taxon or taxonomic group covered.
+atlas_title: "CI"
 
 # Set the analysis version identifier. This will be used to identify
 # the outputs from a particular run of the analysis workflow. If you
@@ -21,6 +21,23 @@ sample_sets:
 # Filter samples to include in the analysis.
 sample_query: "taxon in ['gambiae', 'coluzzii']"
 
+# Declare which taxa to analyse.
+taxa: ['gambiae', 'coluzzii']
+
+# Map taxa to phasing analysis.
+taxon_phasing_analysis:
+    gambiae: "gamb_colu"
+    coluzzii: "gamb_colu"
+    bissau: "gamb_colu"
+    arabiensis: "arab"
+
+# Map taxa to site mask.
+taxon_site_mask:
+    gambiae: "gamb_colu"
+    coluzzii: "gamb_colu"
+    bissau: "gamb_colu"
+    arabiensis: "arab"
+
 # Select the contigs to analyse.
 contigs:
     - "2R"
@@ -28,8 +45,16 @@ contigs:
 # Pin the cohorts analysis version in order to get reproducible results.
 cohorts_analysis: "20240924"
 
-# Select the contig to use for H12 window size calibration.
+# Window size calibration parameters.
 h12_calibration_contig: "3L"
+h12_calibration_window_sizes: [500, 1000, 2000, 5000]
+h12_calibration_threshold: 0.08
+g123_calibration_contig: "3L"
+g123_calibration_window_sizes: [500, 1000, 2000, 5000]
+g123_calibration_threshold: 0.08
+
+# IHS configuration.
+ihs_window_size: 100
 
 # Configuration for H12 signal detection.
 h12_signal_detection_min_delta_aic: 1000
@@ -42,5 +67,6 @@ h12_signal_detection_gflanks: [6]
 # resources are likely to be oversubscribed.
 dask_scheduler: "single-threaded"
 
-alerts:
-    - 'CI'
+# Insecticide resistance alerts.
+ir_alerts:
+    - 'SA-AGAM-04'
