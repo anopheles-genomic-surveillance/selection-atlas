@@ -19,6 +19,10 @@ jobs:
           environment-name: selection-atlas
           cache-downloads: true
 
+      - name: Install local package
+        run: |
+          pip install -e .
+
       # Snakemake linting requires Google Cloud authentication, because it runs the
       # workflow/common/scripts/setup.py script, which initialises malariagen_data.
       - id: auth
