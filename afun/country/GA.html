@@ -1,0 +1,993 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Gabon &#8212; Malaria Vector Selection Atlas — *Anopheles funestus*</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=d0863164" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "anopheles-genomic-surveillance/selection-atlas");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "github-light");
+    script.setAttribute("label", "comment");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"153271890fe04ef48e9afbc566d646a7": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "54c93db83a3e4077b6dcb484b456cfe6": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMarkerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMarkerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletMarkerView", "alt": "", "base": false, "bottom": false, "draggable": false, "icon": null, "keyboard": true, "location": [-1.7357091809338954, 13.59762580505204], "name": "", "opacity": 1.0, "options": ["alt", "draggable", "keyboard", "rise_offset", "rise_on_hover", "rotation_angle", "rotation_origin", "title", "z_index_offset"], "pane": "", "popup": "IPY_MODEL_7ff419995e0a4777b4594210dfc134ce", "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "rise_offset": 250, "rise_on_hover": false, "rotation_angle": 0.0, "rotation_origin": "", "subitems": [], "title": "Mpassa, Haut-Ogoou\u00e9, Gabon - 1 cohort analysed - click for more information", "visible": true, "z_index_offset": 0}}, "7ff419995e0a4777b4594210dfc134ce": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_8cf48db165774caf83ae688b2f4b8967", "placeholder": "\u200b", "style": "IPY_MODEL_c0ae4e8ebcc547aea27295003510155b", "tabbable": null, "tooltip": null, "value": "<strong>Mpassa, Haut-Ogoou\u00e9 (GA-2), Gabon</strong>. Cohorts analysed:<br/><li><a href=\"../cohort/GA-2_Mpassa_fune_2017_Q4.html\">funestus / 2017 / Q4 (n=26)</a></li></ul>"}}, "8cf48db165774caf83ae688b2f4b8967": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a3f26b28080d418d8d8b4fdf2d87e93f": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "cursor": "grab"}}, "aaa6d4c4b73046f58adf4f8e960c71d4": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletTileLayerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletTileLayerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletTileLayerView", "attribution": "Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC", "base": true, "bottom": true, "bounds": null, "detect_retina": false, "loading": false, "max_native_zoom": null, "max_zoom": 16, "min_native_zoom": null, "min_zoom": 1, "name": "Esri.NatGeoWorldMap", "no_wrap": false, "opacity": 1.0, "options": ["attribution", "bounds", "detect_retina", "max_native_zoom", "max_zoom", "min_native_zoom", "min_zoom", "no_wrap", "tile_size", "tms", "zoom_offset"], "pane": "", "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "show_loading": false, "subitems": [], "tile_size": 256, "tms": false, "url": "https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}", "visible": true, "zoom_offset": 0}}, "ba0b0484ec674e4a83729054ca85c3c0": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletAttributionControlModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletAttributionControlModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletAttributionControlView", "options": ["position", "prefix"], "position": "bottomright", "prefix": "ipyleaflet"}}, "c0ae4e8ebcc547aea27295003510155b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "c8593f597cdf4066bf9ce064c329fcac": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "cursor": "move"}}, "dd339b4f8ff04a81bde97761fd482cff": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "cursor": "grab"}}, "e57a8764128045b9a92a3fc610f1860a": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletZoomControlModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletZoomControlModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletZoomControlView", "options": ["position", "zoom_in_text", "zoom_in_title", "zoom_out_text", "zoom_out_title"], "position": "topleft", "zoom_in_text": "+", "zoom_in_title": "Zoom in", "zoom_out_text": "-", "zoom_out_title": "Zoom out"}}, "f38c5fff86094d2cbaec579a52bd8b1b": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapModel", "state": {"_dom_classes": [], "_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletMapView", "bottom": 0.0, "bounce_at_zoom_limits": true, "box_zoom": true, "center": [-1.7357091809338954, 13.59762580505204], "close_popup_on_click": true, "controls": ["IPY_MODEL_e57a8764128045b9a92a3fc610f1860a", "IPY_MODEL_ba0b0484ec674e4a83729054ca85c3c0"], "crs": {"custom": false, "name": "EPSG3857"}, "default_style": "IPY_MODEL_a3f26b28080d418d8d8b4fdf2d87e93f", "double_click_zoom": true, "dragging": true, "dragging_style": "IPY_MODEL_c8593f597cdf4066bf9ce064c329fcac", "east": 0.0, "fullscreen": false, "inertia": true, "inertia_deceleration": 3000, "inertia_max_speed": 1500, "interpolation": "bilinear", "keyboard": true, "keyboard_pan_offset": 80, "keyboard_zoom_offset": 1, "layers": ["IPY_MODEL_aaa6d4c4b73046f58adf4f8e960c71d4", "IPY_MODEL_fb27dd08ace44c2a91e08c666403e35a", "IPY_MODEL_54c93db83a3e4077b6dcb484b456cfe6"], "layout": "IPY_MODEL_153271890fe04ef48e9afbc566d646a7", "left": 9007199254740991.0, "max_zoom": null, "min_zoom": null, "modisdate": "2025-03-04", "north": 0.0, "options": ["bounce_at_zoom_limits", "box_zoom", "center", "close_popup_on_click", "double_click_zoom", "dragging", "fullscreen", "inertia", "inertia_deceleration", "inertia_max_speed", "interpolation", "keyboard", "keyboard_pan_offset", "keyboard_zoom_offset", "max_zoom", "min_zoom", "prefer_canvas", "scroll_wheel_zoom", "tap", "tap_tolerance", "touch_zoom", "world_copy_jump", "zoom", "zoom_animation_threshold", "zoom_delta", "zoom_snap"], "panes": {}, "prefer_canvas": false, "right": 0.0, "scroll_wheel_zoom": false, "south": 0.0, "style": "IPY_MODEL_dd339b4f8ff04a81bde97761fd482cff", "tabbable": null, "tap": true, "tap_tolerance": 15, "tooltip": null, "top": 9007199254740991.0, "touch_zoom": true, "west": 0.0, "window_url": "", "world_copy_jump": false, "zoom": 6.0, "zoom_animation_threshold": 4, "zoom_delta": 1.0, "zoom_snap": 1.0}}, "fb27dd08ace44c2a91e08c666403e35a": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletGeoJSONModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletGeoJSONModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletGeoJSONView", "base": false, "bottom": false, "data": {"features": [{"geometry": {"coordinates": [[[13.274244612299071, -1.129223408233656], [13.278814157547401, -1.131992291311121], [13.29688562307308, -1.137189913183875], [13.302826927620686, -1.143130040518884], [13.311243774380728, -1.162435370495928], [13.331543229336603, -1.182235570415173], [13.33228589218021, -1.187928101800424], [13.350357357705946, -1.209213116592025], [13.359021759946302, -1.226043009577211], [13.365705726438193, -1.230992958158424], [13.369419041555545, -1.236932884944622], [13.370161704399209, -1.24930768670032], [13.368181269550007, -1.262424914777966], [13.362982628745385, -1.267127301583628], [13.363230183326323, -1.273314639059322], [13.360011977370903, -1.286184253200702], [13.349614695761659, -1.30623102204396], [13.335999207297618, -1.341869327307563], [13.334018772448417, -1.353748646682675], [13.3347614361914, -1.365380424966588], [13.339960076096702, -1.378744525939055], [13.341692957264229, -1.39235603310442], [13.34268317468883, -1.424280894647495], [13.345406271482318, -1.432200171700515], [13.350357357705946, -1.440119421773829], [13.354070673722674, -1.452740669246452], [13.366200834700805, -1.469816363134612], [13.369914150717534, -1.482684915176662], [13.37536034520383, -1.516340774706919], [13.38229186627666, -1.540839931417679], [13.380063876846464, -1.591569607051667], [13.375855454365762, -1.631657543760582], [13.371647030086422, -1.656897688777292], [13.362239965901779, -1.683127301183958], [13.35951686820897, -1.697726649765002], [13.355308444828893, -1.740781711606644], [13.35400878507744, -1.772051691332422], [13.343951890567325, -1.8598120107157], [13.338923442862665, -1.932104687881008], [13.335442209490452, -1.941769254047813], [13.33428179896589, -1.950660606501742], [13.343565086759384, -1.97462836280863], [13.348980337372723, -1.983132968111931], [13.355942803217829, -1.986612112359069], [13.364065678688178, -1.983519539894814], [13.37566978843006, -1.983906111677641], [13.393075951693845, -1.990864389380022], [13.404293257627785, -1.992024099332696], [13.418604992226676, -1.987385254126139], [13.426341065687666, -1.988544966776772], [13.432143119209627, -1.995889793778929], [13.43369033444145, -2.006713688585819], [13.437945174530228, -2.018697204312502], [13.445294443283956, -2.027201581187967], [13.455738140702692, -2.030680631006248], [13.467342250444574, -2.026428457407349], [13.475851930622127, -2.027201581187967], [13.481066043363285, -2.012697726219017], [13.485274467642625, -2.007502285202236], [13.50037528089456, -2.002801632289447], [13.514733432202206, -1.993895096581412], [13.531319572040672, -1.986225540576186], [13.524883160129775, -2.003296438379891], [13.524883160129775, -2.028036554043695], [13.527853811504258, -2.033974125505438], [13.570618822200913, -2.003234587506142], [13.59730827325825, -1.989318108543841], [13.603497130588153, -1.97926724398809], [13.608912382100812, -1.974241789227165], [13.619742883327433, -1.969602894557909], [13.632120599785878, -1.969216319177747], [13.642951101911876, -1.974241789227165], [13.648753156333157, -1.98120010739899], [13.66848014154533, -2.013671870060705], [13.674669000673873, -2.026815019297658], [13.674669000673873, -2.048462325975493], [13.678150233146766, -2.061605191925992], [13.700151624497948, -2.089885175860104], [13.709558688682591, -2.111902701048791], [13.714509774906219, -2.120066424625747], [13.721936405141037, -2.125508881529584], [13.74172860289275, -2.133955955402996], [13.747594800559625, -2.11912814844527], [13.757554687898562, -2.114335919367136], [13.771572306416829, -2.122445836506074], [13.78226996248884, -2.133136116338676], [13.798132004188687, -2.155622325010256], [13.801820851451168, -2.172578918082536], [13.812149622706954, -2.194327313054998], [13.839078205294982, -2.233399904382054], [13.870064519961659, -2.261044979542135], [13.876704443954964, -2.27173426742246], [13.883285347241042, -2.295560036966094], [13.887770984843144, -2.302872816627143], [13.908546570567808, -2.31466754487127], [13.918462191476976, -2.327405741082032], [13.92176739874651, -2.340143821280265], [13.916101329013145, -2.353353560818107], [13.902880501733819, -2.366327290372112], [13.889659674454435, -2.374819119906419], [13.883148568451702, -2.381613746177379], [13.898628306551132, -2.378932166586196], [13.914874059290469, -2.373908043721201], [13.953554422998252, -2.352651937636779], [13.965545335648756, -2.344535884423465], [13.975215426350871, -2.34105756215672], [13.986432732284811, -2.334100890643526], [13.993782001937916, -2.325984729511617], [14.006159717497042, -2.308206309873242], [14.016990219622983, -2.268783807626562], [14.032075561837758, -2.247526128627896], [14.039811633500108, -2.225108603878937], [14.042132455448495, -2.201144666992718], [14.040198437308106, -2.190708638093099], [14.039424830591486, -2.15630788180323], [14.0494817251016, -2.102192764084748], [14.050642135626106, -2.079773090855383], [14.048321314577038, -2.056966545469663], [14.041745652539873, -2.038798385736868], [14.025886702709215, -2.005167423038074], [14.017763827238866, -1.993570378370237], [13.988366750425257, -1.968056592137941], [13.97212099768592, -1.948341128140498], [13.94736556476903, -1.935197355673381], [13.916421274522236, -1.90929609563824], [13.899788717075694, -1.893059286656694], [13.867297211597077, -1.833136418211097], [13.850277852141232, -1.794862049843687], [13.842541778680186, -1.780557281393385], [13.835192509926458, -1.760066474088433], [13.83828693859141, -1.74924105043408], [13.844475796820632, -1.738802190468675], [13.834418903209837, -1.732616171399116], [13.809276666485005, -1.722563848143011], [13.80270100444784, -1.715217885297136], [13.797285753834501, -1.704778839172036], [13.788389269848949, -1.695113004061852], [13.771369909493785, -1.680034204414937], [13.760926211175729, -1.673074719822409], [13.753963746229942, -1.663408727330875], [13.74506726224439, -1.644463245782106], [13.745454065153012, -1.586465763783906], [13.714272122760292, -1.580819968366825], [13.693041864090787, -1.570050476248412], [13.685278559158235, -1.567833221126193], [13.66911821323498, -1.568308348251605], [13.659612126498473, -1.575435229951836], [13.650581344953139, -1.575276854842912], [13.643451780575276, -1.569733726030563], [13.637906564436435, -1.557063662458006], [13.63537160761365, -1.51588543356587], [13.63628260735652, -1.27776951175349], [13.64420434495463, -1.266632313830144], [13.643956791272956, -1.258712498982618], [13.629846194546303, -1.231240456082162], [13.595683697444713, -1.189165608505959], [13.592960599751905, -1.17877054552423], [13.591722827746366, -1.165405409432026], [13.599397012562122, -1.146347605257745], [13.599644566243796, -1.128279699248651], [13.593053433169473, -1.123979273424709], [13.580675716711028, -1.120111979084527], [13.561722338215361, -1.117018139475533], [13.540448137771364, -1.110443719402099], [13.532712065209694, -1.106576407974785], [13.516853116278355, -1.094587705857919], [13.508730239009367, -1.095747905941039], [13.497899737782745, -1.101935625628585], [13.488616450888571, -1.110443719402099], [13.478559556378457, -1.111603912290661], [13.469663072392905, -1.111217182227108], [13.457672159742401, -1.104642748663878], [13.450709694796615, -1.098068301610795], [13.440265995579296, -1.093814240334893], [13.42711467150491, -1.093814240334893], [13.375282984622118, -1.10928352651348], [13.338149835246725, -1.113150835242777], [13.32383810064789, -1.108123332725597], [13.30991316985694, -1.100001964518981], [13.30647899351078, -1.093134862783643], [13.299856275346883, -1.101301384151498], [13.293172308854992, -1.106746568699123], [13.287726112570112, -1.115409341367979], [13.274244612299071, -1.129223408233656]]], "type": "Polygon"}, "id": "4", "properties": {"admin1_iso": "GA-2", "admin1_name": "Haut-Ogoou\u00e9", "admin2_name": "Mpassa", "country": "Gabon", "country_alpha2": "GA", "country_alpha3": "GAB", "representative_lat": -1.7357091809338954, "representative_lon": 13.59762580505204, "shapeGroup": "GAB", "shapeID": "22940354B20451079543442", "shapeType": "ADM2"}, "type": "Feature"}], "type": "FeatureCollection"}, "hover_style": {}, "layers": [], "name": "Level 2 administrative units", "options": [], "pane": "", "point_style": {}, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "style": {"color": "black", "fillColor": "#3366cc", "fillOpacity": 0.6, "opacity": 1, "weight": 1}, "subitems": [], "visible": true}}}, "version_major": 2, "version_minor": 0}</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'country/GA';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Gabon / Mpassa / funestus / 2017 / Q4" href="../cohort/GA-2_Mpassa_fune_2017_Q4.html" />
+    <link rel="prev" title="Cameroon / Mayo-Banyo / funestus / 2014 / Q3" href="../cohort/CM-AD_Mayo-Banyo_fune_2014_Q3.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-afun.png" class="logo__image only-light" alt="Malaria Vector Selection Atlas — *Anopheles funestus* - Home"/>
+    <img src="../_static/logo-afun.png" class="logo__image only-dark pst-js-only" alt="Malaria Vector Selection Atlas — *Anopheles funestus* - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Malaria Vector Selection Atlas — Anopheles funestus
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Selection alerts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ir-alerts.html">Insecticide resistance alerts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../alert/SA-AFUN-01.html">Alert SA-AFUN-01 (<em>Demo</em>)</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">By chromosome</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contig/2RL.html">Chromosome 2RL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contig/3RL.html">Chromosome 3RL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contig/X.html">Chromosome X</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">By country</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="BJ.html">Benin</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cohort/BJ-AQ_Ouidah_fune_2014_Q2.html">Benin / Ouidah / funestus / 2014 / Q2</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="CD.html">Democratic Republic of the Congo</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cohort/CD-HU_Watsa_fune_2017_Q4.html">Democratic Republic of the Congo / Watsa / funestus / 2017 / Q4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cohort/CD-KN_Kinshasa_fune_2015_Q2.html">Democratic Republic of the Congo / Kinshasa / funestus / 2015 / Q2</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="CM.html">Cameroon</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cohort/CM-AD_Mayo-Banyo_fune_2014_Q3.html">Cameroon / Mayo-Banyo / funestus / 2014 / Q3</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Gabon</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cohort/GA-2_Mpassa_fune_2017_Q4.html">Gabon / Mpassa / funestus / 2017 / Q4</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="GH.html">Ghana</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cohort/GH-AH_Adansi-Akrofuom_fune_2014_Q1.html">Ghana / Adansi Akrofuom / funestus / 2014 / Q1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="KE.html">Kenya</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cohort/KE-03_Mt.-Elgon_fune_2016_Q4.html">Kenya / Mt. Elgon / funestus / 2016 / Q4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cohort/KE-17_Nyando_fune_2014_Q2.html">Kenya / Nyando / funestus / 2014 / Q2</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="MW.html">Malawi</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cohort/MW-S_Chikwawa_fune_2014_Q1.html">Malawi / Chikwawa / funestus / 2014 / Q1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="MZ.html">Mozambique</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cohort/MZ-L_Manhi%C3%A7a_fune_2016_Q2.html">Mozambique / Manhiça / funestus / 2016 / Q2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cohort/MZ-L_Manhi%C3%A7a_fune_2018_Q1.html">Mozambique / Manhiça / funestus / 2018 / Q1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cohort/MZ-P_Palma_fune_2015_Q3.html">Mozambique / Palma / funestus / 2015 / Q3</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="NG.html">Nigeria</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cohort/NG-OG_Remo-North_fune_2015_Q1.html">Nigeria / Remo North / funestus / 2015 / Q1</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="UG.html">Uganda</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cohort/UG-E_Tororo_fune_2014_Q2.html">Uganda / Tororo / funestus / 2014 / Q2</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="ZM.html">Zambia</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cohort/ZM-03_Sinda_fune_2016_Q3.html">Zambia / Sinda / funestus / 2016 / Q3</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../methods.html">Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/anopheles-genomic-surveillance/selection-atlas" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/anopheles-genomic-surveillance/selection-atlas/issues/new?title=Issue%20on%20page%20%2Fcountry/GA.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/country/GA.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Gabon</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-signals">Selection signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-scans">Selection scans</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell tag_parameters tag_remove-input docutils container">
+</div>
+<div class="cell tag_injected-parameters tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/javascript">'use strict';
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  const force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+const JS_MIME_TYPE = 'application/javascript';
+  const HTML_MIME_TYPE = 'text/html';
+  const EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  const CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    const script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    function drop(id) {
+      const view = Bokeh.index.get_by_id(id)
+      if (view != null) {
+        view.model.document.clear()
+        Bokeh.index.delete(view)
+      }
+    }
+
+    const cell = handle.cell;
+
+    const id = cell.output_area._bokeh_element_id;
+    const server_id = cell.output_area._bokeh_server_id;
+
+    // Clean up Bokeh references
+    if (id != null) {
+      drop(id)
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      const cmd_clean = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd_clean, {
+        iopub: {
+          output: function(msg) {
+            const id = msg.content.text.trim()
+            drop(id)
+          }
+        }
+      });
+      // Destroy server and session
+      const cmd_destroy = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd_destroy);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    const output_area = handle.output_area;
+    const output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!Object.prototype.hasOwnProperty.call(output.data, EXEC_MIME_TYPE))) {
+      return
+    }
+
+    const toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      const bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      const script_attrs = bk_div.children[0].attributes;
+      for (let i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      const toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      const props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    const events = require('base/js/events');
+    const OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  const NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded(error = null) {
+    const el = document.getElementById(null);
+    if (el != null) {
+      const html = (() => {
+        if (typeof root.Bokeh === "undefined") {
+          if (error == null) {
+            return "BokehJS is loading ...";
+          } else {
+            return "BokehJS failed to load.";
+          }
+        } else {
+          const prefix = `BokehJS ${root.Bokeh.version}`;
+          if (error == null) {
+            return `${prefix} successfully loaded.`;
+          } else {
+            return `${prefix} <b>encountered errors</b> while loading and may not function as expected.`;
+          }
+        }
+      })();
+      el.innerHTML = html;
+
+      if (error != null) {
+        const wrapper = document.createElement("div");
+        wrapper.style.overflow = "auto";
+        wrapper.style.height = "5em";
+        wrapper.style.resize = "vertical";
+        const content = document.createElement("div");
+        content.style.fontFamily = "monospace";
+        content.style.whiteSpace = "pre-wrap";
+        content.style.backgroundColor = "rgb(255, 221, 221)";
+        content.textContent = error.stack ?? error.toString();
+        wrapper.append(content);
+        el.append(wrapper);
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(() => display_loaded(error), 100);
+    }
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error(url) {
+      console.error("failed to load " + url);
+    }
+
+    for (let i = 0; i < css_urls.length; i++) {
+      const url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (let i = 0; i < js_urls.length; i++) {
+      const url = js_urls[i];
+      const element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.6.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.6.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.6.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.6.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.6.3.min.js"];
+  const css_urls = [];
+
+  const inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {
+    }
+  ];
+
+  function run_inline_js() {
+    if (root.Bokeh !== undefined || force === true) {
+      try {
+            for (let i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+
+      } catch (error) {throw error;
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      const cell = $(document.getElementById(null)).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="gabon">
+<h1>Gabon<a class="headerlink" href="#gabon" title="Link to this heading">#</a></h1>
+<section id="selection-signals">
+<h2>Selection signals<a class="headerlink" href="#selection-signals" title="Link to this heading">#</a></h2>
+<p><a class="reference internal" href="../glossary.html#term-selection-signal"><span class="xref std std-term">Selection signal</span></a>s found in <a class="reference internal" href="../glossary.html#term-cohort"><span class="xref std std-term">cohort</span></a>s within this country are shown in the figures below.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<h3 class="rubric" id="chromosome-2rl">Chromosome 2RL</h3>
+<p>No signals found.</p>
+<h3 class="rubric" id="chromosome-3rl">Chromosome 3RL</h3>
+<p>No signals found.</p>
+<h3 class="rubric" id="chromosome-x">Chromosome X</h3>
+<p>No signals found.</p>
+</div>
+</div>
+</section>
+<section id="selection-scans">
+<h2>Selection scans<a class="headerlink" href="#selection-scans" title="Link to this heading">#</a></h2>
+<p>The map below shows geographical regions where mosquito genomic data are available and <a class="reference internal" href="../glossary.html#term-genome-wide-selection-scan"><span class="xref std std-term">genome-wide selection scan</span></a>s have been performed.</p>
+<p>Click on a map marker to see more information about mosquito <a class="reference internal" href="../glossary.html#term-cohort"><span class="xref std std-term">cohort</span></a>s for which results are available.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f38c5fff86094d2cbaec579a52bd8b1b", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_0b87b">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_0b87b_level0_col0" class="col_heading level0 col0" >Region</th>
+      <th id="T_0b87b_level0_col1" class="col_heading level0 col1" >District</th>
+      <th id="T_0b87b_level0_col2" class="col_heading level0 col2" >Taxon</th>
+      <th id="T_0b87b_level0_col3" class="col_heading level0 col3" >Year</th>
+      <th id="T_0b87b_level0_col4" class="col_heading level0 col4" >Quarter</th>
+      <th id="T_0b87b_level0_col5" class="col_heading level0 col5" >Sample Size</th>
+    </tr>
+    <tr>
+      <th class="index_name level0" >Cohort</th>
+      <th class="blank col0" >&nbsp;</th>
+      <th class="blank col1" >&nbsp;</th>
+      <th class="blank col2" >&nbsp;</th>
+      <th class="blank col3" >&nbsp;</th>
+      <th class="blank col4" >&nbsp;</th>
+      <th class="blank col5" >&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_0b87b_level0_row0" class="row_heading level0 row0" ><a href="../cohort/GA-2_Mpassa_fune_2017_Q4.html" rel="noopener noreferrer" target="_blank">Gabon / Mpassa / funestus / 2017 / Q4</a></th>
+      <td id="T_0b87b_row0_col0" class="data row0 col0" >Haut-Ogooué</td>
+      <td id="T_0b87b_row0_col1" class="data row0 col1" >Mpassa</td>
+      <td id="T_0b87b_row0_col2" class="data row0 col2" >funestus</td>
+      <td id="T_0b87b_row0_col3" class="data row0 col3" >2017</td>
+      <td id="T_0b87b_row0_col4" class="data row0 col4" >4</td>
+      <td id="T_0b87b_row0_col5" class="data row0 col5" >26</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "selection-atlas"
+        },
+        kernelOptions: {
+            name: "selection-atlas",
+            path: "./country"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'selection-atlas'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../cohort/CM-AD_Mayo-Banyo_fune_2014_Q3.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Cameroon / Mayo-Banyo / funestus / 2014 / Q3</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../cohort/GA-2_Mpassa_fune_2017_Q4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Gabon / Mpassa / funestus / 2017 / Q4</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-signals">Selection signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-scans">Selection scans</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sanjay Nagi (<a href='https://github.com/sanjaynagi'>@sanjaynagi</a>) and Alistair Miles (<a href='https://github.com/alimanfoo/'>@alimanfoo</a>).
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
