@@ -300,7 +300,7 @@ rule process_headers_alert:
         """
 
 
-rule generate_toc:
+rule generate_jb_toc:
     """
     Generate the table of contents for the Jupyter book.
     """
@@ -312,11 +312,37 @@ rule generate_toc:
         kernel=setup.kernel_set_file,
     output:
         nb=f"{setup.site_results_dir}/notebooks/generate-toc.ipynb",
-        toc=f"{setup.jb_source_dir}/_toc.yml",
+        jb_toc=f"{setup.jb_source_dir}/_toc.yml",
     conda:
         setup.environment_file
     log:
-        "logs/generate_toc.log",
+        "logs/generate_jb_toc.log",
+    shell:
+        """
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p config_file {input.config_file} \
+            &> {log}
+        """
+
+
+rule generate_jb_config:
+    """
+    Generate the config for the Jupyter book.
+    """
+    input:
+        nb=f"{workflow.basedir}/notebooks/generate-config.ipynb",
+        src=setup.site_src_files,
+        config_file=config_file,
+        kernel=setup.kernel_set_file,
+    output:
+        nb=f"{setup.site_results_dir}/notebooks/generate-config.ipynb",
+        jb_config=f"{setup.jb_source_dir}/_config.yml",
+    conda:
+        setup.environment_file
+    log:
+        "logs/generate_jb_config.log",
     shell:
         """
         sleep "$((1+RANDOM%20)).$((RANDOM%999))"
