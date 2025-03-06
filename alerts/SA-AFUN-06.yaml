@@ -1,10 +1,13 @@
 label: "Dgk"
-region: "X:9,127,402-9,363,702"
+region: "X:13,635,108-13,733,014"
 ir_candidate_genes:
-  - identifier: "AGAP000519"
+
+  - identifier: "AFUN2_000796"
     names:
       - "Dgk"
       - "Rdga"
+      - "LOC125760558"
+      - "AFUN020012"
     notes: >
       This gene encodes a diacylglycerol kinase. This gene has not been directly
       implicated in resistance to pesticides in any insect species to date, but there
@@ -41,4 +44,4 @@ ir_candidate_genes:
           new insecticide resistance variants in a longitudinal study in Burkina Faso
 
 see_also:
-  - "*Anopheles funestus* selection alert [SA-AFUN-06](https://anopheles-genomic-surveillance.github.io/selection-atlas/afun/alert/SA-AFUN-06.html)."
+  - "*Anopheles gambiae* complex selection alert [SA-AGAM-09](https://anopheles-genomic-surveillance.github.io/selection-atlas/agam/alert/SA-AGAM-09.html)."

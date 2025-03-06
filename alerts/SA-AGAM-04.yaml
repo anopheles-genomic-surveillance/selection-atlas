@@ -65,3 +65,6 @@ ir_candidate_genes:
         title: >
           Copy number variants underlie major selective sweeps in insecticide resistance
           genes in Anopheles arabiensis
+
+see_also:
+  - "*Anopheles funestus* selection alert [SA-AFUN-01](https://anopheles-genomic-surveillance.github.io/selection-atlas/afun/alert/SA-AFUN-01.html)."

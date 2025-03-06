@@ -66,3 +66,8 @@ dask_scheduler: "single-threaded"
 # Insecticide resistance alerts.
 ir_alerts:
     - 'SA-AFUN-01'
+    - 'SA-AFUN-02'
+    - 'SA-AFUN-03'
+    - 'SA-AFUN-04'
+    - 'SA-AFUN-05'
+    - 'SA-AFUN-06'
