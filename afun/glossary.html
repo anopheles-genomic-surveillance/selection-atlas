@@ -55,40 +55,6 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
-    <script kind="utterances">
-
-    var commentsRunWhenDOMLoaded = cb => {
-    if (document.readyState != 'loading') {
-        cb()
-    } else if (document.addEventListener) {
-        document.addEventListener('DOMContentLoaded', cb)
-    } else {
-        document.attachEvent('onreadystatechange', function() {
-        if (document.readyState == 'complete') cb()
-        })
-    }
-}
-
-var addUtterances = () => {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src = "https://utteranc.es/client.js";
-    script.async = "async";
-
-    script.setAttribute("repo", "anopheles-genomic-surveillance/selection-atlas");
-    script.setAttribute("issue-term", "pathname");
-    script.setAttribute("theme", "github-light");
-    script.setAttribute("label", "comment");
-    script.setAttribute("crossorigin", "anonymous");
-
-    sections = document.querySelectorAll("div.section");
-    if (sections !== null) {
-        section = sections[sections.length-1];
-        section.appendChild(script);
-    }
-}
-commentsRunWhenDOMLoaded(addUtterances);
-</script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
@@ -207,7 +173,12 @@ commentsRunWhenDOMLoaded(addUtterances);
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Selection alerts</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="ir-alerts.html">Insecticide resistance alerts</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="alert/SA-AFUN-01.html">Alert SA-AFUN-01 (<em>Demo</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alert/SA-AFUN-01.html">Alert SA-AFUN-01 (<em>Cyp6p</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alert/SA-AFUN-02.html">Alert SA-AFUN-02 (<em>Cyp9k1</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alert/SA-AFUN-03.html">Alert SA-AFUN-03 (<em>Gste</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alert/SA-AFUN-04.html">Alert SA-AFUN-04 (<em>Rdl</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alert/SA-AFUN-05.html">Alert SA-AFUN-05 (<em>Cyp9m1/Cyp9m2</em>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="alert/SA-AFUN-06.html">Alert SA-AFUN-06 (<em>Dgk</em>)</a></li>
 </ul>
 </details></li>
 </ul>
@@ -564,7 +535,8 @@ commentsRunWhenDOMLoaded(addUtterances);
   <div class="footer-item">
     
 <p class="component-author">
-By Sanjay Nagi (<a href='https://github.com/sanjaynagi'>@sanjaynagi</a>) and Alistair Miles (<a href='https://github.com/alimanfoo/'>@alimanfoo</a>).
+By <a href="https://github.com/anopheles-genomic-surveillance/selection-atlas/graphs/contributors">Selection Atlas contributors</a>,  <a href="https://www.sanger.ac.uk/collaboration/genomic-surveillance-unit-gsu/">Wellcome Sanger Institute Genomic Surveillance Unit</a>,  <a href="https://www.lstmed.ac.uk/about/people/professor-martin-james-donnelly">Liverpool School of Tropical Medicine Vector Informatics and Genomics Group</a>.
+
 </p>
 
   </div>
@@ -587,6 +559,10 @@ By Sanjay Nagi (<a href='https://github.com/sanjaynagi'>@sanjaynagi</a>) and Ali
   
   <div class="footer-item">
     
+<div class="extra_footer">
+  <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">The Malaria Vector Selection Atlas</span> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a></p> <p>Citation: Sanjay Nagi, Alistair Miles et al. (2025) An atlas of recent positive selection in major African malaria vectors. In prep.</p>
+
+</div>
   </div>
   
 </div>
