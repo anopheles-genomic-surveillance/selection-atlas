@@ -2,11 +2,11 @@ label: "Cyp6p"
 region: "2RL:8,499,270-8,818,655"
 ir_candidate_genes:
 
-  - identifier: "AFUN2_008570"
+  - identifier: "LOC125764713"
     names:
       - "Cyp6p9a"
       - "Cyp6p9b"
-      - "LOC125764713"
+      - "AFUN2_008570"
       - "AFUN015792"
       - "AFUN015889"
     notes: >

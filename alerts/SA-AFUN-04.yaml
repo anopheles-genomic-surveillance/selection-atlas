@@ -2,10 +2,10 @@ label: "Rdl"
 region: "3RL:13,537,662-13,737,363"
 ir_candidate_genes:
 
-  - identifier: "AFUN2_014608"
+  - identifier: "LOC125769835"
     names:
       - "Rdl"
-      - "LOC125769835"
+      - "AFUN2_014608"
       - "AFUN016339"
     notes: >
       This gene encodes a subunit of a GABA-gated chloride channel which is the binding target of cyclodiene insecticides including dieldrin and lindane. Mutations in this gene are associated with dieldrin resistance in multiple insect species, including A296G and A296S in *Anopheles gambiae* (codon 302 in *Drosophila melanogaster*). Resistance alleles persist in *Anopheles* populations in sub-Saharan Africa despite a ban on dieldrin use in the 1980s.

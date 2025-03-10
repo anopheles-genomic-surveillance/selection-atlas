@@ -2,10 +2,10 @@ label: "Gste"
 region: "2RL:76,329,285-76,586,750"
 ir_candidate_genes:
 
-  - identifier: "AFUN2_012779"
+  - identifier: "LOC125763977"
     names:
       - "Gste2"
-      - "LOC125763977"
+      - "AFUN2_012779"
       - "AFUN015809"
     notes: >
       This gene encodes a glutathione S-transferase enzyme. Variants in this gene have been associated with DDT and pyrethroid insecticide resistance in *Anopheles funestus*.

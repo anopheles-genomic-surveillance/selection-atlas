@@ -2,10 +2,10 @@ label: "Cyp9m1/Cyp9m2"
 region: "2RL:99,495,785-99,571,461"
 ir_candidate_genes:
 
-  - identifier: "AFUN2_007336"
+  - identifier: "LOC125763458"
     names:
       - "Cyp9m1"
-      - "LOC125763458"
+      - "AFUN2_007336"
       - "AFUN015938"
     notes: >
       This gene encodes a cytochrome P450 enzyme. This gene has not been directly associated with insecticide resistance in *Anopheles* mosquitoes, but other genes encoding cytochrome P450 enzymes have been associated with pyrethroid resistance.

@@ -2,10 +2,10 @@ label: "Cyp9k1"
 region: "X:8,426,728-8,602,567"
 ir_candidate_genes:
 
-  - identifier: "AFUN2_005813"
+  - identifier: "LOC125764232"
     names:
       - "Cyp9k1"
-      - "LOC125764232"
+      - "AFUN2_005813"
       - "AFUN007549"
     notes: >
       This gene encodes a cytochrome P450 enzyme and has been assocated with pyrethroid resistance in *Anopheles funestus*. The ortholog of this gene in *Anopheles gambiae* and *Anopheles coluzzii* is also associated with pyrethroid resistance.
