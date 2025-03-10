@@ -2,11 +2,11 @@ label: "Dgk"
 region: "X:13,635,108-13,733,014"
 ir_candidate_genes:
 
-  - identifier: "AFUN2_000796"
+  - identifier: "LOC125760558"
     names:
       - "Dgk"
       - "Rdga"
-      - "LOC125760558"
+      - "AFUN2_000796"
       - "AFUN020012"
     notes: >
       This gene encodes a diacylglycerol kinase. This gene has not been directly
