@@ -10,7 +10,7 @@ rule home_page:
     Generate the home page.
     """
     input:
-        nb=f"{workflow.basedir}/notebooks/index.ipynb",
+        nb=f"{workflow.basedir}/notebooks/index-page.ipynb",
         cohorts_geojson=setup.final_cohorts_geojson_file,
         src=setup.site_src_files,
         config_file=config_file,
@@ -21,6 +21,32 @@ rule home_page:
         setup.environment_file
     log:
         "logs/home_page.log",
+    shell:
+        """
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p config_file {input.config_file} \
+            &> {log}
+        """
+
+
+rule data_sources_page:
+    """
+    Generate the data sources page.
+    """
+    input:
+        nb=f"{workflow.basedir}/notebooks/data-sources-page.ipynb",
+        sample_set_citations=setup.sample_set_citations_file,
+        src=setup.site_src_files,
+        config_file=config_file,
+        kernel=setup.kernel_set_file,
+    output:
+        nb=f"{setup.site_results_dir}/notebooks/data-sources.ipynb",
+    conda:
+        setup.environment_file
+    log:
+        "logs/data_sources_page.log",
     shell:
         """
         sleep "$((1+RANDOM%20)).$((RANDOM%999))"
@@ -93,6 +119,7 @@ rule cohort_pages:
     input:
         nb=f"{workflow.basedir}/notebooks/cohort-page.ipynb",
         cohorts_geojson=setup.final_cohorts_geojson_file,
+        sample_set_citations=setup.sample_set_citations_file,
         h12_gwss=f"{setup.gwss_results_dir}/notebooks/h12-gwss-{{cohort}}.ipynb",
         g123_gwss=f"{setup.gwss_results_dir}/notebooks/g123-gwss-{{cohort}}.ipynb",
         ihs_gwss=f"{setup.gwss_results_dir}/notebooks/ihs-gwss-{{cohort}}.ipynb",
@@ -163,6 +190,35 @@ rule postprocess_home:
         setup.environment_file
     log:
         "logs/postprocess-page/home-page.log",
+    shell:
+        """
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p input_nb {input.homepage_nb} \
+            -p output_nb {output.homepage_nb} \
+            -p config_file {input.config_file} \
+            &> {log}
+        """
+
+
+rule postprocess_data_sources:
+    """
+    Process the data sources page to fix page titles and remove papermill parameters.
+    """
+    input:
+        nb=f"{workflow.basedir}/notebooks/postprocess-page.ipynb",
+        homepage_nb=f"{setup.site_results_dir}/notebooks/data-sources.ipynb",
+        src=setup.site_src_files,
+        config_file=config_file,
+        kernel=setup.kernel_set_file,
+    output:
+        nb=f"{setup.site_results_dir}/notebooks/postprocess-page/data-sources.ipynb",
+        homepage_nb=f"{setup.jb_source_dir}/data-sources.ipynb",
+    conda:
+        setup.environment_file
+    log:
+        "logs/postprocess-page/data-sources.log",
     shell:
         """
         sleep "$((1+RANDOM%20)).$((RANDOM%999))"

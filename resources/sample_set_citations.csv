@@ -1,0 +1,49 @@
+sample_set,citation_author,citation_year,citation_url
+AG1000G-AO,Anopheles gambiae 1000 Genomes Consortium,2017,https://pmc.ncbi.nlm.nih.gov/articles/PMC6026373/
+AG1000G-BF-A,Anopheles gambiae 1000 Genomes Consortium,2017,https://pmc.ncbi.nlm.nih.gov/articles/PMC6026373/
+AG1000G-BF-B,Anopheles gambiae 1000 Genomes Consortium,2021,https://www.malariagen.net/data_package/ag30-anopheles-gambiae-data-resource/
+AG1000G-BF-C,Anopheles gambiae 1000 Genomes Consortium,2021,https://www.malariagen.net/data_package/ag30-anopheles-gambiae-data-resource/
+AG1000G-CD,Anopheles gambiae 1000 Genomes Consortium,2021,https://www.malariagen.net/data_package/ag30-anopheles-gambiae-data-resource/
+AG1000G-CF,Anopheles gambiae 1000 Genomes Consortium,2021,https://www.malariagen.net/data_package/ag30-anopheles-gambiae-data-resource/
+AG1000G-CI,Anopheles gambiae 1000 Genomes Consortium,2020,https://pmc.ncbi.nlm.nih.gov/articles/PMC7605271/
+AG1000G-CM-A,Anopheles gambiae 1000 Genomes Consortium,2017,https://pmc.ncbi.nlm.nih.gov/articles/PMC6026373/
+AG1000G-CM-B,Anopheles gambiae 1000 Genomes Consortium,2021,https://www.malariagen.net/data_package/ag30-anopheles-gambiae-data-resource/
+AG1000G-CM-C,Anopheles gambiae 1000 Genomes Consortium,2021,https://www.malariagen.net/data_package/ag30-anopheles-gambiae-data-resource/
+AG1000G-FR,Anopheles gambiae 1000 Genomes Consortium,2020,https://pmc.ncbi.nlm.nih.gov/articles/PMC7605271/
+AG1000G-GA-A,Anopheles gambiae 1000 Genomes Consortium,2017,https://pmc.ncbi.nlm.nih.gov/articles/PMC6026373/
+AG1000G-GH,Anopheles gambiae 1000 Genomes Consortium,2020,https://pmc.ncbi.nlm.nih.gov/articles/PMC7605271/
+AG1000G-GM-A,Anopheles gambiae 1000 Genomes Consortium,2020,https://pmc.ncbi.nlm.nih.gov/articles/PMC7605271/
+AG1000G-GM-B,Anopheles gambiae 1000 Genomes Consortium,2021,https://www.malariagen.net/data_package/ag30-anopheles-gambiae-data-resource/
+AG1000G-GM-C,Anopheles gambiae 1000 Genomes Consortium,2021,https://www.malariagen.net/data_package/ag30-anopheles-gambiae-data-resource/
+AG1000G-GN-A,Anopheles gambiae 1000 Genomes Consortium,2017,https://pmc.ncbi.nlm.nih.gov/articles/PMC6026373/
+AG1000G-GN-B,Anopheles gambiae 1000 Genomes Consortium,2021,https://www.malariagen.net/data_package/ag30-anopheles-gambiae-data-resource/
+AG1000G-GQ,Anopheles gambiae 1000 Genomes Consortium,2020,https://pmc.ncbi.nlm.nih.gov/articles/PMC7605271/
+AG1000G-GW,Anopheles gambiae 1000 Genomes Consortium,2017,https://pmc.ncbi.nlm.nih.gov/articles/PMC6026373/
+AG1000G-KE,Anopheles gambiae 1000 Genomes Consortium,2017,https://pmc.ncbi.nlm.nih.gov/articles/PMC6026373/
+AG1000G-ML-A,Anopheles gambiae 1000 Genomes Consortium,2021,https://www.malariagen.net/data_package/ag30-anopheles-gambiae-data-resource/
+AG1000G-ML-B,Anopheles gambiae 1000 Genomes Consortium,2021,https://www.malariagen.net/data_package/ag30-anopheles-gambiae-data-resource/
+AG1000G-MW,Anopheles gambiae 1000 Genomes Consortium,2021,https://www.malariagen.net/data_package/ag30-anopheles-gambiae-data-resource/
+AG1000G-MZ,Anopheles gambiae 1000 Genomes Consortium,2021,https://www.malariagen.net/data_package/ag30-anopheles-gambiae-data-resource/
+AG1000G-TZ,Anopheles gambiae 1000 Genomes Consortium,2021,https://www.malariagen.net/data_package/ag30-anopheles-gambiae-data-resource/
+AG1000G-UG,Anopheles gambiae 1000 Genomes Consortium,2017,https://pmc.ncbi.nlm.nih.gov/articles/PMC6026373/
+1237-VO-BJ-DJOGBENOU-VMF00050,Lucas et al.,2023,https://pmc.ncbi.nlm.nih.gov/articles/PMC10432508/
+1237-VO-BJ-DJOGBENOU-VMF00067,Lucas et al.,2023,https://pmc.ncbi.nlm.nih.gov/articles/PMC10432508/
+1244-VO-GH-YAWSON-VMF00051,Lucas et al.,2023,https://pmc.ncbi.nlm.nih.gov/articles/PMC10432508/
+1245-VO-CI-CONSTANT-VMF00054,Lucas et al.,2023,https://pmc.ncbi.nlm.nih.gov/articles/PMC10432508/
+1253-VO-TG-DJOGBENOU-VMF00052,Lucas et al.,2023,https://pmc.ncbi.nlm.nih.gov/articles/PMC10432508/
+1178-VO-UG-LAWNICZAK-VMF00025,,,
+1244-VO-GH-YAWSON-VMF00149,Nagi et al.,in prep.,
+crawford-2016,Crawford et al.,2016,https://pubmed.ncbi.nlm.nih.gov/26846876/
+tennessen-2021,Tennessen et al.,2021,https://pmc.ncbi.nlm.nih.gov/articles/PMC7858241/
+bergey-2019,Bergey et al.,2019,https://pmc.ncbi.nlm.nih.gov/articles/PMC6976967/
+campos-2021,Campos et al.,2021,https://pmc.ncbi.nlm.nih.gov/articles/PMC8155153/
+campos-2021,Lanzaro et al.,2021,https://pmc.ncbi.nlm.nih.gov/articles/PMC8477601/
+fontaine-2015-rebuild,Fontaine et al.,2014,https://pmc.ncbi.nlm.nih.gov/articles/PMC4380269/
+1229-VO-GH-DADZIE-VMF00095,"Boddé, Nwezeobi et al.",2024,https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/
+1230-VO-GA-CF-AYALA-VMF00045,"Boddé, Nwezeobi et al.",2024,https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/
+1231-VO-MULTI-WONDJI-VMF00043,"Boddé, Nwezeobi et al.",2024,https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/
+1232-VO-KE-OCHOMO-VMF00044,"Boddé, Nwezeobi et al.",2024,https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/
+1235-VO-MZ-PAAIJMANS-VMF00094,"Boddé, Nwezeobi et al.",2024,https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/
+1236-VO-TZ-OKUMU-VMF00090,"Boddé, Nwezeobi et al.",2024,https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/
+1240-VO-CD-KOEKEMOER-VMF00099,"Boddé, Nwezeobi et al.",2024,https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/
+1240-VO-MZ-KOEKEMOER-VMF00101,"Boddé, Nwezeobi et al.",2024,https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/

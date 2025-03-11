@@ -7,6 +7,7 @@ from pyprojroot import here
 import dask
 import yaml
 import malariagen_data
+import pandas as pd
 import tqdm.std
 
 
@@ -88,6 +89,11 @@ class AtlasSetup:
             "_static/custom.css",
         ]
 
+        # Path to resources directory.
+        self.resources_dir = self.here / "resources"
+        self.sample_set_citations_file = self.resources_dir / "sample_set_citations.csv"
+        self._sample_set_citations = None
+
         # Path to all workflow results.
         self.results_dir = self.here / "results"
         self.analysis_dir = self.results_dir / self.atlas_id / self.analysis_version
@@ -158,6 +164,13 @@ class AtlasSetup:
         return self.malariagen_api.sample_metadata(
             sample_sets=self.sample_sets, sample_query=self.sample_query
         )
+
+    def sample_set_citations(self):
+        if self._sample_set_citations is None:
+            self._sample_set_citations = pd.read_csv(
+                self.sample_set_citations_file
+            ).set_index("sample_set")
+        return self._sample_set_citations
 
     def __hash__(self):
         return hash(self.config_file)
