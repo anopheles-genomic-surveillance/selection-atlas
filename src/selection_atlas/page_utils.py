@@ -406,11 +406,15 @@ class AtlasPageUtils:
                 citations = []
             links = []
             for citation in citations:
-                url = citation["citation_url"]
                 author = citation["citation_author"]
-                year = citation["citation_year"]
-                link = f"<a href='{url}' target='_blank'>{author} ({year})</a>"
-                links.append(link)
+                if isinstance(author, str) and author:
+                    year = citation["citation_year"]
+                    url = citation["citation_url"]
+                    if isinstance(url, str) and url:
+                        link = f"<a href='{url}' target='_blank'>{author} {year}</a>"
+                    else:
+                        link = f"{author} {year}"
+                    links.append(link)
             content = ", ".join(links)
             return content
 
