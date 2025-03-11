@@ -173,6 +173,35 @@ rule alert_pages:
         """
 
 
+rule postprocess_page:
+    """
+    Process a notebook to fix page titles and remove papermill parameters.
+    """
+    input:
+        nb=f"{workflow.basedir}/notebooks/postprocess-page.ipynb",
+        page_nb=f"{setup.site_results_dir}/notebooks/{page}.ipynb",
+        src=setup.site_src_files,
+        config_file=config_file,
+        kernel=setup.kernel_set_file,
+    output:
+        nb=f"{setup.site_results_dir}/notebooks/postprocess-page/{page}.ipynb",
+        page_nb=f"{setup.jb_source_dir}/{page}.ipynb",
+    conda:
+        setup.environment_file
+    log:
+        "logs/postprocess-page/{page}.log",
+    shell:
+        """
+        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
+        papermill {input.nb} {output.nb} \
+            -k selection-atlas \
+            -p input_nb {input.page_nb} \
+            -p output_nb {output.page_nb} \
+            -p config_file {input.config_file} \
+            &> {log}
+        """
+
+
 rule postprocess_home:
     """
     Process the home page to fix page titles and remove papermill parameters.

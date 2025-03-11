@@ -391,7 +391,7 @@ class AtlasPageUtils:
         def make_clickable_release(row):
             release = release_prefix + row["release"]
             url = f"https://malariagen.github.io/vector-data/{release[:3].lower()}/{release.lower()}.html"
-            return f'<a href="{url}" rel="noopener noreferrer" target="_blank">{release}</a>'
+            return f'<a href="{url}" target="_blank">{release}</a>'
 
         def get_citations(row):
             sample_set = row["sample_set"]
@@ -409,7 +409,7 @@ class AtlasPageUtils:
                 url = citation["citation_url"]
                 author = citation["citation_author"]
                 year = citation["citation_year"]
-                link = f"<a href='{url}'>{author} ({year})</a>"
+                link = f"<a href='{url}' target='_blank'>{author} ({year})</a>"
                 links.append(link)
             content = ", ".join(links)
             return content
@@ -443,10 +443,10 @@ class AtlasPageUtils:
         # Make links clickable.
         df_sources["study_id"] = df_sources.apply(make_clickable_study, axis="columns")
         df_sources["release"] = df_sources.apply(make_clickable_release, axis="columns")
-        df_sources["citations"] = df_sources.apply(get_citations, axis="columns")
+        df_sources["citation"] = df_sources.apply(get_citations, axis="columns")
         df_sources_style = (
             df_sources.sort_values(["release_split", "sample_set"])[
-                ["sample_set", "study_id", "contributor", "release", "citations"]
+                ["sample_set", "study_id", "contributor", "release", "citation"]
             ]
             .rename(
                 {
@@ -454,14 +454,14 @@ class AtlasPageUtils:
                     "study_id": "Study",
                     "contributor": "Contributor",
                     "release": "Data Release",
-                    "citations": "Citations",
+                    "citation": "Citation",
                 },
                 axis="columns",
             )
             .style.set_caption(caption)
             .set_table_styles(
                 [
-                    {"selector": "th", "props": "text-align: left; font-size: 1.1em;"},
+                    {"selector": "th", "props": "text-align: left;"},
                     {
                         "selector": "td",
                         "props": "text-align: left; font-weight: normal;",
