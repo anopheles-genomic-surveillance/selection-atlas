@@ -42,3 +42,15 @@ a.internal .std-term {
     text-decoration-style: dashed;
     text-underline-offset: .1578em;
 }
+
+div.output table {
+    border: 2px solid black;
+}
+
+div.output thead {
+    border-bottom: 1px solid black;
+}
+
+div.output tbody tr {
+    border-bottom: 1px solid gray;
+}

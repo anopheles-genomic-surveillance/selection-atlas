@@ -474,6 +474,54 @@ class AtlasPageUtils:
 
         return df_sources_style
 
+    def style_cohorts_table(self, gdf_cohorts, caption):
+        gdf_cohorts = gdf_cohorts.reset_index()
+        gdf_cohorts["url"] = "../cohort/" + gdf_cohorts["cohort_id"] + ".html"
+
+        def make_clickable(x):
+            url = x["url"]
+            name = x["cohort_label"]
+            return (
+                '<a href="{}" rel="noopener noreferrer" target="_blank">{}</a>'.format(
+                    url, name
+                )
+            )
+
+        gdf_cohorts["cohort_label"] = gdf_cohorts.apply(make_clickable, axis=1)
+
+        gdf_cohorts = gdf_cohorts[
+            [
+                "cohort_label",
+                "country",
+                "admin1_name",
+                "admin2_name",
+                "taxon",
+                "year",
+                "quarter",
+                "cohort_size",
+            ]
+        ]
+        gdf_cohorts = gdf_cohorts.sort_values("cohort_label")
+
+        gdf_cohorts.columns = [
+            "Cohort",
+            "Country",
+            "Region",
+            "District",
+            "Taxon",
+            "Year",
+            "Quarter",
+            "Sample Size",
+        ]
+
+        return (
+            gdf_cohorts.style.format(
+                subset="Quarter", formatter=lambda v: v if v > 0 else ""
+            )
+            .set_caption(caption)
+            .hide(axis="index")
+        )
+
 
 def stack_overlaps(df, start_col, end_col, tolerance=10000):
     """Stack overlapping objects."""
