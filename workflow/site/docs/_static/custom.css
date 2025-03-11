@@ -45,6 +45,7 @@ a.internal .std-term {
 
 div.output table {
     border: 2px solid black;
+    font-size: 0.9em;
 }
 
 div.output thead {
