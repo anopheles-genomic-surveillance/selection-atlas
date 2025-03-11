@@ -374,6 +374,158 @@ class AtlasPageUtils:
 
         return m
 
+    def style_data_sources(self, df_samples, caption):
+        release_prefix = {
+            "agam": "Ag",
+            "afun": "Af",
+        }[self.setup.atlas_id]
+        sample_set_citations = self.setup.sample_set_citations()
+
+        def make_clickable_study(row):
+            study_url = row["study_url"]
+            # Deal with campos-2021 which has multiple URLs.
+            study_url = study_url.split(", ")[0]
+            study_id = row["study_id"]
+            return f'<a href="{study_url}" target="_blank">{study_id}</a>'
+
+        def make_clickable_release(row):
+            release = release_prefix + row["release"]
+            url = f"https://malariagen.github.io/vector-data/{release[:3].lower()}/{release.lower()}.html"
+            return f'<a href="{url}" target="_blank">{release}</a>'
+
+        def get_citations(row):
+            sample_set = row["sample_set"]
+            try:
+                citations = sample_set_citations.loc[sample_set]
+                if isinstance(citations, pd.DataFrame):
+                    citations = [c for _, c in citations.iterrows()]
+                else:
+                    assert isinstance(citations, pd.Series)
+                    citations = [citations]
+            except KeyError:
+                citations = []
+            links = []
+            for citation in citations:
+                author = citation["citation_author"]
+                if isinstance(author, str) and author:
+                    year = citation["citation_year"]
+                    url = citation["citation_url"]
+                    if isinstance(url, str) and url:
+                        link = f"<a href='{url}' target='_blank'>{author} {year}</a>"
+                    else:
+                        link = f"{author} {year}"
+                    links.append(link)
+            content = ", ".join(links)
+            return content
+
+        # Prepare a table of sample sets.
+        df_sources = (
+            df_samples[
+                ["sample_set", "study_id", "study_url", "contributor", "release"]
+            ]
+            .groupby("sample_set")
+            .agg(
+                {
+                    "study_id": "first",
+                    "study_url": "first",
+                    # Some sample sets have multiple contributors.
+                    "contributor": lambda x: ", ".join(set(x)),
+                    "release": "first",
+                }
+            )
+            .reset_index(drop=False)
+        )
+
+        # Get proper ordering of releases.
+        release_split = (
+            df_sources["release"]
+            .str.split(".")
+            .apply(lambda x: tuple([int(i) for i in x]))
+        )
+        df_sources["release_split"] = release_split
+
+        # Make links clickable.
+        df_sources["study_id"] = df_sources.apply(make_clickable_study, axis="columns")
+        df_sources["release"] = df_sources.apply(make_clickable_release, axis="columns")
+        df_sources["citation"] = df_sources.apply(get_citations, axis="columns")
+        df_sources_style = (
+            df_sources.sort_values(["release_split", "sample_set"])[
+                ["sample_set", "study_id", "contributor", "release", "citation"]
+            ]
+            .rename(
+                {
+                    "sample_set": "Sample Set",
+                    "study_id": "Study",
+                    "contributor": "Contributor",
+                    "release": "Data Release",
+                    "citation": "Citation",
+                },
+                axis="columns",
+            )
+            .style.set_caption(caption)
+            .set_table_styles(
+                [
+                    {"selector": "th", "props": "text-align: left;"},
+                    {
+                        "selector": "td",
+                        "props": "text-align: left; font-weight: normal;",
+                    },
+                ],
+                overwrite=False,
+            )
+            .hide(axis="index")
+        )
+
+        return df_sources_style
+
+    def style_cohorts_table(self, gdf_cohorts, caption):
+        gdf_cohorts = gdf_cohorts.reset_index()
+        gdf_cohorts["url"] = "../cohort/" + gdf_cohorts["cohort_id"] + ".html"
+
+        def make_clickable(x):
+            url = x["url"]
+            name = x["cohort_label"]
+            return (
+                '<a href="{}" rel="noopener noreferrer" target="_blank">{}</a>'.format(
+                    url, name
+                )
+            )
+
+        gdf_cohorts["cohort_label"] = gdf_cohorts.apply(make_clickable, axis=1)
+
+        gdf_cohorts = gdf_cohorts[
+            [
+                "cohort_label",
+                "country",
+                "admin1_name",
+                "admin2_name",
+                "taxon",
+                "year",
+                "quarter",
+                "cohort_size",
+            ]
+        ]
+        gdf_cohorts = gdf_cohorts.sort_values("cohort_label")
+
+        gdf_cohorts.columns = [
+            "Cohort",
+            "Country",
+            "Region",
+            "District",
+            "Taxon",
+            "Year",
+            "Quarter",
+            "Sample Size",
+        ]
+
+        return (
+            gdf_cohorts.style.format(
+                subset="Quarter", formatter=lambda v: v if v > 0 else ""
+            )
+            .set_caption(caption)
+            .hide(axis="index")
+        )
+
 
 def stack_overlaps(df, start_col, end_col, tolerance=10000):
     """Stack overlapping objects."""

@@ -151,3 +151,14 @@ The history saving thread hit an unexpected error (OperationalError('no such tab
 ```
 c.HistoryManager.enabled = False
 ```
+
+If you see this error when running a workflow:
+
+```
+zmq.error.ZMQError: Address already in use (addr='tcp://127.0.0.1:35329')
+Error occurred while starting new kernel client for kernel 4c3bee68-1502-4eaf-b2a7-8c3d24d3c15c: Kernel died before replying to kernel_info
+...
+RuntimeError: Kernel died before replying to kernel_info
+```
+
+...this is a transient error that happens occasionally when two parallel jobs launch at the same time. It can be ignored, simply rerun the workflow and it should pick up where it left off.
