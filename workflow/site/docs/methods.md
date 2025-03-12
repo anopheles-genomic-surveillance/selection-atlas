@@ -1,3 +1,3 @@
 # Methods
 
-TODO
+TODO migrate to notebook
