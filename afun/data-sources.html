@@ -16,22 +16,20 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -39,11 +37,10 @@
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e02c4bef" />
   
-  <!-- So that users can add custom icons -->
-  <script src="_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
@@ -70,7 +67,6 @@
     <link rel="prev" title="Zambia / Sinda / funestus / 2016 / Q3" href="cohort/ZM-03_Sinda_fune_2016_Q3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -86,8 +82,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="search.html"
       method="get">
@@ -95,6 +102,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -102,8 +110,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -119,8 +127,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -150,17 +157,21 @@
     
     
     <img src="_static/logo-afun.png" class="logo__image only-light" alt="Malaria Vector Selection Atlas — *Anopheles funestus* - Home"/>
-    <img src="_static/logo-afun.png" class="logo__image only-dark pst-js-only" alt="Malaria Vector Selection Atlas — *Anopheles funestus* - Home"/>
+    <script>document.write(`<img src="_static/logo-afun.png" class="logo__image only-dark" alt="Malaria Vector Selection Atlas — *Anopheles funestus* - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -254,14 +265,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -405,16 +411,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 
 </div></div>
       
@@ -1082,81 +1096,81 @@ were obtained.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_bd03e th {
+#T_c3b5c th {
   text-align: left;
 }
-#T_bd03e td {
+#T_c3b5c td {
   text-align: left;
   font-weight: normal;
 }
 </style>
-<table id="T_bd03e">
+<table id="T_c3b5c">
   <caption>Table 1. Sample sets included in the current analysis version.</caption>
   <thead>
     <tr>
-      <th id="T_bd03e_level0_col0" class="col_heading level0 col0" >Sample Set</th>
-      <th id="T_bd03e_level0_col1" class="col_heading level0 col1" >Study</th>
-      <th id="T_bd03e_level0_col2" class="col_heading level0 col2" >Contributor</th>
-      <th id="T_bd03e_level0_col3" class="col_heading level0 col3" >Data Release</th>
-      <th id="T_bd03e_level0_col4" class="col_heading level0 col4" >Citation</th>
+      <th id="T_c3b5c_level0_col0" class="col_heading level0 col0" >Sample Set</th>
+      <th id="T_c3b5c_level0_col1" class="col_heading level0 col1" >Study</th>
+      <th id="T_c3b5c_level0_col2" class="col_heading level0 col2" >Contributor</th>
+      <th id="T_c3b5c_level0_col3" class="col_heading level0 col3" >Data Release</th>
+      <th id="T_c3b5c_level0_col4" class="col_heading level0 col4" >Citation</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_bd03e_row0_col0" class="data row0 col0" >1229-VO-GH-DADZIE-VMF00095</td>
-      <td id="T_bd03e_row0_col1" class="data row0 col1" ><a href="https://www.malariagen.net/partner_study/1229-VO-GH-DADZIE" target="_blank">1229-VO-GH-DADZIE</a></td>
-      <td id="T_bd03e_row0_col2" class="data row0 col2" >Samuel Dadzie</td>
-      <td id="T_bd03e_row0_col3" class="data row0 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
-      <td id="T_bd03e_row0_col4" class="data row0 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
+      <td id="T_c3b5c_row0_col0" class="data row0 col0" >1229-VO-GH-DADZIE-VMF00095</td>
+      <td id="T_c3b5c_row0_col1" class="data row0 col1" ><a href="https://www.malariagen.net/partner_study/1229-VO-GH-DADZIE" target="_blank">1229-VO-GH-DADZIE</a></td>
+      <td id="T_c3b5c_row0_col2" class="data row0 col2" >Samuel Dadzie</td>
+      <td id="T_c3b5c_row0_col3" class="data row0 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
+      <td id="T_c3b5c_row0_col4" class="data row0 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
     </tr>
     <tr>
-      <td id="T_bd03e_row1_col0" class="data row1 col0" >1230-VO-GA-CF-AYALA-VMF00045</td>
-      <td id="T_bd03e_row1_col1" class="data row1 col1" ><a href="https://www.malariagen.net/partner_study/1230-VO-MULTI-AYALA" target="_blank">1230-VO-MULTI-AYALA</a></td>
-      <td id="T_bd03e_row1_col2" class="data row1 col2" >Diego Ayala</td>
-      <td id="T_bd03e_row1_col3" class="data row1 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
-      <td id="T_bd03e_row1_col4" class="data row1 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
+      <td id="T_c3b5c_row1_col0" class="data row1 col0" >1230-VO-GA-CF-AYALA-VMF00045</td>
+      <td id="T_c3b5c_row1_col1" class="data row1 col1" ><a href="https://www.malariagen.net/partner_study/1230-VO-MULTI-AYALA" target="_blank">1230-VO-MULTI-AYALA</a></td>
+      <td id="T_c3b5c_row1_col2" class="data row1 col2" >Diego Ayala</td>
+      <td id="T_c3b5c_row1_col3" class="data row1 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
+      <td id="T_c3b5c_row1_col4" class="data row1 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
     </tr>
     <tr>
-      <td id="T_bd03e_row2_col0" class="data row2 col0" >1231-VO-MULTI-WONDJI-VMF00043</td>
-      <td id="T_bd03e_row2_col1" class="data row2 col1" ><a href="https://www.malariagen.net/partner_study/1231-VO-MULTI-WONDJI" target="_blank">1231-VO-MULTI-WONDJI</a></td>
-      <td id="T_bd03e_row2_col2" class="data row2 col2" >Charles Wondji</td>
-      <td id="T_bd03e_row2_col3" class="data row2 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
-      <td id="T_bd03e_row2_col4" class="data row2 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
+      <td id="T_c3b5c_row2_col0" class="data row2 col0" >1231-VO-MULTI-WONDJI-VMF00043</td>
+      <td id="T_c3b5c_row2_col1" class="data row2 col1" ><a href="https://www.malariagen.net/partner_study/1231-VO-MULTI-WONDJI" target="_blank">1231-VO-MULTI-WONDJI</a></td>
+      <td id="T_c3b5c_row2_col2" class="data row2 col2" >Charles Wondji</td>
+      <td id="T_c3b5c_row2_col3" class="data row2 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
+      <td id="T_c3b5c_row2_col4" class="data row2 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
     </tr>
     <tr>
-      <td id="T_bd03e_row3_col0" class="data row3 col0" >1232-VO-KE-OCHOMO-VMF00044</td>
-      <td id="T_bd03e_row3_col1" class="data row3 col1" ><a href="https://www.malariagen.net/partner_study/1232-VO-KE-OCHOMO" target="_blank">1232-VO-KE-OCHOMO</a></td>
-      <td id="T_bd03e_row3_col2" class="data row3 col2" >Eric Ochomo</td>
-      <td id="T_bd03e_row3_col3" class="data row3 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
-      <td id="T_bd03e_row3_col4" class="data row3 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
+      <td id="T_c3b5c_row3_col0" class="data row3 col0" >1232-VO-KE-OCHOMO-VMF00044</td>
+      <td id="T_c3b5c_row3_col1" class="data row3 col1" ><a href="https://www.malariagen.net/partner_study/1232-VO-KE-OCHOMO" target="_blank">1232-VO-KE-OCHOMO</a></td>
+      <td id="T_c3b5c_row3_col2" class="data row3 col2" >Eric Ochomo</td>
+      <td id="T_c3b5c_row3_col3" class="data row3 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
+      <td id="T_c3b5c_row3_col4" class="data row3 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
     </tr>
     <tr>
-      <td id="T_bd03e_row4_col0" class="data row4 col0" >1235-VO-MZ-PAAIJMANS-VMF00094</td>
-      <td id="T_bd03e_row4_col1" class="data row4 col1" ><a href="https://www.malariagen.net/partner_study/1235-VO-MZ-PAAIJMANS" target="_blank">1235-VO-MZ-PAAIJMANS</a></td>
-      <td id="T_bd03e_row4_col2" class="data row4 col2" >Krijn Paaijmans</td>
-      <td id="T_bd03e_row4_col3" class="data row4 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
-      <td id="T_bd03e_row4_col4" class="data row4 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
+      <td id="T_c3b5c_row4_col0" class="data row4 col0" >1235-VO-MZ-PAAIJMANS-VMF00094</td>
+      <td id="T_c3b5c_row4_col1" class="data row4 col1" ><a href="https://www.malariagen.net/partner_study/1235-VO-MZ-PAAIJMANS" target="_blank">1235-VO-MZ-PAAIJMANS</a></td>
+      <td id="T_c3b5c_row4_col2" class="data row4 col2" >Krijn Paaijmans</td>
+      <td id="T_c3b5c_row4_col3" class="data row4 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
+      <td id="T_c3b5c_row4_col4" class="data row4 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
     </tr>
     <tr>
-      <td id="T_bd03e_row5_col0" class="data row5 col0" >1236-VO-TZ-OKUMU-VMF00090</td>
-      <td id="T_bd03e_row5_col1" class="data row5 col1" ><a href="https://www.malariagen.net/partner_study/1236-VO-TZ-OKUMU" target="_blank">1236-VO-TZ-OKUMU</a></td>
-      <td id="T_bd03e_row5_col2" class="data row5 col2" >Fredros Okumu</td>
-      <td id="T_bd03e_row5_col3" class="data row5 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
-      <td id="T_bd03e_row5_col4" class="data row5 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
+      <td id="T_c3b5c_row5_col0" class="data row5 col0" >1236-VO-TZ-OKUMU-VMF00090</td>
+      <td id="T_c3b5c_row5_col1" class="data row5 col1" ><a href="https://www.malariagen.net/partner_study/1236-VO-TZ-OKUMU" target="_blank">1236-VO-TZ-OKUMU</a></td>
+      <td id="T_c3b5c_row5_col2" class="data row5 col2" >Fredros Okumu</td>
+      <td id="T_c3b5c_row5_col3" class="data row5 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
+      <td id="T_c3b5c_row5_col4" class="data row5 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
     </tr>
     <tr>
-      <td id="T_bd03e_row6_col0" class="data row6 col0" >1240-VO-CD-KOEKEMOER-VMF00099</td>
-      <td id="T_bd03e_row6_col1" class="data row6 col1" ><a href="https://www.malariagen.net/partner_study/1240-VO-MULTI-KOEKEMOER" target="_blank">1240-VO-MULTI-KOEKEMOER</a></td>
-      <td id="T_bd03e_row6_col2" class="data row6 col2" >Lizette Koekemoer</td>
-      <td id="T_bd03e_row6_col3" class="data row6 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
-      <td id="T_bd03e_row6_col4" class="data row6 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
+      <td id="T_c3b5c_row6_col0" class="data row6 col0" >1240-VO-CD-KOEKEMOER-VMF00099</td>
+      <td id="T_c3b5c_row6_col1" class="data row6 col1" ><a href="https://www.malariagen.net/partner_study/1240-VO-MULTI-KOEKEMOER" target="_blank">1240-VO-MULTI-KOEKEMOER</a></td>
+      <td id="T_c3b5c_row6_col2" class="data row6 col2" >Lizette Koekemoer</td>
+      <td id="T_c3b5c_row6_col3" class="data row6 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
+      <td id="T_c3b5c_row6_col4" class="data row6 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
     </tr>
     <tr>
-      <td id="T_bd03e_row7_col0" class="data row7 col0" >1240-VO-MZ-KOEKEMOER-VMF00101</td>
-      <td id="T_bd03e_row7_col1" class="data row7 col1" ><a href="https://www.malariagen.net/partner_study/1240-VO-MULTI-KOEKEMOER" target="_blank">1240-VO-MULTI-KOEKEMOER</a></td>
-      <td id="T_bd03e_row7_col2" class="data row7 col2" >Lizette Koekemoer</td>
-      <td id="T_bd03e_row7_col3" class="data row7 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
-      <td id="T_bd03e_row7_col4" class="data row7 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
+      <td id="T_c3b5c_row7_col0" class="data row7 col0" >1240-VO-MZ-KOEKEMOER-VMF00101</td>
+      <td id="T_c3b5c_row7_col1" class="data row7 col1" ><a href="https://www.malariagen.net/partner_study/1240-VO-MULTI-KOEKEMOER" target="_blank">1240-VO-MULTI-KOEKEMOER</a></td>
+      <td id="T_c3b5c_row7_col2" class="data row7 col2" >Lizette Koekemoer</td>
+      <td id="T_c3b5c_row7_col3" class="data row7 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
+      <td id="T_c3b5c_row7_col4" class="data row7 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
     </tr>
   </tbody>
 </table>
@@ -1253,7 +1267,7 @@ By <a href="https://github.com/anopheles-genomic-surveillance/selection-atlas/gr
   <div class="footer-item">
     
 <div class="extra_footer">
-  <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">The Malaria Vector Selection Atlas</span> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a></p> <p>Citation: Sanjay Nagi, Alistair Miles et al. (2025) An atlas of recent positive selection in major African malaria vectors. In prep.</p> <p>GWSS analysis version ─ afun/2025.03.05. Site version ─ <a href='https://github.com/anopheles-genomic-surveillance/selection-atlas/releases/tag/v2025.03.11-1' target='_blank'>v2025.03.11-1</a> (11 March 2025). See also <a href='https://github.com/anopheles-genomic-surveillance/selection-atlas/releases' target='_blank'>release notes</a>.</p>
+  <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">The Malaria Vector Selection Atlas</span> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a></p> <p>Citation: Sanjay Nagi, Alistair Miles et al. (2025) An atlas of recent positive selection in major African malaria vectors. In prep.</p> <p>GWSS analysis version ─ afun/2025.03.05. Site version ─ <a href='https://github.com/anopheles-genomic-surveillance/selection-atlas/releases/tag/v2025.03.12-1' target='_blank'>v2025.03.12-1</a> (12 March 2025). See also <a href='https://github.com/anopheles-genomic-surveillance/selection-atlas/releases' target='_blank'>release notes</a>.</p>
 
 </div>
   </div>
@@ -1267,8 +1281,8 @@ By <a href="https://github.com/anopheles-genomic-surveillance/selection-atlas/gr
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

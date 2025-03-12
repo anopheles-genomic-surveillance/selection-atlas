@@ -16,22 +16,20 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -39,11 +37,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e02c4bef" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -61,7 +58,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script type="application/vnd.jupyter.widget-state+json">{"state": {"0674430098b149f98e7636161065f8b6": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_2a90bf19c3f8467ca351ee75ddfaaa98", "placeholder": "\u200b", "style": "IPY_MODEL_80a36b080cc34213a6152d651678f8dc", "tabbable": null, "tooltip": null, "value": "<strong>Morrumbene, Inhambane (MZ-I), Mozambique</strong>. Cohorts analysed:<br/><li><a href=\"../cohort/MZ-I_Morrumbene_gamb_2004_Q1.html\">gambiae / 2004 / Q1 (n=49)</a></li><li><a href=\"../cohort/MZ-I_Morrumbene_gamb_2004_Q2.html\">gambiae / 2004 / Q2 (n=22)</a></li></ul>"}}, "2a90bf19c3f8467ca351ee75ddfaaa98": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "40008d0155e741b9805b8cde87bdbaec": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletAttributionControlModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletAttributionControlModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletAttributionControlView", "options": ["position", "prefix"], "position": "bottomright", "prefix": "ipyleaflet"}}, "5b56926169f341b4ab710da598dddd31": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "cursor": "grab"}}, "645fb4b9d68f44fe870dbc7837d10972": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletGeoJSONModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletGeoJSONModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletGeoJSONView", "base": false, "bottom": false, "data": {"features": [{"geometry": {"coordinates": [[[34.792649503000064, -23.61510061699994], [34.87895884300008, -23.61457631899998], [35.011549099000035, -23.600518225999963], [35.03675327000008, -23.62444482999996], [35.054278303000046, -23.644699946999935], [35.09988387100003, -23.680966557999966], [35.147888882000075, -23.737085823999962], [35.156159288000026, -23.749128268999982], [35.15594174600005, -23.786232066999958], [35.165810590000035, -23.78092418999995], [35.17456550500003, -23.780716318999964], [35.18397273200003, -23.786256924999975], [35.18962241600008, -23.786781433999977], [35.20467169900007, -23.792301072999976], [35.242182409000065, -23.79188156099997], [35.271315843000025, -23.800307892999967], [35.271899516000076, -23.79596506799993], [35.28135636800005, -23.788892975999943], [35.28382835700006, -23.78403137999993], [35.287215883000044, -23.782766875999982], [35.29384596600005, -23.783096845999978], [35.29631413100003, -23.781670222999935], [35.30817431600008, -23.76610130199998], [35.30986046000004, -23.761373212999956], [35.31326324300005, -23.761018469999954], [35.31433138800003, -23.75834449699994], [35.31622733300003, -23.75801454599997], [35.31573524100003, -23.752411019999954], [35.31992005400008, -23.75168436399997], [35.32249502600007, -23.752792486999965], [35.32644332900003, -23.749893463999967], [35.32694306900004, -23.748495444999946], [35.32362040400005, -23.74589584399996], [35.32798832800006, -23.74461989899993], [35.324917440000036, -23.74153013399996], [35.32636325000004, -23.737883459999978], [35.32495178800008, -23.735981919999972], [35.324059126000066, -23.73749818799996], [35.32239970100005, -23.736313776999964], [35.324654241000076, -23.733927802999972], [35.32421173300003, -23.731280527999957], [35.326771449000034, -23.731358730999943], [35.32436051700006, -23.728501652999967], [35.32847666400005, -23.72777690399994], [35.32874370800005, -23.72432858199994], [35.32087383100003, -23.720466366999972], [35.322910931000024, -23.717149649999953], [35.32308642400005, -23.712204130999964], [35.32527229800007, -23.70981434099997], [35.328339379000056, -23.710121416999982], [35.33049089800005, -23.71571350199997], [35.332585212000026, -23.715442675999952], [35.341637717000026, -23.70118212899996], [35.337414772000045, -23.695992469999965], [35.33765512600007, -23.68729918899993], [35.33388613000005, -23.685424345999934], [35.33450413000003, -23.683482758999958], [35.33782679900003, -23.68406447999996], [35.340359815000056, -23.682820953999965], [35.34328955800004, -23.685313745999963], [35.35017523000005, -23.68562845899993], [35.351441743000066, -23.68313567599995], [35.34970985700005, -23.674287902999936], [35.351876650000065, -23.674499612999966], [35.35204069100007, -23.672687718999953], [35.35393282200005, -23.672233795999944], [35.35804514400007, -23.675014586999964], [35.36231006500003, -23.675306406999937], [35.36326757900002, -23.67334193299996], [35.36149753800004, -23.667509534999965], [35.36542293300005, -23.671608240999944], [35.368982118000076, -23.67275832499996], [35.375974608000035, -23.671865743999945], [35.37725255400005, -23.67353841199997], [35.37940027600007, -23.672661077999976], [35.383829227000035, -23.67482391799996], [35.39461742100008, -23.67363190599997], [35.39476620500005, -23.670849216999954], [35.39013126200007, -23.66643009099994], [35.390352525000026, -23.664192877999938], [35.39656296600003, -23.670614628999942], [35.39605940300004, -23.675388493999947], [35.39114214500006, -23.678844433999927], [35.39748228000008, -23.688767910999957], [35.39449140600004, -23.722246003999942], [35.39637589000006, -23.72849418499993], [35.401159611000026, -23.732045509999978], [35.39649032600005, -23.731273059999978], [35.39496440800008, -23.733771564999927], [35.397390597000026, -23.73735340099995], [35.400694190000024, -23.738930709999977], [35.40433730800004, -23.73724470299993], [35.408945575000075, -23.731143393999957], [35.413542419000066, -23.717300525999974], [35.417994330000056, -23.692130452999947], [35.42293831500007, -23.67955972699997], [35.43120496500006, -23.669411225999966], [35.430598427000064, -23.66495586999997], [35.434333140000035, -23.64739384799998], [35.43184975600008, -23.63354905799997], [35.42574994700004, -23.625858980999965], [35.422434929000076, -23.616616402999966], [35.42135921200003, -23.597320673999945], [35.421828504000075, -23.568769027999963], [35.425326779000045, -23.521032284999933], [35.42469356000004, -23.50788555799994], [35.426589533000026, -23.497054245999948], [35.431880668000076, -23.482301621999966], [35.410666685000024, -23.484044807999965], [35.40115643900003, -23.486245761999953], [35.364774913000076, -23.48368232799993], [35.34184809300007, -23.486457336999933], [35.341302588000076, -23.48312535699995], [35.34689127200005, -23.469662038999957], [35.34705151300005, -23.46174692099993], [35.34581552900005, -23.460528180999972], [35.32867573300007, -23.460798972999953], [35.31862379800003, -23.459143451999978], [35.31435125400003, -23.456543849999946], [35.306202916000075, -23.446345726999937], [35.297165722000045, -23.441310547999933], [35.28749145200004, -23.43902944699994], [35.27301818300003, -23.440219542999955], [35.181090023000024, -23.307779400999948], [35.17349099900008, -23.303144748999955], [35.16487723600005, -23.301548355999955], [35.15972728500003, -23.302152944999932], [35.16578511500006, -23.315959591999956], [35.13657534200007, -23.324694763999958], [35.12547047500004, -23.344148761999975], [35.11508282400007, -23.348735691999934], [35.10643850500003, -23.36143037599993], [35.095841034000046, -23.36882669499994], [35.09574565100007, -23.37410979699996], [35.10055223200004, -23.38889295799993], [35.119454415000064, -23.40341294999996], [35.12715261100004, -23.413046522999934], [35.129338430000075, -23.431255112999963], [35.135831144000065, -23.445412698999974], [35.13420222700006, -23.448157237999965], [35.12742718000004, -23.448922032999974], [35.127633133000074, -23.466259002999948], [35.121567593000066, -23.482701454999983], [35.118515767000076, -23.484170035999966], [35.11566613200006, -23.48306191399996], [35.111752196000054, -23.47305261799994], [35.10836087000007, -23.469075978999967], [35.10446217200007, -23.467101958999933], [35.090130059000046, -23.465005850999944], [35.07915876900006, -23.461496471999965], [35.06723759100004, -23.460905195999942], [35.06346096600004, -23.459329792999938], [35.057113196000046, -23.452009724999982], [35.053523495000036, -23.450201636999964], [35.02527888700007, -23.448877936999963], [35.020758380000075, -23.447067938999965], [35.02027009200003, -23.44580151899993], [35.07505438900006, -23.339773400999945], [35.11442680000005, -23.30394757299996], [35.10996735000003, -23.294167148999975], [35.10920443700007, -23.27797453599993], [35.11192821100008, -23.269216417999928], [35.10480223400003, -23.258776077999983], [35.10052207900003, -23.249335146999954], [35.086441783000055, -23.231397364999964], [35.09304909300005, -23.186853397999982], [35.07911754400004, -23.1804201899999], [35.068611677000035, -23.168944202999967], [35.07038555400004, -23.16660018899995], [35.06815011700007, -23.15831696799995], [35.04232801200004, -23.111539534999963], [35.02724443900007, -23.089905490999968], [35.00577875500005, -23.06419753299997], [34.961988983000026, -23.043288183999948], [34.908917478000035, -23.167908205999936], [34.82055117200008, -23.471791260999964], [34.820593091000035, -23.487669177999976], [34.80957977400004, -23.50836670999996], [34.792649503000064, -23.61510061699994]]], "type": "Polygon"}, "id": "46", "properties": {"admin1_iso": "MZ-I", "admin1_name": "Inhambane", "admin2_name": "Morrumbene", "country": "Mozambique", "country_alpha2": "MZ", "country_alpha3": "MOZ", "representative_lat": -23.42215081799995, "representative_lon": 34.93373822713072, "shapeGroup": "MOZ", "shapeID": "85939544B21407249252205", "shapeType": "ADM2"}, "type": "Feature"}], "type": "FeatureCollection"}, "hover_style": {}, "layers": [], "name": "Level 2 administrative units", "options": [], "pane": "", "point_style": {}, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "style": {"color": "black", "fillColor": "#3366cc", "fillOpacity": 0.6, "opacity": 1, "weight": 1}, "subitems": [], "visible": true}}, "698d1bb02c074dbda32c3f02b7df4fc5": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "7700e7b4b98a4944a6f17fe744959dbf": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapModel", "state": {"_dom_classes": [], "_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletMapView", "bottom": 0.0, "bounce_at_zoom_limits": true, "box_zoom": true, "center": [-23.42215081799995, 34.93373822713072], "close_popup_on_click": true, "controls": ["IPY_MODEL_a1766baa7056454eb594ca85c95329a2", "IPY_MODEL_40008d0155e741b9805b8cde87bdbaec"], "crs": {"custom": false, "name": "EPSG3857"}, "default_style": "IPY_MODEL_5b56926169f341b4ab710da598dddd31", "double_click_zoom": true, "dragging": true, "dragging_style": "IPY_MODEL_ee5329de68a9451ebbd2ebedb99e3a2d", "east": 0.0, "fullscreen": false, "inertia": true, "inertia_deceleration": 3000, "inertia_max_speed": 1500, "interpolation": "bilinear", "keyboard": true, "keyboard_pan_offset": 80, "keyboard_zoom_offset": 1, "layers": ["IPY_MODEL_ce1de9f2e3c747b3935672bc54cdb282", "IPY_MODEL_645fb4b9d68f44fe870dbc7837d10972", "IPY_MODEL_93e600fc816c45d484f74da982da7e46"], "layout": "IPY_MODEL_698d1bb02c074dbda32c3f02b7df4fc5", "left": 9007199254740991.0, "max_zoom": null, "min_zoom": null, "modisdate": "2025-03-10", "north": 0.0, "options": ["bounce_at_zoom_limits", "box_zoom", "center", "close_popup_on_click", "double_click_zoom", "dragging", "fullscreen", "inertia", "inertia_deceleration", "inertia_max_speed", "interpolation", "keyboard", "keyboard_pan_offset", "keyboard_zoom_offset", "max_zoom", "min_zoom", "prefer_canvas", "scroll_wheel_zoom", "tap", "tap_tolerance", "touch_zoom", "world_copy_jump", "zoom", "zoom_animation_threshold", "zoom_delta", "zoom_snap"], "panes": {}, "prefer_canvas": false, "right": 0.0, "scroll_wheel_zoom": false, "south": 0.0, "style": "IPY_MODEL_e90895638ebb484fb72e961c2d28e907", "tabbable": null, "tap": true, "tap_tolerance": 15, "tooltip": null, "top": 9007199254740991.0, "touch_zoom": true, "west": 0.0, "window_url": "", "world_copy_jump": false, "zoom": 4.0, "zoom_animation_threshold": 4, "zoom_delta": 1.0, "zoom_snap": 1.0}}, "80a36b080cc34213a6152d651678f8dc": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "93e600fc816c45d484f74da982da7e46": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMarkerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMarkerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletMarkerView", "alt": "", "base": false, "bottom": false, "draggable": false, "icon": null, "keyboard": true, "location": [-23.42215081799995, 34.93373822713072], "name": "", "opacity": 1.0, "options": ["alt", "draggable", "keyboard", "rise_offset", "rise_on_hover", "rotation_angle", "rotation_origin", "title", "z_index_offset"], "pane": "", "popup": "IPY_MODEL_0674430098b149f98e7636161065f8b6", "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "rise_offset": 250, "rise_on_hover": false, "rotation_angle": 0.0, "rotation_origin": "", "subitems": [], "title": "Morrumbene, Inhambane, Mozambique - 2 cohorts analysed - click for more information", "visible": true, "z_index_offset": 0}}, "a1766baa7056454eb594ca85c95329a2": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletZoomControlModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletZoomControlModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletZoomControlView", "options": ["position", "zoom_in_text", "zoom_in_title", "zoom_out_text", "zoom_out_title"], "position": "topleft", "zoom_in_text": "+", "zoom_in_title": "Zoom in", "zoom_out_text": "-", "zoom_out_title": "Zoom out"}}, "ce1de9f2e3c747b3935672bc54cdb282": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletTileLayerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletTileLayerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletTileLayerView", "attribution": "Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC", "base": true, "bottom": true, "bounds": null, "detect_retina": false, "loading": false, "max_native_zoom": null, "max_zoom": 16, "min_native_zoom": null, "min_zoom": 1, "name": "Esri.NatGeoWorldMap", "no_wrap": false, "opacity": 1.0, "options": ["attribution", "bounds", "detect_retina", "max_native_zoom", "max_zoom", "min_native_zoom", "min_zoom", "no_wrap", "tile_size", "tms", "zoom_offset"], "pane": "", "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "show_loading": false, "subitems": [], "tile_size": 256, "tms": false, "url": "https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}", "visible": true, "zoom_offset": 0}}, "e90895638ebb484fb72e961c2d28e907": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "cursor": "grab"}}, "ee5329de68a9451ebbd2ebedb99e3a2d": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "cursor": "move"}}}, "version_major": 2, "version_minor": 0}</script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"21b43bc9178c42fdb6a8894a4d87cb65": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_7fb7b6e7c70247b199c44309fca27e75", "placeholder": "\u200b", "style": "IPY_MODEL_e6ae26ec47854089ab85a59028b2ec7c", "tabbable": null, "tooltip": null, "value": "<strong>Morrumbene, Inhambane (MZ-I), Mozambique</strong>. Cohorts analysed:<br/><li><a href=\"../cohort/MZ-I_Morrumbene_gamb_2004_Q1.html\">gambiae / 2004 / Q1 (n=49)</a></li><li><a href=\"../cohort/MZ-I_Morrumbene_gamb_2004_Q2.html\">gambiae / 2004 / Q2 (n=22)</a></li></ul>"}}, "37202d64cade4db38ec7c903c9860023": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMarkerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMarkerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletMarkerView", "alt": "", "base": false, "bottom": false, "draggable": false, "icon": null, "keyboard": true, "location": [-23.42215081799995, 34.93373822713072], "name": "", "opacity": 1.0, "options": ["alt", "draggable", "keyboard", "rise_offset", "rise_on_hover", "rotation_angle", "rotation_origin", "title", "z_index_offset"], "pane": "", "popup": "IPY_MODEL_21b43bc9178c42fdb6a8894a4d87cb65", "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "rise_offset": 250, "rise_on_hover": false, "rotation_angle": 0.0, "rotation_origin": "", "subitems": [], "title": "Morrumbene, Inhambane, Mozambique - 2 cohorts analysed - click for more information", "visible": true, "z_index_offset": 0}}, "44ac109af8d24196bbc69fcf1e24ce45": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletAttributionControlModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletAttributionControlModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletAttributionControlView", "options": ["position", "prefix"], "position": "bottomright", "prefix": "ipyleaflet"}}, "4664daaf52fa40e2a3b56fa20e33e550": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletZoomControlModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletZoomControlModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletZoomControlView", "options": ["position", "zoom_in_text", "zoom_in_title", "zoom_out_text", "zoom_out_title"], "position": "topleft", "zoom_in_text": "+", "zoom_in_title": "Zoom in", "zoom_out_text": "-", "zoom_out_title": "Zoom out"}}, "7fb7b6e7c70247b199c44309fca27e75": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "84468509c7cc45a781896adb41d92023": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "cursor": "grab"}}, "8f346bcf0ec04ecbab6ad716b9d9a4f3": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "cursor": "move"}}, "8fdd6c06a7f24b0d93fd44c546f6fe7c": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "a8b5058b4acd4fbca494b65641664351": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "cursor": "grab"}}, "c216f3aff7df4d8d923b27ce049e9d26": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletGeoJSONModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletGeoJSONModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletGeoJSONView", "base": false, "bottom": false, "data": {"features": [{"geometry": {"coordinates": [[[34.792649503000064, -23.61510061699994], [34.87895884300008, -23.61457631899998], [35.011549099000035, -23.600518225999963], [35.03675327000008, -23.62444482999996], [35.054278303000046, -23.644699946999935], [35.09988387100003, -23.680966557999966], [35.147888882000075, -23.737085823999962], [35.156159288000026, -23.749128268999982], [35.15594174600005, -23.786232066999958], [35.165810590000035, -23.78092418999995], [35.17456550500003, -23.780716318999964], [35.18397273200003, -23.786256924999975], [35.18962241600008, -23.786781433999977], [35.20467169900007, -23.792301072999976], [35.242182409000065, -23.79188156099997], [35.271315843000025, -23.800307892999967], [35.271899516000076, -23.79596506799993], [35.28135636800005, -23.788892975999943], [35.28382835700006, -23.78403137999993], [35.287215883000044, -23.782766875999982], [35.29384596600005, -23.783096845999978], [35.29631413100003, -23.781670222999935], [35.30817431600008, -23.76610130199998], [35.30986046000004, -23.761373212999956], [35.31326324300005, -23.761018469999954], [35.31433138800003, -23.75834449699994], [35.31622733300003, -23.75801454599997], [35.31573524100003, -23.752411019999954], [35.31992005400008, -23.75168436399997], [35.32249502600007, -23.752792486999965], [35.32644332900003, -23.749893463999967], [35.32694306900004, -23.748495444999946], [35.32362040400005, -23.74589584399996], [35.32798832800006, -23.74461989899993], [35.324917440000036, -23.74153013399996], [35.32636325000004, -23.737883459999978], [35.32495178800008, -23.735981919999972], [35.324059126000066, -23.73749818799996], [35.32239970100005, -23.736313776999964], [35.324654241000076, -23.733927802999972], [35.32421173300003, -23.731280527999957], [35.326771449000034, -23.731358730999943], [35.32436051700006, -23.728501652999967], [35.32847666400005, -23.72777690399994], [35.32874370800005, -23.72432858199994], [35.32087383100003, -23.720466366999972], [35.322910931000024, -23.717149649999953], [35.32308642400005, -23.712204130999964], [35.32527229800007, -23.70981434099997], [35.328339379000056, -23.710121416999982], [35.33049089800005, -23.71571350199997], [35.332585212000026, -23.715442675999952], [35.341637717000026, -23.70118212899996], [35.337414772000045, -23.695992469999965], [35.33765512600007, -23.68729918899993], [35.33388613000005, -23.685424345999934], [35.33450413000003, -23.683482758999958], [35.33782679900003, -23.68406447999996], [35.340359815000056, -23.682820953999965], [35.34328955800004, -23.685313745999963], [35.35017523000005, -23.68562845899993], [35.351441743000066, -23.68313567599995], [35.34970985700005, -23.674287902999936], [35.351876650000065, -23.674499612999966], [35.35204069100007, -23.672687718999953], [35.35393282200005, -23.672233795999944], [35.35804514400007, -23.675014586999964], [35.36231006500003, -23.675306406999937], [35.36326757900002, -23.67334193299996], [35.36149753800004, -23.667509534999965], [35.36542293300005, -23.671608240999944], [35.368982118000076, -23.67275832499996], [35.375974608000035, -23.671865743999945], [35.37725255400005, -23.67353841199997], [35.37940027600007, -23.672661077999976], [35.383829227000035, -23.67482391799996], [35.39461742100008, -23.67363190599997], [35.39476620500005, -23.670849216999954], [35.39013126200007, -23.66643009099994], [35.390352525000026, -23.664192877999938], [35.39656296600003, -23.670614628999942], [35.39605940300004, -23.675388493999947], [35.39114214500006, -23.678844433999927], [35.39748228000008, -23.688767910999957], [35.39449140600004, -23.722246003999942], [35.39637589000006, -23.72849418499993], [35.401159611000026, -23.732045509999978], [35.39649032600005, -23.731273059999978], [35.39496440800008, -23.733771564999927], [35.397390597000026, -23.73735340099995], [35.400694190000024, -23.738930709999977], [35.40433730800004, -23.73724470299993], [35.408945575000075, -23.731143393999957], [35.413542419000066, -23.717300525999974], [35.417994330000056, -23.692130452999947], [35.42293831500007, -23.67955972699997], [35.43120496500006, -23.669411225999966], [35.430598427000064, -23.66495586999997], [35.434333140000035, -23.64739384799998], [35.43184975600008, -23.63354905799997], [35.42574994700004, -23.625858980999965], [35.422434929000076, -23.616616402999966], [35.42135921200003, -23.597320673999945], [35.421828504000075, -23.568769027999963], [35.425326779000045, -23.521032284999933], [35.42469356000004, -23.50788555799994], [35.426589533000026, -23.497054245999948], [35.431880668000076, -23.482301621999966], [35.410666685000024, -23.484044807999965], [35.40115643900003, -23.486245761999953], [35.364774913000076, -23.48368232799993], [35.34184809300007, -23.486457336999933], [35.341302588000076, -23.48312535699995], [35.34689127200005, -23.469662038999957], [35.34705151300005, -23.46174692099993], [35.34581552900005, -23.460528180999972], [35.32867573300007, -23.460798972999953], [35.31862379800003, -23.459143451999978], [35.31435125400003, -23.456543849999946], [35.306202916000075, -23.446345726999937], [35.297165722000045, -23.441310547999933], [35.28749145200004, -23.43902944699994], [35.27301818300003, -23.440219542999955], [35.181090023000024, -23.307779400999948], [35.17349099900008, -23.303144748999955], [35.16487723600005, -23.301548355999955], [35.15972728500003, -23.302152944999932], [35.16578511500006, -23.315959591999956], [35.13657534200007, -23.324694763999958], [35.12547047500004, -23.344148761999975], [35.11508282400007, -23.348735691999934], [35.10643850500003, -23.36143037599993], [35.095841034000046, -23.36882669499994], [35.09574565100007, -23.37410979699996], [35.10055223200004, -23.38889295799993], [35.119454415000064, -23.40341294999996], [35.12715261100004, -23.413046522999934], [35.129338430000075, -23.431255112999963], [35.135831144000065, -23.445412698999974], [35.13420222700006, -23.448157237999965], [35.12742718000004, -23.448922032999974], [35.127633133000074, -23.466259002999948], [35.121567593000066, -23.482701454999983], [35.118515767000076, -23.484170035999966], [35.11566613200006, -23.48306191399996], [35.111752196000054, -23.47305261799994], [35.10836087000007, -23.469075978999967], [35.10446217200007, -23.467101958999933], [35.090130059000046, -23.465005850999944], [35.07915876900006, -23.461496471999965], [35.06723759100004, -23.460905195999942], [35.06346096600004, -23.459329792999938], [35.057113196000046, -23.452009724999982], [35.053523495000036, -23.450201636999964], [35.02527888700007, -23.448877936999963], [35.020758380000075, -23.447067938999965], [35.02027009200003, -23.44580151899993], [35.07505438900006, -23.339773400999945], [35.11442680000005, -23.30394757299996], [35.10996735000003, -23.294167148999975], [35.10920443700007, -23.27797453599993], [35.11192821100008, -23.269216417999928], [35.10480223400003, -23.258776077999983], [35.10052207900003, -23.249335146999954], [35.086441783000055, -23.231397364999964], [35.09304909300005, -23.186853397999982], [35.07911754400004, -23.1804201899999], [35.068611677000035, -23.168944202999967], [35.07038555400004, -23.16660018899995], [35.06815011700007, -23.15831696799995], [35.04232801200004, -23.111539534999963], [35.02724443900007, -23.089905490999968], [35.00577875500005, -23.06419753299997], [34.961988983000026, -23.043288183999948], [34.908917478000035, -23.167908205999936], [34.82055117200008, -23.471791260999964], [34.820593091000035, -23.487669177999976], [34.80957977400004, -23.50836670999996], [34.792649503000064, -23.61510061699994]]], "type": "Polygon"}, "id": "46", "properties": {"admin1_iso": "MZ-I", "admin1_name": "Inhambane", "admin2_name": "Morrumbene", "country": "Mozambique", "country_alpha2": "MZ", "country_alpha3": "MOZ", "representative_lat": -23.42215081799995, "representative_lon": 34.93373822713072, "shapeGroup": "MOZ", "shapeID": "85939544B21407249252205", "shapeType": "ADM2"}, "type": "Feature"}], "type": "FeatureCollection"}, "hover_style": {}, "layers": [], "name": "Level 2 administrative units", "options": [], "pane": "", "point_style": {}, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "style": {"color": "black", "fillColor": "#3366cc", "fillOpacity": 0.6, "opacity": 1, "weight": 1}, "subitems": [], "visible": true}}, "e659924a0e20466c8ce7a86c2fae3eb2": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletTileLayerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletTileLayerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletTileLayerView", "attribution": "Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC", "base": true, "bottom": true, "bounds": null, "detect_retina": false, "loading": false, "max_native_zoom": null, "max_zoom": 16, "min_native_zoom": null, "min_zoom": 1, "name": "Esri.NatGeoWorldMap", "no_wrap": false, "opacity": 1.0, "options": ["attribution", "bounds", "detect_retina", "max_native_zoom", "max_zoom", "min_native_zoom", "min_zoom", "no_wrap", "tile_size", "tms", "zoom_offset"], "pane": "", "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "show_loading": false, "subitems": [], "tile_size": 256, "tms": false, "url": "https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}", "visible": true, "zoom_offset": 0}}, "e6ae26ec47854089ab85a59028b2ec7c": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "f6e2e032d0694d77889a2b12ad4af9ff": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapModel", "state": {"_dom_classes": [], "_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletMapView", "bottom": 0.0, "bounce_at_zoom_limits": true, "box_zoom": true, "center": [-23.42215081799995, 34.93373822713072], "close_popup_on_click": true, "controls": ["IPY_MODEL_4664daaf52fa40e2a3b56fa20e33e550", "IPY_MODEL_44ac109af8d24196bbc69fcf1e24ce45"], "crs": {"custom": false, "name": "EPSG3857"}, "default_style": "IPY_MODEL_84468509c7cc45a781896adb41d92023", "double_click_zoom": true, "dragging": true, "dragging_style": "IPY_MODEL_8f346bcf0ec04ecbab6ad716b9d9a4f3", "east": 0.0, "fullscreen": false, "inertia": true, "inertia_deceleration": 3000, "inertia_max_speed": 1500, "interpolation": "bilinear", "keyboard": true, "keyboard_pan_offset": 80, "keyboard_zoom_offset": 1, "layers": ["IPY_MODEL_e659924a0e20466c8ce7a86c2fae3eb2", "IPY_MODEL_c216f3aff7df4d8d923b27ce049e9d26", "IPY_MODEL_37202d64cade4db38ec7c903c9860023"], "layout": "IPY_MODEL_8fdd6c06a7f24b0d93fd44c546f6fe7c", "left": 9007199254740991.0, "max_zoom": null, "min_zoom": null, "modisdate": "2025-03-11", "north": 0.0, "options": ["bounce_at_zoom_limits", "box_zoom", "center", "close_popup_on_click", "double_click_zoom", "dragging", "fullscreen", "inertia", "inertia_deceleration", "inertia_max_speed", "interpolation", "keyboard", "keyboard_pan_offset", "keyboard_zoom_offset", "max_zoom", "min_zoom", "prefer_canvas", "scroll_wheel_zoom", "tap", "tap_tolerance", "touch_zoom", "world_copy_jump", "zoom", "zoom_animation_threshold", "zoom_delta", "zoom_snap"], "panes": {}, "prefer_canvas": false, "right": 0.0, "scroll_wheel_zoom": false, "south": 0.0, "style": "IPY_MODEL_a8b5058b4acd4fbca494b65641664351", "tabbable": null, "tap": true, "tap_tolerance": 15, "tooltip": null, "top": 9007199254740991.0, "touch_zoom": true, "west": 0.0, "window_url": "", "world_copy_jump": false, "zoom": 4.0, "zoom_animation_threshold": 4, "zoom_delta": 1.0, "zoom_snap": 1.0}}}, "version_major": 2, "version_minor": 0}</script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'country/MZ';</script>
@@ -73,7 +70,6 @@
     <link rel="prev" title="Malawi / Chikwawa / arabiensis / 2015 / Q2" href="../cohort/MW-S_Chikwawa_arab_2015_Q2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -89,8 +85,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -98,6 +105,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -105,8 +113,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -122,8 +130,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -153,17 +160,21 @@
     
     
     <img src="../_static/logo-agam.png" class="logo__image only-light" alt="Malaria Vector Selection Atlas — *Anopheles gambiae* complex - Home"/>
-    <img src="../_static/logo-agam.png" class="logo__image only-dark pst-js-only" alt="Malaria Vector Selection Atlas — *Anopheles gambiae* complex - Home"/>
+    <script>document.write(`<img src="../_static/logo-agam.png" class="logo__image only-dark" alt="Malaria Vector Selection Atlas — *Anopheles gambiae* complex - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -327,14 +338,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -478,16 +484,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -865,46 +879,46 @@ function(Bokeh) {
 <p>Click on a map marker to see more information about mosquito <a class="reference internal" href="../glossary.html#term-cohort"><span class="xref std std-term">cohort</span></a>s for which results are available.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "7700e7b4b98a4944a6f17fe744959dbf", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "f6e2e032d0694d77889a2b12ad4af9ff", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_0bd29">
+<table id="T_763ed">
   <caption>Table 1. Cohorts analysed within Mozambique.</caption>
   <thead>
     <tr>
-      <th id="T_0bd29_level0_col0" class="col_heading level0 col0" >Cohort</th>
-      <th id="T_0bd29_level0_col1" class="col_heading level0 col1" >Country</th>
-      <th id="T_0bd29_level0_col2" class="col_heading level0 col2" >Region</th>
-      <th id="T_0bd29_level0_col3" class="col_heading level0 col3" >District</th>
-      <th id="T_0bd29_level0_col4" class="col_heading level0 col4" >Taxon</th>
-      <th id="T_0bd29_level0_col5" class="col_heading level0 col5" >Year</th>
-      <th id="T_0bd29_level0_col6" class="col_heading level0 col6" >Quarter</th>
-      <th id="T_0bd29_level0_col7" class="col_heading level0 col7" >Sample Size</th>
+      <th id="T_763ed_level0_col0" class="col_heading level0 col0" >Cohort</th>
+      <th id="T_763ed_level0_col1" class="col_heading level0 col1" >Country</th>
+      <th id="T_763ed_level0_col2" class="col_heading level0 col2" >Region</th>
+      <th id="T_763ed_level0_col3" class="col_heading level0 col3" >District</th>
+      <th id="T_763ed_level0_col4" class="col_heading level0 col4" >Taxon</th>
+      <th id="T_763ed_level0_col5" class="col_heading level0 col5" >Year</th>
+      <th id="T_763ed_level0_col6" class="col_heading level0 col6" >Quarter</th>
+      <th id="T_763ed_level0_col7" class="col_heading level0 col7" >Sample Size</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_0bd29_row0_col0" class="data row0 col0" ><a href="../cohort/MZ-I_Morrumbene_gamb_2004_Q1.html" rel="noopener noreferrer" target="_blank">Mozambique / Morrumbene / gambiae / 2004 / Q1</a></td>
-      <td id="T_0bd29_row0_col1" class="data row0 col1" >Mozambique</td>
-      <td id="T_0bd29_row0_col2" class="data row0 col2" >Inhambane</td>
-      <td id="T_0bd29_row0_col3" class="data row0 col3" >Morrumbene</td>
-      <td id="T_0bd29_row0_col4" class="data row0 col4" >gambiae</td>
-      <td id="T_0bd29_row0_col5" class="data row0 col5" >2004</td>
-      <td id="T_0bd29_row0_col6" class="data row0 col6" >1</td>
-      <td id="T_0bd29_row0_col7" class="data row0 col7" >49</td>
+      <td id="T_763ed_row0_col0" class="data row0 col0" ><a href="../cohort/MZ-I_Morrumbene_gamb_2004_Q1.html" rel="noopener noreferrer" target="_blank">Mozambique / Morrumbene / gambiae / 2004 / Q1</a></td>
+      <td id="T_763ed_row0_col1" class="data row0 col1" >Mozambique</td>
+      <td id="T_763ed_row0_col2" class="data row0 col2" >Inhambane</td>
+      <td id="T_763ed_row0_col3" class="data row0 col3" >Morrumbene</td>
+      <td id="T_763ed_row0_col4" class="data row0 col4" >gambiae</td>
+      <td id="T_763ed_row0_col5" class="data row0 col5" >2004</td>
+      <td id="T_763ed_row0_col6" class="data row0 col6" >1</td>
+      <td id="T_763ed_row0_col7" class="data row0 col7" >49</td>
     </tr>
     <tr>
-      <td id="T_0bd29_row1_col0" class="data row1 col0" ><a href="../cohort/MZ-I_Morrumbene_gamb_2004_Q2.html" rel="noopener noreferrer" target="_blank">Mozambique / Morrumbene / gambiae / 2004 / Q2</a></td>
-      <td id="T_0bd29_row1_col1" class="data row1 col1" >Mozambique</td>
-      <td id="T_0bd29_row1_col2" class="data row1 col2" >Inhambane</td>
-      <td id="T_0bd29_row1_col3" class="data row1 col3" >Morrumbene</td>
-      <td id="T_0bd29_row1_col4" class="data row1 col4" >gambiae</td>
-      <td id="T_0bd29_row1_col5" class="data row1 col5" >2004</td>
-      <td id="T_0bd29_row1_col6" class="data row1 col6" >2</td>
-      <td id="T_0bd29_row1_col7" class="data row1 col7" >22</td>
+      <td id="T_763ed_row1_col0" class="data row1 col0" ><a href="../cohort/MZ-I_Morrumbene_gamb_2004_Q2.html" rel="noopener noreferrer" target="_blank">Mozambique / Morrumbene / gambiae / 2004 / Q2</a></td>
+      <td id="T_763ed_row1_col1" class="data row1 col1" >Mozambique</td>
+      <td id="T_763ed_row1_col2" class="data row1 col2" >Inhambane</td>
+      <td id="T_763ed_row1_col3" class="data row1 col3" >Morrumbene</td>
+      <td id="T_763ed_row1_col4" class="data row1 col4" >gambiae</td>
+      <td id="T_763ed_row1_col5" class="data row1 col5" >2004</td>
+      <td id="T_763ed_row1_col6" class="data row1 col6" >2</td>
+      <td id="T_763ed_row1_col7" class="data row1 col7" >22</td>
     </tr>
   </tbody>
 </table>
@@ -970,8 +984,7 @@ function(Bokeh) {
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1021,7 +1034,7 @@ By <a href="https://github.com/anopheles-genomic-surveillance/selection-atlas/gr
   <div class="footer-item">
     
 <div class="extra_footer">
-  <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">The Malaria Vector Selection Atlas</span> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a></p> <p>Citation: Sanjay Nagi, Alistair Miles et al. (2025) An atlas of recent positive selection in major African malaria vectors. In prep.</p> <p>GWSS analysis version ─ agam/2025.03.05. Site version ─ <a href='https://github.com/anopheles-genomic-surveillance/selection-atlas/releases/tag/v2025.03.11-1' target='_blank'>v2025.03.11-1</a> (11 March 2025). See also <a href='https://github.com/anopheles-genomic-surveillance/selection-atlas/releases' target='_blank'>release notes</a>.</p>
+  <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">The Malaria Vector Selection Atlas</span> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a></p> <p>Citation: Sanjay Nagi, Alistair Miles et al. (2025) An atlas of recent positive selection in major African malaria vectors. In prep.</p> <p>GWSS analysis version ─ agam/2025.03.05. Site version ─ <a href='https://github.com/anopheles-genomic-surveillance/selection-atlas/releases/tag/v2025.03.12-1' target='_blank'>v2025.03.12-1</a> (12 March 2025). See also <a href='https://github.com/anopheles-genomic-surveillance/selection-atlas/releases' target='_blank'>release notes</a>.</p>
 
 </div>
   </div>
@@ -1035,8 +1048,8 @@ By <a href="https://github.com/anopheles-genomic-surveillance/selection-atlas/gr
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

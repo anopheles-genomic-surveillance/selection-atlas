@@ -16,22 +16,20 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
@@ -39,11 +37,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e02c4bef" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -61,7 +58,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script type="application/vnd.jupyter.widget-state+json">{"state": {"0cf6b7f8a5ec46e9b7aef246bee8948d": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletGeoJSONModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletGeoJSONModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletGeoJSONView", "base": false, "bottom": false, "data": {"features": [{"geometry": {"coordinates": [[[9.468440359435078, 0.349913278674933], [9.505343535076122, 0.381725949792781], [9.511532393305345, 0.394598479536228], [9.52391010886447, 0.450791780316479], [9.522672337758252, 0.460198547724872], [9.516483479529029, 0.469357756055672], [9.50484842681351, 0.474803767080232], [9.493213372299351, 0.475051312667972], [9.477617449885429, 0.479507135945596], [9.46845794028178, 0.484953137976959], [9.461526419208951, 0.492874588691336], [9.45583266924234, 0.506984647623426], [9.45261446328692, 0.53718502227099], [9.449643811013118, 0.546344122683138], [9.431819899169056, 0.551294981378362], [9.419442183609931, 0.545106407334856], [9.40582669514589, 0.534957129967609], [9.387507675039217, 0.517629058434352], [9.372794939934579, 0.501304609620092], [9.388484363962277, 0.479913375901617], [9.396599827220314, 0.466265107149013], [9.405453060110688, 0.455567797316064], [9.42795502580384, 0.408720774644109], [9.462999072549223, 0.361135724234316], [9.468440359435078, 0.349913278674933]]], "type": "Polygon"}, "id": "20", "properties": {"admin1_iso": "GA-1", "admin1_name": "Estuaire", "admin2_name": "Libreville", "country": "Gabon", "country_alpha2": "GA", "country_alpha3": "GAB", "representative_lat": 0.429756277480294, "representative_lon": 9.468563841999513, "shapeGroup": "GAB", "shapeID": "22940354B30258708069849", "shapeType": "ADM2"}, "type": "Feature"}], "type": "FeatureCollection"}, "hover_style": {}, "layers": [], "name": "Level 2 administrative units", "options": [], "pane": "", "point_style": {}, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "style": {"color": "black", "fillColor": "#3366cc", "fillOpacity": 0.6, "opacity": 1, "weight": 1}, "subitems": [], "visible": true}}, "1ff07b11d7694c71a5a92615c5c00f77": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletAttributionControlModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletAttributionControlModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletAttributionControlView", "options": ["position", "prefix"], "position": "bottomright", "prefix": "ipyleaflet"}}, "3ebd3e5a118f4d009821b0171efb4dee": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "4ab8f2e6738c475cb83968b4072d7bf0": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletZoomControlModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletZoomControlModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletZoomControlView", "options": ["position", "zoom_in_text", "zoom_in_title", "zoom_out_text", "zoom_out_title"], "position": "topleft", "zoom_in_text": "+", "zoom_in_title": "Zoom in", "zoom_out_text": "-", "zoom_out_title": "Zoom out"}}, "5e7c00163ad641078ee63d456a2b2f6b": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_aaff539cddd94ec99b90150d63ef0f31", "placeholder": "\u200b", "style": "IPY_MODEL_8467611c0f844ee8911f13f183391658", "tabbable": null, "tooltip": null, "value": "<strong>Libreville, Estuaire (GA-1), Gabon</strong>. Cohorts analysed:<br/><li><a href=\"../cohort/GA-1_Libreville_gamb_2000_Q4.html\">gambiae / 2000 / Q4 (n=69)</a></li></ul>"}}, "8467611c0f844ee8911f13f183391658": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "8548145e47014f1db83224516522447c": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "cursor": "grab"}}, "86eb74ac22bb45999f0389410f083e58": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "cursor": "move"}}, "a92489f393b841a49438f51b7f76b785": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMarkerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMarkerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletMarkerView", "alt": "", "base": false, "bottom": false, "draggable": false, "icon": null, "keyboard": true, "location": [0.429756277480294, 9.468563841999513], "name": "", "opacity": 1.0, "options": ["alt", "draggable", "keyboard", "rise_offset", "rise_on_hover", "rotation_angle", "rotation_origin", "title", "z_index_offset"], "pane": "", "popup": "IPY_MODEL_5e7c00163ad641078ee63d456a2b2f6b", "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "rise_offset": 250, "rise_on_hover": false, "rotation_angle": 0.0, "rotation_origin": "", "subitems": [], "title": "Libreville, Estuaire, Gabon - 1 cohort analysed - click for more information", "visible": true, "z_index_offset": 0}}, "aaff539cddd94ec99b90150d63ef0f31": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "af0dbf00a2614afdb488f4266ad8b563": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapModel", "state": {"_dom_classes": [], "_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletMapView", "bottom": 0.0, "bounce_at_zoom_limits": true, "box_zoom": true, "center": [0.429756277480294, 9.468563841999513], "close_popup_on_click": true, "controls": ["IPY_MODEL_4ab8f2e6738c475cb83968b4072d7bf0", "IPY_MODEL_1ff07b11d7694c71a5a92615c5c00f77"], "crs": {"custom": false, "name": "EPSG3857"}, "default_style": "IPY_MODEL_e290e1f145e044baa55f32531b48d5f1", "double_click_zoom": true, "dragging": true, "dragging_style": "IPY_MODEL_86eb74ac22bb45999f0389410f083e58", "east": 0.0, "fullscreen": false, "inertia": true, "inertia_deceleration": 3000, "inertia_max_speed": 1500, "interpolation": "bilinear", "keyboard": true, "keyboard_pan_offset": 80, "keyboard_zoom_offset": 1, "layers": ["IPY_MODEL_cea541f4e2e046189d8c4159a3417dfa", "IPY_MODEL_0cf6b7f8a5ec46e9b7aef246bee8948d", "IPY_MODEL_a92489f393b841a49438f51b7f76b785"], "layout": "IPY_MODEL_3ebd3e5a118f4d009821b0171efb4dee", "left": 9007199254740991.0, "max_zoom": null, "min_zoom": null, "modisdate": "2025-03-10", "north": 0.0, "options": ["bounce_at_zoom_limits", "box_zoom", "center", "close_popup_on_click", "double_click_zoom", "dragging", "fullscreen", "inertia", "inertia_deceleration", "inertia_max_speed", "interpolation", "keyboard", "keyboard_pan_offset", "keyboard_zoom_offset", "max_zoom", "min_zoom", "prefer_canvas", "scroll_wheel_zoom", "tap", "tap_tolerance", "touch_zoom", "world_copy_jump", "zoom", "zoom_animation_threshold", "zoom_delta", "zoom_snap"], "panes": {}, "prefer_canvas": false, "right": 0.0, "scroll_wheel_zoom": false, "south": 0.0, "style": "IPY_MODEL_8548145e47014f1db83224516522447c", "tabbable": null, "tap": true, "tap_tolerance": 15, "tooltip": null, "top": 9007199254740991.0, "touch_zoom": true, "west": 0.0, "window_url": "", "world_copy_jump": false, "zoom": 4.0, "zoom_animation_threshold": 4, "zoom_delta": 1.0, "zoom_snap": 1.0}}, "cea541f4e2e046189d8c4159a3417dfa": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletTileLayerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletTileLayerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletTileLayerView", "attribution": "Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC", "base": true, "bottom": true, "bounds": null, "detect_retina": false, "loading": false, "max_native_zoom": null, "max_zoom": 16, "min_native_zoom": null, "min_zoom": 1, "name": "Esri.NatGeoWorldMap", "no_wrap": false, "opacity": 1.0, "options": ["attribution", "bounds", "detect_retina", "max_native_zoom", "max_zoom", "min_native_zoom", "min_zoom", "no_wrap", "tile_size", "tms", "zoom_offset"], "pane": "", "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "show_loading": false, "subitems": [], "tile_size": 256, "tms": false, "url": "https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}", "visible": true, "zoom_offset": 0}}, "e290e1f145e044baa55f32531b48d5f1": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "cursor": "grab"}}}, "version_major": 2, "version_minor": 0}</script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"04eed394fa23435f82958bee95351ba6": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"_dom_classes": [], "_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLModel", "_view_count": null, "_view_module": "@jupyter-widgets/controls", "_view_module_version": "2.0.0", "_view_name": "HTMLView", "description": "", "description_allow_html": false, "layout": "IPY_MODEL_ddac3bd5fbdf4d09983bf1f8ae2b9c0c", "placeholder": "\u200b", "style": "IPY_MODEL_af85bab0a783452da25a539f7695aa2e", "tabbable": null, "tooltip": null, "value": "<strong>Libreville, Estuaire (GA-1), Gabon</strong>. Cohorts analysed:<br/><li><a href=\"../cohort/GA-1_Libreville_gamb_2000_Q4.html\">gambiae / 2000 / Q4 (n=69)</a></li></ul>"}}, "3314126d2262423697c8e4e4a9e63841": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMarkerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMarkerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletMarkerView", "alt": "", "base": false, "bottom": false, "draggable": false, "icon": null, "keyboard": true, "location": [0.429756277480294, 9.468563841999513], "name": "", "opacity": 1.0, "options": ["alt", "draggable", "keyboard", "rise_offset", "rise_on_hover", "rotation_angle", "rotation_origin", "title", "z_index_offset"], "pane": "", "popup": "IPY_MODEL_04eed394fa23435f82958bee95351ba6", "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "rise_offset": 250, "rise_on_hover": false, "rotation_angle": 0.0, "rotation_origin": "", "subitems": [], "title": "Libreville, Estuaire, Gabon - 1 cohort analysed - click for more information", "visible": true, "z_index_offset": 0}}, "4caa8424d37f4d38aa4f7c3142e004d0": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "cursor": "move"}}, "671f2bd5513d4efeaa301278d8f784d0": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "cursor": "grab"}}, "77b833160b01480094b845d36429dc1a": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletGeoJSONModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletGeoJSONModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletGeoJSONView", "base": false, "bottom": false, "data": {"features": [{"geometry": {"coordinates": [[[9.468440359435078, 0.349913278674933], [9.505343535076122, 0.381725949792781], [9.511532393305345, 0.394598479536228], [9.52391010886447, 0.450791780316479], [9.522672337758252, 0.460198547724872], [9.516483479529029, 0.469357756055672], [9.50484842681351, 0.474803767080232], [9.493213372299351, 0.475051312667972], [9.477617449885429, 0.479507135945596], [9.46845794028178, 0.484953137976959], [9.461526419208951, 0.492874588691336], [9.45583266924234, 0.506984647623426], [9.45261446328692, 0.53718502227099], [9.449643811013118, 0.546344122683138], [9.431819899169056, 0.551294981378362], [9.419442183609931, 0.545106407334856], [9.40582669514589, 0.534957129967609], [9.387507675039217, 0.517629058434352], [9.372794939934579, 0.501304609620092], [9.388484363962277, 0.479913375901617], [9.396599827220314, 0.466265107149013], [9.405453060110688, 0.455567797316064], [9.42795502580384, 0.408720774644109], [9.462999072549223, 0.361135724234316], [9.468440359435078, 0.349913278674933]]], "type": "Polygon"}, "id": "20", "properties": {"admin1_iso": "GA-1", "admin1_name": "Estuaire", "admin2_name": "Libreville", "country": "Gabon", "country_alpha2": "GA", "country_alpha3": "GAB", "representative_lat": 0.429756277480294, "representative_lon": 9.468563841999513, "shapeGroup": "GAB", "shapeID": "22940354B30258708069849", "shapeType": "ADM2"}, "type": "Feature"}], "type": "FeatureCollection"}, "hover_style": {}, "layers": [], "name": "Level 2 administrative units", "options": [], "pane": "", "point_style": {}, "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "style": {"color": "black", "fillColor": "#3366cc", "fillOpacity": 0.6, "opacity": 1, "weight": 1}, "subitems": [], "visible": true}}, "8d3a9bfdd24e433a9673a3f184029781": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletTileLayerModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletTileLayerModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletTileLayerView", "attribution": "Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC", "base": true, "bottom": true, "bounds": null, "detect_retina": false, "loading": false, "max_native_zoom": null, "max_zoom": 16, "min_native_zoom": null, "min_zoom": 1, "name": "Esri.NatGeoWorldMap", "no_wrap": false, "opacity": 1.0, "options": ["attribution", "bounds", "detect_retina", "max_native_zoom", "max_zoom", "min_native_zoom", "min_zoom", "no_wrap", "tile_size", "tms", "zoom_offset"], "pane": "", "popup": null, "popup_max_height": null, "popup_max_width": 300, "popup_min_width": 50, "show_loading": false, "subitems": [], "tile_size": 256, "tms": false, "url": "https://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}", "visible": true, "zoom_offset": 0}}, "a66d14125b9647519d7de7754447edaf": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletZoomControlModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletZoomControlModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletZoomControlView", "options": ["position", "zoom_in_text", "zoom_in_title", "zoom_out_text", "zoom_out_title"], "position": "topleft", "zoom_in_text": "+", "zoom_in_title": "Zoom in", "zoom_out_text": "-", "zoom_out_title": "Zoom out"}}, "af85bab0a783452da25a539f7695aa2e": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"_model_module": "@jupyter-widgets/controls", "_model_module_version": "2.0.0", "_model_name": "HTMLStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "background": null, "description_width": "", "font_size": null, "text_color": null}}, "bc30c77fad7146f791463303f2f23e2b": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapModel", "state": {"_dom_classes": [], "_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletMapView", "bottom": 0.0, "bounce_at_zoom_limits": true, "box_zoom": true, "center": [0.429756277480294, 9.468563841999513], "close_popup_on_click": true, "controls": ["IPY_MODEL_a66d14125b9647519d7de7754447edaf", "IPY_MODEL_c216aba095be40298f4da4c977fc8a75"], "crs": {"custom": false, "name": "EPSG3857"}, "default_style": "IPY_MODEL_671f2bd5513d4efeaa301278d8f784d0", "double_click_zoom": true, "dragging": true, "dragging_style": "IPY_MODEL_4caa8424d37f4d38aa4f7c3142e004d0", "east": 0.0, "fullscreen": false, "inertia": true, "inertia_deceleration": 3000, "inertia_max_speed": 1500, "interpolation": "bilinear", "keyboard": true, "keyboard_pan_offset": 80, "keyboard_zoom_offset": 1, "layers": ["IPY_MODEL_8d3a9bfdd24e433a9673a3f184029781", "IPY_MODEL_77b833160b01480094b845d36429dc1a", "IPY_MODEL_3314126d2262423697c8e4e4a9e63841"], "layout": "IPY_MODEL_d3247b44c02743339b63efee9861f79e", "left": 9007199254740991.0, "max_zoom": null, "min_zoom": null, "modisdate": "2025-03-11", "north": 0.0, "options": ["bounce_at_zoom_limits", "box_zoom", "center", "close_popup_on_click", "double_click_zoom", "dragging", "fullscreen", "inertia", "inertia_deceleration", "inertia_max_speed", "interpolation", "keyboard", "keyboard_pan_offset", "keyboard_zoom_offset", "max_zoom", "min_zoom", "prefer_canvas", "scroll_wheel_zoom", "tap", "tap_tolerance", "touch_zoom", "world_copy_jump", "zoom", "zoom_animation_threshold", "zoom_delta", "zoom_snap"], "panes": {}, "prefer_canvas": false, "right": 0.0, "scroll_wheel_zoom": false, "south": 0.0, "style": "IPY_MODEL_be74b9f8f2164410b702eea8627b8bc3", "tabbable": null, "tap": true, "tap_tolerance": 15, "tooltip": null, "top": 9007199254740991.0, "touch_zoom": true, "west": 0.0, "window_url": "", "world_copy_jump": false, "zoom": 4.0, "zoom_animation_threshold": 4, "zoom_delta": 1.0, "zoom_snap": 1.0}}, "be74b9f8f2164410b702eea8627b8bc3": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletMapStyleModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletMapStyleModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "StyleView", "cursor": "grab"}}, "c216aba095be40298f4da4c977fc8a75": {"model_module": "jupyter-leaflet", "model_module_version": "^0.19", "model_name": "LeafletAttributionControlModel", "state": {"_model_module": "jupyter-leaflet", "_model_module_version": "^0.19", "_model_name": "LeafletAttributionControlModel", "_view_count": null, "_view_module": "jupyter-leaflet", "_view_module_version": "^0.19", "_view_name": "LeafletAttributionControlView", "options": ["position", "prefix"], "position": "bottomright", "prefix": "ipyleaflet"}}, "d3247b44c02743339b63efee9861f79e": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}, "ddac3bd5fbdf4d09983bf1f8ae2b9c0c": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {"_model_module": "@jupyter-widgets/base", "_model_module_version": "2.0.0", "_model_name": "LayoutModel", "_view_count": null, "_view_module": "@jupyter-widgets/base", "_view_module_version": "2.0.0", "_view_name": "LayoutView", "align_content": null, "align_items": null, "align_self": null, "border_bottom": null, "border_left": null, "border_right": null, "border_top": null, "bottom": null, "display": null, "flex": null, "flex_flow": null, "grid_area": null, "grid_auto_columns": null, "grid_auto_flow": null, "grid_auto_rows": null, "grid_column": null, "grid_gap": null, "grid_row": null, "grid_template_areas": null, "grid_template_columns": null, "grid_template_rows": null, "height": null, "justify_content": null, "justify_items": null, "left": null, "margin": null, "max_height": null, "max_width": null, "min_height": null, "min_width": null, "object_fit": null, "object_position": null, "order": null, "overflow": null, "padding": null, "right": null, "top": null, "visibility": null, "width": null}}}, "version_major": 2, "version_minor": 0}</script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'country/GA';</script>
@@ -73,7 +70,6 @@
     <link rel="prev" title="Cameroon / Lom-Et-Djerem / gambiae / 2009 / Q3" href="../cohort/CM-ES_Lom-Et-Djerem_gamb_2009_Q3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -89,8 +85,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -98,6 +105,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -105,8 +113,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -122,8 +130,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -153,17 +160,21 @@
     
     
     <img src="../_static/logo-agam.png" class="logo__image only-light" alt="Malaria Vector Selection Atlas — *Anopheles gambiae* complex - Home"/>
-    <img src="../_static/logo-agam.png" class="logo__image only-dark pst-js-only" alt="Malaria Vector Selection Atlas — *Anopheles gambiae* complex - Home"/>
+    <script>document.write(`<img src="../_static/logo-agam.png" class="logo__image only-dark" alt="Malaria Vector Selection Atlas — *Anopheles gambiae* complex - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -327,14 +338,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -478,16 +484,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -865,36 +879,36 @@ function(Bokeh) {
 <p>Click on a map marker to see more information about mosquito <a class="reference internal" href="../glossary.html#term-cohort"><span class="xref std std-term">cohort</span></a>s for which results are available.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "af0dbf00a2614afdb488f4266ad8b563", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "bc30c77fad7146f791463303f2f23e2b", "version_major": 2, "version_minor": 0}</script></div>
 </div>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
 </style>
-<table id="T_5181a">
+<table id="T_c970c">
   <caption>Table 1. Cohorts analysed within Gabon.</caption>
   <thead>
     <tr>
-      <th id="T_5181a_level0_col0" class="col_heading level0 col0" >Cohort</th>
-      <th id="T_5181a_level0_col1" class="col_heading level0 col1" >Country</th>
-      <th id="T_5181a_level0_col2" class="col_heading level0 col2" >Region</th>
-      <th id="T_5181a_level0_col3" class="col_heading level0 col3" >District</th>
-      <th id="T_5181a_level0_col4" class="col_heading level0 col4" >Taxon</th>
-      <th id="T_5181a_level0_col5" class="col_heading level0 col5" >Year</th>
-      <th id="T_5181a_level0_col6" class="col_heading level0 col6" >Quarter</th>
-      <th id="T_5181a_level0_col7" class="col_heading level0 col7" >Sample Size</th>
+      <th id="T_c970c_level0_col0" class="col_heading level0 col0" >Cohort</th>
+      <th id="T_c970c_level0_col1" class="col_heading level0 col1" >Country</th>
+      <th id="T_c970c_level0_col2" class="col_heading level0 col2" >Region</th>
+      <th id="T_c970c_level0_col3" class="col_heading level0 col3" >District</th>
+      <th id="T_c970c_level0_col4" class="col_heading level0 col4" >Taxon</th>
+      <th id="T_c970c_level0_col5" class="col_heading level0 col5" >Year</th>
+      <th id="T_c970c_level0_col6" class="col_heading level0 col6" >Quarter</th>
+      <th id="T_c970c_level0_col7" class="col_heading level0 col7" >Sample Size</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td id="T_5181a_row0_col0" class="data row0 col0" ><a href="../cohort/GA-1_Libreville_gamb_2000_Q4.html" rel="noopener noreferrer" target="_blank">Gabon / Libreville / gambiae / 2000 / Q4</a></td>
-      <td id="T_5181a_row0_col1" class="data row0 col1" >Gabon</td>
-      <td id="T_5181a_row0_col2" class="data row0 col2" >Estuaire</td>
-      <td id="T_5181a_row0_col3" class="data row0 col3" >Libreville</td>
-      <td id="T_5181a_row0_col4" class="data row0 col4" >gambiae</td>
-      <td id="T_5181a_row0_col5" class="data row0 col5" >2000</td>
-      <td id="T_5181a_row0_col6" class="data row0 col6" >4</td>
-      <td id="T_5181a_row0_col7" class="data row0 col7" >69</td>
+      <td id="T_c970c_row0_col0" class="data row0 col0" ><a href="../cohort/GA-1_Libreville_gamb_2000_Q4.html" rel="noopener noreferrer" target="_blank">Gabon / Libreville / gambiae / 2000 / Q4</a></td>
+      <td id="T_c970c_row0_col1" class="data row0 col1" >Gabon</td>
+      <td id="T_c970c_row0_col2" class="data row0 col2" >Estuaire</td>
+      <td id="T_c970c_row0_col3" class="data row0 col3" >Libreville</td>
+      <td id="T_c970c_row0_col4" class="data row0 col4" >gambiae</td>
+      <td id="T_c970c_row0_col5" class="data row0 col5" >2000</td>
+      <td id="T_c970c_row0_col6" class="data row0 col6" >4</td>
+      <td id="T_c970c_row0_col7" class="data row0 col7" >69</td>
     </tr>
   </tbody>
 </table>
@@ -960,8 +974,7 @@ function(Bokeh) {
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -1011,7 +1024,7 @@ By <a href="https://github.com/anopheles-genomic-surveillance/selection-atlas/gr
   <div class="footer-item">
     
 <div class="extra_footer">
-  <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">The Malaria Vector Selection Atlas</span> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a></p> <p>Citation: Sanjay Nagi, Alistair Miles et al. (2025) An atlas of recent positive selection in major African malaria vectors. In prep.</p> <p>GWSS analysis version ─ agam/2025.03.05. Site version ─ <a href='https://github.com/anopheles-genomic-surveillance/selection-atlas/releases/tag/v2025.03.11-1' target='_blank'>v2025.03.11-1</a> (11 March 2025). See also <a href='https://github.com/anopheles-genomic-surveillance/selection-atlas/releases' target='_blank'>release notes</a>.</p>
+  <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">The Malaria Vector Selection Atlas</span> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a></p> <p>Citation: Sanjay Nagi, Alistair Miles et al. (2025) An atlas of recent positive selection in major African malaria vectors. In prep.</p> <p>GWSS analysis version ─ agam/2025.03.05. Site version ─ <a href='https://github.com/anopheles-genomic-surveillance/selection-atlas/releases/tag/v2025.03.12-1' target='_blank'>v2025.03.12-1</a> (12 March 2025). See also <a href='https://github.com/anopheles-genomic-surveillance/selection-atlas/releases' target='_blank'>release notes</a>.</p>
 
 </div>
   </div>
@@ -1025,8 +1038,8 @@ By <a href="https://github.com/anopheles-genomic-surveillance/selection-atlas/gr
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
