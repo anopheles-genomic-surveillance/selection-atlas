@@ -42,7 +42,7 @@ If you are developing and need to add or upgrade a package, edit `workflow/commo
 
 ```
 mamba env create --file workflow/common/envs/selection-atlas-requirements.yaml
-conda env export -f workflow/common/envs/selection-atlas.yaml -n selection-atlas-requirements --override-channels --channel conda-forge --channel bioconda
+conda env export -f workflow/common/envs/selection-atlas.yaml -n selection-atlas-requirements --override-channels --channel conda-forge --channel bioconda --channel nodefaults
 sed -i "s/selection-atlas-requirements/selection-atlas/" workflow/common/envs/selection-atlas.yaml
 ```
 

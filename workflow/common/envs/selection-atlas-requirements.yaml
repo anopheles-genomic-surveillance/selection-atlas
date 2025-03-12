@@ -15,7 +15,10 @@ dependencies:
     - fsspec
     - gcsfs
     - jupyterlab
-    - jupyter-book
+    - jupyter-book==1.0.4
+    # work around https://github.com/executablebooks/sphinx-book-theme/issues/865
+    - sphinx-book-theme==1.1.4
+    - pydata-sphinx-theme==0.15.4
     - BioPython
     - google-cloud-sdk
     - bokeh
