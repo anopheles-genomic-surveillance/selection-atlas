@@ -24,6 +24,8 @@ def get_selection_atlas_site_files(wildcards):
             f"{setup.jb_source_dir}/_config.yml",
             f"{setup.jb_source_dir}/index.ipynb",
             f"{setup.jb_source_dir}/data-sources.ipynb",
+            f"{setup.jb_source_dir}/methods.ipynb",
+            f"{setup.jb_source_dir}/configuration.ipynb",
             f"{setup.jb_source_dir}/country/{{country}}.ipynb",
             f"{setup.jb_source_dir}/contig/{{contig}}.ipynb",
             f"{setup.jb_source_dir}/cohort/{{cohort}}.ipynb",
