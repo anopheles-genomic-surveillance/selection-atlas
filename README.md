@@ -25,6 +25,7 @@ The file `workflow/common/envs/selection-atlas.yaml` has a fully pinned conda en
 To create and activate an environment on your own computer:
 
 ```
+conda env remove --name selection-atlas
 mamba env create --file workflow/common/envs/selection-atlas.yaml
 conda activate selection-atlas
 pip install -e .  # install local Python sources in editable mode
@@ -33,6 +34,7 @@ pip install -e .  # install local Python sources in editable mode
 To create and activate an environment on datalab-bespin:
 
 ```
+mamba env remove --prefix=${HOME}/envs/selection-atlas
 mamba env create --prefix=${HOME}/envs/selection-atlas --file workflow/common/envs/selection-atlas.yaml
 conda activate ${HOME}/envs/selection-atlas
 pip install -e .  # install local Python sources in editable mode
