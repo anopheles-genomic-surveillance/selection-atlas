@@ -54,6 +54,10 @@ IR
   A situation where a population of mosquitoes becomes less susceptible to an insecticide which is being or has been used to control it. In the case of *Anopheles* mosquitoes, this can become a matter of public health concern when mosquitoes are less susceptible to insecticides used for {term}`vector control`.
 
 
+[MalariaGEN Python API](https://malariagen.github.io/malariagen-data-python/latest/index.html)
+  An open source software library for accessing and analysing data from the Malaria Genomic Epidemiology Network (MalariaGEN).
+
+
 [Malaria Vector Genome Observatory](https://malariagen.net/vobs)
   A collaborative project to sequence the genomes of thousands of *Anopheles* mosquitoes and use those data to benefit malaria vector surveillance and improve vector control.
 

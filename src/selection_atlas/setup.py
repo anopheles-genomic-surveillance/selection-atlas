@@ -81,7 +81,6 @@ class AtlasSetup:
         # These files are completely static, no dynamically-generated content.
         self.static_site_files = [
             "ir-alerts.ipynb",
-            "methods.md",
             "faq.md",
             "glossary.md",
             f"logo-{self.atlas_id}.png",

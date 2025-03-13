@@ -478,18 +478,14 @@ class AtlasPageUtils:
 
         return df_sources_style
 
-    def style_cohorts_table(self, gdf_cohorts, caption):
+    def style_cohorts_table(self, gdf_cohorts, caption, url_prefix="../"):
         gdf_cohorts = gdf_cohorts.reset_index()
-        gdf_cohorts["url"] = "../cohort/" + gdf_cohorts["cohort_id"] + ".html"
+        gdf_cohorts["url"] = url_prefix + "cohort/" + gdf_cohorts["cohort_id"] + ".html"
 
         def make_clickable(x):
             url = x["url"]
             name = x["cohort_label"]
-            return (
-                '<a href="{}" rel="noopener noreferrer" target="_blank">{}</a>'.format(
-                    url, name
-                )
-            )
+            return '<a href="{}">{}</a>'.format(url, name)
 
         gdf_cohorts["cohort_label"] = gdf_cohorts.apply(make_clickable, axis=1)
 
