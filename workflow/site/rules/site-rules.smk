@@ -31,32 +31,6 @@ rule home_page:
         """
 
 
-rule data_sources_page:
-    """
-    Generate the data sources page.
-    """
-    input:
-        nb=f"{workflow.basedir}/notebooks/data-sources-page.ipynb",
-        sample_set_citations=setup.sample_set_citations_file,
-        src=setup.site_src_files,
-        config_file=config_file,
-        kernel=setup.kernel_set_file,
-    output:
-        nb=f"{setup.site_results_dir}/notebooks/data-sources.ipynb",
-    conda:
-        setup.environment_file
-    log:
-        "logs/data_sources_page.log",
-    shell:
-        """
-        sleep "$((1+RANDOM%20)).$((RANDOM%999))"
-        papermill {input.nb} {output.nb} \
-            -k selection-atlas \
-            -p config_file {input.config_file} \
-            &> {log}
-        """
-
-
 rule methods_page:
     """
     Generate the methods page.
