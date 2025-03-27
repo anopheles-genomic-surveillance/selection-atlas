@@ -44,17 +44,23 @@ If you are developing and need to add or upgrade a package, edit `workflow/commo
 
 ```
 mamba env create --file workflow/common/envs/selection-atlas-requirements.yaml
-conda env export -f workflow/common/envs/selection-atlas.yaml -n selection-atlas-requirements --override-channels --channel conda-forge --channel bioconda --channel nodefaults --channel conda-forge/label/broken 
+conda env export -f workflow/common/envs/selection-atlas.yaml -n selection-atlas-requirements --override-channels --channel conda-forge --channel bioconda --channel nodefaults --channel conda-forge/label/broken
 sed -i "s/selection-atlas-requirements/selection-atlas/" workflow/common/envs/selection-atlas.yaml
 ```
 
 
 ## Pre-commit hooks
 
-There are several pre-commit hooks configured to automatically lint and format source code files, including Python files, Jupyter notebooks and Snakemake files. These will be automatically run before any code is committed if you install pre-commit hooks:
+There are several pre-commit hooks configured to automatically lint and format source code files, including Python files, Jupyter notebooks and Snakemake files. To install the pre-commit hooks:
 
 ```
 pre-commit install
+```
+
+These will be automatically run before any code is committed if you install pre-commit hooks. However, if you want to manually force linting of all files at any time:
+
+```
+pre-commit run --all-files
 ```
 
 
