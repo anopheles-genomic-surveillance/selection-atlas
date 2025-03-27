@@ -64,7 +64,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="FAQ" href="faq.html" />
-    <link rel="prev" title="Data sources" href="data-sources.html" />
+    <link rel="prev" title="Zambia / Sinda / funestus / 2016 / Q3" href="cohort/ZM-03_Sinda_fune_2016_Q3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -253,10 +253,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">About</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="data-sources.html">Data sources</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
 </ul>
 
     </div>
@@ -358,7 +358,7 @@
       
       
       
-      <li><a href="_sources/methods.md" target="_blank"
+      <li><a href="_sources/methods.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -368,7 +368,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.md</span>
+<span class="btn__text-container">.ipynb</span>
 </a>
 </li>
       
@@ -429,7 +429,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -445,6 +447,22 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-sources">Data sources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-inclusion-and-grouping-into-cohorts">Sample inclusion and grouping into cohorts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h12-and-g123-window-size-calibration">H12 and G123 window size calibration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h12-genome-wide-selection-scans">H12 genome-wide selection scans</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#g123-genome-wide-selection-scans">G123 genome-wide selection scans</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ihs-genome-wide-selection-scans">IHS genome-wide selection scans</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-detection-of-selection-signals">Automated detection of selection signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identification-of-selection-alerts">Identification of selection alerts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-report-generation">Web report generation</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -454,9 +472,972 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="methods">
+  <div class="cell tag_parameters tag_remove-input docutils container">
+</div>
+<div class="cell tag_injected-parameters tag_remove-input docutils container">
+</div>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/javascript">'use strict';
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  const force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+const JS_MIME_TYPE = 'application/javascript';
+  const HTML_MIME_TYPE = 'text/html';
+  const EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  const CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    const script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    function drop(id) {
+      const view = Bokeh.index.get_by_id(id)
+      if (view != null) {
+        view.model.document.clear()
+        Bokeh.index.delete(view)
+      }
+    }
+
+    const cell = handle.cell;
+
+    const id = cell.output_area._bokeh_element_id;
+    const server_id = cell.output_area._bokeh_server_id;
+
+    // Clean up Bokeh references
+    if (id != null) {
+      drop(id)
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      const cmd_clean = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd_clean, {
+        iopub: {
+          output: function(msg) {
+            const id = msg.content.text.trim()
+            drop(id)
+          }
+        }
+      });
+      // Destroy server and session
+      const cmd_destroy = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd_destroy);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    const output_area = handle.output_area;
+    const output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!Object.prototype.hasOwnProperty.call(output.data, EXEC_MIME_TYPE))) {
+      return
+    }
+
+    const toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      const bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      const script_attrs = bk_div.children[0].attributes;
+      for (let i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      const toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      const props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    const events = require('base/js/events');
+    const OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  const NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded(error = null) {
+    const el = document.getElementById(null);
+    if (el != null) {
+      const html = (() => {
+        if (typeof root.Bokeh === "undefined") {
+          if (error == null) {
+            return "BokehJS is loading ...";
+          } else {
+            return "BokehJS failed to load.";
+          }
+        } else {
+          const prefix = `BokehJS ${root.Bokeh.version}`;
+          if (error == null) {
+            return `${prefix} successfully loaded.`;
+          } else {
+            return `${prefix} <b>encountered errors</b> while loading and may not function as expected.`;
+          }
+        }
+      })();
+      el.innerHTML = html;
+
+      if (error != null) {
+        const wrapper = document.createElement("div");
+        wrapper.style.overflow = "auto";
+        wrapper.style.height = "5em";
+        wrapper.style.resize = "vertical";
+        const content = document.createElement("div");
+        content.style.fontFamily = "monospace";
+        content.style.whiteSpace = "pre-wrap";
+        content.style.backgroundColor = "rgb(255, 221, 221)";
+        content.textContent = error.stack ?? error.toString();
+        wrapper.append(content);
+        el.append(wrapper);
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(() => display_loaded(error), 100);
+    }
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error(url) {
+      console.error("failed to load " + url);
+    }
+
+    for (let i = 0; i < css_urls.length; i++) {
+      const url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (let i = 0; i < js_urls.length; i++) {
+      const url = js_urls[i];
+      const element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.7.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.7.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.7.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.7.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.7.0.min.js"];
+  const css_urls = [];
+
+  const inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {
+    }
+  ];
+
+  function run_inline_js() {
+    if (root.Bokeh !== undefined || force === true) {
+      try {
+            for (let i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+
+      } catch (error) {throw error;
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      const cell = $(document.getElementById(null)).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script></div>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="methods">
 <h1>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h1>
+<section id="data-sources">
+<h2>Data sources<a class="headerlink" href="#data-sources" title="Link to this heading">#</a></h2>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<script type="application/javascript">'use strict';
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  const force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+const JS_MIME_TYPE = 'application/javascript';
+  const HTML_MIME_TYPE = 'text/html';
+  const EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  const CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    const script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    function drop(id) {
+      const view = Bokeh.index.get_by_id(id)
+      if (view != null) {
+        view.model.document.clear()
+        Bokeh.index.delete(view)
+      }
+    }
+
+    const cell = handle.cell;
+
+    const id = cell.output_area._bokeh_element_id;
+    const server_id = cell.output_area._bokeh_server_id;
+
+    // Clean up Bokeh references
+    if (id != null) {
+      drop(id)
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      const cmd_clean = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd_clean, {
+        iopub: {
+          output: function(msg) {
+            const id = msg.content.text.trim()
+            drop(id)
+          }
+        }
+      });
+      // Destroy server and session
+      const cmd_destroy = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd_destroy);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    const output_area = handle.output_area;
+    const output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!Object.prototype.hasOwnProperty.call(output.data, EXEC_MIME_TYPE))) {
+      return
+    }
+
+    const toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      const bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      const script_attrs = bk_div.children[0].attributes;
+      for (let i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      const toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      const props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    const events = require('base/js/events');
+    const OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  const NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded(error = null) {
+    const el = document.getElementById(null);
+    if (el != null) {
+      const html = (() => {
+        if (typeof root.Bokeh === "undefined") {
+          if (error == null) {
+            return "BokehJS is loading ...";
+          } else {
+            return "BokehJS failed to load.";
+          }
+        } else {
+          const prefix = `BokehJS ${root.Bokeh.version}`;
+          if (error == null) {
+            return `${prefix} successfully loaded.`;
+          } else {
+            return `${prefix} <b>encountered errors</b> while loading and may not function as expected.`;
+          }
+        }
+      })();
+      el.innerHTML = html;
+
+      if (error != null) {
+        const wrapper = document.createElement("div");
+        wrapper.style.overflow = "auto";
+        wrapper.style.height = "5em";
+        wrapper.style.resize = "vertical";
+        const content = document.createElement("div");
+        content.style.fontFamily = "monospace";
+        content.style.whiteSpace = "pre-wrap";
+        content.style.backgroundColor = "rgb(255, 221, 221)";
+        content.textContent = error.stack ?? error.toString();
+        wrapper.append(content);
+        el.append(wrapper);
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(() => display_loaded(error), 100);
+    }
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error(url) {
+      console.error("failed to load " + url);
+    }
+
+    for (let i = 0; i < css_urls.length; i++) {
+      const url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (let i = 0; i < js_urls.length; i++) {
+      const url = js_urls[i];
+      const element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.7.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.7.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.7.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.7.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.7.0.min.js"];
+  const css_urls = [];
+
+  const inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {
+    }
+  ];
+
+  function run_inline_js() {
+    if (root.Bokeh !== undefined || force === true) {
+      try {
+            for (let i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+
+      } catch (error) {throw error;
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      const cell = $(document.getElementById(null)).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script></div>
+</div>
+<p>This report analyses genome variation data from the
+<a class="reference internal" href="glossary.html#term-Malaria-Vector-Genome-Observatory"><span class="xref std std-term">Malaria Vector Genome Observatory</span></a>. See Table 1 below for a
+complete list of the sample sets used in the current analysis version,
+with information about the corresponding contributors, data releases
+and citations. These sample sets provide data for a total of
+656 mosquitoes sampled from 13 countries.</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+#T_bab30 th {
+  text-align: left;
+}
+#T_bab30 td {
+  text-align: left;
+  font-weight: normal;
+}
+</style>
+<table id="T_bab30">
+  <caption>Table 1. Data sources included in the current analysis version.</caption>
+  <thead>
+    <tr>
+      <th id="T_bab30_level0_col0" class="col_heading level0 col0" >Sample Set</th>
+      <th id="T_bab30_level0_col1" class="col_heading level0 col1" >Study</th>
+      <th id="T_bab30_level0_col2" class="col_heading level0 col2" >Contributor</th>
+      <th id="T_bab30_level0_col3" class="col_heading level0 col3" >Data Release</th>
+      <th id="T_bab30_level0_col4" class="col_heading level0 col4" >Citation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_bab30_row0_col0" class="data row0 col0" >1229-VO-GH-DADZIE-VMF00095</td>
+      <td id="T_bab30_row0_col1" class="data row0 col1" ><a href="https://www.malariagen.net/partner_study/1229-VO-GH-DADZIE" target="_blank">1229-VO-GH-DADZIE</a></td>
+      <td id="T_bab30_row0_col2" class="data row0 col2" >Samuel Dadzie</td>
+      <td id="T_bab30_row0_col3" class="data row0 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
+      <td id="T_bab30_row0_col4" class="data row0 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
+    </tr>
+    <tr>
+      <td id="T_bab30_row1_col0" class="data row1 col0" >1230-VO-GA-CF-AYALA-VMF00045</td>
+      <td id="T_bab30_row1_col1" class="data row1 col1" ><a href="https://www.malariagen.net/partner_study/1230-VO-MULTI-AYALA" target="_blank">1230-VO-MULTI-AYALA</a></td>
+      <td id="T_bab30_row1_col2" class="data row1 col2" >Diego Ayala</td>
+      <td id="T_bab30_row1_col3" class="data row1 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
+      <td id="T_bab30_row1_col4" class="data row1 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
+    </tr>
+    <tr>
+      <td id="T_bab30_row2_col0" class="data row2 col0" >1231-VO-MULTI-WONDJI-VMF00043</td>
+      <td id="T_bab30_row2_col1" class="data row2 col1" ><a href="https://www.malariagen.net/partner_study/1231-VO-MULTI-WONDJI" target="_blank">1231-VO-MULTI-WONDJI</a></td>
+      <td id="T_bab30_row2_col2" class="data row2 col2" >Charles Wondji</td>
+      <td id="T_bab30_row2_col3" class="data row2 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
+      <td id="T_bab30_row2_col4" class="data row2 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
+    </tr>
+    <tr>
+      <td id="T_bab30_row3_col0" class="data row3 col0" >1232-VO-KE-OCHOMO-VMF00044</td>
+      <td id="T_bab30_row3_col1" class="data row3 col1" ><a href="https://www.malariagen.net/partner_study/1232-VO-KE-OCHOMO" target="_blank">1232-VO-KE-OCHOMO</a></td>
+      <td id="T_bab30_row3_col2" class="data row3 col2" >Eric Ochomo</td>
+      <td id="T_bab30_row3_col3" class="data row3 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
+      <td id="T_bab30_row3_col4" class="data row3 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
+    </tr>
+    <tr>
+      <td id="T_bab30_row4_col0" class="data row4 col0" >1235-VO-MZ-PAAIJMANS-VMF00094</td>
+      <td id="T_bab30_row4_col1" class="data row4 col1" ><a href="https://www.malariagen.net/partner_study/1235-VO-MZ-PAAIJMANS" target="_blank">1235-VO-MZ-PAAIJMANS</a></td>
+      <td id="T_bab30_row4_col2" class="data row4 col2" >Krijn Paaijmans</td>
+      <td id="T_bab30_row4_col3" class="data row4 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
+      <td id="T_bab30_row4_col4" class="data row4 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
+    </tr>
+    <tr>
+      <td id="T_bab30_row5_col0" class="data row5 col0" >1236-VO-TZ-OKUMU-VMF00090</td>
+      <td id="T_bab30_row5_col1" class="data row5 col1" ><a href="https://www.malariagen.net/partner_study/1236-VO-TZ-OKUMU" target="_blank">1236-VO-TZ-OKUMU</a></td>
+      <td id="T_bab30_row5_col2" class="data row5 col2" >Fredros Okumu</td>
+      <td id="T_bab30_row5_col3" class="data row5 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
+      <td id="T_bab30_row5_col4" class="data row5 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
+    </tr>
+    <tr>
+      <td id="T_bab30_row6_col0" class="data row6 col0" >1240-VO-CD-KOEKEMOER-VMF00099</td>
+      <td id="T_bab30_row6_col1" class="data row6 col1" ><a href="https://www.malariagen.net/partner_study/1240-VO-MULTI-KOEKEMOER" target="_blank">1240-VO-MULTI-KOEKEMOER</a></td>
+      <td id="T_bab30_row6_col2" class="data row6 col2" >Lizette Koekemoer</td>
+      <td id="T_bab30_row6_col3" class="data row6 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
+      <td id="T_bab30_row6_col4" class="data row6 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
+    </tr>
+    <tr>
+      <td id="T_bab30_row7_col0" class="data row7 col0" >1240-VO-MZ-KOEKEMOER-VMF00101</td>
+      <td id="T_bab30_row7_col1" class="data row7 col1" ><a href="https://www.malariagen.net/partner_study/1240-VO-MULTI-KOEKEMOER" target="_blank">1240-VO-MULTI-KOEKEMOER</a></td>
+      <td id="T_bab30_row7_col2" class="data row7 col2" >Lizette Koekemoer</td>
+      <td id="T_bab30_row7_col3" class="data row7 col3" ><a href="https://malariagen.github.io/vector-data/af1/af1.0.html" target="_blank">Af1.0</a></td>
+      <td id="T_bab30_row7_col4" class="data row7 col4" ><a href='https://pmc.ncbi.nlm.nih.gov/articles/PMC11702533/' target='_blank'>Boddé, Nwezeobi et al. 2024</a></td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Sample metadata, unphased SNP calls, and phased SNP haplotypes were retrieved from
+the <a class="reference internal" href="glossary.html#term-Malaria-Vector-Genome-Observatory"><span class="xref std std-term">Malaria Vector Genome Observatory</span></a> cloud data repository hosted in
+Google Cloud Storage (GCS) via the <a class="reference internal" href="glossary.html#term-MalariaGEN-Python-API"><span class="xref std std-term">MalariaGEN Python API</span></a> version
+15.0.1.</p>
+</section>
+<section id="sample-inclusion-and-grouping-into-cohorts">
+<h2>Sample inclusion and grouping into cohorts<a class="headerlink" href="#sample-inclusion-and-grouping-into-cohorts" title="Link to this heading">#</a></h2>
+<p>Samples were considered for inclusion if they met the following criteria:</p>
+<div class="cell tag_remove-input docutils container">
+</div>
+<ul class="simple">
+<li><p>Gender assigned as female via comparison of sequence coverage on autosomes and sex
+chromosomes.</p></li>
+<li><p>Taxon assigned as funestus via principle components analysis of
+genomic data from Chromosome 3 and comparison with reference samples
+with known taxon assignments.</p></li>
+</ul>
+<div class="cell tag_remove-input docutils container">
+</div>
+<p>After filtering according to these inclusion criteria, samples were grouped into cohorts by taxon, location of sampling and date of sampling. Samples were grouped spatially if their collection locations were within the same level 2 administrative unit, according to geoBoundaries version 5.0.0. Samples were grouped temporally if their collection dates were within the same quarter (3 month period) where possible, except in a small number of cases where metadata were only available on year of collection.</p>
+<p>Cohorts were excluded from the analysis if the sample size was
+less than 15. Cohorts with more than
+100 samples were randomly downsampled for
+computational efficiency. Cohorts were also excluded from the
+analysis if they failed H12 or G123 window size calibration
+(see below). After applying these filters, a total of
+15 cohorts were retained for analysis (Table 2).</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+</style>
+<table id="T_77d53">
+  <caption>Table 2. Cohorts selected for genome-wide selection scan analyses.</caption>
+  <thead>
+    <tr>
+      <th id="T_77d53_level0_col0" class="col_heading level0 col0" >Cohort</th>
+      <th id="T_77d53_level0_col1" class="col_heading level0 col1" >Country</th>
+      <th id="T_77d53_level0_col2" class="col_heading level0 col2" >Region</th>
+      <th id="T_77d53_level0_col3" class="col_heading level0 col3" >District</th>
+      <th id="T_77d53_level0_col4" class="col_heading level0 col4" >Taxon</th>
+      <th id="T_77d53_level0_col5" class="col_heading level0 col5" >Year</th>
+      <th id="T_77d53_level0_col6" class="col_heading level0 col6" >Quarter</th>
+      <th id="T_77d53_level0_col7" class="col_heading level0 col7" >Sample Size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="T_77d53_row0_col0" class="data row0 col0" ><a href="cohort/BJ-AQ_Ouidah_fune_2014_Q2.html">Benin / Ouidah / funestus / 2014 / Q2</a></td>
+      <td id="T_77d53_row0_col1" class="data row0 col1" >Benin</td>
+      <td id="T_77d53_row0_col2" class="data row0 col2" >Atlanique</td>
+      <td id="T_77d53_row0_col3" class="data row0 col3" >Ouidah</td>
+      <td id="T_77d53_row0_col4" class="data row0 col4" >funestus</td>
+      <td id="T_77d53_row0_col5" class="data row0 col5" >2014</td>
+      <td id="T_77d53_row0_col6" class="data row0 col6" >2</td>
+      <td id="T_77d53_row0_col7" class="data row0 col7" >37</td>
+    </tr>
+    <tr>
+      <td id="T_77d53_row1_col0" class="data row1 col0" ><a href="cohort/CD-HU_Watsa_fune_2017_Q4.html">Democratic Republic of the Congo / Watsa / funestus / 2017 / Q4</a></td>
+      <td id="T_77d53_row1_col1" class="data row1 col1" >Democratic Republic of the Congo</td>
+      <td id="T_77d53_row1_col2" class="data row1 col2" >Upper Uele</td>
+      <td id="T_77d53_row1_col3" class="data row1 col3" >Watsa</td>
+      <td id="T_77d53_row1_col4" class="data row1 col4" >funestus</td>
+      <td id="T_77d53_row1_col5" class="data row1 col5" >2017</td>
+      <td id="T_77d53_row1_col6" class="data row1 col6" >4</td>
+      <td id="T_77d53_row1_col7" class="data row1 col7" >43</td>
+    </tr>
+    <tr>
+      <td id="T_77d53_row2_col0" class="data row2 col0" ><a href="cohort/CD-KN_Kinshasa_fune_2015_Q2.html">Democratic Republic of the Congo / Kinshasa / funestus / 2015 / Q2</a></td>
+      <td id="T_77d53_row2_col1" class="data row2 col1" >Democratic Republic of the Congo</td>
+      <td id="T_77d53_row2_col2" class="data row2 col2" >Kinshasa</td>
+      <td id="T_77d53_row2_col3" class="data row2 col3" >Kinshasa</td>
+      <td id="T_77d53_row2_col4" class="data row2 col4" >funestus</td>
+      <td id="T_77d53_row2_col5" class="data row2 col5" >2015</td>
+      <td id="T_77d53_row2_col6" class="data row2 col6" >2</td>
+      <td id="T_77d53_row2_col7" class="data row2 col7" >34</td>
+    </tr>
+    <tr>
+      <td id="T_77d53_row3_col0" class="data row3 col0" ><a href="cohort/CM-AD_Mayo-Banyo_fune_2014_Q3.html">Cameroon / Mayo-Banyo / funestus / 2014 / Q3</a></td>
+      <td id="T_77d53_row3_col1" class="data row3 col1" >Cameroon</td>
+      <td id="T_77d53_row3_col2" class="data row3 col2" >Adamaoua</td>
+      <td id="T_77d53_row3_col3" class="data row3 col3" >Mayo-Banyo</td>
+      <td id="T_77d53_row3_col4" class="data row3 col4" >funestus</td>
+      <td id="T_77d53_row3_col5" class="data row3 col5" >2014</td>
+      <td id="T_77d53_row3_col6" class="data row3 col6" >3</td>
+      <td id="T_77d53_row3_col7" class="data row3 col7" >45</td>
+    </tr>
+    <tr>
+      <td id="T_77d53_row4_col0" class="data row4 col0" ><a href="cohort/GA-2_Mpassa_fune_2017_Q4.html">Gabon / Mpassa / funestus / 2017 / Q4</a></td>
+      <td id="T_77d53_row4_col1" class="data row4 col1" >Gabon</td>
+      <td id="T_77d53_row4_col2" class="data row4 col2" >Haut-Ogooué</td>
+      <td id="T_77d53_row4_col3" class="data row4 col3" >Mpassa</td>
+      <td id="T_77d53_row4_col4" class="data row4 col4" >funestus</td>
+      <td id="T_77d53_row4_col5" class="data row4 col5" >2017</td>
+      <td id="T_77d53_row4_col6" class="data row4 col6" >4</td>
+      <td id="T_77d53_row4_col7" class="data row4 col7" >26</td>
+    </tr>
+    <tr>
+      <td id="T_77d53_row5_col0" class="data row5 col0" ><a href="cohort/GH-AH_Adansi-Akrofuom_fune_2014_Q1.html">Ghana / Adansi Akrofuom / funestus / 2014 / Q1</a></td>
+      <td id="T_77d53_row5_col1" class="data row5 col1" >Ghana</td>
+      <td id="T_77d53_row5_col2" class="data row5 col2" >Ashanti Region</td>
+      <td id="T_77d53_row5_col3" class="data row5 col3" >Adansi Akrofuom</td>
+      <td id="T_77d53_row5_col4" class="data row5 col4" >funestus</td>
+      <td id="T_77d53_row5_col5" class="data row5 col5" >2014</td>
+      <td id="T_77d53_row5_col6" class="data row5 col6" >1</td>
+      <td id="T_77d53_row5_col7" class="data row5 col7" >31</td>
+    </tr>
+    <tr>
+      <td id="T_77d53_row6_col0" class="data row6 col0" ><a href="cohort/KE-03_Mt.-Elgon_fune_2016_Q4.html">Kenya / Mt. Elgon / funestus / 2016 / Q4</a></td>
+      <td id="T_77d53_row6_col1" class="data row6 col1" >Kenya</td>
+      <td id="T_77d53_row6_col2" class="data row6 col2" >Bungoma</td>
+      <td id="T_77d53_row6_col3" class="data row6 col3" >Mt. Elgon</td>
+      <td id="T_77d53_row6_col4" class="data row6 col4" >funestus</td>
+      <td id="T_77d53_row6_col5" class="data row6 col5" >2016</td>
+      <td id="T_77d53_row6_col6" class="data row6 col6" >4</td>
+      <td id="T_77d53_row6_col7" class="data row6 col7" >21</td>
+    </tr>
+    <tr>
+      <td id="T_77d53_row7_col0" class="data row7 col0" ><a href="cohort/KE-17_Nyando_fune_2014_Q2.html">Kenya / Nyando / funestus / 2014 / Q2</a></td>
+      <td id="T_77d53_row7_col1" class="data row7 col1" >Kenya</td>
+      <td id="T_77d53_row7_col2" class="data row7 col2" >Kisumu</td>
+      <td id="T_77d53_row7_col3" class="data row7 col3" >Nyando</td>
+      <td id="T_77d53_row7_col4" class="data row7 col4" >funestus</td>
+      <td id="T_77d53_row7_col5" class="data row7 col5" >2014</td>
+      <td id="T_77d53_row7_col6" class="data row7 col6" >2</td>
+      <td id="T_77d53_row7_col7" class="data row7 col7" >35</td>
+    </tr>
+    <tr>
+      <td id="T_77d53_row8_col0" class="data row8 col0" ><a href="cohort/MW-S_Chikwawa_fune_2014_Q1.html">Malawi / Chikwawa / funestus / 2014 / Q1</a></td>
+      <td id="T_77d53_row8_col1" class="data row8 col1" >Malawi</td>
+      <td id="T_77d53_row8_col2" class="data row8 col2" >Southern Region</td>
+      <td id="T_77d53_row8_col3" class="data row8 col3" >Chikwawa</td>
+      <td id="T_77d53_row8_col4" class="data row8 col4" >funestus</td>
+      <td id="T_77d53_row8_col5" class="data row8 col5" >2014</td>
+      <td id="T_77d53_row8_col6" class="data row8 col6" >1</td>
+      <td id="T_77d53_row8_col7" class="data row8 col7" >18</td>
+    </tr>
+    <tr>
+      <td id="T_77d53_row9_col0" class="data row9 col0" ><a href="cohort/MZ-L_Manhiça_fune_2016_Q2.html">Mozambique / Manhiça / funestus / 2016 / Q2</a></td>
+      <td id="T_77d53_row9_col1" class="data row9 col1" >Mozambique</td>
+      <td id="T_77d53_row9_col2" class="data row9 col2" >Maputo</td>
+      <td id="T_77d53_row9_col3" class="data row9 col3" >Manhiça</td>
+      <td id="T_77d53_row9_col4" class="data row9 col4" >funestus</td>
+      <td id="T_77d53_row9_col5" class="data row9 col5" >2016</td>
+      <td id="T_77d53_row9_col6" class="data row9 col6" >2</td>
+      <td id="T_77d53_row9_col7" class="data row9 col7" >22</td>
+    </tr>
+    <tr>
+      <td id="T_77d53_row10_col0" class="data row10 col0" ><a href="cohort/MZ-L_Manhiça_fune_2018_Q1.html">Mozambique / Manhiça / funestus / 2018 / Q1</a></td>
+      <td id="T_77d53_row10_col1" class="data row10 col1" >Mozambique</td>
+      <td id="T_77d53_row10_col2" class="data row10 col2" >Maputo</td>
+      <td id="T_77d53_row10_col3" class="data row10 col3" >Manhiça</td>
+      <td id="T_77d53_row10_col4" class="data row10 col4" >funestus</td>
+      <td id="T_77d53_row10_col5" class="data row10 col5" >2018</td>
+      <td id="T_77d53_row10_col6" class="data row10 col6" >1</td>
+      <td id="T_77d53_row10_col7" class="data row10 col7" >58</td>
+    </tr>
+    <tr>
+      <td id="T_77d53_row11_col0" class="data row11 col0" ><a href="cohort/MZ-P_Palma_fune_2015_Q3.html">Mozambique / Palma / funestus / 2015 / Q3</a></td>
+      <td id="T_77d53_row11_col1" class="data row11 col1" >Mozambique</td>
+      <td id="T_77d53_row11_col2" class="data row11 col2" >Cabo Delgado</td>
+      <td id="T_77d53_row11_col3" class="data row11 col3" >Palma</td>
+      <td id="T_77d53_row11_col4" class="data row11 col4" >funestus</td>
+      <td id="T_77d53_row11_col5" class="data row11 col5" >2015</td>
+      <td id="T_77d53_row11_col6" class="data row11 col6" >3</td>
+      <td id="T_77d53_row11_col7" class="data row11 col7" >40</td>
+    </tr>
+    <tr>
+      <td id="T_77d53_row12_col0" class="data row12 col0" ><a href="cohort/NG-OG_Remo-North_fune_2015_Q1.html">Nigeria / Remo North / funestus / 2015 / Q1</a></td>
+      <td id="T_77d53_row12_col1" class="data row12 col1" >Nigeria</td>
+      <td id="T_77d53_row12_col2" class="data row12 col2" >Ogun</td>
+      <td id="T_77d53_row12_col3" class="data row12 col3" >Remo North</td>
+      <td id="T_77d53_row12_col4" class="data row12 col4" >funestus</td>
+      <td id="T_77d53_row12_col5" class="data row12 col5" >2015</td>
+      <td id="T_77d53_row12_col6" class="data row12 col6" >1</td>
+      <td id="T_77d53_row12_col7" class="data row12 col7" >41</td>
+    </tr>
+    <tr>
+      <td id="T_77d53_row13_col0" class="data row13 col0" ><a href="cohort/UG-E_Tororo_fune_2014_Q2.html">Uganda / Tororo / funestus / 2014 / Q2</a></td>
+      <td id="T_77d53_row13_col1" class="data row13 col1" >Uganda</td>
+      <td id="T_77d53_row13_col2" class="data row13 col2" >Eastern Region</td>
+      <td id="T_77d53_row13_col3" class="data row13 col3" >Tororo</td>
+      <td id="T_77d53_row13_col4" class="data row13 col4" >funestus</td>
+      <td id="T_77d53_row13_col5" class="data row13 col5" >2014</td>
+      <td id="T_77d53_row13_col6" class="data row13 col6" >2</td>
+      <td id="T_77d53_row13_col7" class="data row13 col7" >49</td>
+    </tr>
+    <tr>
+      <td id="T_77d53_row14_col0" class="data row14 col0" ><a href="cohort/ZM-03_Sinda_fune_2016_Q3.html">Zambia / Sinda / funestus / 2016 / Q3</a></td>
+      <td id="T_77d53_row14_col1" class="data row14 col1" >Zambia</td>
+      <td id="T_77d53_row14_col2" class="data row14 col2" >Eastern</td>
+      <td id="T_77d53_row14_col3" class="data row14 col3" >Sinda</td>
+      <td id="T_77d53_row14_col4" class="data row14 col4" >funestus</td>
+      <td id="T_77d53_row14_col5" class="data row14 col5" >2016</td>
+      <td id="T_77d53_row14_col6" class="data row14 col6" >3</td>
+      <td id="T_77d53_row14_col7" class="data row14 col7" >43</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="h12-and-g123-window-size-calibration">
+<h2>H12 and G123 window size calibration<a class="headerlink" href="#h12-and-g123-window-size-calibration" title="Link to this heading">#</a></h2>
+<p>Both H12 (<a class="reference external" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4338236/">Garud et al. 2015</a>) and G123 (<a class="reference external" href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6283157/">Harris et al. 2018</a>) are statistical methods for performing <a class="reference internal" href="glossary.html#term-genome-wide-selection-scan"><span class="xref std std-term">genome-wide selection scan</span></a>s which rely on dividing data into windows along the <a class="reference internal" href="glossary.html#term-genome"><span class="xref std std-term">genome</span></a>. Typically the size of these windows is set to a fixed number of polymorphic sites (<a class="reference internal" href="glossary.html#term-SNP"><span class="xref std std-term">SNP</span></a>s). I.e., all windows contain data ─ either phased haplotypes or unphased genotypes ─ for the same number of <a class="reference internal" href="glossary.html#term-SNP"><span class="xref std std-term">SNP</span></a>s. In order to detect recent selective sweeps, the size of these windows needs to be chosen so that windows are generally larger than the normal genetic distance over which linkage disequlibrium (LD) decays to background levels in the absence of recent positive selection. Therefore, in windows which are unaffected by recent selective sweeps, genetic diversity will be high and thus the values of the selection statistics will be low. Conversely, in windows affected by recent selective sweeps, linkage disequilibrium will extend over a longer genetic distance spanning multiple windows, so that genetic diversity within those windows is low and thus values of selection statistics will be high. In other words, the choice of window size affects the signal to noise ratio for selection scans using H12 and G123 statistics. If windows are too small, results are dominated by background noise. If windows are too large, noise is minimal but power to detect recent selection signals is reduced.</p>
+<p>This decision regarding an appropriate window size needs to be made independently for each cohort of samples over which a selection scan will be performed. This is because different source populations may have different demographic histories, and this in turn may alter the genetic distance over which LD decays in the absence of positive selection. Previous studies have used various demographic inference methods to try to infer key demographic parameters for each cohort being analysed, then use these parameters to inform the decision of window size. In practice, this approach presents a number of challenges. Firstly, inference of demographic parameters is difficult, and even state of the art inference methods may reach inaccurate conclusions. Secondly, running demographic inference methods can be computationally demanding, and this becomes impractical for large numbers of cohorts.</p>
+<p>For these reasons we have taken an empirical approach to window size calibration for H12
+and G123 scans, designed to reach a good signal to noise ratio.</p>
+<p>For each cohort, we compute H12 over contig 3RL for multiple window
+sizes of 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400, 1600, 1800, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000 or 10000 SNPs. We then compute the 95th
+percentile of statistic values over all windows. We choose the smallest window size for which the
+95th percentile is below 0.08. This means that any window with a
+statistic value above this threshold will be in the top 5% of windows.</p>
+<p>Similarly, we compute G123 over contig 3RL for multiple window
+sizes of 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1200, 1400, 1600, 1800, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000 or 10000 SNPs. We then compute the 95th
+percentile of statistic values over all windows. We choose the smallest window size for which the
+95th percentile is below 0.08.</p>
+<p>TODO how was window-size calibration done?</p>
+<p>TODO after calibration, some cohorts removed if cannot get a window-size.</p>
+</section>
+<section id="h12-genome-wide-selection-scans">
+<h2>H12 genome-wide selection scans<a class="headerlink" href="#h12-genome-wide-selection-scans" title="Link to this heading">#</a></h2>
 <p>TODO</p>
+</section>
+<section id="g123-genome-wide-selection-scans">
+<h2>G123 genome-wide selection scans<a class="headerlink" href="#g123-genome-wide-selection-scans" title="Link to this heading">#</a></h2>
+<p>TODO</p>
+</section>
+<section id="ihs-genome-wide-selection-scans">
+<h2>IHS genome-wide selection scans<a class="headerlink" href="#ihs-genome-wide-selection-scans" title="Link to this heading">#</a></h2>
+<p>TODO</p>
+</section>
+<section id="automated-detection-of-selection-signals">
+<h2>Automated detection of selection signals<a class="headerlink" href="#automated-detection-of-selection-signals" title="Link to this heading">#</a></h2>
+<p>TODO</p>
+</section>
+<section id="identification-of-selection-alerts">
+<h2>Identification of selection alerts<a class="headerlink" href="#identification-of-selection-alerts" title="Link to this heading">#</a></h2>
+<p>TODO</p>
+</section>
+<section id="web-report-generation">
+<h2>Web report generation<a class="headerlink" href="#web-report-generation" title="Link to this heading">#</a></h2>
+<p>TODO</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -468,16 +1449,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "selection-atlas"
         },
         kernelOptions: {
-            name: "python3",
+            name: "selection-atlas",
             path: "./."
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'selection-atlas'</script>
 
                 </article>
               
@@ -490,12 +1471,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="data-sources.html"
+       href="cohort/ZM-03_Sinda_fune_2016_Q3.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Data sources</p>
+        <p class="prev-next-title">Zambia / Sinda / funestus / 2016 / Q3</p>
       </div>
     </a>
     <a class="right-next"
@@ -513,6 +1494,29 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-sources">Data sources</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-inclusion-and-grouping-into-cohorts">Sample inclusion and grouping into cohorts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h12-and-g123-window-size-calibration">H12 and G123 window size calibration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#h12-genome-wide-selection-scans">H12 genome-wide selection scans</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#g123-genome-wide-selection-scans">G123 genome-wide selection scans</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ihs-genome-wide-selection-scans">IHS genome-wide selection scans</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automated-detection-of-selection-signals">Automated detection of selection signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identification-of-selection-alerts">Identification of selection alerts</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#web-report-generation">Web report generation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
@@ -548,7 +1552,7 @@ By <a href="https://github.com/anopheles-genomic-surveillance/selection-atlas/gr
   <div class="footer-item">
     
 <div class="extra_footer">
-  <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">The Malaria Vector Selection Atlas</span> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a></p> <p>Citation: Sanjay Nagi, Alistair Miles et al. (2025) An atlas of recent positive selection in major African malaria vectors. In prep.</p> <p>GWSS analysis version ─ afun/2025.03.05. Site version ─ <a href='https://github.com/anopheles-genomic-surveillance/selection-atlas/releases/tag/v2025.03.12-1' target='_blank'>v2025.03.12-1</a> (12 March 2025). See also <a href='https://github.com/anopheles-genomic-surveillance/selection-atlas/releases' target='_blank'>release notes</a>.</p>
+  <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><span property="dct:title">The Malaria Vector Selection Atlas</span> is licensed under <a href="https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""></a></p> <p>Citation: Sanjay Nagi, Alistair Miles et al. (2025) An atlas of recent positive selection in major African malaria vectors. In prep.</p> <p>GWSS analysis version ─ afun/2025.03.05. Site version ─ <a href='https://github.com/anopheles-genomic-surveillance/selection-atlas/releases/tag/v2025.03.27-1' target='_blank'>v2025.03.27-1</a> (27 March 2025). See also <a href='https://github.com/anopheles-genomic-surveillance/selection-atlas/releases' target='_blank'>release notes</a>.</p>
 
 </div>
   </div>
