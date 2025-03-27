@@ -26,7 +26,7 @@ dependencies:
     - ipyleaflet
     - tqdm
     - ipywidgets
-    - plotly
+    - plotly<6
     - xarray
     - lmfit
     - zarr

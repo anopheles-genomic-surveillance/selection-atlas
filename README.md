@@ -44,17 +44,23 @@ If you are developing and need to add or upgrade a package, edit `workflow/commo
 
 ```
 mamba env create --file workflow/common/envs/selection-atlas-requirements.yaml
-conda env export -f workflow/common/envs/selection-atlas.yaml -n selection-atlas-requirements --override-channels --channel conda-forge --channel bioconda --channel nodefaults
+conda env export -f workflow/common/envs/selection-atlas.yaml -n selection-atlas-requirements --override-channels --channel conda-forge --channel bioconda --channel nodefaults --channel conda-forge/label/broken
 sed -i "s/selection-atlas-requirements/selection-atlas/" workflow/common/envs/selection-atlas.yaml
 ```
 
 
 ## Pre-commit hooks
 
-There are several pre-commit hooks configured to automatically lint and format source code files, including Python files, Jupyter notebooks and Snakemake files. These will be automatically run before any code is committed if you install pre-commit hooks:
+There are several pre-commit hooks configured to automatically lint and format source code files, including Python files, Jupyter notebooks and Snakemake files. To install the pre-commit hooks:
 
 ```
 pre-commit install
+```
+
+These will be automatically run before any code is committed if you install pre-commit hooks. However, if you want to manually force linting of all files at any time:
+
+```
+pre-commit run --all-files
 ```
 
 
@@ -109,15 +115,36 @@ find results -type f -exec touch {} +
 
 ## Running the site workflow
 
-The site workflow will use the outputs from the GWSS workflow and compile all of the content for the selection atlas website. To run this workflow:
+The site workflow will use the outputs from the GWSS workflow and compile all of the content for the selection atlas website. To run this workflow, e.g., for the agam site:
 
 ```
 MGEN_SHOW_PROGRESS=0 snakemake --snakefile workflow/site/Snakefile --configfile config/agam.yaml --show-failed-logs --rerun-incomplete
 ```
 
+There is also a bash script if you want to run both agam and afun site workflows:
+
+```
+./site.sh
+```
+
 You can run this workflow on a smaller computer as it should not need to perform any heavy computations. It currently does need to access some data in GCS, however, and so is also best run from a VM inside GCP.
 
 See below for how the site is deployed.
+
+
+## Previewing the site
+
+Once you have built the site, it's useful to preview the generated HTML. To do this you'll need to run an HTTP server.
+
+If you are on MalariaGEN DataLab, go to the launcher, and select the "HTTP server" icon. Then navigate to the "selection-atlas/results/agam/2025.03.05/site/docs/_build/html" folder, replacing "agam" with "afun" if you want to preview the funestus site, and replacing "2025.03.05" with a different analysis version if that has been changed.
+
+If you are on Vertex AI Workbench, you'll need to run a web server, e.g., from the repo clone directory:
+
+```
+python -m http.server --directory .
+```
+
+Then navigate to the path "/proxy/8000/results/agam/2025.03.05/site/docs/_build/html/" in your browser.
 
 
 ## Deploying the site
